@@ -165,3 +165,18 @@ input, textarea, select, .uneditable-input {
   @extend .control-group;
   @extend .error;
 }
+
+/* FAQ */
+
+.faq {
+  text-align: left;
+  width: 350px;
+
+  h1 {
+    text-align: left;
+    font-size: 30px;
+    margin-top: 45px;
+    margin-bottom: 10px;
+    font-weight: normal;
+  }
+}
