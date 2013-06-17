@@ -1,4 +1,4 @@
-Grasp [![Code Climate](https://codeclimate.com/github/graspapp/grasp.png)](https://codeclimate.com/github/graspapp/grasp)
+Grasp [![Build Status](https://travis-ci.org/graspapp/grasp.png?branch=master)](https://travis-ci.org/graspapp/grasp) [![Code Climate](https://codeclimate.com/github/graspapp/grasp.png)](https://codeclimate.com/github/graspapp/grasp)
 =====
 
 Only the best way to use technology in your classroom. (WIP)
