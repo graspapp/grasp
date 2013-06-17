@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "Static pages" do
+describe "static pages" do
 
   subject { page }
 
-  describe "Home page" do
+  describe "home page" do
 
     before { visit root_path }
 
@@ -12,7 +12,7 @@ describe "Static pages" do
     it { should have_title('Grasp') }
   end
 
-  describe "Help page" do
+  describe "help page" do
     
     before { visit help_path }
 
@@ -20,7 +20,7 @@ describe "Static pages" do
     it { should have_title('Help | Grasp') }
   end
 
-  describe "About page" do
+  describe "about page" do
     
     before { visit about_path }
 
@@ -28,7 +28,7 @@ describe "Static pages" do
     it { should have_title('About | Grasp') }
   end
 
-  describe "Contact page" do
+  describe "contact page" do
     
     before { visit contact_path }
 
