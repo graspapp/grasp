@@ -17,6 +17,7 @@ gem 'uglifier', '~> 2.1.1'
 
 gem 'coveralls', require: false
 gem 'newrelic_rpm', '~> 3.6.3.111'
+gem 'devise', '~> 3.0.0.rc'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.3.7'
