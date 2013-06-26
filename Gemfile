@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails', '4.0.0.rc2'
+gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'bcrypt-ruby', '~> 3.0.1'
 gem 'faker', '~> 1.1.2'
@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.0.beta1'
 gem 'uglifier', '~> 2.1.1'
 
 gem 'coveralls', require: false
-gem 'newrelic_rpm', '~> 3.6.3.111'
+gem 'newrelic_rpm', '~> 3.6.4.122'
 gem 'devise', '~> 3.0.0.rc'
 gem 'cancan', '~> 1.6.10'
 
