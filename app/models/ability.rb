@@ -10,6 +10,7 @@ class Ability
   		can :manage, [Class, Student]
   	elsif user.role? :student
   		can :read, Class
-  		can :manage, Student
-	end  			
+  		can :create, [Student, User]
+    end
+	end  		
 end

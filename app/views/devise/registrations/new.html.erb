@@ -1,18 +1,58 @@
-<h2>Sign up</h2>
+<div class="row">
+	<div class="span4 offset4">
+		<h2>Sign up</h2>
+ 
+		<%= form_for(@user) do |f| %>
+  		<%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  		<table class="registration" style="cellpadding:40px;">
+  			<tr>
+			  <td><%= f.label :first_name %>
+			  <%= f.text_field :first_name, :autofocus => true %></td>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+			  <td><%= f.label :last_name %>
+			  <%= f.text_field :last_name, :autofocus => true %></td>
+			</tr>
+			<tr>
+			  <td colspan="2"><%= f.label :email %>
+			  <%= f.email_field :email %></td>
+			</tr>
+			<tr>
+			  <td><%= f.label :password %>
+			  <%= f.password_field :password %></td>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+			  <td><%= f.label :confirmation %>
+			  <%= f.password_field :password_confirmation %></td>
+			</tr>
+			<% if request.fullpath =~ /\/teacher\/sign_up/ %>
+			<% provide(:title, 'Teacher Sign Up') %>
+			
+			<tr>			
+				<td><%= f.label :school %>
+				<%= f.text_field :password %></td>
+				  
+				<td><%= f.label :city %>
+				<%= f.text_field :password %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :state %>
+				<%= f.text_field :password %></td>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+				<td><%= f.label :country %>
+				<%= f.text_field :password %></td>
+			</tr>
+			<% elsif request.fullpath =~ /\/student\/sign_up/ %>
+			<% provide(:title, 'Student Sign Up') %>
+			
+				<td><%= f.label :class_code %>
+			  	<%= f.text_field :email %></td> 	
+			<% end %>
+			<tr>
+				<td><%= f.submit "Create Account", class: 'btn btn-primary' %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
 
-<%= render "devise/shared/links" %>
