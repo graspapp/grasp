@@ -1,10 +1,12 @@
 Grasp::Application.routes.draw do
   
-  devise_for :users, :controllers => { :registrations => "users/registrations" } do 
-  	get '/student/sign_up', :to => 'devise/registrations#new'
-  	get '/teacher/sign_up', :to => 'devise/registrations#new'
+  devise_for :users, :controller => { :registrations => "users/registrations" } 
+  devise_scope :users do
+    get '/student/sign_up', :to => 'devise/registrations#new'
+    get '/teacher/sign_up', :to => 'devise/registrations#new'
     get '/sign_in',         :to => 'devise/sessions#new' 
   end
+  
   resources :users
 
   root to: "static_pages#home"
