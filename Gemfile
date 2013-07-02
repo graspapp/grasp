@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.0.beta1'
 gem 'uglifier', '~> 2.1.1'
 
 gem 'coveralls', require: false
-gem 'newrelic_rpm', '~> 3.6.4.122'
+gem 'newrelic_rpm', '~> 3.6.5.130'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.3.7'
