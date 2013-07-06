@@ -37,6 +37,7 @@ describe "static pages" do
   end
 
   it "should have the right links on the layout" do
+
     visit root_path
     click_link "About"
     page.should have_title(full_title('About'))
