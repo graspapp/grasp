@@ -32,26 +32,27 @@ describe "Authentication" do
 	end
 
 	describe "student sign in page" do
+
 		before { visit student_sign_in_path }
 
 		it {should have_selector('h2', text:'Sign in') }
 	end
 
 	describe "student sign in" do
-	before { visit student_sign_in_path }
 
-	describe "with invalid credentials" do
-		before { click_button "Sign in" }
-		it { should have_content "Invalid email or password." }
-	end
+    before { visit student_sign_in_path }
 
-	describe "with valid credentials" do
+    describe "with invalid credentials" do
+      before { click_button "Sign in" }
+      it { should have_content "Invalid email or password." }
+    end
 
-		let(:student) { FactoryGirl.create(:student) }
-		before { sign_in_student(student) }
+    describe "with valid credentials" do
 
-		it {should have_selector('h1', text:"#{student.first_name} #{student.last_name}")}
-	end
-end
+      let(:student) { FactoryGirl.create(:student) }
+      before { sign_in_student(student) }
 
+      it {should have_selector('h1', text:"#{student.first_name} #{student.last_name}")}
+    end
+  end
 end
