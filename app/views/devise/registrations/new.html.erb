@@ -1,4 +1,4 @@
-qdiv class="row">
+<div class="row">
 	<div class="span4 offset4">
 		<h2>Sign up</h2>
  
@@ -25,7 +25,7 @@ qdiv class="row">
 			  <td><%= f.label :confirmation %>
 			  <%= f.password_field :password_confirmation %></td>
 			</tr>
-			<% if request.fullpath =~ /\/teacher\/sign_up/ %>
+			<% if request.fullpath =~ /(?:\/teacher\/sign_up|\/teachers)/ %>
 			<% provide(:title, 'Teacher Sign Up') %>
 			
 			<tr>			
@@ -42,7 +42,7 @@ qdiv class="row">
 				<td><%= f.label :country %>
 				<%= f.text_field :country %></td>
 			</tr>
-			<% elsif request.fullpath =~ /\/student\/sign_up/ %>
+			<% elsif request.fullpath =~ /(?:\/student\/sign_up|\/students)/ %>
 			<% provide(:title, 'Student Sign Up') %>
 			
 				<td><%= f.label :class_code %>
