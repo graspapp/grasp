@@ -20,9 +20,6 @@ describe "Authentication" do
 			before { click_button "Sign in" }
 
 			it { should have_content "Invalid email or password." }
-
-      # Don't want those teacher-specific fields disappearing!
-      it { should have_content "School" }
 		end
 
 		describe "with valid credentials" do
@@ -53,9 +50,6 @@ describe "Authentication" do
       before { click_button "Sign in" }
 
       it { should have_content "Invalid email or password." }
-
-      # Don't want those student-specific fields disappearing!
-      it { should have_content "Class code" }
     end
 
     describe "with valid credentials" do
