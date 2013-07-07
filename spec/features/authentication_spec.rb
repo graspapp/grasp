@@ -51,7 +51,7 @@ describe "Authentication" do
     before { visit teacher_sign_in_path }
 
     it { should have_selector('h2', text:'Sign in') }
-	end
+  end
 
 	describe "teacher sign in" do
 
@@ -62,8 +62,7 @@ describe "Authentication" do
       before { click_button "Sign in" }
 
       it { should have_content "Invalid email or password." }
-			
-		end
+    end
 
     describe "with valid credentials" do
 
@@ -78,7 +77,7 @@ describe "Authentication" do
   end
 	
 	
-	describe "student registration page" do
+  describe "student registration page" do
   
     before { visit student_sign_up_path }
 
@@ -122,7 +121,7 @@ describe "Authentication" do
     before { visit student_sign_in_path }
 
     it { should have_selector('h2', text:'Sign in') }
-	end
+  end
 
   describe "student sign in" do
 
