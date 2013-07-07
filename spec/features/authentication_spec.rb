@@ -53,7 +53,7 @@ describe "Authentication" do
     it { should have_selector('h2', text:'Sign in') }
   end
 
-	describe "teacher sign in" do
+  describe "teacher sign in" do
 
     before { visit teacher_sign_in_path }
 
@@ -136,10 +136,10 @@ describe "Authentication" do
 
     describe "with valid credentials" do
 
-    let(:student) { FactoryGirl.create(:student) }
-    before { sign_in_student(student) }
+      let(:student) { FactoryGirl.create(:student) }
+      before { sign_in_student(student) }
 
-    it {should have_selector('h1', text:"#{student.first_name} #{student.last_name}")}
+      it {should have_selector('h1', text:"#{student.first_name} #{student.last_name}")}
     end
   end
 end
