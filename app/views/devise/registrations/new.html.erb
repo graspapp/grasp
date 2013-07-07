@@ -1,8 +1,9 @@
-<div class="row">
+qdiv class="row">
 	<div class="span4 offset4">
 		<h2>Sign up</h2>
  
-		<%= form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f| %>
+    <%= form_for resource, :as => resource_name,
+      :url => registration_path(resource_name) do |f| %>
   		<%= devise_error_messages! %>
 
   		<table class="registration" style="cellpadding:40px;">
