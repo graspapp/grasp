@@ -5,6 +5,5 @@ class Student < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :first_name, :last_name, :email, :password,
-                        :password_confirmation, :class_code
+  validates_presence_of :first_name, :last_name, :password_confirmation, :class_code
 end
