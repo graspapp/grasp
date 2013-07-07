@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Authentication" do
 	
-	subject { page }
+  subject { page }
   
   describe "teacher registration page" do
   
