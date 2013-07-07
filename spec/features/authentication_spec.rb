@@ -16,14 +16,20 @@ describe "Authentication" do
 		before { visit teacher_sign_in_path }
 
 		describe "with invalid credentials" do
+
 			before { click_button "Sign in" }
+
 			it { should have_content "Invalid email or password." }
+
+      # Don't want those teacher-specific fields disappearing!
+      it { should have_content "School" }
 		end
 
 		describe "with valid credentials" do
 
-			let(:teacher) { FactoryGirl.create(:teacher) }
 			before { sign_in_teacher(teacher) }
+
+			let(:teacher) { FactoryGirl.create(:teacher) }
 
 			it { should have_selector('h1', text:"#{ teacher.first_name } #{ teacher.last_name }") }
 			it { should have_link('Sign Out', destroy_teacher_session_path) }
@@ -43,8 +49,13 @@ describe "Authentication" do
     before { visit student_sign_in_path }
 
     describe "with invalid credentials" do
+
       before { click_button "Sign in" }
+
       it { should have_content "Invalid email or password." }
+
+      # Don't want those student-specific fields disappearing!
+      it { should have_content "Class code" }
     end
 
     describe "with valid credentials" do
