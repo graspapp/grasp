@@ -141,7 +141,6 @@ describe "Authentication" do
       before { sign_in_student(student) }
 
       it {should have_selector('h1', text:"#{student.first_name} #{student.last_name}")}
-      
     end
   end
 end
