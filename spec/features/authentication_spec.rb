@@ -72,7 +72,7 @@ describe "Authentication" do
 
       it { should have_selector('h1', text:"#{ teacher.first_name } #{ teacher.last_name }") }
       it { should have_link('Sign Out', destroy_teacher_session_path) }
-      it { should_not have_link('Sign In', sign_in_path) }
+      it { should have_link('Sign In', sign_in_path) }
     end
   end
   
