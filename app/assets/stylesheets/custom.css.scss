@@ -147,7 +147,6 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
   height: auto;
   margin-bottom: 15px;
   @include box_sizing;
@@ -164,6 +163,16 @@ input, textarea, select, .uneditable-input {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+}
+
+.help-block{
+  font-style: italic;
+  font-weight: bold;
+  color: $grayLight;
+}
+
+.remember{
+  float:left;
 }
 
 /* FAQ */
