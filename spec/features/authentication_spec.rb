@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe "Authentication" do
-	
+  
   subject { page }
   
   describe "teacher registration page" do
   
    before { visit teacher_sign_up_path }
    
-   it { should have_selector('h2', text:'Sign up') }  
+   it { should have_selector('h1', text:'Sign up') }  
   end
   
   describe "teacher registration" do
@@ -16,12 +16,12 @@ describe "Authentication" do
     
     describe "with invalid information" do
       it "should not create a new teacher" do
-        expect { click_button "Create Account"}.not_to change(Teacher, :count)
+        expect { click_button "Create Account" }.not_to change(Teacher, :count)
       end
       
       describe "submission results" do
         before { click_button "Create Account" }
-        it { should have_selector('h2', text:'Sign up') }
+        it { should have_selector('h1', text:'Sign up') }
         it { should have_content('error') }
         it { should have_field('School') } #test for teacher specific field
       end
@@ -50,7 +50,7 @@ describe "Authentication" do
 
     before { visit teacher_sign_in_path }
 
-    it { should have_selector('h2', text:'Sign in') }
+    it { should have_selector('h1', text:'Sign in') }
   end
 
   describe "teacher sign in" do
@@ -75,13 +75,13 @@ describe "Authentication" do
       it { should_not have_link('Sign In', sign_in_path) }
     end
   end
-	
-	
+  
+  
   describe "student registration page" do
   
     before { visit student_sign_up_path }
 
-    it { should have_selector('h2', text:'Sign up') }  
+    it { should have_selector('h1', text:'Sign up') }  
   end
   
   describe "student registration" do
@@ -94,7 +94,7 @@ describe "Authentication" do
       
       describe "submission results" do
         before { click_button "Create Account" }
-        it { should have_selector('h2', text:'Sign up') }
+        it { should have_selector('h1', text:'Sign up') }
         it { should have_content('error') }
         it { should have_field('Class code') } #test for student specific field
       end
@@ -120,7 +120,7 @@ describe "Authentication" do
 
     before { visit student_sign_in_path }
 
-    it { should have_selector('h2', text:'Sign in') }
+    it { should have_selector('h1', text:'Sign in') }
   end
 
   describe "student sign in" do
