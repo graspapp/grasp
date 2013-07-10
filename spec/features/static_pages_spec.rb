@@ -8,7 +8,6 @@ describe "static pages" do
 
     before { visit root_path }
 
-    it { should have_selector('h1', text: 'Grasp') }
     it { should have_title('Grasp') }
   end
 
@@ -46,6 +45,6 @@ describe "static pages" do
     click_link "Contact"
     page.should have_title(full_title('Contact'))
     click_link "Home"
-    click_link "Sign Up"
+    first(:link, "Sign Up").click
   end
 end

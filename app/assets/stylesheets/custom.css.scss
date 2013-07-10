@@ -147,9 +147,13 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
+<<<<<<< HEAD
   height: auto;
   margin-bottom: 15px;
   @include box_sizing;
+=======
+  margin: 0px 15px 15px 0px;
+>>>>>>> 268b2774bb2f242204ebd50541ea055337b79c84
 }
 
 #error_explanation {
