@@ -2,25 +2,28 @@ require 'spec_helper'
 
 describe "Teacher" do
 	before do
+
+    # Refactor this to use FactoryGirl
 		@teacher = Teacher.new(first_name: "Sample", last_name: "Teacher",
                            email: "sampleteach@school.edu",
                            password: "fakepass",
                            password_confirmation: "fakepass",
                            school: "Sample HS", city: "LA", state: "CA",
                            country: "United States")
+
+    @teacher.courses.build(name: "Test")
 	end
 
 	subject { @teacher }
 
-	it { should respond_to(:first_name) }
-	it { should respond_to(:last_name) }
-	it { should respond_to(:email) }
-	it { should respond_to(:password) }
-	it { should respond_to(:password_confirmation) }
-	it { should respond_to(:school) }
-	it { should respond_to(:city) }
-	it { should respond_to(:state) }
-	it { should respond_to(:country) }
+  describe "attributes" do
+
+    it { should have_many  :courses }
+    it { should respond_to :first_name, :last_name,
+                           :email,
+                           :password, :password_confirmation,
+                           :school, :city, :state, :country }
+  end
 
 	describe "when first name is blank" do
 		before { @teacher.first_name = "" }
@@ -52,17 +55,17 @@ describe "Teacher" do
 		it { should_not be_valid }
 	end
 
-		describe "when city is blank" do
+  describe "when city is blank" do
 		before { @teacher.city = "" }
 		it { should_not be_valid }
 	end
 
-		describe "when state is blank" do
+  describe "when state is blank" do
 		before { @teacher.state = "" }
 		it { should_not be_valid }
 	end
 
-		describe "when country confirmation is blank" do
+  describe "when country confirmation is blank" do
 		before { @teacher.country = "" }
 		it { should_not be_valid }
 	end
