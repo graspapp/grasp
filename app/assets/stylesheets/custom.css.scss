@@ -114,6 +114,17 @@ footer {
   @include box_sizing;
 }
 
+.landing .well{
+  border: 1px solid #999;
+  border-radius: 8px;
+  text-align: center;
+  vertical-align: text-bottom;
+  height: 200px;
+  margin: 45px;
+  line-height: 200px;
+  color: #000;  
+}
+
 /* Sidebar */
 
 aside {
