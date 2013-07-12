@@ -46,36 +46,6 @@ describe "Authentication" do
     end
   end
   
-  describe "teacher sign in page" do
-
-    before { visit teacher_sign_in_path }
-
-    it { should have_selector('h1', text:'Sign in') }
-  end
-
-  describe "teacher sign in" do
-
-    before { visit teacher_sign_in_path }
-
-    describe "with invalid credentials" do
-
-      before { click_button "Sign in" }
-
-      it { should have_content "Invalid email or password." }
-    end
-
-    describe "with valid credentials" do
-
-      before { sign_in_teacher(teacher) }
-
-      let(:teacher) { FactoryGirl.create(:teacher) }
-
-      it { should have_selector('h1', text:"#{ teacher.first_name } #{ teacher.last_name }") }
-      it { should have_link('Sign Out', destroy_teacher_session_path) }
-      it { should_not have_link('Sign In', sign_in_path) }
-    end
-  end
-  
   
   describe "student registration page" do
   
@@ -115,31 +85,43 @@ describe "Authentication" do
       end
     end
   end
-
-  describe "student sign in page" do
-
-    before { visit student_sign_in_path }
-
+  
+  describe "sign in page" do
+    
+    before { visit sign_in_path }
+    
     it { should have_selector('h1', text:'Sign in') }
   end
-
-  describe "student sign in" do
-
-    before { visit student_sign_in_path }
-
+  
+  describe "signing in" do
+          
+    before { visit sign_in_path }
+    
     describe "with invalid credentials" do
 
       before { click_button "Sign in" }
-
-      it { should have_content "Invalid email or password." }
+      
+      it { should have_selector('p.alert.alert-error', text:'Invalid email or password.')}
     end
+    
+    describe "with teacher credentials" do
 
-    describe "with valid credentials" do
+      before { sign_in(teacher) }
+      
+      let(:teacher) { FactoryGirl.create(:teacher) }
+          
+      it {should have_selector('h1', text:"#{teacher.first_name} #{teacher.last_name}")}      
+      it { should have_selector('p.alert.alert-success', text:'Signed in successfully.') }  
+    end
+    
+    describe "with student credentials" do
 
+      before { sign_in(student) }
+      
       let(:student) { FactoryGirl.create(:student) }
-      before { sign_in_student(student) }
-
-      it {should have_selector('h1', text:"#{student.first_name} #{student.last_name}")}
+          
+      it {should have_selector('h1', text:"#{student.first_name} #{student.last_name}")}   
+      it { should have_selector('p.alert.alert-success', text:'Signed in successfully.') }     
     end
   end
 end
