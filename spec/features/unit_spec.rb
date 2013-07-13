@@ -6,9 +6,8 @@ describe "Units" do
 
     teacher = FactoryGirl.create(:teacher)
     teacher.courses.build(name: "Algebra II")
-    teacher.courses.units.build(name: "Basic Trig", number: "1.3.1")
-
-    @unit = teacher.courses.units.first
+    teacher.courses.first.units.build(name: "Basic Trig", number: "1.3.1")
+    @unit = teacher.courses.first.units.first
   end
 
 
