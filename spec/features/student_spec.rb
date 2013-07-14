@@ -1,16 +1,10 @@
 require 'spec_helper'
 
 describe "Student" do
-  before do
-    @student = Student.new(first_name: "Sample",
-                           last_name: "Student",
-                           email: "samplestud@school.edu",
-                           password: "fakepass",
-                           password_confirmation: "fakepass",
-                           class_code:"12mfs3213")
-  end
+  
+  let(:student) { FactoryGirl.create(:student) }
 
-  subject { @student }
+  subject { student }
 
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
@@ -21,49 +15,49 @@ describe "Student" do
 
   describe "when first name is blank" do
 
-    before { @student.first_name = "" }
+    before { student.first_name = "" }
 
     it { should_not be_valid}
   end
 
   describe "when last name is blank" do
 
-    before { @student.last_name = "" }
+    before { student.last_name = "" }
 
     it { should_not be_valid}
   end
   
   describe "when email is blank" do
 
-    before { @student.email = "" }
+    before { student.email = "" }
 
     it { should_not be_valid }
   end
 
   describe "when password is blank" do
 
-    before { @student.password = "" }
+    before { student.password = "" }
 
     it { should_not be_valid }
   end
 
   describe "when password confirmation is blank" do
 
-    before { @student.password_confirmation = "" }
+    before { student.password_confirmation = "" }
 
     it { should_not be_valid }
   end
 
   describe "when class code is blank" do
 
-    before { @student.class_code = "" }
+    before { student.class_code = "" }
 
     it { should_not be_valid }
   end
 
   describe "when password is too short" do
 
-    before { @student.password = @student.password_confirmation = "short" }
+    before { student.password = student.password_confirmation = "short" }
 
     it { should_not be_valid }
   end
@@ -76,8 +70,8 @@ describe "Student" do
                      dummy_student@student.org dummy+student@student.co.uk]
 
       addresses.each do |a|
-        @student.email = a
-        @student.should be_valid
+        student.email = a
+        student.should be_valid
       end
     end
     
@@ -87,19 +81,23 @@ describe "Student" do
                      student@student.]
 
       addresses.each do |a|
-        @student.email = a
-        @student.should_not be_valid
+        student.email = a
+        student.should_not be_valid
       end
     end
   end 
   
   describe "when email address is in use" do
-
+    let(:student2) do
+      FactoryGirl.build(:student, email: student.email)
+    end
+  
+    subject { student2 }
+  
     before do
-      new_student = @student.dup
-      new_student.save
-  end
+      student2.save
+    end
 
-  it { should_not be_valid }
+    it { should_not be_valid }
  end
 end
