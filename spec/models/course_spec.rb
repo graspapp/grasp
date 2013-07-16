@@ -13,7 +13,7 @@ describe "Course" do
   describe "attributes" do
 
     it { should belong_to  :teacher }
-    it { should have_many  :units }
+    it { should have_many(:students).through(:enrollments) }
 
     it { should respond_to :name }
   end
