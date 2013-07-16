@@ -33,8 +33,7 @@ describe "Authentication" do
         let(:teacher2) {FactoryGirl.build(:teacher, email:"teacher2@email.com") }
         
         it "should allow new teacher to sign up" do
-          fill_in "First name",                   with: teacher2.first_name
-          fill_in "Last name",                    with: teacher2.last_name
+          fill_in "Full name",                    with: [teacher2.first_name, teacher2.last_name].join(' ')
           fill_in "Email",                        with: teacher2.email
           fill_in "Password",                     with: teacher2.password
           fill_in "Password confirmation",        with: teacher2.password_confirmation
@@ -77,8 +76,7 @@ describe "Authentication" do
         let(:student2) { FactoryGirl.build(:student, email: "student2@email.com") }
 
         it "should allow a new student to sign up" do
-          fill_in "First name",                   with: student2.first_name
-          fill_in "Last name",                    with: student2.last_name
+          fill_in "Full name",                    with: [student2.first_name, student2.last_name].join(' ')
           fill_in "Email",                        with: student2.email
           fill_in "Password",                     with: student2.password
           fill_in "Password confirmation",        with: student2.password_confirmation

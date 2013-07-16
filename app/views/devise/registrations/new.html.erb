@@ -7,15 +7,14 @@
   <legend>Personal Information</legend>
 
   <div class="row-fluid">
-    <div class="span4">  
-      <div class="text"><%= f.label :first_name %><%= f.text_field :first_name, :autofocus => true %></div>
-    </div>
     <div class="span4">
-      <%= f.label :last_name %><%= f.text_field :last_name %>
+      <%= f.label :full_name %><%= f.text_field :full_name, :autofocus => true %>
+      <span class="help-block"><small>First and last name only</small></span>
     </div>
+  </div>
     
     <div class="row-fluid">
-      <div class="span8">
+      <div class="span4">
         <%= f.label :email %><%= f.email_field :email %>
       </div>
     </div>
