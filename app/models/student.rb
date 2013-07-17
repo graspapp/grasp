@@ -6,7 +6,8 @@ class Student < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :courses, through: :nrollments
+  has_many :enrollments
+  has_many :courses, through: :enrollments
 
   validates_presence_of :first_name, :last_name, :email, :password,
                         :password_confirmation, :class_code

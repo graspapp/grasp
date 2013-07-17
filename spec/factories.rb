@@ -1,12 +1,12 @@
 FactoryGirl.define do
 
 	factory :student do
-		first_name				"Facory"
-		last_name				"Student"
-		email					"factstud@sample.com"
-		password  				"samplepassword"
+		first_name				    "Facory"
+		last_name				      "Student"
+		email					        "factstud@sample.com"
+		password  				    "samplepassword"
 		password_confirmation	"samplepassword"
-		class_code				"13dsja34"
+		class_code				    "13dsja34"
 	end
 
 	factory :teacher do

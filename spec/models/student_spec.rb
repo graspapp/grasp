@@ -12,7 +12,7 @@ describe "Student" do
 
 	subject { @student }
 
-  it { should have_many(:courses).through(:enrollment) }
+  it { should have_many(:courses).through(:enrollments) }
 	it { should respond_to(:first_name) }
 	it { should respond_to(:last_name) }
 	it { should respond_to(:email) }
