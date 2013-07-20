@@ -4,3 +4,12 @@ Grasp [![Build Status](https://travis-ci.org/graspapp/grasp.png?branch=master)](
 Grasp has been developed to be used in classrooms with the common core
 curriculum to enable teachers to form personal relationships with students
 in regards to their learning.
+
+
+Contributing
+------------
+
+1. Fork the repository.
+2. Check out a working branch.
+3. Make your changes.
+4. Submit a pull request.
