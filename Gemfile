@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.0.0'
-gem 'bootstrap-sass', '~> 2.3.2.0'
+gem 'bootstrap-sass', '~> 2.3.2.1'
 gem 'bcrypt-ruby', '~> 3.1.0'
 gem 'faker', '~> 1.1.2'
 gem 'will_paginate', '~> 3.0.4'
@@ -32,11 +32,7 @@ end
 group :test do
   gem 'capybara', '~> 2.1.0'
   gem 'factory_girl_rails', '~> 4.2.1'
-  # gem 'cucumber-rails', '~> 1.3.1', :require => false
   gem 'database_cleaner', '~> 1.0.1'
-  # gem 'launchy', '2.1.0'
-  # gem 'rb-fsevent', '0.9.1', :require => false
-  # gem 'growl', '1.0.3'
 end
 
 group :production do
