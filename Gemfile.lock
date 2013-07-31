@@ -10,6 +10,14 @@ GIT
   specs:
     rails_log_stdout (0.0.1)
 
+GIT
+  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
+  revision: f4294bfd0218a181a3c288dba7cb9811a99b9f83
+  branch: 3
+  specs:
+    bootstrap-sass (3.0.0.0)
+      sass (~> 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,8 +48,6 @@ GEM
     arel (4.0.0)
     atomic (1.1.10)
     bcrypt-ruby (3.1.1)
-    bootstrap-sass (2.3.2.1)
-      sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.1.4)
@@ -218,7 +224,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.1.0)
-  bootstrap-sass (~> 2.3.2.1)
+  bootstrap-sass!
   bootstrap-will_paginate (~> 0.0.9)
   cancan (~> 1.6.10)
   capybara (~> 2.1.0)
