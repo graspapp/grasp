@@ -3,7 +3,9 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.0.0'
-gem 'bootstrap-sass', '~> 2.3.2.1'
+gem 'bootstrap-sass',
+  :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git',
+  :branch => '3'
 gem 'bcrypt-ruby', '~> 3.1.0'
 gem 'faker', '~> 1.2.0'
 gem 'will_paginate', '~> 3.0.4'
