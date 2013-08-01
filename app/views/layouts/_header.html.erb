@@ -1,20 +1,27 @@
 <div class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+      data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
     <%= link_to image_tag('logo.png'), root_path, class: 'navbar-brand',
-                                                  id: 'logo' %>
+      id: 'logo' %>
 
-    <ul class="nav navbar-nav pull-right">
-      <li><%= link_to 'Home',    root_path %></li>
-      <li><%= link_to 'Help',    help_path %></li>
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to 'Home',    root_path %></li>
+        <li><%= link_to 'Help',    help_path %></li>
 
-      <% if !signed_in? %>
-
-      <li><%= link_to 'Sign up', sign_up_path %></li>
-      <li><%= link_to 'Sign in', sign_in_path %></li>
-      <% elsif signed_in? %>
-       <li><%= link_to 'Sign Out', sign_out_path, :method => :delete %></li> 
-
-      <% end %>
-    </ul>
+        <% if !signed_in? %>
+          <li><%= link_to 'Sign up', sign_up_path %></li>
+          <li><%= link_to 'Sign in', sign_in_path %></li>
+        <% elsif signed_in? %>
+          <li><%= link_to 'Sign Out', sign_out_path, :method => :delete %></li> 
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
