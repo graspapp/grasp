@@ -30,4 +30,15 @@ FactoryGirl.define do
   factory :course do
     name "Algebra 2AB"
   end
+  
+  factory :learning_target do
+    number    1
+    name      "I can solve..."
+  end
+  
+  factory :task do
+    status            "Incomplete"
+    content           "Do something."
+    learning_target
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130715032425) do
+ActiveRecord::Schema.define(version: 20130801142741) do
 
   create_table "courses", force: true do |t|
     t.integer  "teacher_id"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20130715032425) do
 
   create_table "learning_targets", force: true do |t|
     t.integer  "unit_id"
+    t.string   "number"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,6 +66,14 @@ ActiveRecord::Schema.define(version: 20130715032425) do
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true
   add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+
+  create_table "tasks", force: true do |t|
+    t.string   "status"
+    t.string   "content"
+    t.integer  "learning_target_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "teachers", force: true do |t|
     t.string   "first_name",             default: "", null: false
