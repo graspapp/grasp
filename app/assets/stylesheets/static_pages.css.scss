@@ -1,3 +1,29 @@
 .main-jumbotron {
   text-align: center;
 }
+
+.sign-up-option {
+  margin-top: 50px;
+  margin-bottom: 40px;
+  text-align: center;
+
+  .sign-up-option-icon {
+    $vertical_offset: 50px;
+    margin: $vertical_offset 0px $vertical_offset 0px;
+  }
+
+  .sign-up-option-select-button {
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+
+  .sign-up-option-points {
+    width: 50%;
+    margin: 0 auto;
+
+    li {
+      text-align: left;
+      font-size: 16px;
+    }
+  }
+}
