@@ -3,8 +3,9 @@ rvm:
 - 2.0.0
 deploy:
   provider: heroku
+  api_key:
+    secure: X06XSBWs80K4pot8A+FUo2TJnauQgD4dg8+fm9eyHMBd+Mdk4hiiwAmFVFef3G60sZjfM2DMTYQlwxD/PIv+oCr7luxYkbeCLDeXdIuMya0YfYTKQTQPe0zny7Va3tF0JYAosFUyAf8WXR6oY533LbTJrgDMOlhogDyBEyRbAjY=
   app: graspapp
   on:
     repo: graspapp/grasp
-  api_key: '1MxWw0lAfLivHSJdj3F+9emzvEg+zqIQtFuqBC63PBgSvk3ev/RGIdRmy3A1w56HACQ1uSnFBOJUlHuq5Pf0G+rXXxUdmE/QaSg2aqhqlEMNrCwSAOcHwJZRXX1JNOvCi8Uqz33V7rR/4On0DJvtuOBcLhJPT2xp0VwkQkQT+rE='
-  run: rake db:migrate
+  run: "rake db:migrate"
