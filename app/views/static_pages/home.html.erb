@@ -1,9 +1,11 @@
-<div class="center hero-unit">
+<div class="main-jumbotron jumbotron">
   <h1><%= image_tag('logo_large.png', :alt => "Grasp") %></h1>
   <p>
     Grasp is the best way to use technology in your classroom. Lorem ipsum
     dolor sit amet
   </p>
 
-  <%= link_to 'Sign Up', sign_up_path, class: 'btn btn-large btn-primary' %>
+  <%= button_to 'Sign Up', sign_up_path, class: "btn-large btn-primary "\
+                                                "main-btn-sign-up",
+    style: "width: 150px;", method: "get" %>
 </div>
