@@ -1,0 +1,13 @@
+<% provide(:title, 'Student Sign Up') %>
+
+<legend>Class Information</legend>
+<div class="row">
+  <div class="col-lg-3">
+    <div class="form-group">
+      <%= form.label :class_code %>
+      <%= form.text_field :class_code,
+        class: "form-control",
+        placeholder: "Enter class code" %>
+    </div>
+  </div>
+</div>
