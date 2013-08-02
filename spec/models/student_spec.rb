@@ -6,7 +6,6 @@ describe "Student" do
 
   subject { student }
 
-<<<<<<< HEAD:spec/models/student_spec.rb
   it { should have_many(:courses).through(:enrollments) }
 	it { should respond_to(:first_name) }
 	it { should respond_to(:last_name) }
@@ -14,14 +13,6 @@ describe "Student" do
 	it { should respond_to(:password) }
 	it { should respond_to(:password_confirmation) }
 	it { should respond_to(:class_code) }
-=======
-  it { should respond_to(:first_name) }
-  it { should respond_to(:last_name) }
-  it { should respond_to(:email) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-  it { should respond_to(:class_code) }
->>>>>>> bug-fixes:spec/features/student_spec.rb
 
   describe "when first name is blank" do
 
