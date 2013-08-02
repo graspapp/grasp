@@ -7,15 +7,18 @@
     <%= render 'sign_up_option', name: "I'm a Student",
       target: student_sign_up_path,
       icon_path: 'student.svg',
-      points: ["You learn stuff",
-               "And sit around."] %>
+      points: ["You want to take control of your learning.",
+               "Create a plan and earn credit for following through.",
+               "Go beyond problems 1-31 odd and into actual thinking."] %>
   </div>
 
   <div class="col-lg-4 col-offset-2">
     <%= render 'sign_up_option', name: "I'm a Teacher",
       target: teacher_sign_up_path,
       icon_path: 'teacher.svg',
-      points: ["You teach stuff",
-               "And sit around."]%>
+      points: ["Teaching students goes beyond lecture, rote practice, "\
+               "students forgetting, repeat.",
+               "Your students will be successful in college.",
+               "You are a CMAST advocate."]%>
   </div>
 </div>
