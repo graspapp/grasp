@@ -11,7 +11,7 @@ describe "Authentication" do
   
    before { visit teacher_sign_up_path }
    
-   it { should have_selector('h1', text:'Sign up') }  
+   it { should have_selector('h1', text:'Sign Up') }  
   end
   
   describe "teacher registration" do
@@ -24,7 +24,7 @@ describe "Authentication" do
       
       describe "submission results" do
         before { click_button "Create Account" }
-        it { should have_selector('h1', text:'Sign up') }
+        it { should have_selector('h1', text:'Sign Up') }
         it { should have_content('error') }
         it { should have_field('School') } #test for teacher specific field
       end
@@ -55,7 +55,7 @@ describe "Authentication" do
   
     before { visit student_sign_up_path }
 
-    it { should have_selector('h1', text:'Sign up') }  
+    it { should have_selector('h1', text:'Sign Up') }  
   end
   
   describe "student registration" do
@@ -68,7 +68,7 @@ describe "Authentication" do
       
       describe "submission results" do
         before { click_button "Create Account" }
-        it { should have_selector('h1', text:'Sign up') }
+        it { should have_selector('h1', text:'Sign Up') }
         it { should have_content('error') }
         it { should have_field('Class code') } #test for student specific field
       end

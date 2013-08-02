@@ -1,0 +1,15 @@
+<div class="well well-small sign-up-option">
+  <%= image_tag icon_path, class: 'sign-up-option-icon' %>
+
+  <div class="sign-up-option-points">
+    <ul>
+      <% points.each do |point| %>
+        <li><%= point %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <%= button_to name, target,
+    class: "btn-large btn-primary sign-up-option-select-button",
+    method: "get" %>
+</div>
