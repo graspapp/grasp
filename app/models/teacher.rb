@@ -9,4 +9,7 @@ class Teacher < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name, :email, :password,
     :password_confirmation, :school, :city, :state, :country
+
+  validates_presence_of :first_name, :last_name, :password_confirmation, :school, :city, :state, :country
+
 end

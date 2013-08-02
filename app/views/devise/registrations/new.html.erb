@@ -1,59 +1,75 @@
-<div class="row">
-	<div class="span4 offset4">
-		<h2>Sign up</h2>
- 
-    <%= form_for resource, :as => resource_name,
-      :url => registration_path(resource_name) do |f| %>
-  		<%= devise_error_messages! %>
+<div class="container-fluid">
+  <h1>Sign up</h1>
+  <%= form_for resource, :as => resource_name, :url =>registration_path(resource_name) do |f| %>
+      
+  <%= devise_error_messages! %>
+   
+  <legend>Personal Information</legend>
 
-  		<table class="registration" style="cellpadding:40px;">
-  			<tr>
-			  <td><%= f.label :first_name %>
-			  <%= f.text_field :first_name, :autofocus => true %></td>
+  <div class="row-fluid">
+    <div class="span4">
+      <%= f.label :full_name %><%= f.text_field :full_name, :autofocus => true %>
+      <span class="help-block"><small>First and last name only</small></span>
+    </div>
+  </div>
+    
+    <div class="row-fluid">
+      <div class="span4">
+        <%= f.label :email %><%= f.email_field :email %>
+      </div>
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span4">
+        <%= f.label :password %><%= f.password_field :password %>
+        <span class="help-block"><small>Must be at least 8 characters</small></span>
+      </div>
+      <div class="span4">
+        <%= f.label :password_confirmation %><%= f.password_field :password_confirmation %>
+      </div>
+    </div><br/>
 
-			  <td><%= f.label :last_name %>
-			  <%= f.text_field :last_name %></td>
-			</tr>
-			<tr>
-			  <td colspan="2"><%= f.label :email %>
-			  <%= f.email_field :email %></td>
-			</tr>
-			<tr>
-			  <td><%= f.label :password %>
-			  <%= f.password_field :password %></td>
+    <% if request.fullpath =~ /(?:\/teacher\/sign_up|\/teachers)/ %>
+    <% provide(:title, 'Teacher Sign Up') %>
+    
+    <legend>School Information</legend>
+    
+    <div class="row-fluid">
+      <div class="span8">
+        <td><%= f.label :school %><%= f.text_field :school %>
+      </div>
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span3"> 
+        <%= f.label :city %><%= f.text_field :city %>
+      </div>
+      <div class="span3">
+        <%= f.label :state %><%= f.text_field :state %>
+      </div>
+      <div class="span3">
+        <%= f.label :country%><%= f.text_field :country %>
+      </div>
+    </div><br>
+    <% elsif request.fullpath =~ /(?:\/student\/sign_up|\/students)/ %>
+    <% provide(:title, 'Student Sign Up') %>
+    <legend>Class Information</legend>
+    <div class="row-fluid">
+      <div class="span3">
+        <td><%= f.label :class_code %><%= f.text_field :class_code %>
+      </div>
+    </div><br>
+    <% end %>
 
-			  <td><%= f.label :confirmation %>
-			  <%= f.password_field :password_confirmation %></td>
-			</tr>
-			<% if request.fullpath =~ /(?:\/teacher\/sign_up|\/teachers)/ %>
-			<% provide(:title, 'Teacher Sign Up') %>
-			
-			<tr>			
-				<td><%= f.label :school %>
-				<%= f.text_field :school %></td>
-				  
-				<td><%= f.label :city %>
-				<%= f.text_field :city %></td>
-			</tr>
-			<tr>
-				<td><%= f.label :state %>
-				<%= f.text_field :state %></td>
+    <div class="row-fluid">
+      <div class="span8">
+        <%= f.submit "Create Account", class: 'btn large btn-success' %>
+      </div>
+    </div>
 
-				<td><%= f.label :country %>
-				<%= f.text_field :country %></td>
-			</tr>
-			<% elsif request.fullpath =~ /(?:\/student\/sign_up|\/students)/ %>
-			<% provide(:title, 'Student Sign Up') %>
-			
-				<td><%= f.label :class_code %>
-			  	<%= f.text_field :class_code %></td> 	
-			<% end %>
-			<tr>
-				<td><%= f.submit "Create Account", class: 'btn btn-primary' %></td>
-			</tr>
-			<% end %>
-		</table>
-	</div>
+    <% end %>
 </div>
+
+
 
 

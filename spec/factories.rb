@@ -42,3 +42,4 @@ FactoryGirl.define do
     learning_target
   end
 end
+
