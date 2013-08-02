@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(version: 20130801142741) do
 
   create_table "learning_targets", force: true do |t|
     t.integer  "unit_id"
-    t.string   "number"
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

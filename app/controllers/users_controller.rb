@@ -32,10 +32,6 @@ class UsersController < ApplicationController
 		end
 	end
 
-	rescue ActiveRecord::RecordNotFound
-		respond_to_not_found(:json, :xml, :html)
-	end
-
 	def destroy
 		@user.destroy!
 		respond_to do |format|
@@ -44,10 +40,6 @@ class UsersController < ApplicationController
 			format.html {respond_to_destroy(:html)}
 		end
 	end
-
-	rescue ActiveRecord::RecordNotFound
-		respond_to_not_found(:json, :xml, :html)
-	end	
 
 	def create
 		@user = User.new(param[:user])
@@ -74,13 +66,14 @@ class UsersController < ApplicationController
 			[:password, :password_confirmation,:current_password].collect{
 				|p| params[:user].delete(p)	}
 		else
-			@user.errors[:base] << "The password you entered is incorrect"
-				unless @user.valid_password?(params[:user][:current_password])
+      unless @user.valid_password?(params[:user][:current_password])
+        @user.errors[:base] << "The password you entered is incorrect"
+      end
 		end
 
 		respond_to do |format|
-			if @user.errors[:base].empty? and @user.update_attributes(params
-					[:user])
+			if @user.errors[:base].empty? and
+        @user.update_attributes(params[:user])
 				flash[:notice] = "Your account has been updated"
 				format.json { render :json => @user.to_json, :status => 200 }
 				format.xml { head :ok }
@@ -94,10 +87,5 @@ class UsersController < ApplicationController
 					:status => :unprocessable_entity }
 			end
 		end
-
-		rescue ActiveRecord::RecordNotFound
-			respond_to_not_found(:json, :xml, :html)
-		end	
 	end
-
 end

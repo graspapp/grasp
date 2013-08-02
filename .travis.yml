@@ -1,3 +1,11 @@
 language: ruby
 rvm:
-  - 2.0.0
+- 2.0.0
+deploy:
+  provider: heroku
+  api_key:
+    secure: X06XSBWs80K4pot8A+FUo2TJnauQgD4dg8+fm9eyHMBd+Mdk4hiiwAmFVFef3G60sZjfM2DMTYQlwxD/PIv+oCr7luxYkbeCLDeXdIuMya0YfYTKQTQPe0zny7Va3tF0JYAosFUyAf8WXR6oY533LbTJrgDMOlhogDyBEyRbAjY=
+  app: graspapp
+  on:
+    repo: graspapp/grasp
+  run: "rake db:migrate"
