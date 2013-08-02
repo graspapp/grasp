@@ -23,7 +23,7 @@
         </div>
 
         <% if devise_mapping.rememberable? -%>
-          <div class="form-control">
+          <div class="span4 offset4">
             <div class="checkbox">
               <%= f.check_box :remember_me %>
               <%= f.label :remember_me %>
@@ -31,7 +31,7 @@
           </div>
         <% end -%>
 
-        <div class="form-control">
+        <div class="span4 offset4">
           <%= f.submit "Sign in", class: 'btn btn-primary'  %>
         </div>
       </fieldset>
