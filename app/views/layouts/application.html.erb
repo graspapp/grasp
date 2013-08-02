@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title><%= full_title(yield(:title)) %></title>
 
   <%= favicon_link_tag 'favicon.png' %>
@@ -14,7 +16,7 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <div class="container">
+  <div class="container gp-container">
     <% if notice %><p class="alert alert-success"><%= notice %><% end %></p>
     <% if alert %><p class="alert alert-error"><%= alert %><% end %></p>
     <%= yield %>

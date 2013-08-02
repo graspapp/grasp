@@ -1,3 +1,38 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Home Page */
+
+.main-jumbotron {
+  text-align: center;
+}
+
+.main-btn-sign-up {
+  margin-top: 25px;
+}
+
+
+/* Sign Up Select Screen */
+
+.sign-up-option {
+  margin-top: 50px;
+  margin-bottom: 40px;
+  text-align: center;
+
+  .sign-up-option-icon {
+    $vertical_offset: 50px;
+    margin: $vertical_offset 0px $vertical_offset 0px;
+  }
+
+  .sign-up-option-select-button {
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+
+  .sign-up-option-points {
+    width: 50%;
+    margin: 0 auto;
+
+    li {
+      text-align: left;
+      font-size: 16px;
+    }
+  }
+}

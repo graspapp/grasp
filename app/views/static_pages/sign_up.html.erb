@@ -1,20 +1,21 @@
 <% provide(:title, 'Sign Up') %>
-<h1>Sign Up</h1>
 
-<div class="landing">
-  <div class="row">
-    <div class="span4 offset2">
-      <%= link_to student_sign_up_path do %>
-    <div class="well well-small">
-      Register as a Student
-    </div><% end %>
+<div class="page-header"><h1>Sign Up</h1></div>
+
+<div class="row">
+  <div class="col-lg-4 col-offset-1">
+    <%= render 'sign_up_option', name: "I'm a Student",
+      target: student_sign_up_path,
+      icon_path: 'student.svg',
+      points: ["You learn stuff",
+               "And sit around."] %>
   </div>
-  
-  <div class="span4">
-    <%= link_to teacher_sign_up_path do %>
-    <div class="well well-small">
-      Register as a Teacher
-    </div><% end %>
+
+  <div class="col-lg-4 col-offset-2">
+    <%= render 'sign_up_option', name: "I'm a Teacher",
+      target: teacher_sign_up_path,
+      icon_path: 'teacher.svg',
+      points: ["You teach stuff",
+               "And sit around."]%>
   </div>
 </div>
-
