@@ -99,6 +99,22 @@ describe "Authentication" do
           click_button "Create Account"
         }.to change(Student, :count).by(1)
       end
+
+      describe "with two-word last name" do
+
+        it "should properly store the student's first and last name" do
+
+          fill_in "Full name",             with: "Luke St. Regis"
+          fill_in "Email",                 with: "foobarfoobarfoo@foo.com"
+          fill_in "Password",              with: "foobarfoobar"
+          fill_in "Password confirmation", with: "foobarfoobar"
+          fill_in "Class code",            with: "2e43"
+          click_button "Create Account"
+
+          Student.last.first_name.should eq "Luke"
+          Student.last.last_name.should eq "St. Regis"
+        end
+      end
     end
   end
   
