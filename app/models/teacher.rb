@@ -3,7 +3,7 @@ class Teacher < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable
 
   has_many :courses
 
@@ -14,12 +14,12 @@ class Teacher < ActiveRecord::Base
 
 
   def full_name
-     [first_name, last_name].join(' ')
-   end
-  
-   def full_name=(name)
-     parts = name.split(' ', 2)
-     self.first_name = parts[0]
-     self.last_name = parts[1]
-   end
+    [first_name, last_name].join(' ')
+  end
+
+  def full_name=(name)
+    parts = name.split(' ', 2)
+    self.first_name = parts[0]
+    self.last_name = parts[1]
+  end
 end
