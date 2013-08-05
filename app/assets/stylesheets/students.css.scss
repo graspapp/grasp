@@ -1,0 +1,10 @@
+$gray: #8d8d8d;
+
+.no-courses {
+  font-size: 26px;
+  color: $gray;
+
+  $margin-offset: 100px;
+  margin-top: $margin-offset;
+  margin-bottom: $margin-offset;
+}
