@@ -7,10 +7,8 @@ class Teacher < ActiveRecord::Base
 
   has_many :courses
 
-  validates_presence_of :first_name, :last_name, :email, :password,
+  validates_presence_of :first_name, :last_name, :email,
     :password_confirmation, :school, :city, :state, :country
-
-  validates_presence_of :first_name, :last_name, :password_confirmation, :school, :city, :state, :country
 
 
   def full_name
