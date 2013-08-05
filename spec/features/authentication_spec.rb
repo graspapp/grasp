@@ -39,14 +39,15 @@ describe "Authentication" do
 
       it "should allow new teacher to sign up" do
 
-        fill_in "Full name",                    with: [teacher2.first_name, teacher2.last_name].join(' ')
-        fill_in "Email",                        with: teacher2.email
-        fill_in "Password",                     with: teacher2.password
-        fill_in "Password confirmation",        with: teacher2.password_confirmation
-        fill_in "School",                       with: teacher2.school
-        fill_in "City",                         with: teacher2.city
-        fill_in "State",                        with: teacher2.state
-        fill_in "Country",                      with: teacher2.country
+        fill_in "Full name",             with: [teacher2.first_name,
+                                                teacher2.last_name].join(' ')
+        fill_in "Email",                 with: teacher2.email
+        fill_in "Password",              with: teacher2.password
+        fill_in "Password confirmation", with: teacher2.password_confirmation
+        fill_in "School",                with: teacher2.school
+        fill_in "City",                  with: teacher2.city
+        fill_in "State",                 with: teacher2.state
+        fill_in "Country",               with: teacher2.country
         
         expect {
           click_button "Create Account"
@@ -64,6 +65,7 @@ describe "Authentication" do
   end
   
   describe "student registration" do
+
     before { visit student_sign_up_path }
     
     describe "with invalid information" do
@@ -75,17 +77,19 @@ describe "Authentication" do
         before { click_button "Create Account" }
         it { should have_selector('h1', text:'Sign Up') }
         it { should have_content('error') }
-        it { should have_field('Class code') } #test for student specific field
+        it { should have_field('Class code') }
       end
     end
       
     describe "with valid information" do
+
       let(:student2) {
         FactoryGirl.build(:student, email: "student2@email.com")
       }
 
       it "should allow a new student to sign up" do
-        fill_in "Full name",             with: [student2.first_name, student2.last_name].join(' ')
+        fill_in "Full name",             with: [student2.first_name,
+                                                student2.last_name].join(' ')
         fill_in "Email",                 with: student2.email
         fill_in "Password",              with: student2.password
         fill_in "Password confirmation", with: student2.password_confirmation
@@ -94,6 +98,22 @@ describe "Authentication" do
         expect {
           click_button "Create Account"
         }.to change(Student, :count).by(1)
+      end
+
+      describe "with two-word last name" do
+
+        it "should properly store the student's first and last name" do
+
+          fill_in "Full name",             with: "Luke St. Regis"
+          fill_in "Email",                 with: "foobarfoobarfoo@foo.com"
+          fill_in "Password",              with: "foobarfoobar"
+          fill_in "Password confirmation", with: "foobarfoobar"
+          fill_in "Class code",            with: "2e43"
+          click_button "Create Account"
+
+          Student.last.first_name.should eq "Luke"
+          Student.last.last_name.should eq "St. Regis"
+        end
       end
     end
   end
