@@ -13,7 +13,9 @@ class Student < ActiveRecord::Base
     :password_confirmation, :class_code
 
   def full_name
-    [first_name, last_name].join(' ')
+    unless first_name.empty? and last_name.empty?
+      [first_name, last_name].join(' ')
+    end
   end
 
   def full_name=(name)
