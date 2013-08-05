@@ -12,9 +12,6 @@ class Student < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :email, :password,
     :password_confirmation, :class_code
 
-  validates_presence_of :first_name, :last_name, :password_confirmation,
-    :class_code
-
   def full_name
     [first_name, last_name].join(' ')
   end
