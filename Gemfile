@@ -20,7 +20,7 @@ gem 'uglifier', '~> 2.1.1'
 
 gem 'coveralls', require: false
 gem 'newrelic_rpm', '~> 3.6.6.147'
-gem 'devise', '~> 3.0.0.rc'
+gem 'devise', '~> 3.0.1'
 gem 'cancan', '~> 1.6.10'
 
 group :development, :test do
