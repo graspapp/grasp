@@ -14,3 +14,29 @@
 .gp-container {
   margin-top: 85px;
 }
+
+/* Profile Nav Tabs */
+.tab-content {
+  border: 1px solid #ddd;
+  height: 450px;
+//  margin-left: -50px;
+//  margin-right: -50px;
+}
+
+.nav-tabs{
+  min-width: 100%;  
+  //margin-bottom: 0;
+//  margin-right: -50px;
+//  margin-left: -50px;
+}
+
+.tab{
+  &:hover{
+    color: black;
+  }
+}
+
+/* Modal */
+.modal{
+  width: 50%;
+}

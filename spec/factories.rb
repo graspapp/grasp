@@ -29,6 +29,7 @@ FactoryGirl.define do
 
   factory :course do
     name "Algebra 2AB"
+    teacher
   end
   
   factory :learning_target do

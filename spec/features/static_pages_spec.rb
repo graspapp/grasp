@@ -9,6 +9,7 @@ describe "static pages" do
     before { visit root_path }
 
     it { should have_title('Grasp') }
+
   end
 
   describe "help page" do
