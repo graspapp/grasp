@@ -12,12 +12,20 @@
 
     <div class="nav-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav pull-right">
-        <li><%= link_to 'Home',    root_path %></li>
-        <li><%= link_to 'Help',    help_path %></li>
+        <li class="<%= 'active' if current_page?(root_path) %>">
+        <%= link_to 'Home', root_path %>
+        </li>
+        <li class="<%= 'active' if current_page?(help_path) %>">
+        <%= link_to 'Help', help_path %>
+        </li>
 
         <% if !signed_in? %>
-          <li><%= link_to 'Sign Up', sign_up_path %></li>
-          <li><%= link_to 'Sign In', sign_in_path %></li>
+          <li class="<%= 'active' if request.fullpath.include?("sign_up") %>">
+          <%= link_to 'Sign Up', sign_up_path %>
+          </li>
+          <li class="<%= 'active' if current_page?(sign_in_path) %>">
+          <%= link_to 'Sign In', sign_in_path %>
+          </li>
         <% elsif signed_in? %>
           <li><%= link_to 'Sign Out', sign_out_path, :method => :delete %></li> 
         <% end %>

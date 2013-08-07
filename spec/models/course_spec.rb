@@ -16,6 +16,12 @@ describe "Course" do
     it { should have_many(:students).through(:enrollments) }
 
     it { should respond_to :name }
+    it { should respond_to :code }
+
+    it "should include a non-blank course code" do
+
+      @course.code.should_not be_empty
+    end
   end
 
   describe "when name is blank" do
