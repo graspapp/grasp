@@ -11,6 +11,10 @@ class Course < ActiveRecord::Base
   validates_presence_of :name, :code
 
   def init
-    self.code ||= SecureRandom.base64(6).gsub(/=+$/,'')
+    self.code ||= generate_course_code
+  end
+
+  def generate_course_code
+    SecureRandom.base64(6).gsub(/=+$/,'')
   end
 end
