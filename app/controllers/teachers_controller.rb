@@ -6,8 +6,9 @@ class TeachersController < ApplicationController
       @teacher = Teacher.find(params[:id])
     end
     
-    if teacher_signed_in?
-      @courses = current_teacher.courses  
+    if signed_in?
+      @courses = current_teacher.courses
+      @course = current_teacher.courses.build  
     end    
   end
 

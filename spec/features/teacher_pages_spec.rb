@@ -26,6 +26,27 @@ describe "static pages" do
       it "should have a link to create a new course" do
         expect(page).to have_link("New Class")
       end
+    end
+    
+    describe "creating a new class" do
+      let(:teacher) { FactoryGirl.create(:teacher) }
+      
+      before do
+        sign_in teacher
+        visit root_path
+      end
+      
+      it "should open modal create course form" do
+        click_link("New Class")
+        expect(page).to have_selector('h4', text:"Create Your Course")
+      end
+      
+      it "should create a new course" do
+        click_link("New Class")
+        fill_in "Course name",    with: "Pre-Calculus"
+        
+        expect { click_button "Continue" }.to change(Course, :count).by(1)
+      end
       
     end
   end

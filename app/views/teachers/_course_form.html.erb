@@ -1,0 +1,7 @@
+<%= form_for @course, :url => courses_path do |f| %>
+<div>
+  <%= f.text_field :name, placeholder: "Course name" %>
+</div><br>
+<%= f.submit "Continue", class:"btn btn-primary"%>
+
+<% end %>
