@@ -8,7 +8,6 @@ class TeachersController < ApplicationController
     
     if signed_in?
       @courses = current_teacher.courses
-      @course = current_teacher.courses.build  
     end    
   end
 
