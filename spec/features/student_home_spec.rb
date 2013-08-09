@@ -29,4 +29,12 @@ describe "Student home" do
       end
     end
   end
+
+  describe "when adding a course" do
+
+    describe "when no courses already exist" do
+
+      it { should have_link('add one') }
+    end
+  end
 end
