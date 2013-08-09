@@ -34,6 +34,10 @@ guard 'rspec', after_all_pass: false, cli: '--drb' do
      "spec/acceptance/#{m[1]}_spec.rb"]
   end
 
+  watch(%r{^app/views/(.+)s/(.+)(\.html\.erb)$}) do |m|
+    "spec/features/#{m[1]}_#{m[2]}_spec.rb"
+  end
+
   watch(%r{^app/views/static_pages/(.*)(\.erb|\.haml)$}) do |m|
     "spec/features/static_pages_spec.rb"
   end
