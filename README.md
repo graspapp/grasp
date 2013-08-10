@@ -16,9 +16,12 @@ in regards to their learning.
 All contributions must meet the following requirements, if applicable.
 
 * Fully tested
-* Uses the same style as similar code within the project (80 character line
-  limit, 2 spaces for indents, etc)
+* Follow the style guide
 * Passes integration tests (duh)
+
+## Style Guide
+
+Refer to https://github.com/bbatsov/ruby-style-guide for our style guide.
 
 ## Continuous Deployment
 
