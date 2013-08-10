@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
 	before_filter :get_user, :only => [:index, :new, :edit]
 	before_filter :accessible_roles, :only => [:new, :edit, 
 				  :show, :update, :create]
@@ -9,36 +10,20 @@ class UsersController < ApplicationController
 	end
 
 	def new
-		respond_to do |format|
-			format.json { render :json => @user }
-			format.xml { render :xml => @user }
-			format.html
-		end
+    respond_with_formats
 	end
 
 	def show
-		respond_to do |format|
-			format.json { render :json => @user }
-			format.xml { render :xml => @user }
-			format.html
-		end
+    respond_with_formats
 	end
 
 	def edit
-		respond_to do |format|
-			format.json { render :json => @user }
-			format.xml { render :xml => @user }
-			format.html
-		end
+    respond_with_formats
 	end
 
 	def destroy
 		@user.destroy!
-		respond_to do |format|
-			format.json { respond_to_destroy(:ajax) }
-			format.xml { head :ok }
-			format.html {respond_to_destroy(:html)}
-		end
+    respond_to_destroy_with_formats
 	end
 
 	def create
@@ -63,8 +48,9 @@ class UsersController < ApplicationController
 
 	def update
 		if params[:user][:password].blank?
-			[:password, :password_confirmation,:current_password].collect{
-				|p| params[:user].delete(p)	}
+			[:password, :password_confirmation, :current_password].collect do
+				|p| params[:user].delete(p)
+      end
 		else
       unless @user.valid_password?(params[:user][:current_password])
         @user.errors[:base] << "The password you entered is incorrect"
@@ -88,4 +74,20 @@ class UsersController < ApplicationController
 			end
 		end
 	end
+
+  def respond_with_formats
+		respond_to do |format|
+			format.json { render :json => @user }
+			format.xml { render :xml => @user }
+			format.html
+		end
+  end
+
+  def respond_to_destroy_with_formats
+		respond_to do |format|
+			format.json { respond_to_destroy(:ajax) }
+			format.xml { head :ok }
+			format.html {respond_to_destroy(:html)}
+		end
+  end
 end
