@@ -28,4 +28,6 @@ Grasp::Application.routes.draw do
   get "/contact",          to: "static_pages#contact"
   get "/acknowledgements", to: "static_pages#acknowledgements"
   get "/sign_up",          to: "static_pages#sign_up"
+
+  post 'students/add_course', to: 'students#add_course'
 end
