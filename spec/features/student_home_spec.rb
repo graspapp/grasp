@@ -18,26 +18,27 @@ describe "Student home" do
         should have_link "add one"
       end
     end
-  end
 
-  describe "when adding a course" do
+    describe "when adding a course" do
 
-    before do
-      @course = FactoryGirl.create(:course)
-      @course_code = @course.code
-    end
+      before do
 
-    describe "when no courses already exist" do
+        @course = FactoryGirl.create(:course)
+        @course_code = @course.code
+      end
 
-      it "should be able to add a course" do
+      describe "when no courses already exist" do
 
-        click_link "add one"
+        it "should be able to add a course" do
 
-        fill_in "Course code", with: @course_code
+          click_link "add one"
 
-        expect {
-          click_button "Add Course"
-        }.to change(@student.courses, :count).by(1)
+          fill_in "Course code", with: @course_code
+
+          expect {
+            click_button "Add Course"
+          }.to change(@student.courses, :count).by(1)
+        end
       end
     end
   end
