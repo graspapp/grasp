@@ -5,5 +5,10 @@ class Teacher < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :first_name, :last_name, :password_confirmation, :school, :city, :state, :country
+  validates_presence_of :first_name, :last_name, :password_confirmation,
+                        :school, :city, :state, :country
+
+  def full_name
+    "#{ first_name } #{ last_name }"
+  end
 end
