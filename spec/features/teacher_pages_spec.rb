@@ -20,9 +20,9 @@ describe "teacher pages" do
         visit root_path
       end
     
-      describe "for signed in @teachers" do
+      describe "for signed in teachers" do
 
-        it "should render @teacher's courses in tabs" do
+        it "should render teacher's courses in tabs" do
           @teacher.courses.each do |course|
             expect(page).to have_selector("li", text: course.name)
           end
@@ -48,7 +48,7 @@ describe "teacher pages" do
           click_link("add one")
           fill_in "Course name", with: "Pre-Calculus"
         
-          expect { click_button "Continue" }.to change(Course, :count).by(1)
+          expect { click_button "Create Course" }.to change(Course, :count).by(1)
         end
       end
 
@@ -68,7 +68,7 @@ describe "teacher pages" do
           click_link("New Class")
           fill_in "Course name",    with: "Pre-Calculus"
         
-          expect { click_button "Continue" }.to change(Course, :count).by(1)
+          expect { click_button "Create Course" }.to change(Course, :count).by(1)
         end
       end
     end 
