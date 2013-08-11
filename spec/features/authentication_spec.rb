@@ -135,6 +135,7 @@ describe "Authentication" do
       it {should have_selector('h1', text: "#{student.first_name} "\
                                            "#{student.last_name}") }   
       it { should have_selector('p.alert.alert-success',
+
                                 text: 'Signed in successfully.') }     
     end
   end

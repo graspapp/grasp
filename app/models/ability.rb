@@ -12,5 +12,5 @@ class Ability
       can :read, Class
       can :create, [Student, User]
     end
-  end     
+  end
 end
