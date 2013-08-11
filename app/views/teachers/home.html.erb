@@ -1,8 +1,9 @@
 <% if signed_in? %>
   <% provide(:title, 'Teacher Profile') %>
 
-  <%= render 'course_modal'%>
-
+  <%= render 'course_modal' %>
+  <%= render 'unit_modal' %>
+  
   <div class="page-header">
     <h1><%= @teacher.full_name %></h1>
   </div>
@@ -13,7 +14,7 @@
 
   <% else %>
 
-  <%= render 'dashboard'%>
+  <%= render 'dashboard' %>
 
   <% end %>
 <% end %>
