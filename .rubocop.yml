@@ -1,2 +1,8 @@
+AllCops:
+  Excludes:
+    - db/**
+    - config/**
+    - script/**
+
 Documentation:
   Enabled: false
