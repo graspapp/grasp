@@ -20,7 +20,7 @@ gem 'uglifier', '~> 2.1.1'
 
 gem 'coveralls', require: false
 gem 'newrelic_rpm', '~> 3.6.6.147'
-gem 'devise', '~> 3.0.1'
+gem 'devise', '~> 3.0.2'
 gem 'cancan', '~> 1.6.10'
 
 group :development, :test do
@@ -35,7 +35,7 @@ end
 group :test do
   gem 'capybara', '~> 2.1.0'
   gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'database_cleaner', '~> 1.0.1'
+  gem 'database_cleaner', '~> 1.1.1'
 end
 
 group :production do
