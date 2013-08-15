@@ -6,4 +6,6 @@
 
 <% if @student.courses.empty? %>
   <%= render 'no_courses_home' %>
+<% else %>
+  <%= render 'course_overview' %>
 <% end %>

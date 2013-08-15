@@ -42,4 +42,23 @@ describe "Student home" do
       end
     end
   end
+
+  describe "with classes" do
+
+    before do
+
+      @course = FactoryGirl.create(:course)
+      @student.courses << @course
+
+      visit root_path
+    end
+
+    describe "when looking at a course overview" do
+
+      it "should have the course's name" do
+
+        should have_content(@course.name)
+      end
+    end
+  end
 end
