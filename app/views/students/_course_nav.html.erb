@@ -1,8 +1,0 @@
-<ul class="nav nav-tabs">
-  <% @student.courses.each do |c| %>
-    <li class="active"><a href="#"><%= c.name %></a></li>
-  <% end %>
-  <li>
-  <%= link_to "Add Course", "#add-course-modal", data: { toggle: "modal" } %>
-  </li>
-</ul>

@@ -1,1 +1,19 @@
-<%= render 'course_nav' %>
+<ul class="nav nav-tabs">
+<% @student.courses.each do |c| %>
+  <li <%= "class=active" if c == @student.courses.first %>>
+  <%= link_to c.name, "##{ c }", data: { toggle: "tab" } %>
+  </li>
+<% end %>
+<li>
+<%= link_to "Add Course", "#add-course-modal", data: { toggle: "modal" } %>
+</li>
+</ul>
+
+<div class="tab-content">
+<% @student.courses.each do |c| %>
+  <div class="tab-pane <%= 'active' if c == @student.courses.first %>"
+  id="<%= c %>">
+  <%= c.name %>
+  </div>
+<% end %>
+</div>
