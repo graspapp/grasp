@@ -59,6 +59,11 @@ describe "Student home" do
 
         should have_content(@course.name)
       end
+
+      it "should have a button to create a new class" do
+
+        should have_link('Add Course')
+      end
     end
   end
 end
