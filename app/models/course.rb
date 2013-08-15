@@ -17,4 +17,8 @@ class Course < ActiveRecord::Base
   def generate_course_code
     SecureRandom.base64(6).gsub(/=+$/,'')
   end
+
+  def to_s
+    name.downcase.gsub ' ', '_'
+  end
 end
