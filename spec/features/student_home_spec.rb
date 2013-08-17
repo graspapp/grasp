@@ -64,6 +64,24 @@ describe "Student home" do
 
         should have_link('Add Course')
       end
+
+      it "and no units exist" do
+
+        @course.units.clear
+        should have_content "Uh oh!"
+      end
+
+      describe "and units exist" do
+
+        before do
+
+          @course.units.create(name: "Test Unit", number: "1.31")
+          @unit = @course.units.last
+          visit root_path
+        end
+
+        it { should have_content @unit.name }
+      end
     end
   end
 end
