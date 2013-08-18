@@ -1,20 +1,18 @@
-<% if signed_in? %>
-  <% provide(:title, 'Teacher Profile') %>
+<% provide(:title, 'Teacher Profile') %>
 
-  <%= render 'course_modal' %>
-  <%= render 'unit_modal' %>
-  
-  <div class="page-header">
-    <h1><%= @teacher.full_name %></h1>
-  </div>
-  
-  <% if @teacher.courses.first.nil? %>
-  
-  <%= render 'no_courses' %>
+<%= render 'course_modal' %>
+<%= render 'unit_modal' %>
 
-  <% else %>
+<div class="page-header">
+  <h1><%= @teacher.full_name %></h1>
+</div>
 
-  <%= render 'dashboard' %>
+<% if @teacher.courses.first.nil? %>
 
-  <% end %>
+<%= render 'no_courses' %>
+
+<% else %>
+
+<%= render 'dashboard' %>
+
 <% end %>
