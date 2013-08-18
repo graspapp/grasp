@@ -1,8 +1,15 @@
 <%= form_for Unit.new, :url => units_path do |f| %>
-<div>
-  <%= f.text_field :number, placeholder: "Unit Number" %><br><br>
-  <%= f.text_field :name, placeholder: "Unit Name" %>
-</div><br>
-<%= f.submit "Continue", class: "btn btn-primary"%>
-
+  <fieldset>
+    <div class="form-group">
+      <%= f.text_field :number,
+        class: 'form-control',
+        placeholder: "Unit Number" %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :name,
+        class: 'form-control',
+        placeholder: "Unit Name" %>
+    </div>
+    <%= f.submit "Continue", class: "btn btn-primary"%>
+  </fieldset>
 <% end %>
