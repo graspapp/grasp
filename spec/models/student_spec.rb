@@ -53,7 +53,7 @@ describe "Student" do
 
     before { student.class_code = "" }
 
-    it { should_not be_valid }
+    it { should be_valid }
   end
 
   describe "when password is too short" do

@@ -36,11 +36,21 @@ describe "static pages" do
     it { should have_title('Contact | Grasp') }
   end
 
+  describe "acknowledgements page" do
+    
+    before { visit acknowledgements_path }
+
+    it { should have_selector('h1', text: 'Acknowledgements') }
+    it { should have_title('Acknowledgements | Grasp') }
+  end
+
   it "should have the right links on the layout" do
 
     visit root_path
     click_link "About"
     page.should have_title(full_title('About'))
+    click_link "Acknowledgements"
+    page.should have_title(full_title('Acknowledgements'))
     click_link "Help"
     page.should have_title(full_title('Help'))
     click_link "Contact"
