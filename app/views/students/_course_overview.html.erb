@@ -12,7 +12,8 @@
 <div class="tab-content">
   <% @student.courses.each do |c| %>
     <% if c.units.any? %>
-      <div class="tab-pane <%= 'active' if c == @student.courses.first %>">
+      <div class="tab-pane <%= 'active' if c == @student.courses.first %>"
+        id="<%= c %>">
         <div class="list-group">
           <% c.units.each do |u| %>
             <a href-"#" class="list-group-item">
@@ -22,9 +23,12 @@
         </div>
       </div>
     <% else %>
-      <div class="no-courses text-center">
-        Uh oh! It looks like your teacher hasn't added any units to
-        <%= c.name %>. Maybe you should ask them about it?
+      <div class="tab-pane <%= 'active' if c == @student.courses.first %>"
+        id="<%= c %>">
+        <div class="no-courses text-center">
+          Uh oh! It looks like your teacher hasn't added any units to
+          <%= c.name %>. Maybe you should ask them about it?
+        </div>
       </div>
     <% end %>
   <% end %>
