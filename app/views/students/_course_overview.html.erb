@@ -1,0 +1,31 @@
+<ul class="nav nav-tabs">
+  <% @student.courses.each do |c| %>
+    <li <%= "class=active" if c == @student.courses.first %>>
+    <%= link_to c.name, "##{ c }", data: { toggle: "tab" } %>
+    </li>
+  <% end %>
+  <li>
+  <%= link_to "Add Course", "#add-course-modal", data: { toggle: "modal" } %>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <% @student.courses.each do |c| %>
+    <% if c.units.any? %>
+      <div class="tab-pane <%= 'active' if c == @student.courses.first %>">
+        <div class="list-group">
+          <% c.units.each do |u| %>
+            <a href-"#" class="list-group-item">
+              <h4 class="list-group-item-heading"><%= u.name %></h4>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <div class="no-courses text-center">
+        Uh oh! It looks like your teacher hasn't added any units to
+        <%= c.name %>. Maybe you should ask them about it?
+      </div>
+    <% end %>
+  <% end %>
+</div>

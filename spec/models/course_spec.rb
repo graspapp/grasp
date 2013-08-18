@@ -5,14 +5,14 @@ describe "Course" do
   before do
     teacher = FactoryGirl.create(:teacher)
     teacher.courses.build(name: "Algebra II")
-    @course = teacher.courses.first
+    @course = teacher.courses.last
   end
 
   subject { @course }
 
   describe "attributes" do
 
-    it { should belong_to  :teacher }
+    it { should belong_to :teacher }
     it { should have_many(:students).through(:enrollments) }
 
     it { should respond_to :name }
@@ -22,6 +22,11 @@ describe "Course" do
 
       @course.code.should_not be_empty
     end
+
+    it "should return a snake_case name when to_s is called" do
+
+      @course.to_s.should eq 'algebra_ii'
+    end
   end
 
   describe "when name is blank" do
@@ -30,3 +35,4 @@ describe "Course" do
     it { should_not be_valid }
   end
 end
+
