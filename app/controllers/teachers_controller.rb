@@ -1,6 +1,7 @@
 class TeachersController < ApplicationController
+
   def home
-  	if params[:id].nil? && current_teacher
+    if params[:id].nil? && current_teacher
       @teacher = current_teacher
     else
       @teacher = Teacher.find(params[:id])
@@ -10,5 +11,4 @@ class TeachersController < ApplicationController
       @courses = current_teacher.courses
     end    
   end
-
 end

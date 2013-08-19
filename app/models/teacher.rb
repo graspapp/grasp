@@ -8,8 +8,8 @@ class Teacher < ActiveRecord::Base
 
   has_many :courses
 
-  validates_presence_of :first_name, :last_name, :email,
-    :password_confirmation, :school, :city, :state, :country
+  validates_presence_of :first_name, :last_name, :password_confirmation,
+                        :school, :city, :state, :country
 
   def full_name
     unless first_name.to_s.empty? and last_name.to_s.empty?
