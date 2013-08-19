@@ -5,11 +5,10 @@ describe "Units" do
   before do
 
     teacher = FactoryGirl.create(:teacher)
-    teacher.courses.build(name: "Algebra II")
-    teacher.courses.first.units.build(name: "Basic Trig", number: "1.3.1")
-    @unit = teacher.courses.first.units.first
+    teacher.courses.create(name: "Algebra II")
+    teacher.courses.last.units.create(name: "Basic Trig", number: "1.3.1")
+    @unit = teacher.courses.last.units.last
   end
-
 
   subject { @unit }
 

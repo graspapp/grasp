@@ -5,7 +5,6 @@ class UnitsController < ApplicationController
     if @unit.save
       redirect_to root_path
     end
-    
   end
   
   def unit_params
