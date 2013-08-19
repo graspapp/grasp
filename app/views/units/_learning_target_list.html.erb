@@ -1,16 +1,19 @@
-<table class="table">
-  <tr>
-    <th>LT</th>
-    <th>Description</th>
-    <th>Level</th>
-    <th>Level up?</th>
-  </tr>
-  <% @unit.learning_targets.each do |lt| %>
+<div class="panel">
+  <div class="panel-heading">Learning Targets</div>
+  <table class="table">
     <tr>
-      <td><%= lt.number %></td>
-      <td><%= lt.description %></td>
-      <td></td>
-      <td></td>
+      <th>LT</th>
+      <th>Description</th>
+      <th>Level</th>
+      <th>Level up?</th>
     </tr>
-  <% end %>
-</table>
+    <% @unit.learning_targets.each do |lt| %>
+      <tr>
+        <td><%= lt.number %></td>
+        <td><%= lt.description %></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
