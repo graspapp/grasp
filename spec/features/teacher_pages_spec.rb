@@ -27,6 +27,12 @@ describe "teacher pages" do
             expect(page).to have_selector("li", text: course.name)
           end
         end
+
+        it "should display the courses' course codes" do
+          @teacher.courses.each do |c|
+            should have_content(c.code)
+          end
+        end
       end
     end
     
