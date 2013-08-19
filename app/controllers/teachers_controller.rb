@@ -11,4 +11,6 @@ class TeachersController < ApplicationController
       @courses = current_teacher.courses
     end    
   end
+  
+
 end

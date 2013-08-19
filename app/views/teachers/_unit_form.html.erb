@@ -1,15 +1,20 @@
-<%= form_for Unit.new, :url => units_path do |f| %>
+<%= form_tag teachers_add_unit_path, method: 'post' do%>
   <fieldset>
     <div class="form-group">
-      <%= f.text_field :number,
-        class: 'form-control',
-        placeholder: "Unit Number" %>
-    </div>
-    <div class="form-group">
-      <%= f.text_field :name,
-        class: 'form-control',
+      <%= label_tag :unit_number %>
+      <%= text_field_tag :number, nil,
+        class: "form-control",
+        placeholder: "Unit Number"%>
+    
+      <%= label_tag :unit_name %>  
+      <%= text_field_tag :name, nil,
+        class: "form-control",
         placeholder: "Unit Name" %>
+        
+        <%= label_tag :course %>
+        <%= select_tag :course,
+          options_for_select(@current_teacher.courses.all) %>
     </div>
-    <%= f.submit "Continue", class: "btn btn-default"%>
+    <%= submit_tag "Add Unit", class: "btn btn-default" %>
   </fieldset>
 <% end %>

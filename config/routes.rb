@@ -32,4 +32,5 @@ Grasp::Application.routes.draw do
   get "/sign_up",          to: "static_pages#sign_up"
 
   post 'students/add_course', to: 'students#add_course'
+  post 'teachers/add_unit',   to: 'teachers#add_unit'
 end

@@ -1,10 +1,7 @@
 class UnitsController < ApplicationController
 
-  def create
-    @unit = current_teacher.units.build(unit_params)
-    if @unit.save
-      redirect_to root_path
-    end
+  def new
+    @unit = Unit.new
   end
   
   def unit_params
