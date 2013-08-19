@@ -6,6 +6,10 @@ class UnitsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def show
+    @unit = Unit.find(params[:id])
+  end
   
   def unit_params
     params.require(:unit).permit(:name)

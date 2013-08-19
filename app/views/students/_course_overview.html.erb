@@ -16,7 +16,7 @@
         id="<%= c %>">
         <div class="list-group">
           <% c.units.each do |u| %>
-            <a href-"#" class="list-group-item">
+            <a href="<%= unit_path(u) %>" class="list-group-item">
               <h4 class="list-group-item-heading"><%= u.name %></h4>
             </a>
           <% end %>
