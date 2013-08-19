@@ -10,7 +10,7 @@ class Student < ActiveRecord::Base
   has_many :courses, through: :enrollments
 
   validates_presence_of :first_name, :last_name, :email, :password,
-                        :password_confirmation, :class_code
+                        :password_confirmation
 
   def full_name
     unless first_name.to_s.empty? and last_name.to_s.empty?
