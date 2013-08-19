@@ -1,7 +1,16 @@
-<div class="list-group">
+<table class="table">
+  <tr>
+    <th>LT</th>
+    <th>Description</th>
+    <th>Level</th>
+    <th>Level up?</th>
+  </tr>
   <% @unit.learning_targets.each do |lt| %>
-    <a href="#" class="list-group-item">
-      <h4 class="list-group-item-heading"><%= lt.description %></h4>
-    </a>
+    <tr>
+      <td><%= lt.number %></td>
+      <td><%= lt.description %></td>
+      <td></td>
+      <td></td>
+    </tr>
   <% end %>
-</div>
+</table>
