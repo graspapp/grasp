@@ -1,0 +1,7 @@
+<div class="list-group">
+  <% @unit.learning_targets.each do |lt| %>
+    <a href="#" class="list-group-item">
+      <h4 class="list-group-item-heading"><%= lt.name %></h4>
+    </a>
+  <% end %>
+</div>

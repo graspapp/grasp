@@ -10,9 +10,10 @@ Grasp::Application.routes.draw do
   
   devise_for :teachers, controllers: { sessions: 'sessions'}
   devise_for :students, controllers: { sessions: 'sessions'}
+
   resources :teachers, :students
   resources :courses, only: [:create, :destroy]
-  resources :units, only: [:create, :destroy]
+  resources :units, only: [:create, :show, :destroy]
   
   devise_scope :teacher do
     get "/teacher/sign_up" => "devise/registrations#new"
