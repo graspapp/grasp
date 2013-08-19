@@ -4,12 +4,10 @@ describe "Unit home" do
 
   before do
     
-    teacher = FactoryGirl.create(:teacher)
-    teacher.courses << FactoryGirl.create(:course)
-    teacher.courses.last.units << FactoryGirl.create(:unit)
+    teacher = add_course_and_unit(FactoryGirl.create(:teacher))
     @unit = teacher.courses.last.units.last
+    @unit.learning_targets.create(number: "1", name: "2D Vectors")
 
-    sign_in teacher
     visit unit_path(@unit)
   end
 
@@ -31,5 +29,21 @@ describe "Unit home" do
   end
 
   describe "when logged in as a student" do
+
+    before do
+      student = add_course_and_unit(FactoryGirl.create(:student))
+      sign_in student
+      visit unit_path(@unit)
+    end
+
+    it "should list learning targets" do
+      should have_content(@unit.learning_targets.last.name)
+    end
   end
+end
+
+def add_course_and_unit(model)
+  model.courses << FactoryGirl.create(:course)
+  model.courses.last.units << FactoryGirl.create(:unit)
+  model
 end
