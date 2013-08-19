@@ -1,0 +1,2 @@
+class LearningTargetsController < ApplicationController
+end
