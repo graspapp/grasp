@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 # Specs in this file have access to a helper object that includes
-# the UnitsHelper. For example:
+# the LearningTargetsHelper. For example:
 #
-# describe UnitsHelper do
+# describe LearningTargetsHelper do
 #   describe "string concat" do
 #     it "concats two strings with spaces" do
 #       expect(helper.concat_strings("this","that")).to eq("this that")
 #     end
 #   end
 # end
-describe UnitsHelper do
+describe LearningTargetsHelper do
 end

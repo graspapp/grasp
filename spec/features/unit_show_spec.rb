@@ -6,7 +6,8 @@ describe "Unit home" do
     
     teacher = add_course_and_unit(FactoryGirl.create(:teacher))
     @unit = teacher.courses.last.units.last
-    @unit.learning_targets.create(number: "1", name: "2D Vectors")
+    @unit.learning_targets.create(number: "3.5", description: "2D Vectors")
+    @learning_target = @unit.learning_targets.last
 
     visit unit_path(@unit)
   end
@@ -36,8 +37,12 @@ describe "Unit home" do
       visit unit_path(@unit)
     end
 
-    it "should list learning targets" do
-      should have_content(@unit.learning_targets.last.name)
+    it "should list learning target numbers" do
+      should have_content(@learning_target.number)
+    end
+
+    it "should list learning target descriptions" do
+      should have_content(@learning_target.description)
     end
   end
 end

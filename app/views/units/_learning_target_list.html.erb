@@ -1,7 +1,26 @@
-<div class="list-group">
-  <% @unit.learning_targets.each do |lt| %>
-    <a href="#" class="list-group-item">
-      <h4 class="list-group-item-heading"><%= lt.name %></h4>
-    </a>
-  <% end %>
+<div class="panel">
+  <div class="panel-heading">Learning Targets</div>
+  <table class="table">
+    <tr>
+      <th>LT</th>
+      <th>Description</th>
+      <th>Level</th>
+    </tr>
+    <% @unit.learning_targets.each do |lt| %>
+      <tr>
+        <td><%= lt.number %></td>
+        <td><%= lt.description %></td>
+        <td><%= link_to lt.level,   
+              level_up_learning_target_path(lt),   
+              :remote => true,
+              :id => "lt_level_#{ lt.id }" %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
+
+<script type="text/javascript">
+<% @unit.learning_targets.each do |lt| %>
+  $("#lt_level_<%= lt.id %>").text("<%= lt.level %>");  
+<% end %>
+</script>

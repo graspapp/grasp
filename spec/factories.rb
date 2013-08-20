@@ -26,13 +26,13 @@ FactoryGirl.define do
   end
 
   factory :unit do
-    name "Trigonometry"
+    name   "Trigonometry"
     number "1.2"
   end
   
   factory :learning_target do
-    number    1
-    name      "I can solve..."
+    number      "1"
+    description "I can solve..."
   end
   
   factory :task do

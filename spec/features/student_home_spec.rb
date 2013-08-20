@@ -81,6 +81,7 @@ describe "Student home" do
         end
 
         it { should have_content @unit.name }
+        it { should have_content @unit.number }
       end
     end
   end
