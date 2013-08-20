@@ -1,0 +1,18 @@
+<%= form_tag units_add_lt_path, method: 'post' do %>
+  <fieldset>
+    <div class="form-group">
+      <%= label_tag :learning_target_number %>
+      <%= text_field_tag :lt_number, nil,
+        class: "form-control",
+        placeholder: "Learning Target Number"%><br>
+    
+      <%= label_tag :learning_target_description %>  
+      <%= text_field_tag :lt_name, nil,
+        class: "form-control",
+        placeholder: "Learning Target Description" %><br>
+        <%= hidden_field_tag :current_unit, @unit.id %>
+        
+    </div>
+    <%= submit_tag "Add Learning Target", class: "btn btn-default" %>
+  </fieldset>
+<% end %>

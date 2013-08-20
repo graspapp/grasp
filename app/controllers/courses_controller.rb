@@ -9,7 +9,6 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to root_path
     end
-    
   end
   
   def course_params

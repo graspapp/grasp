@@ -23,6 +23,6 @@ class ApplicationController < ActionController::Base
   def current_course
     current_course ||= Course.where("id = ? AND teacher_id = ?", params[:course].to_i, current_teacher.id).last
   end
-  
+    
   helper_method :current_course
 end

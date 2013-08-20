@@ -1,0 +1,11 @@
+<div class="tab-content">
+  <div class="tab-pane active fade in" id="<% course.name %>">
+    <div class="list-group">
+      <% course.units.each do |unit| %>
+      <a href="<%= unit_path(unit) %>" class="list-group-item">
+        <h4 class="list-group-item-heading"><%= unit.name %></h4>
+      </a>
+      <% end %>
+    </div>
+  </div>
+</div>
