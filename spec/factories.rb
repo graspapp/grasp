@@ -22,7 +22,7 @@ FactoryGirl.define do
 	end
 
   factory :course do
-    name "Algebra 2AB"
+    name "Algebra"
   end
 
   factory :unit do
