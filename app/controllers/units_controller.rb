@@ -9,7 +9,7 @@ class UnitsController < ApplicationController
   end
   
   def add_lt
-    @lt = LearningTarget.new(unit_id: params[:current_unit], name: params[:lt_name], number: params[:lt_number])
+    @lt = LearningTarget.new(unit_id: params[:current_unit], description: params[:lt_name], number: params[:lt_number])
 
     @lt.save
       
