@@ -79,7 +79,6 @@ describe 'Authentication' do
         before { click_button 'Create Account' }
         it { should have_selector('h1', text: 'Sign Up') }
         it { should have_content('error') }
-        it { should have_field('Class code') }
       end
     end
 
@@ -94,7 +93,6 @@ describe 'Authentication' do
         fill_in "Email",                 with: student2.email
         fill_in "Password",              with: student2.password
         fill_in "Password confirmation", with: student2.password
-        fill_in "Class code",            with: student2.class_code
       
         expect do
           click_button 'Create Account'
@@ -109,7 +107,6 @@ describe 'Authentication' do
           fill_in "Email",                 with: "foobarfoobarfoo@foo.com"
           fill_in "Password",              with: "foobarfoobar"
           fill_in "Password confirmation", with: "foobarfoobar"
-          fill_in "Class code",            with: "2e43"
           click_button "Create Account"
 
           Student.last.first_name.should eq "Luke"
