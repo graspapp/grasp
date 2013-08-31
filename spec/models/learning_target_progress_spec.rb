@@ -10,5 +10,6 @@ describe LearningTargetProgress do
 
     it { should respond_to :learning_target_id }
     it { should respond_to :level }
+    it { should belong_to  :enrollment }
   end
 end
