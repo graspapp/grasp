@@ -40,5 +40,10 @@ FactoryGirl.define do
     content           "Do something."
     learning_target
   end
+
+  factory :learning_target_progress do
+    learning_target_id 0
+    level 1
+  end
 end
 
