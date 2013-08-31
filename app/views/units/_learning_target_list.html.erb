@@ -4,13 +4,11 @@
     <tr>
       <th>LT</th>
       <th>Description</th>
-      <th>Level</th>
     </tr>
     <% @unit.learning_targets.each do |lt| %>
       <tr>
         <td><%= lt.number %></td>
         <td><%= lt.description %></td>
-        <td>Level goes here</td>
       </tr>
     <% end %>
   </table>
