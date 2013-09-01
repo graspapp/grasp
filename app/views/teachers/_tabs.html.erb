@@ -1,5 +1,5 @@
-<% @courses.each do |course| %>
-  <li>
+<% @teacher.courses.each do |course| %>
+  <li <%= "class=active" if course == @teacher.courses.first%>>
   <%= link_to "#{ course.name } (#{ course.code })", "##{course.name}",
     data: { toggle: "tab" } %>
   </li>
