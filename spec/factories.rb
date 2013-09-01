@@ -6,7 +6,6 @@ FactoryGirl.define do
     email                           'factstud@sample.com'
     password                        'samplepassword'
     password_confirmation           'samplepassword'
-    class_code                      '13dsja34'
   end
 
 	factory :teacher do
