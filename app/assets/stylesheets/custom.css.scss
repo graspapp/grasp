@@ -3,10 +3,16 @@ $dark-orange: #ff6b00;
 $light-orange: #fec901;
 $blue: #93d3dc;
 $yellow: #fbe901;
+$nav-gray: #929292;
 
 /* These change some of bootstraps defaults */
-$navbar-default-link-color: #929292;
+
+/* Navbar changes */
+$navbar-default-link-color: $nav-gray;
 $navbar-default-bg: $blue;
+$navbar-default-toggle-icon-bar-bg: $nav-gray;
+$navbar-default-toggle-border-color: $nav-gray;
+
 $link-color: $blue;
 @import "bootstrap";
 
