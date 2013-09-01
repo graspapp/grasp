@@ -1,4 +1,4 @@
- class UnitsController < ApplicationController
+class UnitsController < ApplicationController
 
   def new
     @unit = Unit.new

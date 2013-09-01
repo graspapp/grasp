@@ -28,6 +28,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'guard-rspec', '~> 3.0.2'
   gem 'guard-spork', '~> 1.5.0'  
+  gem 'guard-livereload', '~> 1.4.0'
   gem 'childprocess', '~> 0.3.6'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
 end
