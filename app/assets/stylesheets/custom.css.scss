@@ -4,11 +4,15 @@ $light-orange: #fec901;
 $blue: #93d3dc;
 $yellow: #fbe901;
 
-
+/* These change some of bootstraps defaults */
+$navbar-default-link-color: #929292;
 $navbar-default-bg: $blue;
+$link-color: $blue;
 @import "bootstrap";
 
 .footer {
+  text-align: center;
+
   ul {
     list-style-type: none;
   }
@@ -17,6 +21,7 @@ $navbar-default-bg: $blue;
     display: inline;
     padding-right: 20px;
   }
+
 }
 
 .gp-container {
