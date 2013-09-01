@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130831224632) do
+ActiveRecord::Schema.define(version: 20130901170226) do
 
   create_table "courses", force: true do |t|
     t.integer  "teacher_id"
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20130831224632) do
     t.string   "first_name",             default: "", null: false
     t.string   "last_name",              default: "", null: false
     t.string   "email",                  default: "", null: false
-    t.string   "class_code",             default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
