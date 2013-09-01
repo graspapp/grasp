@@ -6,7 +6,7 @@ gem 'rails', '4.0.0'
 gem 'bootstrap-sass',
   github: 'thomas-mcdonald/bootstrap-sass',
   branch: '3'
-gem 'bcrypt-ruby', '~> 3.1.0'
+gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'faker', '~> 1.2.0'
 gem 'will_paginate', '~> 3.0.4'
 gem 'bootstrap-will_paginate', '~> 0.0.9'
@@ -16,7 +16,7 @@ gem 'therubyracer', '~> 0.11.4'
 
 gem 'sass-rails', '~> 4.0.0.beta1'
 gem 'coffee-rails', '~> 4.0.0.beta1'
-gem 'uglifier', '~> 2.1.1'
+gem 'uglifier', '~> 2.2.1'
 
 gem 'coveralls', require: false
 gem 'newrelic_rpm', '~> 3.6.6.147'
