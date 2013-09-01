@@ -1,3 +1,11 @@
+/* Color Scheme Vars */
+$dark-orange: #ff6b00;
+$light-orange: #fec901;
+$blue: #93d3dc;
+$yellow: #fbe901;
+
+
+$navbar-default-bg: $blue;
 @import "bootstrap";
 
 .footer {
@@ -37,3 +45,4 @@
 .modal{
   width: 50%;
 }
+
