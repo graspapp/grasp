@@ -4,14 +4,14 @@
       <button type="button" class=" btn btn-default btn-sm pull-right">New Learning Target</button>
     </a>
   </div>
-  <table class="table">
+  <table class="table" data-provides="rowlink">
     <tr>
       <th>LT</th>
       <th>Description</th>
     </tr>
     <% @unit.learning_targets.each do |lt| %>
       <tr>
-        <td><%= lt.number %></td>
+        <td><%= link_to lt.number, lt %></td>
         <td><%= lt.description %></td>
       </tr>
     <% end %>
