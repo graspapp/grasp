@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130901170226) do
+ActiveRecord::Schema.define(version: 20130901203607) do
 
   create_table "courses", force: true do |t|
     t.integer  "teacher_id"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20130901170226) do
   create_table "learning_targets", force: true do |t|
     t.integer  "unit_id"
     t.string   "number"
-    t.string   "description"
+    t.text     "description", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
