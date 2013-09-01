@@ -14,6 +14,8 @@ $navbar-default-toggle-icon-bar-bg: $nav-gray;
 $navbar-default-toggle-border-color: $nav-gray;
 
 $link-color: $blue;
+
+$jumbotron-bg: #fff;
 @import "bootstrap";
 
 .footer {
@@ -57,3 +59,18 @@ $link-color: $blue;
   width: 50%;
 }
 
+/* Home */
+
+.main-btn-sign-up {
+  background-color: $blue;
+  border-color: $blue;
+  border-radius: 10px;
+  color: #000;
+}
+
+.about-grasp {
+  margin: 0 auto;
+  h1 {
+    text-align: center;
+  }
+}
