@@ -10,10 +10,16 @@ class LearningTargetsController < ApplicationController
     end
   end
   
+  def show
+    @lt = LearningTarget.find(params[:id])
+  end
+  
+  # TODO: Fix this
   def lt_params
     params.require(:learning_target).permit(:name)
   end
 
+  # TODO: Remove this
   def level_up
     lt = LearningTarget.find(params[:id])
     lt.level += 1 if lt.level < 4

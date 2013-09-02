@@ -30,8 +30,8 @@ FactoryGirl.define do
   end
   
   factory :learning_target do
-    number      "1"
-    description "I can solve..."
+    number      "1.1a"
+    description "Ability to graph the sine function without a calculator."
   end
   
   factory :task do
