@@ -7,8 +7,9 @@
         placeholder: "Learning Target Number"%><br>
     
       <%= label_tag :learning_target_description %>  
-      <%= text_field_tag :lt_desc, nil,
+      <%= text_area_tag :lt_desc, nil,
         class: "form-control",
+        rows: "5",
         placeholder: "Learning Target Description" %><br>
         <%= hidden_field_tag :current_unit, @unit.id %>
         
