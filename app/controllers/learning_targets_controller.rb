@@ -14,9 +14,8 @@ class LearningTargetsController < ApplicationController
     @lt = LearningTarget.find(params[:id])
   end
   
-  # TODO: Fix this
   def lt_params
-    params.require(:learning_target).permit(:name)
+    params.require(:learning_target).permit(:description)
   end
 
   # TODO: Remove this
