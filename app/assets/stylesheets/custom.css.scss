@@ -3,7 +3,7 @@ $dark-orange: #ff6b00;
 $light-orange: #fec901;
 $blue: #93d3dc;
 $yellow: #fbe901;
-$nav-gray: #929292;
+$nav-gray: #000;
 
 /* These change some of bootstraps defaults */
 
@@ -77,6 +77,8 @@ ul.nav-controls {
   border-color: $blue;
   border-radius: 10px;
   color: #000;
+  text-align: center;
+  font-size: .9em;
 }
 
 .about-grasp {
