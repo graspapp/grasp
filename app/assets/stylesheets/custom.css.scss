@@ -3,23 +3,25 @@ $dark-orange: #ff6b00;
 $light-orange: #fec901;
 $blue: #93d3dc;
 $yellow: #fbe901;
-$nav-gray: #000;
+$nav-white: #fdfdfd;
+$nav-gray: #f7f7f7;
 
 /* These change some of bootstraps defaults */
 
 /* Navbar changes */
 $navbar-default-link-color: $nav-gray;
+$navbar-default-link-active-color: $nav-white;
+$navbar-default-link-hover-color: $nav-white;
 $navbar-default-bg: $blue;
-$navbar-default-toggle-icon-bar-bg: $nav-gray;
-$navbar-default-toggle-border-color: $nav-gray;
+$navbar-default-toggle-icon-bar-bg: $nav-white;
+$navbar-default-toggle-border-color: $nav-white;
 $navbar-default-toggle-hover-bg: $yellow;
-// $navbar-height: 75px;
 
 $link-color: #00798a;
 $font-size-base: 20px;
 $line-height-base: 1.6;
-
 $jumbotron-bg: #fff;
+
 @import "bootstrap";
 
 
@@ -35,12 +37,6 @@ $jumbotron-bg: #fff;
     display: inline;
     padding-right: 20px;
   }
-
-}
-
-ul.nav-controls {
-  font-size: 1em;
-  font-weight: lighter;
 }
 
 .gp-container {
