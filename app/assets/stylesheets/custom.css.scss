@@ -24,8 +24,6 @@ $jumbotron-bg: #fff;
 
 @import "bootstrap";
 
-
-
 .footer {
   text-align: center;
 
@@ -70,6 +68,10 @@ $jumbotron-bg: #fff;
   color: #000;
   text-align: center;
   font-size: .9em; 
+}
+
+.main-jumbotron {
+  height: 100%;
 }
 
 .jumbotron img {
