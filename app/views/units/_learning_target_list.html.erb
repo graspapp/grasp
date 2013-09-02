@@ -10,11 +10,13 @@
     <tr>
       <th>LT</th>
       <th>Description</th>
+      <th>View more</th>
     </tr>
     <% @unit.learning_targets.each do |lt| %>
       <tr>
-        <td><%= link_to lt.number, lt %></td>
+        <td><%= lt.number %></td>
         <td><%= lt.description %></td>
+        <td><%= link_to "View more.", lt %></td>
       </tr>
     <% end %>
   </table>
