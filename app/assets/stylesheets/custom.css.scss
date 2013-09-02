@@ -12,9 +12,10 @@ $navbar-default-link-color: $nav-gray;
 $navbar-default-bg: $blue;
 $navbar-default-toggle-icon-bar-bg: $nav-gray;
 $navbar-default-toggle-border-color: $nav-gray;
+$navbar-default-toggle-hover-bg: $yellow;
 // $navbar-height: 75px;
 
-$link-color: $blue;
+$link-color: #00798a;
 $font-size-base: 20px;
 $line-height-base: 1.6;
 
@@ -38,7 +39,7 @@ $jumbotron-bg: #fff;
 }
 
 ul.nav-controls {
-  font-size: 1.6em;
+  font-size: 1em;
   padding-top: 6px;
   font-weight: lighter;
 }
@@ -78,7 +79,12 @@ ul.nav-controls {
   border-radius: 10px;
   color: #000;
   text-align: center;
-  font-size: .9em;
+  font-size: .9em; 
+}
+
+.jumbotron img {
+  max-width: 100%;
+  height: auto;
 }
 
 .about-grasp {
