@@ -1,5 +1,5 @@
 <% @courses.each do |course| %>
-  <div class="tab-pane active fade in" id="<%= course.name %>" >
+  <div class="tab-pane <%= 'active' if course == @teacher.courses.first %> fade in" id="<%= course.name %>" >
 
     <% if course.units.first.nil? %>
     
