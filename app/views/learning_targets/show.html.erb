@@ -1,5 +1,20 @@
 <% provide(:title, "LT #{ @lt.number }") %>
 
 <div class="page-header">
-  <h1><%= "Learning Target #{ @lt.number }" %></h1>
+  <dl>
+    <dt><h1><%= "Learning Target #{ @lt.number }" %></h1></dt>
+    <dd><%= @lt.description %></dd>
+  </dl>
 </div>
+
+<% if teacher_signed_in? %>
+<table class="table" data-provides="rowlink">
+  <tr>
+    <th>Student</th>
+    <th>Level</th>
+    <th>Level Up?</th>
+  </tr>
+
+  <%= render 'progress' %>
+</table>
+<% end %>

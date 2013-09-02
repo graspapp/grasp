@@ -5,7 +5,7 @@ class LearningTargetsController < ApplicationController
   
   def create
     @lt = current_unit.learning_targets.build(lt_params)
-    if @course.save
+    if @lt.save
       redirect_to root_path
     end
   end
@@ -16,5 +16,8 @@ class LearningTargetsController < ApplicationController
   
   def lt_params
     params.require(:learning_target).permit(:description)
+  end
+  
+  def has_progress?
   end
 end

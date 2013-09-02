@@ -3,8 +3,9 @@ class CreateLearningTargetProgresses < ActiveRecord::Migration
     create_table :learning_target_progresses do |t|
 
       t.timestamps
-      t.integer :learning_target_id
-      t.integer :level
+      t.belongs_to :enrollment
+      t.integer    :learning_target_id
+      t.integer    :level
     end
   end
 end

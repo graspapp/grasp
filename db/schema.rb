@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 20130901204147) do
   create_table "learning_target_progresses", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "enrollment_id"
     t.integer  "learning_target_id"
     t.integer  "level"
-    t.integer  "enrollment_id"
   end
 
   create_table "learning_targets", force: true do |t|
