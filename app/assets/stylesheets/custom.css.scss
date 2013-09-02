@@ -15,6 +15,8 @@ $navbar-default-toggle-border-color: $nav-gray;
 // $navbar-height: 75px;
 
 $link-color: $blue;
+$font-size-base: 20px;
+$line-height-base: 1.6;
 
 $jumbotron-bg: #fff;
 @import "bootstrap";
@@ -37,7 +39,8 @@ $jumbotron-bg: #fff;
 
 ul.nav-controls {
   font-size: 1.6em;
-  padding-top: 10px;
+  padding-top: 6px;
+  font-weight: lighter;
 }
 
 .gp-container {
