@@ -1,8 +1,10 @@
 <div class="panel">
   <div class="panel-heading lt-heading clearfix">Learning Targets
+    <% if teacher_signed_in? %>
     <a data-toggle="modal" href="#ltModal">
       <button type="button" class=" btn btn-default btn-sm pull-right">New Learning Target</button>
     </a>
+    <% end %>
   </div>
   <table class="table" data-provides="rowlink">
     <tr>
