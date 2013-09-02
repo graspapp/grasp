@@ -13,6 +13,7 @@ gem 'bootstrap-will_paginate', '~> 0.0.9'
 gem 'jquery-rails', '~> 3.0.1'
 gem 'turbolinks', '~> 1.3.0'
 gem 'therubyracer', '~> 0.12.0'
+gem 'paper_trail', '~> 3.0.0.beta1'
 
 gem 'sass-rails', '~> 4.0.0.beta1'
 gem 'coffee-rails', '~> 4.0.0.beta1'
