@@ -1,0 +1,21 @@
+<% @lt.unit.course.enrollments.each do |e| %>
+  <% e.learning_target_progresses.each do |p| %>
+  <tr>
+    <td><%= e.student.full_name %></td>
+    <td><%= p.level %></td>
+    <td>
+      <% if p.level <= 4 %>
+      
+      <%= link_to "", root_path, 
+      :class => "glyphicon glyphicon-chevron-up" %>
+      <%end%>
+      &nbsp;
+      <% if p.level >= 1 %>
+      
+      <%= link_to "", root_path, 
+      class: "glyphicon glyphicon-chevron-down" %>
+        <% end %>
+    </td>
+  </tr>
+  <% end %>
+<% end %>

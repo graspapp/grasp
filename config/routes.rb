@@ -19,6 +19,7 @@ Grasp::Application.routes.draw do
   resources :learning_targets do  
     get 'level_up', :on => :member  
   end  
+
   
   devise_scope :teacher do
     get "/teacher/sign_up" => "devise/registrations#new"
@@ -40,5 +41,4 @@ Grasp::Application.routes.draw do
   post 'students/add_course', to: 'students#add_course'
   post 'teachers/add_unit',   to: 'teachers#add_unit'
   post 'units/add_lt',        to: 'units#add_lt'
-  post 'learning_targets/level_up', to: 'learning_targets#level_up'
 end

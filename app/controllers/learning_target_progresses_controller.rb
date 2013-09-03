@@ -1,0 +1,2 @@
+class LearningTargetProgressesController < ApplicationController
+end
