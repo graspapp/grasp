@@ -1,7 +1,15 @@
 class LearningTargetProgress < ActiveRecord::Base
 
   has_paper_trail
+
+  after_initialize :init
+
   belongs_to :enrollment
+  belongs_to :learning_target
   
-  validates_presence_of :learning_target_id, :level
+  validates_presence_of :level
+
+  def init
+    self.level ||= 1
+  end
 end

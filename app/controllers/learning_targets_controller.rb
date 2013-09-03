@@ -23,8 +23,7 @@ class LearningTargetsController < ApplicationController
                                   current_student.id, @lt.unit.course.id).first
 
     progress = LearningTargetProgress.new(enrollment_id: enrollment.id,
-                                          learning_target_id: @lt.id,
-                                          level: 1)  
+                                          learning_target_id: @lt.id)  
 
     redirect_to @lt if progress.save
   end
