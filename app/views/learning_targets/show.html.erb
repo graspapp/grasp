@@ -7,24 +7,5 @@
   </dl>
 </div>
 
-<% if teacher_signed_in? %>
-  <table class="table" data-provides="rowlink">
-    <tr>
-      <th>Student</th>
-      <th>Level</th>
-      <th>Level Up?</th>
-    </tr>
-    <%= render 'teacher_progress' %>
-  </table>
-
-<% end %>
-
-<% if student_signed_in? %>
-  <table class="table" data-provides="rowlink">
-    <tr>
-      <th>Level</th>
-      <th>Level Up?</th>
-    </tr>  
-    <%= render 'student_progress' %>
-  <table>
-<% end %>
+<%= render 'teacher' if teacher_signed_in? %>
+<%= render 'student' if student_signed_in? %>

@@ -20,6 +20,7 @@ describe "Learning targets" do
   describe "attributes" do
 
     it { should belong_to  :unit }
+    it { should have_many  :learning_target_progresses }
     it { should respond_to :description}
     it { should respond_to :number }
   end

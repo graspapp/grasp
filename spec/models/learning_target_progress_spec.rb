@@ -11,12 +11,7 @@ describe LearningTargetProgress do
     it { should respond_to :learning_target_id }
     it { should respond_to :level }
     it { should belong_to  :enrollment }
-  end
-
-  describe "with no learning_target_id" do
-
-    before { ltp.learning_target_id = nil }
-    it { should_not be_valid }
+    it { should belong_to  :learning_target }
   end
 
   describe "with no level" do
