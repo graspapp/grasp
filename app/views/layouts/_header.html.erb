@@ -16,9 +16,6 @@
     <li class="<%= 'active' if current_page?(root_path) %>">
     <%= link_to 'Home', root_path %>
     </li>
-    <li class="<%= 'active' if current_page?(help_path) %>">
-    <%= link_to 'Help', help_path %>
-    </li>
 
     <% if !signed_in? %>
       <li class="<%= 'active' if request.fullpath.include?("sign_up") %>">
