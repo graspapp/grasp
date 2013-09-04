@@ -5,11 +5,6 @@
   <td><%= current_student.current_progress(@lt.unit.course).level%></td>
   <% end %>
   <td>     
-     <%= link_to "", root_path, 
-      :class => "glyphicon glyphicon-chevron-up" %>
-      &nbsp;
-      
-      <%= link_to "", root_path, 
-      class: "glyphicon glyphicon-chevron-down" %>
+    <a data-toggle="modal" href="#levelModal">Change Level</a>
   </td>
 </tr>

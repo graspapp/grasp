@@ -12,4 +12,8 @@ class LearningTargetProgress < ActiveRecord::Base
   def init
     self.level ||= 1
   end
+  
+  def change_level(lev)
+    self.level = lev
+  end
 end
