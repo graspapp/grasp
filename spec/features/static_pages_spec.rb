@@ -12,14 +12,6 @@ describe 'static pages' do
 
   end
 
-  describe 'help page' do
-
-    before { visit help_path }
-
-    it { should have_selector('h1', text: 'Help') }
-    it { should have_title('Help | Grasp') }
-  end
-
   describe 'about page' do
 
     before { visit about_path }
@@ -51,8 +43,6 @@ describe 'static pages' do
     page.should have_title(full_title('About'))
     click_link 'Acknowledgements'
     page.should have_title(full_title('Acknowledgements'))
-    click_link 'Help'
-    page.should have_title(full_title('Help'))
     click_link 'Contact'
     page.should have_title(full_title('Contact'))
     click_link 'Home'
