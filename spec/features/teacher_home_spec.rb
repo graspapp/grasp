@@ -45,6 +45,10 @@ describe "Teacher home" do
         should have_content(c.code)
       end
     end
+
+    it "should have a button to add units" do
+      should have_content("New Unit")
+    end
   
     describe "when no units exist" do
     
