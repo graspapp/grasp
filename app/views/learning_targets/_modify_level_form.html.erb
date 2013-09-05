@@ -1,0 +1,14 @@
+<%= form_tag learning_targets_modify_level_path, method: 'post' do%>
+  <fieldset>
+    <div class="form-group">
+      <%= label_tag :level %>
+      <%= select_tag :level,
+        options_for_select([1,2,3,4]),
+        class: "form-control" %>
+      <%= hidden_field_tag 'lt_id', params[:id] %>
+      <%= hidden_field_tag 'student', params[:student_id]%>
+    </div>
+    <%= submit_tag "Modify Level", class: "btn btn-default"%>
+    
+  </fieldset>
+<%end%>

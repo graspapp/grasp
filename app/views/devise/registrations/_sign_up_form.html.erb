@@ -1,5 +1,5 @@
 <%= form_for resource, :as => resource_name,
-:url =>registration_path(resource_name) do |form| %>
+  :url =>registration_path(resource_name) do |form| %>
 
   <fieldset>
 
@@ -8,10 +8,6 @@
     <% if request.fullpath.include? 'teacher' %>
 
       <%= render 'teacher_school_info_fields', form: form %>
-
-    <% elsif request.fullpath.include? 'student' %>
-
-      <%= render 'student_class_info_fields', form: form %>
 
     <% end %>
 

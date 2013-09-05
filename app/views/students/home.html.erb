@@ -1,5 +1,11 @@
 <% provide(:title, 'Student Profile') %>
 
-<div class="page-header">
-  <h1><%= @student.first_name %> <%= @student.last_name %></h1>
-</div>
+<%= render 'add_course_modal' %>
+
+<div class="page-header"><h1><%= @student.full_name %></h1></div>
+
+<% if @student.courses.empty? %>
+  <%= render 'no_courses_home' %>
+<% else %>
+  <%= render 'course_overview' %>
+<% end %>

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do
-      |u| u.permit(:first_name, :last_name, :email, :password,
+      |u| u.permit(:first_name, :last_name, :full_name, :email, :password,
                    :password_confirmation, :class_code, :school, :city, :state,
                    :country)
     end
@@ -19,4 +19,10 @@ class ApplicationController < ActionController::Base
     flash[:error] = exception.message
     redirect_to root_url
   end
+  
+  def current_course
+    current_course ||= Course.where("id = ? AND teacher_id = ?", params[:course].to_i, current_teacher.id).last
+  end
+    
+  helper_method :current_course
 end

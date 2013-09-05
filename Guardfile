@@ -1,4 +1,14 @@
 require 'active_support/inflector'
+require 'rbconfig'
+
+guard 'livereload' do
+  watch(%r{app/views/.+\.(erb|haml|slim)$})
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{public/.+\.(css|js|html)})
+  watch(%r{config/locales/.+\.yml})
+  # Rails Assets Pipeline
+  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html))).*}) { |m| "/assets/#{m[3]}" }
+end
 
 guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, 
 
@@ -32,6 +42,10 @@ guard 'rspec', after_all_pass: false, cli: '--drb' do
     ["spec/routing/#{m[1]}_routing_spec.rb",
      "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb",
      "spec/acceptance/#{m[1]}_spec.rb"]
+  end
+
+  watch(%r{^app/views/(.+)s/(.+)(\.html\.erb)$}) do |m|
+    "spec/features/#{m[1]}_#{m[2]}_spec.rb"
   end
 
   watch(%r{^app/views/static_pages/(.*)(\.erb|\.haml)$}) do |m|
