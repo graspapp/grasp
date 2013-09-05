@@ -17,7 +17,6 @@ All contributions must meet the following requirements, if applicable.
 
 * Fully tested
 * Follow the style guide
-* Passes integration tests (duh)
 
 ## Style Guide
 
