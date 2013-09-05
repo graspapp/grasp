@@ -6,12 +6,12 @@ describe 'Student' do
 
   subject { student }
 
-  it { should respond_to(:first_name) }
-  it { should respond_to(:last_name) }
-  it { should respond_to(:email) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-  it { should respond_to(:class_code) }
+  it { should have_many(:courses).through(:enrollments) }
+	it { should respond_to(:first_name) }
+	it { should respond_to(:last_name) }
+	it { should respond_to(:email) }
+	it { should respond_to(:password) }
+	it { should respond_to(:password_confirmation) }
 
   describe 'when first name is blank' do
 
@@ -40,12 +40,6 @@ describe 'Student' do
   describe 'when password confirmation is blank' do
 
     before { student.password_confirmation = '' }
-    it { should_not be_valid }
-  end
-
-  describe 'when class code is blank' do
-
-    before { student.class_code = '' }
     it { should_not be_valid }
   end
 

@@ -1,0 +1,13 @@
+<% provide(:title, "LT #{ @lt.number }") %>
+
+<%= render 'modify_level_modal' %>
+
+<div class="page-header">
+  <dl>
+    <dt><h1><%= "Learning Target #{ @lt.number }" %></h1></dt>
+    <dd><%= @lt.description %></dd>
+  </dl>
+</div>
+
+<%= render 'teacher' if teacher_signed_in? %>
+<%= render 'student' if student_signed_in? %>

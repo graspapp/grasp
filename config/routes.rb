@@ -10,7 +10,16 @@ Grasp::Application.routes.draw do
   
   devise_for :teachers, controllers: { sessions: 'sessions'}
   devise_for :students, controllers: { sessions: 'sessions'}
+
   resources :teachers, :students
+  resources :courses, only: [:create, :destroy]
+  resources :units, only: [:create, :show, :destroy]
+  resources :learning_targets, only: [:create, :destroy]
+
+  resources :learning_targets do  
+    get 'level_up', :on => :member  
+  end  
+
   
   devise_scope :teacher do
     get "/teacher/sign_up" => "devise/registrations#new"
@@ -28,4 +37,9 @@ Grasp::Application.routes.draw do
   get "/contact",          to: "static_pages#contact"
   get "/acknowledgements", to: "static_pages#acknowledgements"
   get "/sign_up",          to: "static_pages#sign_up"
+
+  post 'students/add_course',           to: 'students#add_course'
+  post 'teachers/add_unit',             to: 'teachers#add_unit'
+  post 'units/add_lt',                  to: 'units#add_lt'
+  post 'learning_targets/modify_level', to: 'learning_targets#modify_level'
 end

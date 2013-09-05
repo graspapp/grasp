@@ -1,6 +1,32 @@
+/* Color Scheme Vars */
+$dark-orange: #ff6b00;
+$light-orange: #fec901;
+$blue: #93d3dc;
+$yellow: #fbe901;
+$nav-white: #fdfdfd;
+$nav-gray: #f7f7f7;
+
+/* These change some of bootstraps defaults */
+
+/* Navbar changes */
+$navbar-default-link-color: $nav-gray;
+$navbar-default-link-active-color: $nav-white;
+$navbar-default-link-hover-color: $nav-white;
+$navbar-default-bg: $blue;
+$navbar-default-toggle-icon-bar-bg: $nav-white;
+$navbar-default-toggle-border-color: $nav-white;
+$navbar-default-toggle-hover-bg: $yellow;
+
+$link-color: #00798a;
+$font-size-base: 20px;
+$line-height-base: 1.6;
+$jumbotron-bg: #fff;
+
 @import "bootstrap";
 
 .footer {
+  text-align: center;
+
   ul {
     list-style-type: none;
   }
@@ -13,4 +39,49 @@
 
 .gp-container {
   margin-top: 85px;
+}
+
+/* Profile Nav Tabs */
+.tab-content {
+  height: 450px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs{
+  min-width: 100%;  
+}
+
+.tab{
+  &:hover{
+    color: black;
+  }
+}
+
+/* Home */
+
+.main-btn-sign-up {
+  background-color: $blue;
+  border-color: $blue;
+  border-radius: 10px;
+  color: #000;
+  text-align: center;
+  font-size: .9em; 
+}
+
+.main-jumbotron {
+  height: 100%;
+}
+
+.jumbotron img {
+  max-width: 100%;
+  height: auto;
+}
+
+.about-grasp {
+  margin: 0 auto;
+  h1 {
+    text-align: center;
+  }
 }

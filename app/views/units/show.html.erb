@@ -1,0 +1,13 @@
+<% provide(:title, @unit.name) %>
+
+<%= render 'teachers/lt_modal' %>
+
+<div class="page-header">
+  <h1><%= "Unit #{ @unit.number } - #{ @unit.name }" %></h1>
+</div>
+
+<% if !current_teacher.nil? %>
+  <%= render 'teacher_view' %>
+<% elsif !current_student.nil?  %>
+  <%= render 'student_view' %>
+<% end %>

@@ -1,0 +1,10 @@
+<tr>
+  <% if current_student.current_progress(@lt.unit.course).nil? %>
+  <% new_progress %>
+  <% else %>
+  <td><%= current_student.current_progress(@lt.unit.course).level%></td>
+  <% end %>
+  <td>     
+    <a data-toggle="modal" href="#levelModal">Change Level</a>
+  </td>
+</tr>
