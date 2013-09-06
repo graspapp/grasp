@@ -41,6 +41,9 @@ class LearningTargetsController < ApplicationController
                                   @lt.id,enrollment.id).first
     elsif teacher_signed_in?
       
+      enrollment = Enrollment.where("student_id = ? AND course_id = ?",
+                                  params[:student_id], @lt.unit.course.id).first
+                                  
       progress = LearningTargetProgress.where("learning_target_id = ? AND
                                     enrollment_id = ?",
                                     @lt.id,enrollment.id).first

@@ -5,11 +5,18 @@
     <td><%= p.level %></td>
     <td>
       <%= link_to "Change Level", '#levelModal',
-      :class => "btn btn-primary btn-sm",
+      :class => "btn btn-primary btn-sm changebutton",
       :data => { :toggle => "modal" }, 
-      :student_id => e.student.id %>
+      :id => e.student.id %>
 
     <% end %>
     </td>
   </tr>
   <% end %>
+
+
+<script>
+  $('a.changebutton').on("click", function(e) {
+    $('#student_id').val(e.target.id)
+  })
+</script>

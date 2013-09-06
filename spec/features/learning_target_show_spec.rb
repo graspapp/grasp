@@ -16,6 +16,11 @@ describe "LearningTarget detail view" do
     end
 
     it { should have_content(@lt.number) }
+    
+    describe "when teacher has no students" do
+      
+      it { should have_content "There are currently no students enrolled." }
+    end  
   end
 
   describe "when logged in as a student" do
