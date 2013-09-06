@@ -51,8 +51,6 @@ describe 'static pages' do
     page.should have_title(full_title('About'))
     click_link 'Acknowledgements'
     page.should have_title(full_title('Acknowledgements'))
-    click_link 'Help'
-    page.should have_title(full_title('Help'))
     click_link 'Contact'
     page.should have_title(full_title('Contact'))
     click_link 'Home'
