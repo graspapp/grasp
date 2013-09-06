@@ -24,6 +24,8 @@ $jumbotron-bg: #fff;
 
 @import "bootstrap";
 
+
+
 .footer {
   text-align: center;
 
@@ -84,4 +86,8 @@ $jumbotron-bg: #fff;
   h1 {
     text-align: center;
   }
+}
+
+.visible-xs h1 {
+  font-size: 2em;
 }
