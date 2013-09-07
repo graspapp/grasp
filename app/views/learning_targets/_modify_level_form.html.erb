@@ -1,6 +1,9 @@
 <%= form_tag learning_targets_modify_level_path, method: 'post' do%>
   <fieldset>
     <div class="form-group">
+      <%= label_tag :comment %>
+      <%= text_area_tag :comment, nil,
+         size: "30x5" %><br>
       <%= label_tag :level %>
       <%= select_tag :level,
         options_for_select([1,2,3,4]),

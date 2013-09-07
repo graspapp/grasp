@@ -4,12 +4,18 @@
     <td><%= e.student.full_name %></td>
     <td><%= p.level %></td>
     <td>
+      <%= p.comments.last.content if !p.comments.last.nil?%>
+    </td>
+    <td>
+      <%= p.comments.last.commenter_name if !p.comments.last.nil? %>
+    </td>    
+    <td>
       <%= link_to "Change Level", '#levelModal',
       :class => "btn btn-primary btn-sm changebutton",
       :data => { :toggle => "modal" }, 
       :id => e.student.id %>
 
-    <% end %>
+      <% end %>
     </td>
   </tr>
   <% end %>

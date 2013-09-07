@@ -39,6 +39,10 @@ class LearningTargetsController < ApplicationController
       progress = LearningTargetProgress.where("learning_target_id = ? AND
                                   enrollment_id = ?",
                                   @lt.id,enrollment.id).first
+
+      comment = Comment.create(content: params[:comment],
+                               commenter_name: current_student.full_name) 
+                                                          
     elsif teacher_signed_in?
       
       enrollment = Enrollment.where("student_id = ? AND course_id = ?",
@@ -47,9 +51,12 @@ class LearningTargetsController < ApplicationController
       progress = LearningTargetProgress.where("learning_target_id = ? AND
                                     enrollment_id = ?",
                                     @lt.id,enrollment.id).first
-      
+    
+      comment = Comment.create(content: params[:comment],
+                              commenter_name: current_teacher.full_name)  
     end
-
+        
+    progress.add_comment(comment)
     progress.change_level(params[:level])
     
     redirect_to @lt if progress.save  

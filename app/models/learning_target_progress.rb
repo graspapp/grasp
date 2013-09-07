@@ -6,6 +6,7 @@ class LearningTargetProgress < ActiveRecord::Base
 
   belongs_to :enrollment
   belongs_to :learning_target
+  has_many :comments
   
   validates_presence_of :level
 
@@ -15,5 +16,9 @@ class LearningTargetProgress < ActiveRecord::Base
   
   def change_level(lev)
     self.level = lev
+  end
+  
+  def add_comment(com)
+    self.comments << com
   end
 end
