@@ -12,6 +12,7 @@ describe LearningTargetProgress do
     it { should respond_to :level }
     it { should belong_to  :enrollment }
     it { should belong_to  :learning_target }
+    it { should have_many   :comments }
   end
 
   describe "with no level" do

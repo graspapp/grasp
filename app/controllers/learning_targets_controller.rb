@@ -55,7 +55,7 @@ class LearningTargetsController < ApplicationController
       comment = Comment.create(content: params[:comment],
                               commenter_name: current_teacher.full_name)  
     end
-        
+    
     progress.add_comment(comment)
     progress.change_level(params[:level])
     

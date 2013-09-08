@@ -13,6 +13,9 @@
   </td>
   <% end %>
   <td>     
-    <a data-toggle="modal" href="#levelModal">Change Level</a>
+    <%= link_to "Change Level", '#levelModal',
+    :class => "btn btn-primary btn-sm changebutton",
+    :data => { :toggle => "modal" }, 
+    :id => current_student.id %>
   </td>
 </tr>
