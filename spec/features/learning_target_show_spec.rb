@@ -16,6 +16,44 @@ describe "LearningTarget detail view" do
     end
 
     it { should have_content(@lt.number) }
+    
+    describe "when teacher has no students" do
+      
+      it { should have_content "There are currently no students enrolled." }
+    end  
+    
+    describe "when teacher has students" do
+      
+      before do
+        
+        @student = add_learning_target(FactoryGirl.create(:student), @lt)
+        @student = add_lt_progress(@student)
+        visit learning_target_path(@lt)
+      end
+      
+      it { should have_content @student.full_name }      
+      
+      it "should not allow level changes without a comment" do
+        click_link "Change Level"
+        
+        select  "2",        from: "level"
+
+        click_link "Change Level"
+        
+        page.should have_css('div.fade') #modal form should remain active
+        page.should have_content("You must leave a comment.") 
+      end
+      
+      it "should allow level changes with a comment" do
+        click_link "Change Level"
+        fill_in "Comment",  with: "This is why I changed the level."
+        select  "2",        from: "level"
+
+        click_link "Change Level"
+        
+        page.should have_content("This is why I changed the level.") 
+      end
+    end
   end
 
   describe "when logged in as a student" do
@@ -35,5 +73,11 @@ def add_learning_target(model, lt)
   model.courses << FactoryGirl.create(:course)
   model.courses.last.units << FactoryGirl.create(:unit)
   model.courses.last.units.last.learning_targets << lt
+  model
+end
+
+def add_lt_progress(model)
+  model.courses.last.units.last.learning_targets.last.
+    learning_target_progresses << FactoryGirl.create(:learning_target_progress)
   model
 end

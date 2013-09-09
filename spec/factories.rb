@@ -34,6 +34,11 @@ FactoryGirl.define do
     description "Ability to graph the sine function without a calculator."
   end
   
+  factory :enrollment do
+    course_id 1
+    student_id 1
+  end
+  
   factory :task do
     status            "Incomplete"
     content           "Do something."
@@ -41,8 +46,14 @@ FactoryGirl.define do
   end
 
   factory :learning_target_progress do
-    learning_target_id 0
-    level 1
+    learning_target_id 1
+    enrollment_id      1
+    level              1
+  end
+  
+  factory :comment do
+    content        "This is why I modified my LT"
+    commenter_name "Person Name"
   end
 end
 
