@@ -3,8 +3,19 @@
   <% new_progress %>
   <% else %>
   <td><%= current_student.current_progress(@lt.unit.course).level%></td>
+  <td>
+    <%= current_student.current_progress(@lt.unit.course).comments.last.content if !current_student.current_progress(@lt.unit.course).comments.last.nil? %>
+  </td>
+  <td>
+    <%= current_student.current_progress(@lt.unit.course).
+    comments.last.commenter_name if !current_student.current_progress(
+    @lt.unit.course).comments.last.nil? %>
+  </td>
   <% end %>
   <td>     
-    <a data-toggle="modal" href="#levelModal">Change Level</a>
+    <%= link_to "Change Level", '#levelModal',
+    :class => "btn btn-primary btn-sm changebutton",
+    :data => { :toggle => "modal" }, 
+    :id => current_student.id %>
   </td>
 </tr>

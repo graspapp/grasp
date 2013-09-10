@@ -31,14 +31,32 @@ class LearningTargetsController < ApplicationController
   def modify_level
     @lt = LearningTarget.find(params[:lt_id])
 
-    enrollment = Enrollment.where("student_id = ? AND course_id = ?",
-                                current_student.id, @lt.unit.course.id).first
-    progress = LearningTargetProgress.where("learning_target_id = ? AND "\
-                                  "enrollment_id = ?",
+    if student_signed_in?
+    
+      enrollment = Enrollment.where("student_id = ? AND course_id = ?",
+                                  current_student.id, @lt.unit.course.id).first
+                                  
+      progress = LearningTargetProgress.where("learning_target_id = ? AND
+                                  enrollment_id = ?",
                                   @lt.id,enrollment.id).first
 
-    p progress
+      comment = Comment.create(content: params[:comment],
+                               commenter_name: current_student.full_name) 
+                                                          
+    elsif teacher_signed_in?
       
+      enrollment = Enrollment.where("student_id = ? AND course_id = ?",
+                                  params[:student_id], @lt.unit.course.id).first
+                                  
+      progress = LearningTargetProgress.where("learning_target_id = ? AND
+                                    enrollment_id = ?",
+                                    @lt.id,enrollment.id).first
+    
+      comment = Comment.create(content: params[:comment],
+                              commenter_name: current_teacher.full_name)  
+    end
+    
+    progress.add_comment(comment)
     progress.change_level(params[:level])
     
     redirect_to @lt if progress.save  
