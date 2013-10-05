@@ -5,7 +5,7 @@ class LearningTargetProgress < ActiveRecord::Base
   after_initialize :init
 
   belongs_to :enrollment
-  belongs_to :learning_target
+  belongs_to :concept
   has_many :comments
   
   validates_presence_of :level

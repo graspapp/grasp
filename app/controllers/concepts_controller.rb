@@ -1,44 +1,44 @@
-class LearningTargetsController < ApplicationController
+class ConceptsController < ApplicationController
   def new
-    @lt = LearningTarget.new
+    @concept = Concept.new
   end
 
   def create
-    @lt = current_unit.learning_targets.build(lt_params)
-    if @lt.save
+    @concept = current_unit.concepts.build(concept_params)
+    if @concept.save
       redirect_to root_path
     end
   end
 
   def show
-    @lt = LearningTarget.find(params[:id])
+    @concept = Concept.find(params[:id])
   end
 
-  def lt_params
-    params.require(:learning_target).permit(:description)
+  def concept_params
+    params.require(:concept).permit(:description)
   end
 
   def new_progress
     enrollment = Enrollment.where("student_id = ? AND course_id = ?",
-                                  current_student.id, @lt.unit.course.id).first
+                                  current_student.id, @concept.unit.course.id).first
 
     progress = LearningTargetProgress.new(enrollment_id: enrollment.id,
-                                          learning_target_id: @lt.id)  
+                                          concept_id: @concept.id)  
 
-    redirect_to @lt if progress.save
+    redirect_to @concept if progress.save
   end
 
   def modify_level
-    @lt = LearningTarget.find(params[:lt_id])
+    @concept = Concept.find(params[:concept_id])
 
     if student_signed_in?
     
       enrollment = Enrollment.where("student_id = ? AND course_id = ?",
-                                  current_student.id, @lt.unit.course.id).first
+                                  current_student.id, @concept.unit.course.id).first
                                   
-      progress = LearningTargetProgress.where("learning_target_id = ? AND
+      progress = LearningTargetProgress.where("concept_id= ? AND
                                   enrollment_id = ?",
-                                  @lt.id,enrollment.id).first
+                                  @concept.id,enrollment.id).first
 
       comment = Comment.create(content: params[:comment],
                                commenter_name: current_student.full_name) 
@@ -46,11 +46,11 @@ class LearningTargetsController < ApplicationController
     elsif teacher_signed_in?
       
       enrollment = Enrollment.where("student_id = ? AND course_id = ?",
-                                  params[:student_id], @lt.unit.course.id).first
+                                  params[:student_id], @concept.unit.course.id).first
                                   
-      progress = LearningTargetProgress.where("learning_target_id = ? AND
+      progress = LearningTargetProgress.where("concept_id= ? AND
                                     enrollment_id = ?",
-                                    @lt.id,enrollment.id).first
+                                    @concept.id,enrollment.id).first
     
       comment = Comment.create(content: params[:comment],
                               commenter_name: current_teacher.full_name)  
@@ -59,7 +59,7 @@ class LearningTargetsController < ApplicationController
     progress.add_comment(comment)
     progress.change_level(params[:level])
     
-    redirect_to @lt if progress.save  
+    redirect_to @concept if progress.save  
   end
   
   helper_method :new_progress

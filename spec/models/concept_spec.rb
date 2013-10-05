@@ -1,51 +1,51 @@
 require 'spec_helper'
 
-describe "Learning targets" do
+describe Concept do
 
   before do
 
     teacher = FactoryGirl.create(:teacher)
     course = FactoryGirl.create(:course)
     unit = FactoryGirl.create(:unit)
-    @learning_target = FactoryGirl.create(:learning_target)
+    @concept = FactoryGirl.create(:concept)
 
     teacher.courses << course
     course.units << unit
-    unit.learning_targets << @learning_target
+    unit.concepts << @concept
   end
 
 
-  subject { @learning_target }
+  subject { @concept }
 
   describe "attributes" do
 
     it { should belong_to  :unit }
-    it { should have_many  :learning_target_progresses }
+    it { should have_many  :learning_target_progresses}
     it { should respond_to :description}
     it { should respond_to :number }
   end
   
   describe "when description is blank" do
-    before { @learning_target.description = "" }
+    before { @concept.description = "" }
     it { should_not be_valid }
   end
   
   describe "when number is blank" do
-    before { @learning_target.number = "" }
+    before { @concept.number = "" }
     it { should_not be_valid }
   end
   
-  describe "learning target relationships" do
+  describe "concept relationships" do
     
-    before { @learning_target.save } 
+    before { @concept.save } 
     
-    let!(:task1) { FactoryGirl.create(:task, learning_target: @learning_target) }
-    let!(:task2) { FactoryGirl.create(:task, content: "Do something else.", learning_target: @learning_target) }   
+    let!(:task1) { FactoryGirl.create(:task, concept: @concept) }
+    let!(:task2) { FactoryGirl.create(:task, content: "Do something else.", concept: @concept) }   
     
     
     it "should destroy associated tasks" do
-      tasks = @learning_target.tasks.to_a
-      @learning_target.destroy
+      tasks = @concept.tasks.to_a
+      @concept.destroy
       expect(tasks).not_to be_empty
       tasks.each do |task|
         expect(Task.where(id: task.id)).to be_empty

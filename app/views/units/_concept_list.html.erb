@@ -1,0 +1,25 @@
+<div class="panel">
+  <div class="panel-heading concept-heading clearfix">Concepts
+    <% if teacher_signed_in? %>
+    <a data-toggle="modal" href="#conceptModal">
+      <button type="button" class="btn btn-default btn-sm pull-right">
+        New Concept
+      </button>
+    </a>
+    <% end %>
+  </div>
+  <table class="table" data-provides="rowlink">
+    <tr>
+      <th>Concept</th>
+      <th>Description</th>
+      <th>View more</th>
+    </tr>
+    <% @unit.concepts.each do |concept| %>
+      <tr>
+        <td><%= concept.number %></td>
+        <td><%= concept.description %></td>
+        <td><%= link_to "View more", concept %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

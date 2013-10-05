@@ -8,10 +8,10 @@ class UnitsController < ApplicationController
     @unit = Unit.find(params[:id])
   end
   
-  def add_lt
-    @lt = LearningTarget.new(unit_id: params[:current_unit], description: params[:lt_desc], number: params[:lt_number])
+  def add_concept
+    @concept = Concept.new(unit_id: params[:current_unit], description: params[:concept_desc], number: params[:concept_number])
 
-    @lt.save
+    @concept.save
       
     redirect_to unit_path(params[:current_unit])
   end

@@ -10,5 +10,5 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe LearningTargetsHelper do
+describe ConceptsHelper do
 end

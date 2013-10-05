@@ -1,4 +1,4 @@
-class LearningTarget < ActiveRecord::Base
+class Concept < ActiveRecord::Base
 
   belongs_to :unit
   has_many :learning_target_progresses, dependent: :destroy
