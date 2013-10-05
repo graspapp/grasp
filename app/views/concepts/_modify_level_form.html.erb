@@ -1,4 +1,4 @@
-<%= form_tag learning_targets_modify_level_path, id:"levelForm", 
+<%= form_tag concepts_modify_level_path, id:"levelForm", 
   method: 'post' do%>
   <fieldset>
     <div class="form-group">
@@ -10,7 +10,7 @@
       <%= select_tag :level,
         options_for_select([1,2,3,4]),
         class: "form-control" %>
-      <%= hidden_field_tag 'lt_id', params[:id] %>
+      <%= hidden_field_tag 'concept_id', params[:id] %>
       <%= hidden_field_tag 'student_id', params[:student_id]%>
     </div>
     <%= button_tag "Change Level",

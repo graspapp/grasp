@@ -1,15 +1,19 @@
-<div class="tab-pane active fade in" id="<%= @unit.name %>" >
-  <% if @unit.learning_targets.first.nil? %>
+<div class="tab-pane active fade in" id="<%= @unit.name %>">
+
+  <% if @unit.concepts.first.nil? %>
+
     <div class="tab-content">
       <div class="no-courses text-center">
-        Would you like to <a data-toggle="modal" href="#ltModal">add a learning target</a> for <%= @unit.name %>?
+        Would you like to <a data-toggle="modal" href="#conceptModal">add a
+          concept</a> for <%= @unit.name %>?
       </div>
     </div>
-    
-    <% else %>
-    
+
+  <% else %>
+
     <div class="tab-content">
-        <%= render 'learning_target_list' %>
+      <%= render 'concept_list' %>
     </div>
-    
-    <% end %>
+
+  <% end %>
+</div>

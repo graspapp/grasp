@@ -1,4 +1,4 @@
-<% @lt.unit.course.enrollments.each do |e| %>
+<% @concept.unit.course.enrollments.each do |e| %>
   <% e.learning_target_progresses.each do |p| %>
   <tr id=<%= e.student.id %> >
     <td><%= e.student.full_name %></td>

@@ -4,10 +4,10 @@ describe "Unit home" do
 
   before do
     
-    teacher = add_course_and_unit(FactoryGirl.create(:teacher))
-    @unit = teacher.courses.last.units.last
-    @unit.learning_targets.create(number: "3.5", description: "2D Vectors")
-    @learning_target = @unit.learning_targets.last
+    @teacher = add_course_and_unit(FactoryGirl.create(:teacher))
+    @unit = @teacher.courses.last.units.last
+    @unit.concepts.create(number: "3.5", description: "2D Vectors")
+    @concept = @unit.concepts.last
 
     visit unit_path(@unit)
   end
@@ -27,6 +27,21 @@ describe "Unit home" do
 
 
   describe "when logged in as a teacher" do
+
+    before do
+      sign_in @teacher
+      visit unit_path(@unit)
+    end
+
+    describe "and no concepts exist" do
+
+      before do
+        @unit.concepts.delete_all
+        visit unit_path(@unit)
+      end
+
+      it { should have_content("add a concept") }
+    end
   end
 
   describe "when logged in as a student" do
@@ -37,12 +52,12 @@ describe "Unit home" do
       visit unit_path(@unit)
     end
 
-    it "should list learning target numbers" do
-      should have_content(@learning_target.number)
+    it "should list concept numbers" do
+      should have_content(@concept.number)
     end
 
-    it "should list learning target descriptions" do
-      should have_content(@learning_target.description)
+    it "should list concept descriptions" do
+      should have_content(@concept.description)
     end
   end
 end

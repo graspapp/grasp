@@ -8,11 +8,11 @@ describe LearningTargetProgress do
 
   describe "attributes" do
 
-    it { should respond_to :learning_target_id }
+    it { should respond_to :concept_id }
     it { should respond_to :level }
     it { should belong_to  :enrollment }
-    it { should belong_to  :learning_target }
-    it { should have_many   :comments }
+    it { should belong_to  :concept}
+    it { should have_many  :comments }
   end
 
   describe "with no level" do
