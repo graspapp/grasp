@@ -29,7 +29,7 @@ FactoryGirl.define do
     number "1.2"
   end
   
-  factory :learning_target do
+  factory :concept do
     number      "1.1a"
     description "Ability to graph the sine function without a calculator."
   end
@@ -42,13 +42,13 @@ FactoryGirl.define do
   factory :task do
     status            "Incomplete"
     content           "Do something."
-    learning_target
+    concept 
   end
 
   factory :learning_target_progress do
-    learning_target_id 1
-    enrollment_id      1
-    level              1
+    concept_id    1
+    enrollment_id 1
+    level         1
   end
   
   factory :comment do

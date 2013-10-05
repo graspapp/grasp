@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130907010816) do
+ActiveRecord::Schema.define(version: 20131005095933) do
 
   create_table "comments", force: true do |t|
     t.string   "content"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20130907010816) do
   end
 
   add_index "comments", ["created_at"], name: "index_comments_on_created_at"
+
+  create_table "concepts", force: true do |t|
+    t.integer  "unit_id"
+    t.string   "number"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "learning_target_progress_id"
+  end
 
   create_table "courses", force: true do |t|
     t.integer  "teacher_id"
@@ -42,17 +51,8 @@ ActiveRecord::Schema.define(version: 20130907010816) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "enrollment_id"
-    t.integer  "learning_target_id"
+    t.integer  "concept_id"
     t.integer  "level"
-  end
-
-  create_table "learning_targets", force: true do |t|
-    t.integer  "unit_id"
-    t.string   "number"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "learning_target_progress_id"
   end
 
   create_table "roles", force: true do |t|
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20130907010816) do
   create_table "tasks", force: true do |t|
     t.string   "status"
     t.string   "content"
-    t.integer  "learning_target_id"
+    t.integer  "concept_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "LearningTarget detail view" do
 
-  before { @lt = FactoryGirl.create(:learning_target) }
+  before { @lt = FactoryGirl.create(:concept) }
 
   subject { page }
 
@@ -10,9 +10,9 @@ describe "LearningTarget detail view" do
 
     before do
 
-      @teacher = add_learning_target(FactoryGirl.create(:teacher), @lt)
+      @teacher = add_concept(FactoryGirl.create(:teacher), @lt)
       sign_in @teacher
-      visit learning_target_path(@lt)
+      visit concept_path(@lt)
     end
 
     it { should have_content(@lt.number) }
@@ -26,9 +26,9 @@ describe "LearningTarget detail view" do
       
       before do
         
-        @student = add_learning_target(FactoryGirl.create(:student), @lt)
+        @student = add_concept(FactoryGirl.create(:student), @lt)
         @student = add_lt_progress(@student)
-        visit learning_target_path(@lt)
+        visit concept_path(@lt)
       end
       
       it { should have_content @student.full_name }      
@@ -60,24 +60,24 @@ describe "LearningTarget detail view" do
 
     before do
 
-      @student = add_learning_target(FactoryGirl.create(:student), @lt)
+      @student = add_concept(FactoryGirl.create(:student), @lt)
       sign_in @student
-      visit learning_target_path(@lt)
+      visit concept_path(@lt)
     end
 
     it { should have_content(@lt.number) }
   end
 end
 
-def add_learning_target(model, lt)
+def add_concept(model, lt)
   model.courses << FactoryGirl.create(:course)
   model.courses.last.units << FactoryGirl.create(:unit)
-  model.courses.last.units.last.learning_targets << lt
+  model.courses.last.units.last.concepts << lt
   model
 end
 
 def add_lt_progress(model)
-  model.courses.last.units.last.learning_targets.last.
+  model.courses.last.units.last.concepts.last.
     learning_target_progresses << FactoryGirl.create(:learning_target_progress)
   model
 end
