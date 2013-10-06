@@ -8,8 +8,8 @@ gem 'bootstrap-sass',
   branch: '3'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'faker', '~> 1.2.0'
-gem 'will_paginate', '~> 3.0.4'
-gem 'bootstrap-will_paginate', '~> 0.0.9'
+gem 'will_paginate', '~> 3.0.5'
+gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'jquery-rails', '~> 3.0.1'
 gem 'turbolinks', '~> 1.3.0'
 gem 'therubyracer', '~> 0.12.0'
@@ -20,8 +20,8 @@ gem 'coffee-rails', '~> 4.0.0.beta1'
 gem 'uglifier', '~> 2.2.1'
 
 gem 'coveralls', require: false
-gem 'newrelic_rpm', '~> 3.6.6.147'
-gem 'devise', '~> 3.0.2'
+gem 'newrelic_rpm', '~> 3.6.7.159'
+gem 'devise', '~> 3.1.1'
 gem 'cancan', '~> 1.6.10'
 
 group :development, :test do
@@ -42,6 +42,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '~> 0.16.0'
+  gem 'pg', '~> 0.17.0'
   gem 'rails_12factor', '~> 0.0.2'
 end
