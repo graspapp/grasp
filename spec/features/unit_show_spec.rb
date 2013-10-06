@@ -59,6 +59,16 @@ describe "Unit home" do
     it "should list concept descriptions" do
       should have_content(@concept.description)
     end
+
+    describe "and no concepts exist" do
+
+      before do
+        @unit.concepts.delete_all
+        visit unit_path(@unit)
+      end
+
+      it { should have_content("Uh oh") }
+    end
   end
 end
 
