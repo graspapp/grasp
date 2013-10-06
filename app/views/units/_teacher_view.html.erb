@@ -1,19 +1,5 @@
-<div class="tab-pane active fade in" id="<%= @unit.name %>">
-
-  <% if @unit.concepts.first.nil? %>
-
-    <div class="tab-content">
-      <div class="no-courses text-center">
-        Would you like to <a data-toggle="modal" href="#conceptModal">add a
-          concept</a> for <%= @unit.name %>?
-      </div>
-    </div>
-
-  <% else %>
-
-    <div class="tab-content">
-      <%= render 'concept_list' %>
-    </div>
-
-  <% end %>
-</div>
+<% unless @unit.concepts.empty? %>
+  <%= render 'concept_list' %>
+<% else %>
+  <%= render 'no_concepts_warning_teacher' %>
+<% end %>
