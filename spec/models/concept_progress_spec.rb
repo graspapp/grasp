@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe LearningTargetProgress do
+describe ConceptProgress do
 
-  let (:ltp) { FactoryGirl.create(:learning_target_progress) }
+  let (:cp) { FactoryGirl.create(:concept_progress) }
 
-  subject { ltp }
+  subject { cp }
 
   describe "attributes" do
 
@@ -17,7 +17,7 @@ describe LearningTargetProgress do
 
   describe "with no level" do
 
-    before { ltp.level = nil }
+    before { cp.level = nil }
     it { should_not be_valid }
   end
 end

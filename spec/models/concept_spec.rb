@@ -20,7 +20,7 @@ describe Concept do
   describe "attributes" do
 
     it { should belong_to  :unit }
-    it { should have_many  :learning_target_progresses}
+    it { should have_many  :concept_progresses}
     it { should respond_to :description}
     it { should respond_to :number }
   end
@@ -40,7 +40,8 @@ describe Concept do
     before { @concept.save } 
     
     let!(:task1) { FactoryGirl.create(:task, concept: @concept) }
-    let!(:task2) { FactoryGirl.create(:task, content: "Do something else.", concept: @concept) }   
+    let!(:task2) { FactoryGirl.create(:task, content: "Do something else.",
+                                      concept: @concept) }   
     
     
     it "should destroy associated tasks" do

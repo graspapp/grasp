@@ -8,7 +8,7 @@ describe Comment do
   describe "attributes" do
     
     it { should respond_to :content }
-    it { should belong_to :learning_target_progress }
+    it { should belong_to :concept_progress }
   end
   
   describe "with no content" do

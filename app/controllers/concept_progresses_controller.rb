@@ -1,0 +1,2 @@
+class ConceptProgressesController < ApplicationController
+end

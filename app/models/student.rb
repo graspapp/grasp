@@ -26,6 +26,6 @@ class Student < ActiveRecord::Base
   
   def current_progress(course)
     e = Enrollment.where("student_id = ? AND course_id = ?", self.id, course.id).first
-    LearningTargetProgress.find_by_enrollment_id(e.id)
+    ConceptProgress.find_by_enrollment_id(e.id)
   end
 end
