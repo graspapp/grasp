@@ -45,7 +45,7 @@ FactoryGirl.define do
     concept 
   end
 
-  factory :learning_target_progress do
+  factory :concept_progress do
     concept_id    1
     enrollment_id 1
     level         1

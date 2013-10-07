@@ -9,5 +9,5 @@ describe "Enrollment" do
 
   it { should belong_to :course }
   it { should belong_to :student }
-  it { should have_many :learning_target_progresses }
+  it { should have_many :concept_progresses }
 end

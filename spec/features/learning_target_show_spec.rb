@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "LearningTarget detail view" do
+describe "Concept detail view" do
 
-  before { @lt = FactoryGirl.create(:concept) }
+  before { @concept = FactoryGirl.create(:concept) }
 
   subject { page }
 
@@ -10,12 +10,12 @@ describe "LearningTarget detail view" do
 
     before do
 
-      @teacher = add_concept(FactoryGirl.create(:teacher), @lt)
+      @teacher = add_concept(FactoryGirl.create(:teacher), @concept)
       sign_in @teacher
-      visit concept_path(@lt)
+      visit concept_path(@concept)
     end
 
-    it { should have_content(@lt.number) }
+    it { should have_content(@concept.number) }
     
     describe "when teacher has no students" do
       
@@ -26,9 +26,9 @@ describe "LearningTarget detail view" do
       
       before do
         
-        @student = add_concept(FactoryGirl.create(:student), @lt)
-        @student = add_lt_progress(@student)
-        visit concept_path(@lt)
+        @student = add_concept(FactoryGirl.create(:student), @concept)
+        @student = add_concept_progress(@student)
+        visit concept_path(@concept)
       end
       
       it { should have_content @student.full_name }      
@@ -60,24 +60,24 @@ describe "LearningTarget detail view" do
 
     before do
 
-      @student = add_concept(FactoryGirl.create(:student), @lt)
+      @student = add_concept(FactoryGirl.create(:student), @concept)
       sign_in @student
-      visit concept_path(@lt)
+      visit concept_path(@concept)
     end
 
-    it { should have_content(@lt.number) }
+    it { should have_content(@concept.number) }
   end
 end
 
-def add_concept(model, lt)
+def add_concept(model, concept)
   model.courses << FactoryGirl.create(:course)
   model.courses.last.units << FactoryGirl.create(:unit)
-  model.courses.last.units.last.concepts << lt
+  model.courses.last.units.last.concepts << concept
   model
 end
 
-def add_lt_progress(model)
+def add_concept_progress(model)
   model.courses.last.units.last.concepts.last.
-    learning_target_progresses << FactoryGirl.create(:learning_target_progress)
+    concept_progresses << FactoryGirl.create(:concept_progress)
   model
 end
