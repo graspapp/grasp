@@ -1,5 +1,5 @@
 <% @concept.unit.course.enrollments.each do |e| %>
-  <% e.learning_target_progresses.each do |p| %>
+  <% e.concept_progresses.each do |p| %>
   <tr id=<%= e.student.id %> >
     <td><%= e.student.full_name %></td>
     <td><%= p.level %></td>

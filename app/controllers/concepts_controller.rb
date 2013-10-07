@@ -22,7 +22,7 @@ class ConceptsController < ApplicationController
     enrollment = Enrollment.where("student_id = ? AND course_id = ?",
                                   current_student.id, @concept.unit.course.id).first
 
-    progress = LearningTargetProgress.new(enrollment_id: enrollment.id,
+    progress = ConceptProgress.new(enrollment_id: enrollment.id,
                                           concept_id: @concept.id)  
 
     redirect_to @concept if progress.save
@@ -36,7 +36,7 @@ class ConceptsController < ApplicationController
       enrollment = Enrollment.where("student_id = ? AND course_id = ?",
                                   current_student.id, @concept.unit.course.id).first
                                   
-      progress = LearningTargetProgress.where("concept_id= ? AND
+      progress = ConceptProgress.where("concept_id= ? AND
                                   enrollment_id = ?",
                                   @concept.id,enrollment.id).first
 
@@ -48,7 +48,7 @@ class ConceptsController < ApplicationController
       enrollment = Enrollment.where("student_id = ? AND course_id = ?",
                                   params[:student_id], @concept.unit.course.id).first
                                   
-      progress = LearningTargetProgress.where("concept_id= ? AND
+      progress = ConceptProgress.where("concept_id= ? AND
                                     enrollment_id = ?",
                                     @concept.id,enrollment.id).first
     

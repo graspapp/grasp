@@ -1,4 +1,4 @@
-class LearningTargetProgress < ActiveRecord::Base
+class ConceptProgress < ActiveRecord::Base
 
   has_paper_trail
 
