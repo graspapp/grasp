@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131007083413) do
+ActiveRecord::Schema.define(version: 20131008095946) do
 
   create_table "comments", force: true do |t|
     t.string   "content"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20131007083413) do
     t.integer  "enrollment_id"
     t.integer  "concept_id"
     t.integer  "level"
+    t.text     "type_of_error"
+    t.text     "next_steps"
   end
 
   create_table "concepts", force: true do |t|
