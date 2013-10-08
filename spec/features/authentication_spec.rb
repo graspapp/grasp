@@ -133,7 +133,7 @@ describe 'Authentication' do
       before { click_button 'Sign in' }
 
       it do
-        should have_selector('p.alert.alert-error',
+        should have_selector('p.alert.alert-danger',
                              text: 'Invalid email or password.')
       end
     end

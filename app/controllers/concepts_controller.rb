@@ -1,4 +1,6 @@
 class ConceptsController < ApplicationController
+  before_filter :authenticate_user
+
   def new
     @concept = Concept.new
   end
@@ -63,4 +65,9 @@ class ConceptsController < ApplicationController
   end
   
   helper_method :new_progress
+end
+
+def authenticate_user  
+  redirect_to sign_in_path unless student_signed_in? or teacher_signed_in?
+  flash[:alert] = "You need to sign in or sign up before continuing."
 end

@@ -9,13 +9,18 @@ describe "Unit home" do
     @unit.concepts.create(number: "3.5", description: "2D Vectors")
     @concept = @unit.concepts.last
 
-    visit unit_path(@unit)
   end
 
   subject { page }
 
   describe "persistent attributes" do
 
+    before do
+      
+      sign_in @teacher
+      visit unit_path(@unit)
+    end
+    
     it "should have the unit's name as the page title" do
       should have_title(@unit.name)
     end
