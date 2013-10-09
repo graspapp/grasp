@@ -1,5 +1,7 @@
 class UnitsController < ApplicationController
 
+  before_filter :authenticate_user
+  
   def new
     @unit = Unit.new
   end
@@ -19,4 +21,8 @@ class UnitsController < ApplicationController
   def unit_params
     params.require(:unit).permit(:name)
   end
+end
+
+def authenticate_user  
+  redirect_to sign_in_path, :flash => { :alert => "You need to sign in or sign up before continuing."} unless student_signed_in? or teacher_signed_in?
 end
