@@ -19,11 +19,11 @@ class ConceptsController < ApplicationController
   end
 
   def new_progress
-    enrollment = Enrollment.where("student_id = ? AND course_id = ?",
-                                  current_student.id, @concept.unit.course.id).first
+    enrollment = Enrollment.where(student_id: current_student.id,
+                                  course_id: @concept.unit.course.id).first
 
     progress = ConceptProgress.new(enrollment_id: enrollment.id,
-                                          concept_id: @concept.id)  
+                                   concept_id: @concept.id)  
 
     redirect_to @concept if progress.save
   end
@@ -33,27 +33,25 @@ class ConceptsController < ApplicationController
 
     if student_signed_in?
     
-      enrollment = Enrollment.where("student_id = ? AND course_id = ?",
-                                  current_student.id, @concept.unit.course.id).first
+      enrollment = Enrollment.where(student_id: current_student.id,
+                                    course_id: @concept.unit.course.id).first
                                   
-      progress = ConceptProgress.where("concept_id= ? AND
-                                  enrollment_id = ?",
-                                  @concept.id,enrollment.id).first
+      progress = ConceptProgress.where(concept_id: @concept.id,
+                                       enrollment_id: enrollment.id).first
 
       comment = Comment.create(content: params[:comment],
                                commenter_name: current_student.full_name) 
                                                           
     elsif teacher_signed_in?
       
-      enrollment = Enrollment.where("student_id = ? AND course_id = ?",
-                                  params[:student_id], @concept.unit.course.id).first
+      enrollment = Enrollment.where(student_id: params[:student_id],
+                                    course_id: @concept.unit.course.id).first
                                   
-      progress = ConceptProgress.where("concept_id= ? AND
-                                    enrollment_id = ?",
-                                    @concept.id,enrollment.id).first
+      progress = ConceptProgress.where(concept_id: @concept.id,
+                                       enrollment_id: enrollment.id).first
     
       comment = Comment.create(content: params[:comment],
-                              commenter_name: current_teacher.full_name)  
+                               commenter_name: current_teacher.full_name)  
     end
     
     progress.add_comment(comment)
