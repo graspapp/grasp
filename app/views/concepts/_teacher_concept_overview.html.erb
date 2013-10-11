@@ -1,0 +1,22 @@
+<% @concept.unit.course.enrollments.each do |e| %>
+  <% e.concept_progresses.each do |p| %>
+    <tr id=<%= e.student.id %> >
+      <td><%= e.student.full_name %></td>
+      <td><%= p.level %></td>
+      <td><%= p.type_of_error %></td>
+      <td><%= p.next_steps %></td>
+      <td>
+        <%= link_to "Edit", '#conceptModal',
+          :class => "btn btn-primary btn-sm changebutton",
+          :data => { :toggle => "modal" }, 
+          :id => e.student.id %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
+
+<script>
+$('a.changebutton').on("click", function(e) {
+    $('#student_id').val(e.target.id)
+    })
+</script>
