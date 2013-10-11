@@ -1,0 +1,39 @@
+<%= form_tag concepts_modify_concept_path,
+  id: "conceptForm",
+  method: 'post' do %>
+  <fieldset>
+    <div class="form-group">
+      <%= label_tag :type_of_error %>
+      <%= select_tag :type_of_error,
+        options_for_select(["Example type of error."]),
+        class: "form-control" %>
+
+      <%= label_tag :next_steps %>
+      <%= select_tag :next_steps,
+        options_for_select(["Example next steps.", "Another example."]),
+        class: "form-control" %>
+
+      <%= label_tag :level %>
+      <%= select_tag :level,
+        options_for_select([1,2,3,4]),
+        class: "form-control" %>
+
+      <%= hidden_field_tag 'concept_id', params[:id] %>
+      <% if student_signed_in? %>
+        <%= hidden_field_tag 'student_id', current_student.id %>
+      <% elsif teacher_signed_in? %>
+        <%= hidden_field_tag 'student_id', params[:student_id] %>
+      <% end %>
+    </div>
+    <%= button_tag "Change Level",
+      id: "conceptButton",
+      class: "btn btn-default",
+      "data-dismiss" => "modal" %>
+  </fieldset>
+<% end %>
+
+<script>
+$('#conceptButton').click(function() {
+  $('#conceptForm').submit();
+});
+</script>

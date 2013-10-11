@@ -13,11 +13,7 @@ class ConceptProgress < ActiveRecord::Base
     not_available = "N/A"
 
     self.level ||= 1
-    self.type_of_error = not_available
-    self.next_steps = not_available
-  end
-  
-  def change_level(lev)
-    self.level = lev
+    self.type_of_error ||= not_available
+    self.next_steps ||= not_available
   end
 end

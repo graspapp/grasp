@@ -38,8 +38,8 @@ Grasp::Application.routes.draw do
   get "/acknowledgements", to: "static_pages#acknowledgements"
   get "/sign_up",          to: "static_pages#sign_up"
 
-  post 'students/add_course',   to: 'students#add_course'
-  post 'teachers/add_unit',     to: 'teachers#add_unit'
-  post 'units/add_concept',     to: 'units#add_concept'
-  post 'concepts/modify_level', to: 'concepts#modify_level'
+  post 'students/add_course',     to: 'students#add_course'
+  post 'teachers/add_unit',       to: 'teachers#add_unit'
+  post 'units/add_concept',       to: 'units#add_concept'
+  post 'concepts/modify_concept', to: 'concepts#modify_concept'
 end

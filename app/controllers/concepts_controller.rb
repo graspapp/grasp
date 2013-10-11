@@ -44,7 +44,7 @@ class ConceptsController < ApplicationController
     redirect_to @concept if progress.save
   end
 
-  def modify_level
+  def modify_concept
     @concept = Concept.find(params[:concept_id])
 
     if student_signed_in?
@@ -62,8 +62,10 @@ class ConceptsController < ApplicationController
       progress = ConceptProgress.where(concept_id: @concept.id,
                                        enrollment_id: enrollment.id).first
     end
-    
-    progress.change_level(params[:level])
+
+    progress.update_attributes(level: params[:level],
+                               type_of_error: params[:type_of_error],
+                               next_steps: params[:next_steps])
     
     redirect_to @concept if progress.save  
   end
