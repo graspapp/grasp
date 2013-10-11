@@ -61,7 +61,7 @@ class ConceptsController < ApplicationController
     
     redirect_to @concept if progress.save  
   end
-  
+
   helper_method :new_progress
 end
 
