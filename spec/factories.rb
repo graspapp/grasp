@@ -50,10 +50,5 @@ FactoryGirl.define do
     enrollment_id 1
     level         1
   end
-  
-  factory :comment do
-    content        "This is why I modified my LT"
-    commenter_name "Person Name"
-  end
 end
 

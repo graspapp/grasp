@@ -8,17 +8,24 @@
     </a>
     <% end %>
   </div>
-  <table class="table" data-provides="rowlink">
-    <tr>
+  <table class="table table-hover" data-provides="rowlink">
+    <thead>
       <th>Concept</th>
       <th>Description</th>
-      <th>View more</th>
-    </tr>
+      <% if student_signed_in? %>
+        <th>Current Level</th>
+        <th>Next Steps</th>
+      <% end %>
+    </thead>
     <% @unit.concepts.each do |concept| %>
-      <tr>
+      <tr onclick="document.location = '<%= concept_path(concept) %>'">
         <td><%= concept.number %></td>
         <td><%= concept.description %></td>
-        <td><%= link_to "View more", concept %></td>
+        <% if student_signed_in? %>
+          <% progress = concept_progress_for(concept, current_student) %>
+          <td><%= progress.level %></td>
+          <td><%= progress.next_steps %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>

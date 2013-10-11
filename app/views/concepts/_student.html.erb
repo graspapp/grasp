@@ -1,9 +1,26 @@
-<table class="table" data-provides="rowlink">
-  <tr>
+<table class="table">
+  <thead>
     <th>Level</th>
-    <th>Comment</th>
-    <th>Commented By</th>
-    <th>Level Up?</th>
-  </tr>  
-  <%= render 'student_progress' %>
-<table>
+    <th>Date</th>
+    <th>Type of Error</th>
+    <th>Next Steps</th>
+  </thead>  
+  <tr>
+    <% if @progress.nil? %>
+      <% new_progress %>
+    <% else %>
+      <td>
+        <%= @progress.level %>
+      </td>
+    <% end %>
+    <td><%= @concept.created_at.to_formatted_s(:mdy) %></td>
+    <td><%= @progress.type_of_error %></td>
+    <td><%= @progress.next_steps %></td>
+    <td>
+      <%= link_to "Edit Concept", '#conceptModal',
+        :class => "btn btn-primary btn-sm changebutton",
+        :data => { :toggle => "modal" }, 
+        :id => current_student.id %>
+    </td>
+  </tr>
+</table>
