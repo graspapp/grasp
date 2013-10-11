@@ -1,28 +1,20 @@
 <% @concept.unit.course.enrollments.each do |e| %>
   <% e.concept_progresses.each do |p| %>
-  <tr id=<%= e.student.id %> >
-    <td><%= e.student.full_name %></td>
-    <td><%= p.level %></td>
-    <td>
-      <%= p.comments.last.content if !p.comments.last.nil?%>
-    </td>
-    <td>
-      <%= p.comments.last.commenter_name if !p.comments.last.nil? %>
-    </td>    
-    <td>
-      <%= link_to "Edit", '#levelModal',
-      :class => "btn btn-primary btn-sm changebutton",
-      :data => { :toggle => "modal" }, 
-      :id => e.student.id %>
-
-      <% end %>
-    </td>
-  </tr>
+    <tr id=<%= e.student.id %> >
+      <td><%= e.student.full_name %></td>
+      <td><%= p.level %></td>
+      <td>
+        <%= link_to "Edit", '#levelModal',
+          :class => "btn btn-primary btn-sm changebutton",
+          :data => { :toggle => "modal" }, 
+          :id => e.student.id %>
+      </td>
+    </tr>
   <% end %>
-
+<% end %>
 
 <script>
-  $('a.changebutton').on("click", function(e) {
+$('a.changebutton').on("click", function(e) {
     $('#student_id').val(e.target.id)
-  })
+    })
 </script>

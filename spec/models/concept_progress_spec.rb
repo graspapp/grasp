@@ -11,8 +11,6 @@ describe ConceptProgress do
     it { should belong_to  :enrollment }
     it { should belong_to  :concept}
 
-    it { should have_many  :comments }
-
     it { should respond_to :enrollment_id }
     it { should respond_to :concept_id }
 

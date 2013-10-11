@@ -40,10 +40,6 @@ class ConceptsController < ApplicationController
                                   
       progress = ConceptProgress.where(concept_id: @concept.id,
                                        enrollment_id: enrollment.id).first
-
-      comment = Comment.create(content: params[:comment],
-                               commenter_name: current_student.full_name) 
-                                                          
     elsif teacher_signed_in?
       
       enrollment = Enrollment.where(student_id: params[:student_id],
@@ -51,12 +47,8 @@ class ConceptsController < ApplicationController
                                   
       progress = ConceptProgress.where(concept_id: @concept.id,
                                        enrollment_id: enrollment.id).first
-    
-      comment = Comment.create(content: params[:comment],
-                               commenter_name: current_teacher.full_name)  
     end
     
-    progress.add_comment(comment)
     progress.change_level(params[:level])
     
     redirect_to @concept if progress.save  

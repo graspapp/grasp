@@ -1,11 +1,6 @@
 <%= form_tag concepts_modify_level_path, id:"levelForm", method: 'post' do %>
   <fieldset>
     <div class="form-group">
-      <%= label_tag :comment %>
-      <%= text_area_tag :comment, nil,
-        size: "50x5",
-        class: "form-control" %><br>
-         <span class="hide help-block">You must leave a comment.</span><br>
       <%= label_tag :level %>
       <%= select_tag :level,
         options_for_select([1,2,3,4]),
@@ -14,20 +9,8 @@
       <%= hidden_field_tag 'student_id', params[:student_id]%>
     </div>
     <%= button_tag "Change Level",
-       id:"levelButton",
-       class:"btn btn-default",
-       "data-dismiss" => "modal" %>
+      id:"levelButton",
+      class:"btn btn-default",
+      "data-dismiss" => "modal" %>
   </fieldset>
-<%end%>
-
-<script>
-$('#levelButton').click(function() {
-
-  if($('#comment').val() == "" ){
-    $('.help-block').attr('class', 'help-block')
-    return false;
-  }else{
-    $('#levelForm').submit();
-  }
-});
-</script>
+<% end %>
