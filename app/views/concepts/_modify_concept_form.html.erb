@@ -5,12 +5,14 @@
     <div class="form-group">
       <%= label_tag :type_of_error %>
       <%= select_tag :type_of_error,
-        options_for_select(["Example type of error."]),
+        options_for_select(["Concept", "Procedural", "Misconception",
+                            "Reasoning"]),
         class: "form-control" %>
 
       <%= label_tag :next_steps %>
       <%= select_tag :next_steps,
-        options_for_select(["Example next steps.", "Another example."]),
+        options_for_select(["I will do Khan Academy exercises.",
+                            "I will discuss with the teacher my mistake."]),
         class: "form-control" %>
 
       <%= label_tag :level %>
