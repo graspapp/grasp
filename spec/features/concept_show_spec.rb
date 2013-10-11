@@ -34,22 +34,22 @@ describe "Concept detail view" do
       it { should have_content @student.full_name }      
       
       it "should not allow level changes without a comment" do
-        click_link "Change Level"
+        click_link "Edit"
         
         select  "2",        from: "level"
 
-        click_link "Change Level"
+        click_link "Edit"
         
         page.should have_css('div.fade') #modal form should remain active
         page.should have_content("You must leave a comment.") 
       end
       
       it "should allow level changes with a comment" do
-        click_link "Change Level"
+        click_link "Edit"
         fill_in "Comment",  with: "This is why I changed the level."
         select  "2",        from: "level"
 
-        click_link "Change Level"
+        click_link "Edit"
         
         page.should have_content("This is why I changed the level.") 
       end
