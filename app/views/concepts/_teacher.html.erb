@@ -2,18 +2,12 @@
   <thead>
     <th>Student</th>
     <th>Level</th>
-    <th>Latest Comment</th>
-    <th>Commented By</th>
   </thead>
   <% if @concept.unit.course.enrollments.empty? %>
-      
     <div class="no-courses text-center">
       There are currently no students enrolled.
     </div>
-    
   <% else %>
-  
     <%= render 'teacher_progress' %>
-  
   <% end %>
 </table>
