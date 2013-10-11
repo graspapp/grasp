@@ -3,14 +3,6 @@
   <% new_progress %>
   <% else %>
   <td><%= current_student.current_progress(@concept.unit.course).level%></td>
-  <td>
-    <%= current_student.current_progress(@concept.unit.course).comments.last.content if !current_student.current_progress(@concept.unit.course).comments.last.nil? %>
-  </td>
-  <td>
-    <%= current_student.current_progress(@concept.unit.course).
-    comments.last.commenter_name if !current_student.current_progress(
-    @concept.unit.course).comments.last.nil? %>
-  </td>
   <% end %>
   <td>     
     <%= link_to "Edit Concept", '#levelModal',
