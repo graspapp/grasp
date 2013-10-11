@@ -1,10 +1,10 @@
-<%= form_tag concepts_modify_level_path, id:"levelForm", 
-  method: 'post' do%>
+<%= form_tag concepts_modify_level_path, id:"levelForm", method: 'post' do %>
   <fieldset>
     <div class="form-group">
       <%= label_tag :comment %>
       <%= text_area_tag :comment, nil,
-         size: "50x5" %><br>
+        size: "50x5",
+        class: "form-control" %><br>
          <span class="hide help-block">You must leave a comment.</span><br>
       <%= label_tag :level %>
       <%= select_tag :level,

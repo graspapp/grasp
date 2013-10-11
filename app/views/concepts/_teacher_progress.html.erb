@@ -10,7 +10,7 @@
       <%= p.comments.last.commenter_name if !p.comments.last.nil? %>
     </td>    
     <td>
-      <%= link_to "Change Level", '#levelModal',
+      <%= link_to "Edit", '#levelModal',
       :class => "btn btn-primary btn-sm changebutton",
       :data => { :toggle => "modal" }, 
       :id => e.student.id %>
