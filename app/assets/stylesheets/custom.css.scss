@@ -24,6 +24,12 @@ $jumbotron-bg: #fff;
 
 @import "bootstrap";
 
+.navbar-default {
+  ul.nav {
+    margin-top: 6px;
+  }
+}
+
 .footer {
   text-align: center;
 
