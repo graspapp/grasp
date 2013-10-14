@@ -8,25 +8,30 @@
         options_for_select(["Concept", "Procedural", "Misconception",
                             "Reasoning"]),
         class: "form-control" %>
+    </div>
 
+    <div class="form-group">
       <%= label_tag :next_steps %>
       <%= select_tag :next_steps,
         options_for_select(["I will do Khan Academy exercises.",
                             "I will discuss with the teacher my mistake."]),
         class: "form-control" %>
+    </div>
 
+    <div class="form-group">
       <%= label_tag :level %>
       <%= select_tag :level,
         options_for_select([1,2,3,4]),
         class: "form-control" %>
-
-      <%= hidden_field_tag 'concept_id', params[:id] %>
-      <% if student_signed_in? %>
-        <%= hidden_field_tag 'student_id', current_student.id %>
-      <% elsif teacher_signed_in? %>
-        <%= hidden_field_tag 'student_id', params[:student_id] %>
-      <% end %>
     </div>
+
+    <%= hidden_field_tag 'concept_id', params[:id] %>
+    <% if student_signed_in? %>
+      <%= hidden_field_tag 'student_id', current_student.id %>
+    <% elsif teacher_signed_in? %>
+      <%= hidden_field_tag 'student_id', params[:student_id] %>
+    <% end %>
+
     <%= button_tag "Change Level",
       id: "conceptButton",
       class: "btn btn-default",
