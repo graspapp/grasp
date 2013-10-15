@@ -4,17 +4,13 @@
   <fieldset>
     <div class="form-group">
       <%= label_tag :type_of_error %>
-      <%= select_tag :type_of_error,
-        options_for_select(["Concept", "Procedural", "Misconception",
-                            "Reasoning"]),
+      <%= select_tag :type_of_error, "", id: "typeOfErrorSelect",
         class: "form-control" %>
     </div>
 
     <div class="form-group">
       <%= label_tag :next_steps %>
-      <%= select_tag :next_steps,
-        options_for_select(["I will do Khan Academy exercises.",
-                            "I will discuss with the teacher my mistake."]),
+      <%= select_tag :next_steps, "", id: "nextStepsSelect",
         class: "form-control" %>
     </div>
 
@@ -40,7 +36,50 @@
 <% end %>
 
 <script>
+
+var json = {
+  "Procedural": [
+    "Practice problems.",
+    "Create a model card.",
+    "Narrate solution to a problem (Educreations app)."
+    ],
+  "Conceptual": [
+    "Create concept map with for self-testing.",
+    "Annotate notes after direct instruction.",
+    "Research online resources (Khan Academy, etc.)."
+    ],
+  "Misconception": [
+    "See teacher at beginning of active practice."
+    ],
+  "Reasoning": [
+    "Strengthen connections in your concept map.",
+    "Narrate problem solving and time stamp A, C, E.",
+    "WEC."
+    ]
+}
+
+$.each(json, function(value) {
+  $('#typeOfErrorSelect').append('<option value="' + value + '">' + value + '</option>');
+});
+
+$('#typeOfErrorSelect').change(function() {
+  $('#nextStepsSelect').empty();
+
+  var selection = $(this).val();
+  $.each(json, function(value, object) {
+    if(selection == value) {
+      $.each(object, function(i, v) {
+        $('#nextStepsSelect').append('<option value="' + v +'">' + v + '</option>');
+      });
+    }
+  });
+});
+
 $('#conceptButton').click(function() {
   $('#conceptForm').submit();
+});
+
+$(document).ready(function() {
+  $('#typeOfErrorSelect').change();
 });
 </script>
