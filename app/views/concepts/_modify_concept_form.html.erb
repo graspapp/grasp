@@ -59,7 +59,8 @@ var json = {
 }
 
 $.each(json, function(value) {
-  $('#typeOfErrorSelect').append('<option value="' + value + '">' + value + '</option>');
+  $('#typeOfErrorSelect').append('<option value="' + value + '">' + value +
+    '</option>');
 });
 
 $('#typeOfErrorSelect').change(function() {
@@ -69,7 +70,8 @@ $('#typeOfErrorSelect').change(function() {
   $.each(json, function(value, object) {
     if(selection == value) {
       $.each(object, function(i, v) {
-        $('#nextStepsSelect').append('<option value="' + v +'">' + v + '</option>');
+        $('#nextStepsSelect').append('<option value="' + v +'">' + v +
+          '</option>');
       });
     }
   });
@@ -82,4 +84,5 @@ $('#conceptButton').click(function() {
 $(document).ready(function() {
   $('#typeOfErrorSelect').change();
 });
+
 </script>
