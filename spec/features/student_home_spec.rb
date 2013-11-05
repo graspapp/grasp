@@ -39,6 +39,27 @@ describe "Student home" do
             click_button "Add Course"
           }.to change(@student.courses, :count).by(1)
         end
+
+        it "should not be able to add itself to a course multiple times" do
+
+          expect {
+            click_link "add one"
+            fill_in "Course code", with: @course_code
+            click_button "Add Course"
+
+            click_link "Add Course"
+            fill_in "Course code", with: @course_code
+            click_button "Add Course"
+          }.to change(@student.courses, :count).by(1)
+        end
+
+        it "should error when course doesn't exist" do
+          click_link "add one"
+          fill_in "Course code", with: 'foobar'
+          click_button "Add Course"
+
+          should have_content("does not exist")
+        end
       end
     end
   end
