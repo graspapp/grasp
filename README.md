@@ -2,20 +2,20 @@
 
 Grasp is a LMS for Common Core classrooms.
 
-# Contributing
+## Contributing
 
 1. Fork the repository.
 2. Check out a working branch.
 3. Make your changes.
 4. Submit a pull request.
 
-## Requirements
+### Requirements
 
 All contributions must meet the following requirements, if applicable.
 
 * Fully tested
 * Follow the style guide
 
-## Style Guide
+### Style Guide
 
 Refer to https://github.com/bbatsov/ruby-style-guide for our style guide.
