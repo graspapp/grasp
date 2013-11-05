@@ -19,7 +19,7 @@ describe "Teacher home" do
     
     it "should create a new course with the modal form" do
       
-      click_link("add one")
+      click_link("create one")
       expect(page).to have_selector('h4', text:"Create Your Course")
       fill_in "Course name", with: "Pre-Calculus"
       
