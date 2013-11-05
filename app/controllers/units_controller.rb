@@ -53,5 +53,8 @@ class UnitsController < ApplicationController
 end
 
 def authenticate_user  
-  redirect_to sign_in_path, :flash => { :alert => "You need to sign in or sign up before continuing."} unless student_signed_in? or teacher_signed_in?
+  redirect_to sign_in_path,
+    :flash => {
+      :alert => "You need to sign in or sign up before continuing."
+    } unless student_signed_in? or teacher_signed_in?
 end
