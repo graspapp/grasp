@@ -17,8 +17,7 @@
 <body>
   <%= render 'layouts/header' %>
   <div class="container gp-container">
-    <% if notice %><p class="alert alert-success"><%= notice %><% end %></p>
-    <% if alert %><p class="alert alert-danger"><%= alert %><% end %></p>
+    <%= render 'layouts/flash' %>
     <%= yield %>
     <%= render 'layouts/footer' %>
     <%= debug(params) if Rails.env.development? %>

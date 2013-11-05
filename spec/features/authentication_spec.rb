@@ -133,7 +133,7 @@ describe 'Authentication' do
       before { click_button 'Sign in' }
 
       it do
-        should have_selector('p.alert.alert-danger',
+        should have_selector('div.alert.alert-danger',
                              text: 'Invalid email or password.')
       end
     end
@@ -147,7 +147,7 @@ describe 'Authentication' do
       end
 
       it do
-        should have_selector('p.alert.alert-success',
+        should have_selector('div.alert.alert-success.alert-dismissable',
                              text: 'Signed in successfully.')
       end
     end
@@ -161,7 +161,7 @@ describe 'Authentication' do
       end
 
       it do
-        should have_selector('p.alert.alert-success',
+        should have_selector('div.alert.alert-success',
                              text: 'Signed in successfully.')
       end
     end
