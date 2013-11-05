@@ -26,6 +26,14 @@ describe "Unit home" do
     it "should include the unit's number and name in the heading" do
       should have_content("Unit #{ @unit.number } - #{ @unit.name }")
     end
+    
+    it "should display concepts in the right order" do
+      @unit.concepts.create(number: "2a", description: "bar")
+      @unit.concepts.create(number: "1a", description: "foo")
+      visit current_path
+
+      expect(page.text).to match(/.*1a.*2a/)
+    end
   end
 
 

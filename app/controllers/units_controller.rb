@@ -8,6 +8,7 @@ class UnitsController < ApplicationController
 
   def show
     @unit = Unit.find(params[:id])
+    @concepts = @unit.concepts.sort_by { |c| [c.number.length, c.number] }
 
     if student_signed_in?
       create_needed_concept_progresses_for current_student

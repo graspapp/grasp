@@ -17,7 +17,7 @@
         <th>Next Steps</th>
       <% end %>
     </thead>
-    <% @unit.concepts.each do |concept| %>
+    <% @concepts.each do |concept| %>
       <tr onclick="document.location = '<%= concept_path(concept) %>'">
         <td><%= concept.number %></td>
         <td><%= concept.description %></td>
