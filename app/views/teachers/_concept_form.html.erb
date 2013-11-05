@@ -4,16 +4,20 @@
       <%= label_tag :concept_number %>
       <%= text_field_tag :concept_number, nil,
         class: "form-control",
-        placeholder: "Concept Number"%><br>
-    
+        placeholder: "Concept Number"%>
+    </div>
+
+    <div class="form-group">
       <%= label_tag :concept_description %>  
       <%= text_area_tag :concept_desc, nil,
         class: "form-control",
         rows: "5",
-        placeholder: "Concept Description" %><br>
+        placeholder: "Concept Description" %>
         <%= hidden_field_tag :current_unit, @unit.id %>
+      </div>
         
+    <div class="form-group">
+      <%= submit_tag "Add Concept", class: "btn btn-default" %>
     </div>
-    <%= submit_tag "Add Concept", class: "btn btn-default" %>
   </fieldset>
 <% end %>
