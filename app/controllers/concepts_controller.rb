@@ -70,8 +70,6 @@ class ConceptsController < ApplicationController
     enrollment = Enrollment.where(student_id: student.id,
                                   course_id: course.id).last
 
-    p ConceptProgress.all
-
     ConceptProgress.where(enrollment_id: enrollment.id,
                           concept_id: concept.id).last
   end
