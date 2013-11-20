@@ -48,20 +48,15 @@ class ConceptsController < ApplicationController
     @concept = Concept.find(params[:concept_id])
 
     if student_signed_in?
-    
-      enrollment = Enrollment.where(student_id: current_student.id,
-                                    course_id: @concept.unit.course.id).first
-                                  
-      progress = ConceptProgress.where(concept_id: @concept.id,
-                                       enrollment_id: enrollment.id).first
+      student_id = current_student.id
     elsif teacher_signed_in?
-      
-      enrollment = Enrollment.where(student_id: params[:student_id],
-                                    course_id: @concept.unit.course.id).first
-                                  
-      progress = ConceptProgress.where(concept_id: @concept.id,
-                                       enrollment_id: enrollment.id).first
+      student_id = params[:student_id]
     end
+    
+    enrollment = Enrollment.where(student_id: student_id,
+                                  course_id: @concept.unit.course.id).first
+    progress = ConceptProgress.where(concept_id: student_id,
+                                     enrollment_id: enrollment.id).first
 
     progress.update_attributes(level: params[:level],
                                type_of_error: params[:type_of_error],
