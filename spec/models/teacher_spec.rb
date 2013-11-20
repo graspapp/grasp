@@ -15,6 +15,7 @@ describe 'Teacher' do
   it { should respond_to(:city) }
   it { should respond_to(:state) }
   it { should respond_to(:country) }
+  it { should have_many(:courses).dependent(:destroy) }
 
   describe 'when first name is blank' do
 

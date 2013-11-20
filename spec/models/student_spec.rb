@@ -7,6 +7,7 @@ describe 'Student' do
   subject { student }
 
   it { should have_many(:courses).through(:enrollments) }
+  it { should have_many(:enrollments).dependent(:destroy) }
 	it { should respond_to(:first_name) }
 	it { should respond_to(:last_name) }
 	it { should respond_to(:email) }

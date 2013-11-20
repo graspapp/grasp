@@ -14,6 +14,8 @@ describe "Course" do
 
     it { should belong_to :teacher }
     it { should have_many(:students).through(:enrollments) }
+    it { should have_many(:enrollments).dependent(:destroy) }
+    it { should have_many(:units).dependent(:destroy) }
 
     it { should respond_to :name }
     it { should respond_to :code }
