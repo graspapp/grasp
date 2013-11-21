@@ -44,6 +44,8 @@ describe "Unit home" do
       visit unit_path(@unit)
     end
 
+    it { should have_link ("Delete Unit")}
+    
     describe "and no concepts exist" do
 
       before do
@@ -52,6 +54,12 @@ describe "Unit home" do
       end
 
       it { should have_content("add a concept") }
+    end
+    
+    describe "unit deletion" do
+      it "should delete the unit" do
+        expect { click_link "Delete Unit"}.to change(Unit, :count).by(-1)
+      end
     end
   end
 
@@ -68,7 +76,8 @@ describe "Unit home" do
     it { should have_content(@concept.description) }
     it { should have_content(concept_progress_for(@concept, @student).level) }
     it { should have_content(concept_progress_for(@concept, @student)
-                             .next_steps) }
+                             .next_steps) }                         
+    it { should_not have_link ("Delete Unit")}
     
     describe "when a concept progress doesn't exist" do
 
