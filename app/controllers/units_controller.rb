@@ -15,6 +15,12 @@ class UnitsController < ApplicationController
     end
   end
   
+  def destroy
+    @unit = Unit.find(params[:id])
+    @unit.destroy
+    redirect_to root_url
+  end
+  
   def add_concept
     @concept = Concept.new(unit_id: params[:current_unit], description:
                            params[:concept_desc], number:
