@@ -70,13 +70,14 @@ describe "Unit home" do
       @student.courses << @teacher.courses.last
       sign_in @student
       visit unit_path(@unit)
+
+      @progress = concept_progress_for(@concept, @student)
     end
 
     it { should have_content(@concept.number) }
     it { should have_content(@concept.description) }
-    it { should have_content(concept_progress_for(@concept, @student).level) }
-    it { should have_content(concept_progress_for(@concept, @student)
-                             .next_steps) }                         
+    it { should have_content(@progress.next_steps) }                         
+    it { should have_content(@progress.p_level) }                         
     it { should_not have_link ("Delete Unit")}
     
     describe "when a concept progress doesn't exist" do

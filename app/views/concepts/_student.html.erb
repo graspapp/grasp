@@ -1,19 +1,16 @@
 <table class="table">
   <thead>
-    <th>Level</th>
     <th>Date</th>
+    <th>P Level</th>
+    <th>G Level</th>
     <th>Type of Error</th>
     <th>Next Steps</th>
   </thead>  
   <tr>
-    <% if @progress.nil? %>
-      <% new_progress %>
-    <% else %>
-      <td>
-        <%= @progress.level %>
-      </td>
-    <% end %>
+    <% new_progress if @progress.nil? %>
     <td><%= @concept.created_at.to_formatted_s(:mdy) %></td>
+    <td><%= @progress.p_level %></td>
+    <td><%= @progress.g_level %></td>
     <td><%= @progress.type_of_error %></td>
     <td><%= @progress.next_steps %></td>
     <td>

@@ -13,7 +13,7 @@
       <th>Concept</th>
       <th>Description</th>
       <% if student_signed_in? %>
-        <th>Current Level</th>
+        <th>P Level</th>
         <th>Next Steps</th>
       <% end %>
     </thead>
@@ -23,7 +23,7 @@
         <td><%= concept.description %></td>
         <% if student_signed_in? %>
           <% progress = concept_progress_for(concept, current_student) %>
-          <td><%= progress.level %></td>
+          <td><%= progress.p_level %></td>
           <td><%= progress.next_steps %></td>
         <% end %>
       </tr>

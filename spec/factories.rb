@@ -48,7 +48,12 @@ FactoryGirl.define do
   factory :concept_progress do
     concept_id    1
     enrollment_id 1
-    level         1
+    # We have the crazy numbers here to differentiate between P and G levels.
+    #
+    # TODO: Figure out a better way to do this, especially once we implement
+    # serverside validation for these values.
+    p_level 3242
+    g_level 23094
   end
 end
 
