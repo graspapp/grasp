@@ -1,6 +1,6 @@
 class UnitsController < ApplicationController
 
-  before_filter :authenticate_user
+  before_action :authenticate_user
   
   def new
     @unit = Unit.new
@@ -13,6 +13,17 @@ class UnitsController < ApplicationController
     if student_signed_in?
       create_needed_concept_progresses_for current_student
     end
+  end
+
+  def update
+    @unit = Unit.find(params[:id])
+    if @unit.update_attributes(unit_params)
+      flash[:notice] = "Unit updated"
+    else
+      flash[:alert] = @unit.errors.full_messages.to_sentence.humanize
+    end
+
+    redirect_to @unit
   end
   
   def destroy
@@ -34,7 +45,7 @@ class UnitsController < ApplicationController
   private
   
   def unit_params
-    params.require(:unit).permit(:name)
+    params.require(:unit).permit(:number, :name)
   end
 
   def create_needed_concept_progresses_for(student)
@@ -52,6 +63,13 @@ class UnitsController < ApplicationController
     end
   end
 
+  def authenticate_user  
+    redirect_to sign_in_path,
+      :flash => {
+        :alert => "You need to sign in or sign up before continuing."
+      } unless student_signed_in? or teacher_signed_in?
+  end
+
   def concept_progress_for(concept, student)
     course = concept.unit.course
     enrollment = Enrollment.where(student_id: student.id,
@@ -62,11 +80,4 @@ class UnitsController < ApplicationController
   end
 
   helper_method :concept_progress_for
-end
-
-def authenticate_user  
-  redirect_to sign_in_path,
-    :flash => {
-      :alert => "You need to sign in or sign up before continuing."
-    } unless student_signed_in? or teacher_signed_in?
 end

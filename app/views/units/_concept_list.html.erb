@@ -1,11 +1,20 @@
 <div class="panel">
   <div class="panel-heading concept-heading clearfix">
     <% if teacher_signed_in? %>
-    <a data-toggle="modal" href="#conceptModal">
-      <button type="button" class="btn btn-default btn-sm pull-right">
-        New Concept
-      </button>
-    </a>
+      <div class="col-md-2 pull-right">
+        <a data-toggle="modal" href="#conceptModal">
+          <button type="button" class="btn btn-default btn-sm pull-right">
+            New Concept
+          </button>
+        </a>
+      </div>
+      <div class="col-md-2 pull-right">
+        <a data-toggle="modal" href="#editModal">
+          <button type="button" class="btn btn-default btn-sm pull-right">
+            Edit Unit
+          </button>
+        </a>
+      </div>
     <% end %>
   </div>
   <table class="table table-hover" data-provides="rowlink">

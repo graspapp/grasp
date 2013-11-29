@@ -13,7 +13,7 @@ Grasp::Application.routes.draw do
 
   resources :teachers, :students
   resources :courses, only: [:create, :destroy]
-  resources :units, only: [:create, :show, :destroy]
+  resources :units
   resources :concepts, only: [:create, :destroy]
 
   resources :concepts do
