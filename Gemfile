@@ -39,6 +39,7 @@ group :test do
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'database_cleaner', '~> 1.0.1'
   gem 'shoulda', '~> 3.5.0'
+  gem 'poltergeist', '~> 1.4.1'
 end
 
 group :production do
