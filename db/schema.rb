@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131011034751) do
+ActiveRecord::Schema.define(version: 20131128191818) do
 
   create_table "concept_progresses", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "enrollment_id"
     t.integer  "concept_id"
-    t.integer  "level"
+    t.integer  "p_level"
     t.text     "type_of_error"
     t.text     "next_steps"
+    t.integer  "g_level"
   end
 
   create_table "concepts", force: true do |t|

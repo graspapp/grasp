@@ -58,10 +58,11 @@ class ConceptsController < ApplicationController
     progress = ConceptProgress.where(concept_id: student_id,
                                      enrollment_id: enrollment.id).first
 
-    progress.update_attributes(level: params[:level],
+    progress.update_attributes(p_level: params[:p_level],
+                               g_level: params[:g_level],
                                type_of_error: params[:type_of_error],
                                next_steps: params[:next_steps])
-    
+
     redirect_to @concept if progress.save  
   end
 

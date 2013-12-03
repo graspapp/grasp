@@ -44,7 +44,8 @@ describe "Unit home" do
       visit unit_path(@unit)
     end
 
-    it { should have_link ("Delete Unit")}
+    it { should have_link "Edit Unit" }
+    it { should have_link "Delete Unit" }
     
     describe "and no concepts exist" do
 
@@ -54,6 +55,33 @@ describe "Unit home" do
       end
 
       it { should have_content("add a concept") }
+    end
+
+    describe "editing a unit" do
+
+      context "with valid information" do
+        before do
+          click_link "Edit Unit"
+          fill_in "Number", with: "2"
+          fill_in "Name", with: "Logarithms"
+          click_button "Save"
+
+          @unit.reload
+        end
+
+        it { @unit.number.should eq "2" }
+        it { @unit.name.should eq "Logarithms" }
+        it { should have_selector("div.alert.alert-success") }
+      end
+
+      context "with invalid information" do
+        before do
+          click_link "Edit Unit"
+          click_button "Save"
+        end
+
+        it { should have_selector("div.alert.alert-danger") }
+      end
     end
     
     describe "unit deletion" do
@@ -70,13 +98,14 @@ describe "Unit home" do
       @student.courses << @teacher.courses.last
       sign_in @student
       visit unit_path(@unit)
+
+      @progress = concept_progress_for(@concept, @student)
     end
 
     it { should have_content(@concept.number) }
     it { should have_content(@concept.description) }
-    it { should have_content(concept_progress_for(@concept, @student).level) }
-    it { should have_content(concept_progress_for(@concept, @student)
-                             .next_steps) }                         
+    it { should have_content(@progress.next_steps) }                         
+    it { should have_content(@progress.p_level) }                         
     it { should_not have_link ("Delete Unit")}
     
     describe "when a concept progress doesn't exist" do
