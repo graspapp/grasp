@@ -166,4 +166,50 @@ describe 'Authentication' do
       end
     end
   end
+  
+  
+  describe 'password recovery' do
+    
+    describe 'with a teacher\'s email address' do
+    
+      before { visit password_path }
+    
+      it do
+        fill_in "Email",            with:teacher.email
+      
+        click_button 'Send me reset password instructions'
+        
+        should have_selector('div.alert.alert-success',
+                           text: 'You will receive an email with instructions')
+      end
+    end
+
+    describe 'with a student\'s email address' do
+    
+      before { visit password_path }
+    
+      it do
+        fill_in "Email",            with:student.email
+      
+        click_button 'Send me reset password instructions'
+        
+        should have_selector('div.alert.alert-success',
+                           text: 'You will receive an email with instructions')
+      end
+    end
+
+    describe 'with an unregistered email address' do
+    
+      before { visit password_path }
+    
+      it do
+        fill_in "Email",            with:"notregistered@email.com"
+      
+        click_button 'Send me reset password instructions'
+        
+        should have_selector('div.alert.alert-danger',
+                           text: 'Email not found')
+      end
+    end
+  end
 end

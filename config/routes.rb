@@ -8,8 +8,10 @@ Grasp::Application.routes.draw do
   end
     root to: "static_pages#home"
   
-  devise_for :teachers, controllers: { sessions: 'sessions'}
-  devise_for :students, controllers: { sessions: 'sessions'}
+  devise_for :teachers, controllers: { sessions: 'sessions', 
+    passwords: "passwords"}
+  devise_for :students, controllers: { sessions: 'sessions', 
+    passwords: "passwords"}
 
   resources :teachers, :students
   resources :courses, only: [:create, :destroy]
@@ -24,6 +26,8 @@ Grasp::Application.routes.draw do
   devise_scope :teacher do
     get "/teacher/sign_up" => "devise/registrations#new"
     get "/sign_in" => "devise/sessions#new"
+    get "/password" => "passwords#new"
+    post "/password" => "passwords#create"
     delete "/sign_out", to: "sessions#destroy"
   end
 
