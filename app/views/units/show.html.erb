@@ -1,6 +1,7 @@
 <% provide(:title, @unit.name) %>
 
 <%= render 'edit_unit_modal' %>
+<%= render 'delete_unit_modal' %>
 <%= render 'teachers/concept_modal' %>
 
 <div class="page-header">
@@ -12,11 +13,10 @@
   <%= render 'teacher_view' %>
   
   <div class="panel-heading concept-heading clearfix">
-    <%= link_to "Delete Unit", @unit, 
-    method: :delete, 
-    class:'btn btn-default btn-sm pull-right',
-    data: { confirm: "Delete the #{@unit.name} unit? This cannot be undone." },
-    title: "Delete #{@unit.name}" %>
+      <%= link_to "Delete Unit", @unit, 
+      class:'btn btn-default btn-sm pull-right',
+      'data-toggle' => 'modal',
+      'href' => '#deleteUnitModal' %>
   </div>
     
 <% elsif !current_student.nil?  %>
