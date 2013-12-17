@@ -31,12 +31,10 @@
           </div>
         <% end -%>
         
-        <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+
         <div class="span4 offset4">
-          <%= link_to "Forgot your password?",
-            password_path %>
+          <%= render "devise/shared/links" %>
         </div>
-        <% end -%>        
 
         <div class="span4 offset4">
           <%= f.submit "Sign in", class: 'btn btn-primary'  %>
