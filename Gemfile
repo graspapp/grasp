@@ -38,6 +38,7 @@ group :development, :test do
   gem "capybara"
   gem "shoulda"
   gem "launchy"
+  gem "factory_girl_rails"
   gem "guard-rspec"
   gem "guard-livereload"
 end
