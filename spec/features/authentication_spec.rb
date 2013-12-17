@@ -1,30 +1,30 @@
 require 'spec_helper'
 
-describe 'Authentication' do
+describe "Authentication" do
 
   let(:teacher) { FactoryGirl.create(:teacher) }
   let(:student) { FactoryGirl.create(:student) }
 
   subject { page }
 
-  describe 'teacher registration page' do
+  describe "teacher registration page" do
 
     before { visit teacher_sign_up_path }
 
     it { should have_selector('h1', text: 'Sign Up') }
   end
 
-  describe 'teacher registration' do
+  describe "teacher registration" do
 
     before { visit teacher_sign_up_path }
 
-    describe 'with invalid information' do
+    describe "with invalid information" do
 
-      it 'should not create a new teacher' do
+      it "should not create a new teacher" do
         expect { click_button 'Create Account' }.not_to change(Teacher, :count)
       end
 
-      describe 'submission results' do
+      describe "submission results" do
 
         before { click_button 'Create Account' }
         it { should have_selector('h1', text: 'Sign Up') }
@@ -33,13 +33,13 @@ describe 'Authentication' do
       end
     end
 
-    describe 'with valid information' do
+    describe "with valid information" do
 
       let(:teacher2) do
         FactoryGirl.build(:teacher, email: 'teacher2@email.com')
       end
 
-      it 'should allow new teacher to sign up' do
+      it "should allow new teacher to sign up" do
 
         fill_in 'Full name',             with: teacher2.full_name
         fill_in 'Email',                 with: teacher2.email
@@ -57,24 +57,24 @@ describe 'Authentication' do
     end
   end
 
-  describe 'student registration page' do
+  describe "student registration page" do
 
     before { visit student_sign_up_path }
 
     it { should have_selector('h1', text: 'Sign Up') }
   end
 
-  describe 'student registration' do
+  describe "student registration" do
 
     before { visit student_sign_up_path }
 
-    describe 'with invalid information' do
+    describe "with invalid information" do
 
-      it 'should not create a new student' do
+      it "should not create a new student" do
         expect { click_button 'Create Account' }.not_to change(Student, :count)
       end
 
-      describe 'submission results' do
+      describe "submission results" do
 
         before { click_button 'Create Account' }
         it { should have_selector('h1', text: 'Sign Up') }
@@ -82,7 +82,7 @@ describe 'Authentication' do
       end
     end
 
-    describe 'with valid information' do
+    describe "with valid information" do
 
       let(:student2) do
         FactoryGirl.build(:student, email: 'student2@email.com')
@@ -117,18 +117,18 @@ describe 'Authentication' do
     end
   end
 
-  describe 'sign in page' do
+  describe "sign in page" do
 
     before { visit sign_in_path }
 
     it { should have_selector('h1', text: 'Sign in') }
   end
 
-  describe 'signing in' do
+  describe "signing in" do
 
     before { visit sign_in_path }
 
-    describe 'with invalid credentials' do
+    describe "with invalid credentials" do
 
       before { click_button 'Sign in' }
 
@@ -138,7 +138,7 @@ describe 'Authentication' do
       end
     end
 
-    describe 'with teacher credentials' do
+    describe "with teacher credentials" do
 
       before { sign_in(teacher) }
 
@@ -152,7 +152,7 @@ describe 'Authentication' do
       end
     end
 
-    describe 'with student credentials' do
+    describe "with student credentials" do
 
       before { sign_in(student) }
 
@@ -168,9 +168,9 @@ describe 'Authentication' do
   end
   
   
-  describe 'password recovery' do
+  describe "password recovery" do
     
-    describe 'with a teacher\'s email address' do
+    describe "with a teacher\'s email address" do
     
       before { visit password_path }
     
@@ -184,7 +184,7 @@ describe 'Authentication' do
       end
     end
 
-    describe 'with a student\'s email address' do
+    describe "with a student\'s email address" do
     
       before { visit password_path }
     
@@ -198,7 +198,7 @@ describe 'Authentication' do
       end
     end
 
-    describe 'with an unregistered email address' do
+    describe "with an unregistered email address" do
     
       before { visit password_path }
     
