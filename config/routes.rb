@@ -1,4 +1,5 @@
 Grasp::Application.routes.draw do
+  devise_for :users
   get "home", to: redirect("/")
 
   root to: "pages#home"
