@@ -31,6 +31,7 @@ gem "devise"
 gem "simple_form"
 gem "haml-rails"
 gem "foundation-rails"
+gem "figaro"
 
 group :development, :test do
   gem "rspec-rails"

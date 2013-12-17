@@ -60,6 +60,9 @@ GEM
     eventmachine (1.0.3)
     execjs (2.0.2)
     ffi (1.9.0)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     formatador (0.2.4)
     foundation-rails (5.0.2.0)
       railties (>= 3.1.0)
@@ -208,6 +211,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   devise
+  figaro
   foundation-rails
   guard-livereload
   guard-rspec
