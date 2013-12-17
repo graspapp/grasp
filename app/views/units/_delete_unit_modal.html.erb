@@ -1,0 +1,22 @@
+<div class="modal fade" id="deleteUnitModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Delete <%= @unit.name %></h4>
+      </div>
+      <div class="modal-body">
+        <div>
+          Are you sure you want to delete the &quot;<%= @unit.name%>&quot; Unit?
+          Once deleted, this cannot be undone.<br><br>
+          
+          <button class="btn btn-default btn-sm" data-dismiss="modal">
+            No
+          </button>
+          <%= link_to "Yes, Delete", @unit, method: :delete,
+                                   class:'btn btn-danger btn-sm'%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

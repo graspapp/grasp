@@ -21,7 +21,7 @@ class ConceptsController < ApplicationController
                                     course_id: @concept.unit.course_id).first
 
       @progress = ConceptProgress.where(enrollment_id: enrollment.id,
-                                       concept_id: @concept.id).first
+                                       concept_id: student.id).first
 
       if @progress.nil?
         @progress = ConceptProgress.create(enrollment_id: enrollment.id,
@@ -55,7 +55,7 @@ class ConceptsController < ApplicationController
     
     enrollment = Enrollment.where(student_id: student_id,
                                   course_id: @concept.unit.course.id).first
-    progress = ConceptProgress.where(concept_id: student_id,
+    progress = ConceptProgress.where(concept_id: @concept.id,
                                      enrollment_id: enrollment.id).first
 
     progress.update_attributes(p_level: params[:p_level],

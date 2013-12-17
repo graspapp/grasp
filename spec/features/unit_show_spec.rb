@@ -86,7 +86,7 @@ describe "Unit home" do
     
     describe "unit deletion" do
       it "should delete the unit" do
-        expect { click_link "Delete Unit"}.to change(Unit, :count).by(-1)
+        expect { click_link "Yes, Delete"}.to change(Unit, :count).by(-1)
       end
     end
   end

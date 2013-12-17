@@ -30,6 +30,11 @@
             </div>
           </div>
         <% end -%>
+        
+
+        <div class="span4 offset4">
+          <%= render "devise/shared/links" %>
+        </div>
 
         <div class="span4 offset4">
           <%= f.submit "Sign in", class: 'btn btn-primary'  %>
@@ -37,5 +42,4 @@
       </fieldset>
     </div>
   </div>
-
 <% end %>
