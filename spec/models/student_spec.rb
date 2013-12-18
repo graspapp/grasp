@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Student do
   before { @student = FactoryGirl.create(:student) }
@@ -6,10 +6,5 @@ describe Student do
   describe "attributes" do
     it { should have_one(:user).dependent(:destroy) }
     it { should accept_nested_attributes_for(:user) }
-  end
-  
-  context "no user" do
-    before { @student.user = nil }
-    it { should_not be_valid }
   end
 end

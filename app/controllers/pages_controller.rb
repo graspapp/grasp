@@ -10,4 +10,7 @@ class PagesController < ApplicationController
 
   def acknowledgements
   end
+
+  def sign_up_selection
+  end
 end

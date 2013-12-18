@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
 
   belongs_to :role, polymorphic: true
   
-  validates :first_name, presence: true
-  validates :last_name,  presence: true
+  validates_presence_of :first_name, :last_name, :email, :password,
+    :password_confirmation
 end
