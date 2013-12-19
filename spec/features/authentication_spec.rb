@@ -10,7 +10,6 @@ describe "Authentication" do
 
       context "with invalid information" do
         before { click_button "Sign up" }
-
         it { should have_title("Sign up") }
         it { should have_content("can't be blank") }
       end
@@ -43,9 +42,40 @@ describe "Authentication" do
       end
     end
 
-    context "teachers" do
-      before do
+    describe "teachers" do
+      before { visit teacher_sign_up_path }
 
+      context "with invalid information" do
+        before { click_button "Sign up" }
+        it { should have_title("Sign up") }
+        it { should have_content("can't be blank") }
+      end
+
+      context "with valid information" do
+        before do
+          # Preferably we'd just get the student's attributes, but FactoryGirl
+          # doesn't like nested attributes.
+          #
+          # See https://github.com/thoughtbot/factory_girl/issues/359
+          @user = FactoryGirl.attributes_for(:user)
+
+          fill_in "First name", with: @user[:first_name]
+          fill_in "Last name", with: @user[:last_name]
+          fill_in "Email", with: @user[:email]
+          fill_in "Password", with: @user[:password], match: :prefer_exact
+          fill_in "Password confirmation", with: @user[:password_confirmation],
+            match: :prefer_exact
+          click_button "Sign up"
+        end
+
+        it { should have_link("Sign out", href: destroy_user_session_path) }
+        it { should_not have_link("Sign in") }
+        it { should have_title("#{@user[:first_name]} #{@user[:last_name]}") }
+
+        describe "followed by sign out" do
+          before { first(:link, "Sign out").click }
+          it { should have_link("Sign up") }
+        end
       end
     end
   end
@@ -72,6 +102,30 @@ describe "Authentication" do
         end
 
         it { should have_title(full_name(@student.user)) }
+        it { should have_link("Sign out") }
+        it { should_not have_link("Sign in") }
+      end
+    end
+
+    describe "teachers" do
+      
+      context "with invalid information" do
+        before { click_button "Sign in" }
+
+        it { should have_title("Sign in") }
+        it { should have_content("Invalid") }
+      end
+
+      context "with valid information" do
+        before do
+          @teacher = FactoryGirl.create(:teacher)
+
+          fill_in "Email", with: @teacher.user.email
+          fill_in "Password", with: @teacher.user.password
+          click_button "Sign in"
+        end
+
+        it { should have_title(full_name(@teacher.user)) }
         it { should have_link("Sign out") }
         it { should_not have_link("Sign in") }
       end

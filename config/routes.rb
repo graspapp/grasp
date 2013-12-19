@@ -1,19 +1,22 @@
+ROLE_TYPES = %w(student teacher)
+
 Grasp::Application.routes.draw do
   devise_for :users, controllers: { registrations: "user_registrations" }
 
   devise_scope :user do
-    get "student/sign_up" => "user_registrations#new",
-      user: { user_type: "student" }
-    get "teacher/sign_up" => "user_registrations#new",
-      user: { user_type: "student" }
+    ROLE_TYPES.each do |r|
+      get "#{ r }/sign_up" => "user_registrations#new", user: { role_type: r }
+    end
+  end
+
+  ROLE_TYPES.each do |r|
+    authenticated :user, lambda { |u| u.role_type == r.capitalize } do
+      root to: "#{ r.pluralize }#home", as: "#{ r }_root".to_sym
+    end
   end
 
   resources :students
-
-  authenticated :user do
-    root to: "students#home", as: :user_root
-    #root to: "students#home", as: :student_root
-  end
+  resources :teachers
 
   get "home", to: redirect("/")
 
