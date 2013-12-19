@@ -16,6 +16,9 @@ RSpec.configure do |config|
   # Let us use Devise helpers in our controller specs.
   config.include Devise::TestHelpers, type: :controller
 
+  # And our controller macros
+  config.include ControllerMacros, type: :controller
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

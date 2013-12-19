@@ -4,8 +4,7 @@ describe ApplicationController do
   describe "custom user methods" do
     describe "when logged in as a student" do
       before do
-        @student = FactoryGirl.create(:student)
-        sign_in @student.user
+        @student = login_as_student
       end
 
       it { controller.current_student.should eq @student }
@@ -17,8 +16,7 @@ describe ApplicationController do
 
     describe "when logged in as a teacher" do
       before do
-        @teacher = FactoryGirl.create(:teacher)
-        sign_in @teacher.user
+        @teacher = login_as_teacher
       end
 
       it { controller.current_teacher.should eq @teacher }
