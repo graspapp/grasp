@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :configure_devise_params, if: :devise_controller?
-  alias_method :devise_current_user, :current_user
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -13,10 +12,6 @@ class ApplicationController < ActionController::Base
                  :password_confirmation)
       end
     end
-  end
-
-  def current_user
-    super.role if super
   end
 
   %w(Student Teacher).each do |k|

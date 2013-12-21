@@ -3,11 +3,10 @@ require "spec_helper"
 describe ApplicationController do
   describe "custom user methods" do
     describe "when logged in as a student" do
-      before do
-        @student = login_as_student
-      end
+      let(:student) { FactoryGirl.create(:student) }
+      before { sign_in student }
 
-      it { controller.current_student.should eq @student }
+      it { controller.current_student.should eq student }
       it { controller.current_teacher.should eq nil }
       
       it { controller.student_signed_in?.should be true }
@@ -15,11 +14,10 @@ describe ApplicationController do
     end
 
     describe "when logged in as a teacher" do
-      before do
-        @teacher = login_as_teacher
-      end
+      let(:teacher) { FactoryGirl.create(:teacher) }
+      before { sign_in teacher }
 
-      it { controller.current_teacher.should eq @teacher }
+      it { controller.current_teacher.should eq teacher }
       it { controller.current_student.should eq nil }
 
       it { controller.teacher_signed_in?.should be true }

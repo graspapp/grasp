@@ -1,5 +1,3 @@
 FactoryGirl.define do
-  factory :teacher do
-    user
-  end
+  factory :teacher, traits: [:user]
 end

@@ -1,5 +1,3 @@
 FactoryGirl.define do
-  factory :student do
-    user
-  end
+  factory :student, traits: [:user]
 end

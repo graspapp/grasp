@@ -1,17 +1,11 @@
-ROLE_TYPES = %w(student teacher)
-
 Grasp::Application.routes.draw do
-  devise_for :users, controllers: { registrations: "user_registrations" }
+  devise_for :users, skip: :registrations
+  devise_for :students, :teachers, 
+    controllers: { registrations: "registrations" }, skip: :sessions
 
-  devise_scope :user do
-    ROLE_TYPES.each do |r|
-      get "#{ r }/sign_up" => "user_registrations#new", user: { role_type: r }
-    end
-  end
-
-  ROLE_TYPES.each do |r|
-    authenticated :user, lambda { |u| u.role_type == r.capitalize } do
-      root to: "#{ r.pluralize }#home", as: "#{ r }_root".to_sym
+  %w(Student Teacher).each do |t|
+    authenticated :user, lambda { |u| u.type == t } do
+      root to: "#{ t.pluralize.underscore }#home", as: "#{ t }_root".to_sym
     end
   end
 

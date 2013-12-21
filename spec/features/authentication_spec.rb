@@ -1,12 +1,11 @@
 require "spec_helper"
 
-describe "Authentication" do
-  subject { page }
+describe "Authentication" do subject { page }
 
   describe "user registration" do
 
     describe "students" do 
-      before { visit student_sign_up_path }
+      before { visit new_student_registration_path }
 
       context "with invalid information" do
         before { click_button "Sign up" }
@@ -15,25 +14,20 @@ describe "Authentication" do
       end
 
       context "with valid information" do
+        let(:user) { FactoryGirl.attributes_for(:user) }
         before do
-          # Preferably we'd just get the student's attributes, but FactoryGirl
-          # doesn't like nested attributes.
-          #
-          # See https://github.com/thoughtbot/factory_girl/issues/359
-          @user = FactoryGirl.attributes_for(:user)
-
-          fill_in "First name", with: @user[:first_name]
-          fill_in "Last name", with: @user[:last_name]
-          fill_in "Email", with: @user[:email]
-          fill_in "Password", with: @user[:password], match: :prefer_exact
-          fill_in "Password confirmation", with: @user[:password_confirmation],
+          fill_in "First name", with: user[:first_name]
+          fill_in "Last name", with: user[:last_name]
+          fill_in "Email", with: user[:email]
+          fill_in "Password", with: user[:password], match: :prefer_exact
+          fill_in "Password confirmation", with: user[:password_confirmation],
             match: :prefer_exact
           click_button "Sign up"
         end
 
         it { should have_link("Sign out", href: destroy_user_session_path) }
         it { should_not have_link("Sign in") }
-        it { should have_title("#{@user[:first_name]} #{@user[:last_name]}") }
+        it { should have_title("#{user[:first_name]} #{user[:last_name]}") }
 
         describe "followed by sign out" do
           before { first(:link, "Sign out").click }
@@ -43,7 +37,7 @@ describe "Authentication" do
     end
 
     describe "teachers" do
-      before { visit teacher_sign_up_path }
+      before { visit new_teacher_registration_path }
 
       context "with invalid information" do
         before { click_button "Sign up" }
@@ -52,25 +46,20 @@ describe "Authentication" do
       end
 
       context "with valid information" do
+        let(:user) { FactoryGirl.attributes_for(:user) }
         before do
-          # Preferably we'd just get the student's attributes, but FactoryGirl
-          # doesn't like nested attributes.
-          #
-          # See https://github.com/thoughtbot/factory_girl/issues/359
-          @user = FactoryGirl.attributes_for(:user)
-
-          fill_in "First name", with: @user[:first_name]
-          fill_in "Last name", with: @user[:last_name]
-          fill_in "Email", with: @user[:email]
-          fill_in "Password", with: @user[:password], match: :prefer_exact
-          fill_in "Password confirmation", with: @user[:password_confirmation],
+          fill_in "First name", with: user[:first_name]
+          fill_in "Last name", with: user[:last_name]
+          fill_in "Email", with: user[:email]
+          fill_in "Password", with: user[:password], match: :prefer_exact
+          fill_in "Password confirmation", with: user[:password_confirmation],
             match: :prefer_exact
           click_button "Sign up"
         end
 
         it { should have_link("Sign out", href: destroy_user_session_path) }
         it { should_not have_link("Sign in") }
-        it { should have_title("#{@user[:first_name]} #{@user[:last_name]}") }
+        it { should have_title("#{user[:first_name]} #{user[:last_name]}") }
 
         describe "followed by sign out" do
           before { first(:link, "Sign out").click }
@@ -93,15 +82,15 @@ describe "Authentication" do
       end
 
       context "with valid information" do
-        before do
-          @student = FactoryGirl.create(:student)
+        let(:student) { FactoryGirl.create(:student) }
 
-          fill_in "Email", with: @student.user.email
-          fill_in "Password", with: @student.user.password
+        before do
+          fill_in "Email", with: student.email
+          fill_in "Password", with: student.password
           click_button "Sign in"
         end
 
-        it { should have_title(full_name(@student.user)) }
+        it { should have_title(full_name(student)) }
         it { should have_link("Sign out") }
         it { should_not have_link("Sign in") }
       end
@@ -117,15 +106,15 @@ describe "Authentication" do
       end
 
       context "with valid information" do
-        before do
-          @teacher = FactoryGirl.create(:teacher)
+        let(:teacher) { FactoryGirl.create(:teacher) }
 
-          fill_in "Email", with: @teacher.user.email
-          fill_in "Password", with: @teacher.user.password
+        before do
+          fill_in "Email", with: teacher.email
+          fill_in "Password", with: teacher.password
           click_button "Sign in"
         end
 
-        it { should have_title(full_name(@teacher.user)) }
+        it { should have_title(full_name(teacher)) }
         it { should have_link("Sign out") }
         it { should_not have_link("Sign in") }
       end
