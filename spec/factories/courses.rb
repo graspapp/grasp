@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :course do
     teacher
-    name "Foo Bar"
+    sequence(:name) { |n| "Foo Bar #{ n }" }
   end
 end

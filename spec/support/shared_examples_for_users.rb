@@ -36,3 +36,26 @@ shared_examples "a user" do
     it { should_not be_valid }
   end
 end
+
+shared_examples "a user's homepage" do
+  describe "user info" do
+    it { should have_content full_name(user) }
+    it { should have_title full_name(user) }
+  end
+
+  describe "course index" do
+    it "has course names" do
+      user.courses.each do |c|
+        expect(page).to have_content c.name
+      end
+    end
+
+    it "shows units after clicking on each course", js: true do
+      user.courses.each do |c|
+        click_link c.name
+        # TODO: Change this to check for units instead of the course's id
+        expect(page).to have_content c.id
+      end
+    end
+  end
+end

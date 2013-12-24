@@ -36,6 +36,8 @@ gem "figaro"
 group :development, :test do
   gem "rspec-rails"
   gem "capybara"
+  gem "poltergeist"
+  gem "database_cleaner"
   gem "shoulda"
   gem "launchy"
   gem "factory_girl_rails"

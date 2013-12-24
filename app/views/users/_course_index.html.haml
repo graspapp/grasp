@@ -1,0 +1,9 @@
+%dl.tabs{"data-tab" => true}
+  - user.courses.each do |c|
+    %dd{class: ("active" if c == user.courses.first)}
+      = link_to c.name, "#course-#{c.id}"
+.tabs-content
+  - user.courses.each do |c|
+    .content{id: "course-#{c.id}",
+      class: ("active" if c == user.courses.first)}
+      %p= c.id
