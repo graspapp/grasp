@@ -5,6 +5,7 @@ describe Course do
 
   describe "attributes" do
     it { should belong_to :teacher }
+    it { should have_many(:students).through(:enrollments) }
     it { should respond_to :name }
     it { should respond_to :course_code }
   end
