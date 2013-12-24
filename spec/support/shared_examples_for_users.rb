@@ -1,8 +1,4 @@
 shared_examples "a user" do
-  let(:user) { FactoryGirl.create(described_class.name.underscore.to_sym) }
-
-  subject { user }
-
   describe "attributes" do
     it { should respond_to :first_name }
     it { should respond_to :last_name }
