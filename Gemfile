@@ -40,6 +40,7 @@ group :development, :test do
   gem "database_cleaner"
   gem "shoulda"
   gem "launchy"
+  gem "faker"
   gem "factory_girl_rails"
   gem "guard-rspec"
   gem "guard-livereload"
