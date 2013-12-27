@@ -12,6 +12,8 @@ Grasp::Application.routes.draw do
   resources :students
   resources :teachers
 
+  resources :courses
+
   get "home", to: redirect("/")
 
   root to: "pages#home"

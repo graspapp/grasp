@@ -11,5 +11,9 @@ FactoryGirl.define do
         end
       end
     end
+
+    factory :invalid_student do
+      first_name nil
+    end
   end
 end
