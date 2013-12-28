@@ -1,6 +1,9 @@
 Grasp::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   devise_for :users, skip: :registrations
-  devise_for :students, :teachers, 
+  devise_for :students, :teachers,
     controllers: { registrations: "registrations" }, skip: :sessions
 
   %w(Student Teacher).each do |t|

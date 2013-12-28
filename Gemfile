@@ -32,6 +32,7 @@ gem "simple_form"
 gem "haml-rails"
 gem "foundation-rails"
 gem "figaro"
+gem "activeadmin", github: "gregbell/active_admin"
 
 group :development, :test do
   gem "rspec-rails"
