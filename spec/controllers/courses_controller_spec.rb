@@ -1,48 +1,240 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe CoursesController do
-  describe "GET #new" do
-    it "assigns a new Course to @course" do
-      get :new
-      expect(assigns(:course)).to be_instance_of Course
+  subject { response }
+
+  context "when logged in as a teacher" do
+    let(:teacher) { FactoryGirl.create(:teacher) }
+    before(:each) { login_user teacher }
+
+    describe "GET #new" do
+      before { get :new }
+
+      it "assigns a new Course to @course" do
+        expect(assigns(:course)).to be_instance_of Course
+      end
+
+      it "renders the :new template" do
+        expect(response).to render_template :new
+      end
     end
 
-    it "renders the :new template" do
-      get :new
-      expect(response).to render_template :new
-    end
-  end
+    describe "GET #show" do
+      let(:course) { FactoryGirl.create(:course) }
 
-  describe "GET #show" do
-    it "assigns the requested course to @course" do
-      contact = FactoryGirl.create(:course)
-      get :show, id: contact
-      expect(assigns(:course)).to eq contact
+      context "when teacher owns course" do
+        before do
+          teacher.courses << course
+
+          get :show, id: course
+        end
+
+        it "assigns the requested course to @course" do
+          expect(assigns(:course)).to eq course
+        end
+
+        it "renders the :show template" do
+          expect(response).to render_template :show
+        end
+      end
+
+      context "when teacher doesn't own course" do
+        before { get:show, id: course }
+        it_should_behave_like "a forbidden action"
+      end
     end
 
-    it "renders the :show template" do
-      get :show, id: FactoryGirl.create(:course)
-      expect(response).to render_template :show
-    end
-  end
+    describe "POST #create" do
+      context "with valid attributes" do
+        it "saves the new course in the database" do
+          expect {
+            post :create, course: FactoryGirl.attributes_for(:course)
+          }.to change(Course, :count).by 1
+        end
+        
+        it "adds the course to the teacher" do
+          expect {
+            post :create, course: FactoryGirl.attributes_for(:course)
+          }.to change(teacher.courses, :count).by 1
+        end
 
-  describe "POST #create" do
-    context "with valid attributes" do
-      it "saves the new course in the database" do
-        expect {
+        it "redirects to the homepage" do
           post :create, course: FactoryGirl.attributes_for(:course)
-        }.to change(Course, :count).by 1
+          expect(response).to redirect_to root_path
+        end
       end
 
-      it "redirects to the homepage" do
-        post :create, course: FactoryGirl.attributes_for(:course)
-        expect(reponse).to redirect_to root_path
+      context "with invalid attributes" do
+        it "does not save the new course in the database" do
+          expect {
+            post :create, course: FactoryGirl.attributes_for(:invalid_course)
+          }.to change(Course, :count).by 0
+        end
+
+        it "does not add the course to the teacher" do
+          expect {
+            post :create, course: FactoryGirl.attributes_for(:invalid_course)
+          }.to change(teacher.courses, :count).by 0
+        end
+
+        it "re-renders the new template" do
+          post :create, course: FactoryGirl.attributes_for(:invalid_course)
+          expect(response).to render_template :new
+        end
       end
     end
 
-    context "with invalid attributes" do
-      it "does not save the new course in the database"
-      it "re-renders the new template"
+    describe "PUT #update" do
+      let(:course) { FactoryGirl.create(:course) }
+
+      context "when teacher owns course" do
+        before { teacher.courses << course }
+
+        context "valid attributes" do
+          it "locates the requested course" do
+            put :update, id: course,
+              course: FactoryGirl.attributes_for(:course)
+            expect(assigns(:course)).to eq course
+          end
+
+          it "changes course's attributes" do
+            expect {
+              put :update, id: course,
+                course: FactoryGirl.attributes_for(:course)
+              course.reload
+            }.to change(course, :name)
+          end
+
+          it "redirects to the course" do
+            put :update, id: course,
+              course: FactoryGirl.attributes_for(:course)
+            expect(response).to redirect_to course
+          end
+        end
+
+        context "invalid attributes" do
+          it "locates the requested @course" do
+            put :update, id: course,
+              course: FactoryGirl.attributes_for(:invalid_course)
+            expect(assigns(:course)).to eq course
+          end
+
+          it "does not change @course's attributes" do
+            expect {
+              put :update, id: course,
+              course: FactoryGirl.attributes_for(:invalid_course)
+              course.reload
+            }.to_not change(course, :name)
+          end
+
+          it "re-renders the edit template" do
+            put :update, id: course,
+              course: FactoryGirl.attributes_for(:invalid_course)
+            expect(response).to render_template :edit
+          end
+        end
+      end
+
+      context "when teacher doesn't own course" do
+        it "doesn't change course's attributes" do
+          expect {
+            put :update, id: course,
+              course: FactoryGirl.attributes_for(:course)
+          }.to_not change(course, :name)
+        end
+
+        before { put :update, id: course,
+                 course: FactoryGirl.attributes_for(:course) }
+        it_should_behave_like "a forbidden action"
+      end
+    end
+
+    describe "DELETE #destroy" do
+      let(:course) { FactoryGirl.create(:course) }
+      
+      context "when teacher owns course" do
+        before { teacher.courses << course }
+
+        it "deletes the Course" do
+          expect {
+            delete :destroy, id: course
+          }.to change(Course, :count).by -1
+        end
+
+        it "redirects to homepage" do
+          delete :destroy, id: course
+          expect(response).to redirect_to root_url
+        end
+      end
+
+      context "when teacher doesn't own course" do
+        it "does not delete the Course" do
+          expect {
+            delete :destroy, id: course
+          }.to change(Course, :count).by 0
+        end
+
+        before { delete :destroy, id: course }
+        it_should_behave_like "a forbidden action"
+      end
+    end
+  end
+
+  context "when logged in as a student" do
+    render_views
+
+    let(:student) { FactoryGirl.create(:student) }
+    before(:each) { login_user student }
+    
+    describe "GET #new" do
+      before { get :new }
+
+      it_should_behave_like "a forbidden action"
+      it { should_not render_template :new }
+    end
+
+    describe "GET #show" do
+      let(:course) { FactoryGirl.create(:course) }
+      
+      context "when student is in course" do
+        before do
+          student.courses << course
+
+          get :show, id: course
+        end
+
+        it "assigns the requested course to @course" do
+          expect(assigns(:course)).to eq course
+        end
+
+        it "renders the :show template" do
+          expect(response).to render_template :show
+        end
+      end
+
+      context "when student is not in course" do
+        before { get :show, id: course }
+
+        it_should_behave_like "a forbidden action"
+      end
+    end
+
+    describe "POST #create" do
+      before { post :create, course: FactoryGirl.attributes_for(:course) }
+      it_should_behave_like "a forbidden action"
+    end
+
+    describe "PUT #update" do
+      before do
+        put :update, id: FactoryGirl.create(:course),
+          course: FactoryGirl.attributes_for(:course)
+      end
+      it_should_behave_like "a forbidden action"
+    end
+
+    describe "DELETE #destroy" do
+      before { delete :destroy, id: FactoryGirl.create(:course).id }
+      it_should_behave_like "a forbidden action"
     end
   end
 end

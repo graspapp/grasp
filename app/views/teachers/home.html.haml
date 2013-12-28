@@ -3,4 +3,5 @@
 .row
   %h1= full_name(@teacher)
 
+  = link_to "New Course", new_course_path, class: "button right"
   = render "users/course_index", user: @teacher

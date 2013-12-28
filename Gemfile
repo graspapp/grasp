@@ -33,6 +33,7 @@ gem "haml-rails"
 gem "foundation-rails"
 gem "figaro"
 gem "activeadmin", github: "gregbell/active_admin"
+gem "pundit"
 
 group :development, :test do
   gem "rspec-rails"
@@ -45,6 +46,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "guard-rspec"
   gem "guard-livereload"
+  gem "zeus"
 end
 
 group :doc do

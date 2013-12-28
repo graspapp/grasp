@@ -1,9 +1,9 @@
 require "spec_helper"
 
 describe "Teacher home" do
-  let(:teacher) { FactoryGirl.create(:teacher_with_courses) }
+  let!(:teacher) { FactoryGirl.create(:teacher_with_courses) }
   before(:each) do
-    login_as(teacher, as: :user)
+    login_as(teacher, scope: :user)
     visit root_path
   end
 

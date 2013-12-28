@@ -45,13 +45,5 @@ shared_examples "a user's homepage" do
         expect(page).to have_content c.name
       end
     end
-
-    it "shows units after clicking on each course", js: true do
-      user.courses.each do |c|
-        click_link c.name
-        # TODO: Change this to check for units instead of the course's id
-        expect(page).to have_content c.id
-      end
-    end
   end
 end

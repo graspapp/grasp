@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_devise_params, if: :devise_controller?
+  include Pundit
 
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  before_action :configure_devise_params, if: :devise_controller?
   protect_from_forgery with: :exception
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def configure_devise_params
     [:sign_up, :account_update].each do |s|
@@ -26,5 +27,12 @@ class ApplicationController < ActionController::Base
     define_method "#{ k.underscore }_signed_in?" do
       !send("current_#{ k.underscore }").nil?
     end
+  end
+
+  private
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to (request.headers["Referer"] || root_path)
   end
 end

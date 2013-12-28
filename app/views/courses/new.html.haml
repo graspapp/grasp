@@ -1,4 +1,8 @@
 - provide(:title, "New Course")
 
-%h1 Courses#new
-%p Find me in app/views/courses/new.html.haml
+.row
+  %h1 New Course
+
+  = simple_form_for [current_teacher, @course] do |f|
+    = f.input :name
+    = f.button :submit
