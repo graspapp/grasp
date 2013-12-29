@@ -15,7 +15,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Recent Teachers" do
           table_for Teacher.last(5) do |t|
-            column(:email) { |t| link_to(t.email, admin_student_path(t)) }
+            column(:email) { |t| link_to(t.email, admin_teacher_path(t)) }
           end
         end
       end
