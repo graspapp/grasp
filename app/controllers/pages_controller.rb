@@ -1,16 +1,6 @@
 class PagesController < ApplicationController
-  def home
-  end
-
-  def about
-  end
-
-  def contact
-  end
-
-  def acknowledgements
-  end
-
-  def sign_up_selection
+  %w(home about contact acknowledgements sign_up_selection).each do |a|
+    define_method a do
+    end
   end
 end
