@@ -7,11 +7,16 @@ class Course < ActiveRecord::Base
   has_many :students, through: :enrollments
 
   validates :name, presence: true
-  validates :course_code, presence: true
+  validates :course_code, presence: true, uniqueness: true
 
   private
 
   def generate_course_code
-    self.course_code ||= SecureRandom.hex(3)
+    code = SecureRandom.hex(3)
+    if Course.find_by_course_code(code) != nil
+      generate_course_code
+    else
+      self.course_code ||= code
+    end
   end
 end

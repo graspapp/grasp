@@ -8,6 +8,7 @@ describe Course do
     it { should have_many(:students).through(:enrollments) }
     it { should respond_to :name }
     it { should respond_to :course_code }
+    it { should validate_uniqueness_of :course_code }
   end
 
   context "no teacher" do
