@@ -6,6 +6,7 @@ describe Course do
   describe "attributes" do
     it { should belong_to :teacher }
     it { should have_many(:students).through(:enrollments) }
+    it { should have_many :units }
     it { should respond_to :name }
     it { should respond_to :course_code }
     it { should validate_uniqueness_of :course_code }

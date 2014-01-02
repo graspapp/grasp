@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228070617) do
+ActiveRecord::Schema.define(version: 20140102015848) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(version: 20131228070617) do
 
   add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id"
   add_index "enrollments", ["student_id"], name: "index_enrollments_on_student_id"
+
+  create_table "units", force: true do |t|
+    t.integer  "course_id"
+    t.string   "number"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

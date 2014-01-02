@@ -2,6 +2,7 @@ class Course < ActiveRecord::Base
   before_validation :generate_course_code
 
   belongs_to :teacher
+  has_many :units
 
   has_many :enrollments
   has_many :students, through: :enrollments
