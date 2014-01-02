@@ -3,6 +3,6 @@
 .row
   %h1 New Course
 
-  = simple_form_for [current_teacher, @course] do |f|
+  = simple_form_for @course do |f|
     = f.input :name
     = f.button :submit

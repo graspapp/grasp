@@ -1,6 +1,12 @@
 - provide(:title, full_name(@student))
 
+= modal "addCourse" do
+  %h2 Add Course
+  = render "add_course", student: @student
+
 .row
   %h1= full_name(@student)
+
+  = modal_link("Add Course", "addCourse", class: "button right")
 
   = render "users/course_index", user: @student

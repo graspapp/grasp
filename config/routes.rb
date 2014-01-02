@@ -12,7 +12,13 @@ Grasp::Application.routes.draw do
     end
   end
 
-  resources :students
+  resources :students do
+    member do
+      post :add_course
+      delete :leave_course
+    end
+  end
+
   resources :teachers
 
   resources :courses

@@ -12,4 +12,17 @@ describe "Student home" do
   it_should_behave_like "a user's homepage" do
     let(:user) { student }
   end
+
+  describe "adding a course", js: true do
+    let(:course) { FactoryGirl.create(:course) }
+    before do
+      click_link "Add Course"
+
+      fill_in "Course code", with: course.course_code
+      click_button "Add Course"
+    end
+
+    it { should have_content course.name }
+    it { should have_content course.course_code }
+  end
 end

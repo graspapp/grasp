@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def new
-    @course = Course.new
+    @course = current_user.courses.build
     authorize @course
   end
 
@@ -29,7 +29,7 @@ class CoursesController < ApplicationController
     authorize @course
     if @course.update_attributes(course_params)
       flash[:success] = "Course updated"
-      redirect_to @course
+      redirect_to root_path
     else
       render "edit"
     end

@@ -105,10 +105,10 @@ describe CoursesController do
             }.to change(course, :name)
           end
 
-          it "redirects to the course" do
+          it "redirects to the root path" do
             put :update, id: course,
               course: FactoryGirl.attributes_for(:course)
-            expect(response).to redirect_to course
+            expect(response).to redirect_to root_path
           end
         end
 
