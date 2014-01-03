@@ -1,0 +1,6 @@
+.row
+  %h2 Edit Unit
+  = simple_form_for @unit do |f|
+    = f.input :number
+    = f.input :name
+    = f.button :submit

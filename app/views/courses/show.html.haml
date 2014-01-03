@@ -1,3 +1,12 @@
+- if policy(@unit).create?
+  = modal "createUnit" do
+    %h2 Create Unit
+    = simple_form_for @unit do |f|
+      = f.input :number
+      = f.input :name
+      = f.hidden_field :course_id
+      = f.button :submit
+
 .row
   %h1= @course.name
 
@@ -5,5 +14,24 @@
     = simple_form_for :course, url: leave_course_student_path(current_user),
       method: :delete do |f|
       = f.hidden_field :id, value: @course.id
-      = f.button :submit, "Leave Course",
+      = f.button :submit, "Leave Course", class: "right",
         data: { confirm: "Are you sure you want to leave #{ @course.name }? This action cannot be reversed." }
+
+  - if policy(@unit).create?
+    = modal_link "Create Unit", "createUnit", class: "button right"
+
+  %table
+    %thead
+      %tr
+        %th Unit
+        - if policy(@unit).edit? or policy(@unit).destroy?
+          %th Actions
+    %tbody
+      - policy_scope(Unit.all).each do |u|
+        %tr
+          %td= link_to "#{ u.number }: #{ u.name }", u
+          - if policy(u).edit? or policy(u).destroy?
+            %td
+              = link_to "Edit", edit_unit_path(u) if policy(u).edit?
+              = link_to "Delete", u, method: :delete,
+                data: { confirm: "Are you sure you want to permanently delete #{ u.name }?" } if policy(u).destroy?

@@ -21,13 +21,17 @@ describe CoursesController do
           expect(assigns(:course)).to eq course
         end
 
+        it "assigns a new unit to @unit" do
+          expect(assigns(:unit)).to be_instance_of Unit
+        end
+
         it "renders the :show template" do
           expect(response).to render_template :show
         end
       end
 
       context "when teacher doesn't own course" do
-        before { get:show, id: course }
+        before { get :show, id: course }
         it_should_behave_like "a forbidden action"
       end
     end

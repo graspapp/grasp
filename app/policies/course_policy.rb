@@ -1,7 +1,6 @@
 class CoursePolicy < ApplicationPolicy
   class Scope < Struct.new(:user, :scope)
     def resolve
-      scope
       if user.is_a? Teacher
         scope.where(teacher_id: user.id)
       elsif user.is_a? Student
