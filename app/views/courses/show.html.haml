@@ -29,7 +29,7 @@
     %tbody
       - policy_scope(Unit.all).each do |u|
         %tr
-          %td= link_to "#{ u.number }: #{ u.name }", u
+          %td= link_to unit_name(u), u
           - if policy(u).edit? or policy(u).destroy?
             %td
               = link_to "Edit", edit_unit_path(u) if policy(u).edit?
