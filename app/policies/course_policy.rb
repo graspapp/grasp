@@ -10,10 +10,6 @@ class CoursePolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    user.is_a? Teacher
-  end
-
   def show?
     user and user.courses.include? record
   end

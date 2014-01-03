@@ -1,9 +1,4 @@
 class CoursesController < ApplicationController
-  def new
-    @course = current_user.courses.build
-    authorize @course
-  end
-
   def show
     @course = Course.find(params[:id])
     authorize @course
@@ -15,7 +10,8 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to root_path
     else
-      render "new"
+      flash[:alert] = @course.errors.full_messages.to_sentence
+      redirect_to (request.referer.present? ? :back : root_path)
     end
   end
 

@@ -8,8 +8,6 @@ describe CoursePolicy do
   context "logged in as teacher" do
     let(:user) { FactoryGirl.create(:teacher) }
 
-    it { should permit(:new) }
-    
     context "and owns course" do
       before { user.courses << course }
 
@@ -32,7 +30,6 @@ describe CoursePolicy do
   context "logged in as student" do
     let(:user) { FactoryGirl.create(:student) }
 
-    it { should_not permit(:new) }
     it { should_not permit(:show) }
     it { should_not permit(:create) }
     it { should_not permit(:edit) }
@@ -49,7 +46,6 @@ describe CoursePolicy do
   context "not logged in" do
     let(:user) { nil }
 
-    it { should_not permit(:new) }
     it { should_not permit(:show) }
     it { should_not permit(:create) }
     it { should_not permit(:edit) }

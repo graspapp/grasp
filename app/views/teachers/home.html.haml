@@ -1,7 +1,14 @@
 - provide(:title, full_name(@teacher))
 
+= modal "newCourse" do
+  %h2 Create Course
+  = simple_form_for @course do |f|
+    = f.input :name
+    = f.button :submit
+
 .row
   %h1= full_name(@teacher)
 
-  = link_to "New Course", new_course_path, class: "button right"
+  = #link_to "New Course", new_course_path, class: "button right"
+  = modal_link "New Course", "newCourse", class: "button right"
   = render "users/course_index", user: @teacher

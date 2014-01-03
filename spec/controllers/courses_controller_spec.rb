@@ -7,18 +7,6 @@ describe CoursesController do
     let(:teacher) { FactoryGirl.create(:teacher) }
     before(:each) { login_user teacher }
 
-    describe "GET #new" do
-      before { get :new }
-
-      it "assigns a new Course to @course" do
-        expect(assigns(:course)).to be_instance_of Course
-      end
-
-      it "renders the :new template" do
-        expect(response).to render_template :new
-      end
-    end
-
     describe "GET #show" do
       let(:course) { FactoryGirl.create(:course) }
 
@@ -75,11 +63,6 @@ describe CoursesController do
           expect {
             post :create, course: FactoryGirl.attributes_for(:invalid_course)
           }.to change(teacher.courses, :count).by 0
-        end
-
-        it "re-renders the new template" do
-          post :create, course: FactoryGirl.attributes_for(:invalid_course)
-          expect(response).to render_template :new
         end
       end
     end
@@ -186,13 +169,6 @@ describe CoursesController do
     let(:student) { FactoryGirl.create(:student) }
     before(:each) { login_user student }
     
-    describe "GET #new" do
-      before { get :new }
-
-      it_should_behave_like "a forbidden action"
-      it { should_not render_template :new }
-    end
-
     describe "GET #show" do
       let(:course) { FactoryGirl.create(:course) }
       

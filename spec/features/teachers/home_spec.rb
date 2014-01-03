@@ -23,13 +23,30 @@ describe "Teacher home" do
     end
 
     describe "actions" do
-      example "creating a new course" do
-        expect {
-          click_link "New Course"
 
-          fill_in "Name", with: FactoryGirl.attributes_for(:course)[:name]
-          click_button "Create Course"
-        }.to change(Course, :count).by 1
+      describe "creating a new course" do
+        let(:course) { FactoryGirl.attributes_for(:course) }
+
+        context "valid attributes" do
+          before do
+            click_link "New Course"
+
+            fill_in "Name", with: course[:name]
+            click_button "Create Course"
+          end
+
+          it { should have_content course[:name] }
+        end
+
+        context "invalid attributes" do
+          before do
+            click_link "New Course"
+            click_button "Create Course"
+          end
+
+          it { should_not have_content course[:name] }
+          it { should have_content "can't" }
+        end
       end
 
       example "editing a course" do
