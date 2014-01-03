@@ -6,10 +6,7 @@ describe Enrollment do
   describe "attributes" do
     it { should belong_to :student }
     it { should belong_to :course }
-  end
 
-  context "no student" do
-    before { enrollment.student = nil }
-    it { should_not be_valid }
+    it { should validate_presence_of :student }
   end
 end

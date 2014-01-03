@@ -7,8 +7,8 @@ class Course < ActiveRecord::Base
   has_many :enrollments
   has_many :students, through: :enrollments
 
-  validates :name, presence: true
-  validates :course_code, presence: true, uniqueness: true
+  validates_presence_of :name, :course_code
+  validates_uniqueness_of :course_code
 
   private
 
