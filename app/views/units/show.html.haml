@@ -1,7 +1,7 @@
 - provide(:title, unit_name(@unit))
 
 - if policy(@concept).create?
-  = modal "createCourse" do
+  = modal "createConcept" do
     %h2 Create Concept
     = simple_form_for @concept do |f|
       = f.input :number
@@ -13,4 +13,23 @@
   %h1= unit_name(@unit)
 
   - if policy(@concept).create?
-    = modal_link "Create Course", "createCourse", class: "button"
+    = modal_link "Create Concept", "createConcept", class: "button right"
+
+  %table
+    %thead
+      %tr
+        %td Number
+        %td Description
+        - if show_concept_actions? @unit
+          %td Actions
+
+    %tbody
+      - policy_scope(Concept.all).each do |c|
+        %tr
+          %td= link_to c.number, c
+          %td= c.description
+          - if show_concept_actions? @unit
+            %td
+              = link_to "Edit", edit_concept_path(c) if policy(c).edit?
+              = link_to "Delete", c, method: :delete,
+                data: { confirm: "Are you sure you want to permanently delete Concept #{ c.number }?" }

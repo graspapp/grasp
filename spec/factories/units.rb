@@ -7,5 +7,15 @@ FactoryGirl.define do
     factory :invalid_unit do
       name ""
     end
+
+    factory :unit_with_concepts do
+      ignore do
+        concepts_count 5
+      end
+
+      after(:create) do |unit, evaluator|
+        create_list(:concept, evaluator.concepts_count, unit: unit)
+      end
+    end
   end
 end
