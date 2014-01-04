@@ -5,6 +5,7 @@ describe Unit do
 
   describe "attributes" do
     it { should belong_to :course }
+    it { should have_many :concepts }
     it { should respond_to :name }
     it { should respond_to :number }
 

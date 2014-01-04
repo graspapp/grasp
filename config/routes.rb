@@ -23,6 +23,7 @@ Grasp::Application.routes.draw do
 
   resources :courses
   resources :units
+  resources :concepts
 
   get "home", to: redirect("/")
 

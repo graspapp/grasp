@@ -20,6 +20,10 @@ describe UnitsController do
         expect(assigns(:unit)).to eq unit
       end
 
+      it "assigns a new concept to @concept" do
+        expect(assigns(:concept)).to be_instance_of Concept
+      end
+
       it "renders the :show template" do
         expect(response).to render_template :show
       end
@@ -51,6 +55,7 @@ describe UnitsController do
 
       context "with invalid attributes" do
         let(:raw_attributes) { FactoryGirl.attributes_for(:invalid_unit) }
+
         it "does not save the new unit in the database" do
           expect {
             post :create, unit: attributes
