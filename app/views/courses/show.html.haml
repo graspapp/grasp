@@ -17,19 +17,23 @@
       = f.button :submit, "Leave Course", class: "right",
         data: { confirm: "Are you sure you want to leave #{ @course.name }? This action cannot be reversed." }
 
+  %h3 Units
+
   - if policy(@unit).create?
     = modal_link "Create Unit", "createUnit", class: "button right"
 
   %table
     %thead
       %tr
-        %th Unit
+        %th Number
+        %th Name
         - if policy(@unit).edit? or policy(@unit).destroy?
           %th Actions
     %tbody
       - policy_scope(Unit.all).each do |u|
         %tr
-          %td= link_to unit_name(u), u
+          %td= link_to u.number, u
+          %td= u.name
           - if policy(u).edit? or policy(u).destroy?
             %td
               = link_to "Edit", edit_unit_path(u) if policy(u).edit?
