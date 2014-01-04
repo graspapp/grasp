@@ -4,6 +4,7 @@ module ModalHelper
     content_tag(:div, class: "reveal-modal", id: css_id,
                 "data-reveal" => true) do
       yield
+      concat content_tag(:a, "×", class: "close-reveal-modal")
     end
   end
 
