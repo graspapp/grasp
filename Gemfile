@@ -34,6 +34,7 @@ gem "foundation-rails"
 gem "figaro"
 gem "activeadmin", github: "gregbell/active_admin"
 gem "pundit"
+gem "retina_rails"
 
 group :development, :test do
   gem "rspec-rails"

@@ -1,3 +1,26 @@
-// Place all the styles related to the pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "foundation/components/inline-lists";
+
+.main-leader {
+  display: block;
+  text-align: center;
+  margin: rem-calc(150) auto rem-calc(125) auto;
+
+  p.lead {
+    margin-top: rem-calc(35);
+    font-size: 28px;
+  }
+}
+
+.footer {
+  text-align: center;
+  margin-top: rem-calc(25);
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    display: inline;
+    padding-right: rem-calc(20);
+  }
+}

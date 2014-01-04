@@ -1,4 +1,24 @@
 .row
   %h1 Sign Up Selection
-  %a= link_to "Student", new_student_registration_path, class: "button"
-  %a= link_to "Teacher", new_teacher_registration_path, class: "button"
+
+  .medium-5.columns
+    %ul.pricing-table
+      %li.title Student
+      %li.price= image_tag "backpack.svg"
+      %li.bullet-item You want to take control of your learning.
+      %li.bullet-item Create a plan and earn credit for following through.
+      %li.bullet-item Go beyond problems 1-31 odd and into actual thinking.
+      %li.cta-button
+        %a= link_to "Student", new_student_registration_path, class: "button"
+
+  .medium-5.columns
+    %ul.pricing-table
+      %li.title Teacher
+      %li.price= image_tag "teacher.svg"
+      %li.bullet-item
+        Teaching students goes beyond lecture, rote practice, students
+        forgetting, repeat.
+      %li.bullet-item Your students will be successful in college.
+      %li.bullet-item You are a CMAST advocate.
+      %li.cta-button
+        %a= link_to "Teacher", new_teacher_registration_path, class: "button"

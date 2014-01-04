@@ -2,6 +2,8 @@
 // FOUNDATION SETTINGS
 //
 
+$grasp-blue: #78c8d3;
+
 // Uncomment to use rem-calc() in your settings
 // @import "foundation/functions";
 
@@ -478,7 +480,7 @@
 
 // Off-canvas
 
-// $tabbar-bg: #333;
+$tabbar-bg: $grasp-blue;
 // $tabbar-height: rem-calc(45);
 // $tabbar-line-height: $tabbar-height;
 // $tabbar-color: #FFF;
@@ -927,11 +929,11 @@
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
+$topbar-bg-color: $grasp-blue;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-// $topbar-height: 45px;
+$topbar-height: 62px;
 // $topbar-margin-bottom: 0;
 
 // Control Input height for top bar
@@ -953,9 +955,9 @@
 // $topbar-link-color-hover: #fff;
 // $topbar-link-color-active: #fff;
 // $topbar-link-weight: normal;
-// $topbar-link-font-size: rem-calc(13);
+$topbar-link-font-size: rem-calc(16);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg-hover: #272727  ;
+$topbar-link-bg-hover: #7ED2DE;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: darken($primary-color, 5%);
 // $topbar-link-font-family: $body-font-family;
@@ -990,4 +992,4 @@
 // Sticky Class
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
-@import 'foundation';
+@import "foundation";

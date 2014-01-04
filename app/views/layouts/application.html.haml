@@ -5,7 +5,6 @@
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     %title= full_title(yield(:title))
     = stylesheet_link_tag "application"
-    = stylesheet_link_tag params[:controller]
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
   %body
@@ -18,4 +17,3 @@
         = render "layouts/footer"
         %a.exit-off-canvas
     = javascript_include_tag "application"
-    = javascript_include_tag params[:controller]
