@@ -1,11 +1,7 @@
 class UnitPolicy < ApplicationPolicy
   class Scope < Struct.new(:user, :scope)
     def resolve
-      if user.is_a? Teacher
-        scope.select { |u| u.course.teacher_id = user.id }
-      elsif user.is_a? Student
-        scope.select { |u| user.courses.include? u.course }
-      end
+      scope.select { |u| user.courses.include? u.course }
     end
   end
 
