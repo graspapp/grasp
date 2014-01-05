@@ -10,7 +10,7 @@
       = f.button :submit
 
 .row
-  %h1= @course.name
+  - breadcrumb :course, @course
 
   - if current_user.is_a? Student and policy(current_user).leave_course?
     = simple_form_for :course, url: leave_course_student_path(current_user),
@@ -18,6 +18,8 @@
       = f.hidden_field :id, value: @course.id
       = f.button :submit, "Leave Course", class: "right",
         data: { confirm: "Are you sure you want to leave #{ @course.name }? This action cannot be reversed." }
+
+  %h1= @course.name
 
   %h3 Units
 

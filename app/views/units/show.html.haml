@@ -10,6 +10,8 @@
       = f.button :submit
 
 .row
+  - breadcrumb :unit, @unit
+
   %h1= unit_name(@unit)
 
   - if policy(@concept).create?

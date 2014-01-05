@@ -183,7 +183,7 @@ $grasp-blue: #78c8d3;
 // $crumb-border-size: 1px;
 // $crumb-border-style: solid;
 // $crumb-border-color: darken($crumb-bg, $crumb-function-factor);
-// $crumb-radius: $global-radius;
+$crumb-radius: none;
 
 // We use these to set various text styles for breadcrumbs.
 // $crumb-font-size: rem-calc(11);

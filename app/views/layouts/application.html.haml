@@ -13,6 +13,7 @@
         = render "layouts/header"
         %section.main-section
           = render "layouts/flash"
+          = breadcrumbs style: :foundation5
           = yield
         = render "layouts/footer"
         %a.exit-off-canvas

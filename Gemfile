@@ -36,6 +36,7 @@ gem "activeadmin", github: "gregbell/active_admin"
 gem "pundit"
 gem "retina_rails"
 gem "mail_form"
+gem "gretel"
 
 group :development, :test do
   gem "rspec-rails"
