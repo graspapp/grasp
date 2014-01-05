@@ -2,7 +2,8 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     authorize @course
-    @unit = @course.units.build
+    @units = @course.units
+    @unit = @units.build
   end
 
   def create

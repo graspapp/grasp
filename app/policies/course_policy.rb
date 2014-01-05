@@ -1,11 +1,7 @@
 class CoursePolicy < ApplicationPolicy
   class Scope < Struct.new(:user, :scope)
     def resolve
-      if user.is_a? Teacher
-        scope.where(teacher_id: user.id)
-      elsif user.is_a? Student
-        scope.where(enrollments: { student_id: user.id })
-      end
+      scope.select { |c| user.courses.include? c and not c.new_record? }
     end
   end
 

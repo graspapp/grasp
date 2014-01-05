@@ -1,3 +1,5 @@
+- provide(:title, @course.name)
+
 - if policy(@unit).create?
   = modal "createUnit" do
     %h2 Create Unit
@@ -30,7 +32,7 @@
         - if policy(@unit).edit? or policy(@unit).destroy?
           %th Actions
     %tbody
-      - policy_scope(Unit.all).each do |u|
+      - policy_scope(@units).each do |u|
         %tr
           %td= link_to u.number, u
           %td= u.name

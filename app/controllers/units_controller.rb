@@ -13,7 +13,8 @@ class UnitsController < ApplicationController
 
   def show
     @unit = Unit.find(params[:id])
-    @concept = @unit.concepts.build
+    @concepts = @unit.concepts
+    @concept = @concepts.build
     authorize @unit
   end
 

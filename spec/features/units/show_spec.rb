@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "Unit show" do
-  let(:unit) { FactoryGirl.create(:unit_with_concepts) }
+  let(:unit) { FactoryGirl.create(:unit_with_concepts, concepts_count: 1) }
   before(:each) do
     user.courses << unit.course
 
@@ -21,6 +21,17 @@ describe "Unit show" do
 
       it { should have_content concept.number }
       it { should have_content concept.description }
+
+      describe "when concept isn't in current unit" do
+        let(:concept) { FactoryGirl.create(:concept) }
+        before do
+          user.courses << concept.unit.course
+          visit current_path
+        end
+
+        it { should_not have_content concept.number }
+        it { should_not have_content concept.description }
+      end
     end
   end
 

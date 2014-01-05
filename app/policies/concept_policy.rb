@@ -1,7 +1,9 @@
 class ConceptPolicy < ApplicationPolicy
   class Scope < Struct.new(:user, :scope)
     def resolve
-      scope.select { |c| user.courses.include? c.unit.course }
+      scope.select do |c|
+        user.courses.include? c.unit.course and not c.new_record?
+      end
     end
   end
 

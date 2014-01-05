@@ -24,7 +24,7 @@
           %td Actions
 
     %tbody
-      - policy_scope(Concept.all).each do |c|
+      - policy_scope(@concepts).each do |c|
         %tr
           %td= link_to c.number, c
           %td= c.description

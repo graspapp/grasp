@@ -21,6 +21,10 @@ describe CoursesController do
           expect(assigns(:course)).to eq course
         end
 
+        it "assign's the course's units to @units" do
+          expect(assigns(:units)).to be_instance_of course.units.class
+        end
+
         it "assigns a new unit to @unit" do
           expect(assigns(:unit)).to be_instance_of Unit
         end

@@ -20,6 +20,10 @@ describe UnitsController do
         expect(assigns(:unit)).to eq unit
       end
 
+      it "assigns the unit's concepts to @concepts" do
+        expect(assigns(:concepts)).to be_instance_of unit.concepts.class
+      end
+
       it "assigns a new concept to @concept" do
         expect(assigns(:concept)).to be_instance_of Concept
       end
