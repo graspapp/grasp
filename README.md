@@ -23,7 +23,11 @@ system.
 
 Secret keys are handled with [Figaro](https://github.com/laserlemon/figaro).
 For Grasp to run on your system, you must create `config/application.yml`
-containing both `APPLICATION_SECRET` and `DEVISE_SECRET`.
+containing the following keys and corresponding values.
+
+* `APPLICATION_SECRET` - Application secret as used by Rails
+* `DEVISE_SECRET` - Secret key used by Devise
+* `CONTACT_EMAIL` - Email to mail contact form to.
 
 ### Test Suite
 
