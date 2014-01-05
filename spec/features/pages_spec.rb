@@ -15,12 +15,6 @@ describe "Pages" do
     it { should have_title("About") }
   end
 
-  context "contact" do
-    before { visit contact_path }
-    it { should have_content("Contact") }
-    it { should have_title("Contact") }
-  end
-
   context "acknowledgements" do
     before { visit acknowledgements_path }
     it { should have_content("Acknowledgements") }

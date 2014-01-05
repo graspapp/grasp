@@ -1,0 +1,11 @@
+- provide(:title, "Contact")
+
+.row
+  %h1 Contact
+
+  = simple_form_for @contact do |f|
+    = f.input :name
+    = f.input :email
+    = f.input :subject
+    = f.input :message, as: :text, input_html: { rows: 20 }
+    = f.button :submit, "Send"

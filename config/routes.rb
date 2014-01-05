@@ -24,12 +24,15 @@ Grasp::Application.routes.draw do
   resources :courses
   resources :units
   resources :concepts
+  resources :contacts, only: [:new, :create]
 
   get "home", to: redirect("/")
 
   root to: "pages#home"
 
-  %w[home about contact acknowledgements sign_up_selection].each do |page|
+  %w[home about acknowledgements sign_up_selection].each do |page|
     get page, controller: "pages", action: page
   end
+
+  get "contact", controller: "contacts", action: :new
 end
