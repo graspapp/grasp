@@ -2,9 +2,9 @@ class Course < ActiveRecord::Base
   before_validation :generate_course_code
 
   belongs_to :teacher
-  has_many :units
+  has_many :units, dependent: :destroy
 
-  has_many :enrollments
+  has_many :enrollments, dependent: :destroy
   has_many :students, through: :enrollments
 
   validates_presence_of :name, :course_code

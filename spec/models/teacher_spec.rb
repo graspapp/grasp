@@ -8,6 +8,6 @@ describe Teacher do
   end
 
   describe "attributes" do
-    it { should have_many :courses }
+    it { should have_many(:courses).dependent(:destroy) }
   end
 end
