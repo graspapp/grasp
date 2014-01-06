@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe Concept do
   it { should belong_to :unit }
+
+  it { should have_many(:concept_progresses).dependent(:destroy) }
+
   it { should respond_to :number }
   it { should respond_to :description }
 
