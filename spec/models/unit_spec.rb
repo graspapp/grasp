@@ -1,15 +1,11 @@
 require 'spec_helper'
 
 describe Unit do
-  let(:unit) { FactoryGirl.create(:unit) }
+  it { should belong_to :course }
+  it { should have_many(:concepts).dependent(:destroy) }
+  it { should respond_to :name }
+  it { should respond_to :number }
 
-  describe "attributes" do
-    it { should belong_to :course }
-    it { should have_many(:concepts).dependent(:destroy) }
-    it { should respond_to :name }
-    it { should respond_to :number }
-
-    it { should validate_presence_of :name }
-    it { should validate_presence_of :number }
-  end
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :number }
 end
