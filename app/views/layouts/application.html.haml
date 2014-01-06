@@ -6,6 +6,7 @@
     %title= full_title(yield(:title))
     = stylesheet_link_tag "application"
     = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     .off-canvas-wrap
@@ -17,4 +18,5 @@
           = yield
         = render "layouts/footer"
         %a.exit-off-canvas
-    = javascript_include_tag "application"
+    = javascript_include_tag "foundation"
+    %script $(document).foundation();
