@@ -1,4 +1,4 @@
-# Grasp
+![Grasp](https://raw.github.com/graspapp/grasp/rewrite/app/assets/images/grasp.png)
 
 Grasp is an open-source learning management system for Common Core classrooms.
 Grasp's primary goal is to leverage technology to seamlessly integrate into
