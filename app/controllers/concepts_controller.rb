@@ -13,7 +13,20 @@ class ConceptsController < ApplicationController
 
   def show
     @concept = Concept.find(params[:id])
+    @concept_progresses = @concept.concept_progresses
     authorize @concept
+
+    if current_user.is_a? Student
+      enrollment = Enrollment.find_by(course: @concept.unit.course,
+                                      student: current_user)
+      
+      if enrollment.concept_progresses.find_by(concept: @concept).nil?
+        @concept_progress = ConceptProgress.create
+
+        enrollment.concept_progresses << @concept_progress
+        @concept.concept_progresses << @concept_progress
+      end
+    end
   end
 
   def edit

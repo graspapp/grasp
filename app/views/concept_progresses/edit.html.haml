@@ -1,0 +1,10 @@
+- provide(:title, "Edit Concept Progress")
+
+.row
+  %h1 Edit Concept Progress
+  = simple_form_for @concept_progress do |f|
+    = f.input :p_level, collection: 1..4
+    = f.input :mastery_level, collection: 1..4
+    = f.input :type_of_error, collection: %w(Procedural Conceptual Misconception Reasoning No\ Error)
+    = f.input :next_steps, input_html: { rows: 10 }
+    = f.button :submit, "Edit Concept Progress"

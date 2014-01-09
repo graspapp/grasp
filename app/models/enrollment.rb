@@ -5,4 +5,6 @@ class Enrollment < ActiveRecord::Base
   has_many :concept_progresses, dependent: :destroy
 
   validates_presence_of :student, :course
+  validates_uniqueness_of :course_id, scope: :student
+  validates_uniqueness_of :student_id, scope: :course
 end

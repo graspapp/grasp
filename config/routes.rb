@@ -24,6 +24,7 @@ Grasp::Application.routes.draw do
   resources :courses
   resources :units
   resources :concepts
+  resources :concept_progresses
   resources :contacts, only: [:new, :create]
 
   get "home", to: redirect("/")

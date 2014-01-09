@@ -37,6 +37,7 @@ gem "pundit"
 gem "retina_rails"
 gem "mail_form"
 gem "gretel"
+gem "paper_trail"
 
 group :development, :test do
   gem "rspec-rails"
