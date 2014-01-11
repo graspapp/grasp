@@ -1,46 +1,33 @@
 require 'spec_helper'
 
 describe ConceptProgress do
+  it { should belong_to :enrollment }
+  it { should belong_to :concept }
 
-  let (:cp) { FactoryGirl.create(:concept_progress) }
+  it { should be_versioned }
 
-  subject { cp }
+  it { should respond_to :type_of_error }
+  it { should respond_to :next_steps }
+  it { should respond_to :mastery_level }
+  it { should respond_to :p_level }
 
-  describe "attributes" do
+  it { should validate_presence_of :type_of_error }
+  it { should validate_presence_of :next_steps }
+  it { should validate_presence_of :mastery_level }
+  it { should validate_presence_of :p_level }
 
-    it { should belong_to  :enrollment }
-    it { should belong_to  :concept}
+  it { should ensure_length_of(:next_steps).is_at_most(140) }
+  it { should ensure_inclusion_of(:type_of_error).in_array(%w(N/A Procedural
+    Conceptual Misconception No\ Error)) }
+  it { should ensure_inclusion_of(:mastery_level).in_range(1..4) }
+  it { should ensure_inclusion_of(:p_level).in_range(1..4) }
 
-    it { should respond_to :enrollment_id }
-    it { should respond_to :concept_id }
+  describe "initial values" do
+    let(:cp) { ConceptProgress.create }
 
-    it { should respond_to :type_of_error }
-    it { should respond_to :next_steps }
-    it { should respond_to :g_level }
-    it { should respond_to :p_level }
-  end
-
-  describe "with no type of error" do
-
-    before { cp.type_of_error = nil }
-    it { should_not be_valid }
-  end
-
-  describe "with no next steps" do
-
-    before { cp.next_steps = nil }
-    it { should_not be_valid }
-  end
-
-  describe "with no g-level" do
-
-    before { cp.g_level = nil }
-    it { should_not be_valid }
-  end
-
-  describe "with no p-level" do
-
-    before { cp.p_level = nil }
-    it { should_not be_valid }
+    example { expect(cp.type_of_error).to eq "N/A" }
+    example { expect(cp.next_steps).to eq "N/A" }
+    example { expect(cp.mastery_level).to eq 1 }
+    example { expect(cp.p_level).to eq 1 }
   end
 end

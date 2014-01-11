@@ -1,40 +1,29 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe "Course" do
+describe Course do
+  let(:course) { FactoryGirl.create(:course) }
 
-  before do
-    teacher = FactoryGirl.create(:teacher)
-    teacher.courses.build(name: "Algebra II")
-    @course = teacher.courses.last
+  it { should belong_to :teacher }
+  it { should have_many(:enrollments).dependent(:destroy) }
+  it { should have_many(:students).through(:enrollments) }
+  it { should have_many(:units).dependent(:destroy) }
+  it { should respond_to :name }
+  it { should respond_to :course_code }
+
+  it { should validate_uniqueness_of :course_code }
+
+  context "with no teacher" do
+    before { course.teacher = nil }
+    it { should_not be_valid }
   end
 
-  subject { @course }
-
-  describe "attributes" do
-
-    it { should belong_to :teacher }
-    it { should have_many(:students).through(:enrollments) }
-    it { should have_many(:enrollments).dependent(:destroy) }
-    it { should have_many(:units).dependent(:destroy) }
-
-    it { should respond_to :name }
-    it { should respond_to :code }
-
-    it "should include a non-blank course code" do
-
-      @course.code.should_not be_empty
-    end
-
-    it "should return a snake_case name when to_s is called" do
-
-      @course.to_s.should eq 'algebra_ii'
-    end
+  context "with no name" do
+    before { course.name = "" }
+    it { should_not be_valid }
   end
 
-  describe "when name is blank" do
-    
-    before { @course.name = " " }
+  context "with no course code" do
+    before { course.course_code = "" }
     it { should_not be_valid }
   end
 end
-

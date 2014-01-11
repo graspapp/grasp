@@ -1,0 +1,26 @@
+@import "foundation/components/inline-lists";
+
+.main-leader {
+  display: block;
+  text-align: center;
+  margin: rem-calc(150) auto rem-calc(125) auto;
+
+  p.lead {
+    margin-top: rem-calc(35);
+    font-size: 28px;
+  }
+}
+
+.footer {
+  text-align: center;
+  margin-top: rem-calc(25);
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    display: inline;
+    padding-right: rem-calc(20);
+  }
+}

@@ -1,0 +1,8 @@
+- provide(:title, "Edit Concept")
+
+.row
+  %h1 Edit Concept
+  = simple_form_for @concept do |f|
+    = f.input :number
+    = f.input :description
+    = f.button :submit

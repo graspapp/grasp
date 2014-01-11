@@ -1,0 +1,8 @@
+- provide(:title, "Edit Course")
+
+.row
+  %h1 Edit Course
+
+  = simple_form_for @course do |f|
+    = f.input :name
+    = f.button :submit

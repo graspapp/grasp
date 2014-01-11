@@ -1,28 +1,40 @@
 class StudentsController < ApplicationController
-
   def home
-    if params[:id].nil? && current_student
-      @student = current_student
-    else
-      @student = Student.find(params[:id])
-    end
+    @student = current_user
   end
 
   def add_course
-    course_code = params[:code]
-    courses = Course.all.to_a
-    s = current_student
-
-    exists = courses.any? { |c| c.code == course_code }
-    already_added = s.courses.any? { |c| c.code == course_code } and exists
-
-    unless already_added
-      courses.map { |c| s.courses << c if course_code == c.code } 
+    student = Student.find(params[:id])
+    course_code = params[:course][:course_code]
+    authorize student
+    course = Course.where(course_code: course_code).first
+    if course.nil?
+      flash[:alert] = "No courses were found with the specified course code."
+    elsif student.courses.include? course
+      flash[:alert] = "The specified course is already added."
+    else
+      student.courses << course
     end
+    redirect_to root_path
+  end
 
-    flash.alert = 'Course does not exist.' unless exists
-    flash.alert = 'Course is already added.' if already_added
+  def leave_course
+    student = Student.find(params[:id])
+    authorize student
+    unless student.nil? or params[:course][:id].nil? or
+      Course.find(params[:course][:id]).nil?
 
-    redirect_to root_path 
+      course = Course.find(params[:course][:id])
+      student.courses.delete(course)
+    else
+      flash[:alert] = "An error occured while trying to delete the course."
+    end
+    redirect_to root_path
+  end
+
+  private
+
+  def course_params
+    params.require(:course).permit(:course_code)
   end
 end

@@ -1,0 +1,37 @@
+- provide(:title, concept_title(@concept))
+
+.row
+  - breadcrumb :concept, @concept
+
+  %h1= "Concept #{ @concept.number }"
+
+  %h3 Description
+
+  %p= @concept.description
+
+  %h3 Progress
+
+  %table
+    %thead
+      %tr
+        - if current_user.is_a? Teacher
+          %th Student
+        %th Last Edited
+        %th P Level
+        %th Mastery Level
+        %th Type of Error
+        %th Next Steps
+        - if show_concept_progress_actions? @concept
+          %th Actions
+    %tbody
+      - policy_scope(@concept_progresses).each do |cp|
+        %tr
+          - if current_user.is_a? Teacher
+            %td= full_name(cp.enrollment.student)
+          %td= cp.created_at.to_formatted_s(:mdy)
+          %td= cp.p_level
+          %td= cp.mastery_level
+          %td= cp.type_of_error
+          %td= cp.next_steps
+          - if policy(cp).edit?
+            %td= link_to "Edit", edit_concept_progress_path(cp)

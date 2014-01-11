@@ -1,45 +1,39 @@
 Grasp::Application.routes.draw do
-  authenticated :teacher do
-    root to: "teachers#home", as: :teacher_root
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+  devise_for :users, skip: :registrations
+  devise_for :students, :teachers,
+    controllers: { registrations: "registrations" }, skip: :sessions
+
+  %w(Student Teacher).each do |t|
+    authenticated :user, lambda { |u| u.type == t } do
+      root to: "#{ t.pluralize.underscore }#home", as: "#{ t }_root".to_sym
+    end
   end
 
-  authenticated :student do
-    root to: "students#home", as: :student_root
+  resources :students do
+    member do
+      post :add_course
+      delete :leave_course
+    end
   end
-    root to: "static_pages#home"
-  
-  devise_for :teachers, controllers: { sessions: 'sessions'}
-  devise_for :students, controllers: { sessions: 'sessions'}
 
-  resources :teachers, :students
-  resources :courses, only: [:create, :destroy]
+  resources :teachers
+
+  resources :courses
   resources :units
-  resources :concepts, only: [:create, :destroy]
+  resources :concepts
+  resources :concept_progresses
+  resources :contacts, only: [:new, :create]
 
-  resources :concepts do
-    get 'level_up', :on => :member  
-  end  
+  get "home", to: redirect("/")
 
-  
-  devise_scope :teacher do
-    get "/teacher/sign_up" => "devise/registrations#new"
-    get "/sign_in" => "devise/sessions#new"
-    delete "/sign_out", to: "sessions#destroy"
+  root to: "pages#home"
+
+  %w[home about acknowledgements sign_up_selection].each do |page|
+    get page, controller: "pages", action: page
   end
 
-  devise_scope :student do
-    get "/student/sign_up" => "devise/registrations#new"
-    delete "/sign_out", to: "sessions#destroy"
-  end
-  
-  get "/help",             to: "static_pages#help"
-  get "/about",            to: "static_pages#about"
-  get "/contact",          to: "static_pages#contact"
-  get "/acknowledgements", to: "static_pages#acknowledgements"
-  get "/sign_up",          to: "static_pages#sign_up"
-
-  post 'students/add_course',     to: 'students#add_course'
-  post 'teachers/add_unit',       to: 'teachers#add_unit'
-  post 'units/add_concept',       to: 'units#add_concept'
-  post 'concepts/modify_concept', to: 'concepts#modify_concept'
+  get "contact", controller: "contacts", action: :new
 end

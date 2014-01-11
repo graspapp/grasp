@@ -1,28 +1,38 @@
 class ApplicationController < ActionController::Base
+  include Pundit
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  before_action :configure_devise_params, if: :devise_controller?
   protect_from_forgery with: :exception
 
-  protected
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do
-      |u| u.permit(:first_name, :last_name, :full_name, :email, :password,
-                   :password_confirmation, :class_code, :school, :city, :state,
-                   :country)
+  def configure_devise_params
+    [:sign_up, :account_update].each do |s|
+      devise_parameter_sanitizer.for(s) do |u|
+        u.permit(:first_name, :last_name, :role_type, :email, :password,
+                 :password_confirmation, :current_password)
+      end
     end
   end
 
-  rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = exception.message
-    redirect_to root_url
+  %w(Student Teacher).each do |k|
+    define_method "current_#{ k.underscore }" do
+      current_user if current_user.is_a?(k.constantize)
+    end
+
+    define_method "authenticate_#{ k.underscore }!" do
+      |opts={}| send("current_#{ k.underscore }") || not_authorized
+    end
+
+    define_method "#{ k.underscore }_signed_in?" do
+      !send("current_#{ k.underscore }").nil?
+    end
   end
-  
-  def current_course
-    current_course ||= Course.where("id = ? AND teacher_id = ?", params[:course].to_i, current_teacher.id).last
+
+  private
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to (request.headers["Referer"] || root_path)
   end
-    
-  helper_method :current_course
 end

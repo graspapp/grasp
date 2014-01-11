@@ -1,83 +1,51 @@
 class UnitsController < ApplicationController
-
-  before_action :authenticate_user
-  
-  def new
-    @unit = Unit.new
+  def create
+    @course = Course.find(params[:unit][:course_id])
+    @unit = @course.units.build(unit_params)
+    authorize @unit
+    if @unit.save
+      redirect_to @course
+    else
+      flash[:alert] = @unit.errors.full_messages.to_sentence
+      redirect_to (request.referer.present? ? :back : root_path)
+    end
   end
 
   def show
     @unit = Unit.find(params[:id])
-    @concepts = @unit.concepts.sort_by { |c| [c.number.length, c.number] }
+    @concepts = @unit.concepts
+    @concept = @concepts.build
+    authorize @unit
+  end
 
-    if student_signed_in?
-      create_needed_concept_progresses_for current_student
-    end
+  def edit
+    @unit = Unit.find(params[:id])
+    authorize @unit
   end
 
   def update
     @unit = Unit.find(params[:id])
+    authorize @unit
     if @unit.update_attributes(unit_params)
-      flash[:notice] = "Unit updated"
+      flash[:success] = "Unit updated"
+      redirect_to @unit.course
     else
-      flash[:alert] = @unit.errors.full_messages.to_sentence.humanize
+      render "edit"
     end
-
-    redirect_to @unit
   end
-  
+
   def destroy
     @unit = Unit.find(params[:id])
+    @course = @unit.course
+    authorize @unit
     @unit.destroy
-    redirect_to root_url
-  end
-  
-  def add_concept
-    @concept = Concept.new(unit_id: params[:current_unit], description:
-                           params[:concept_desc], number:
-                           params[:concept_number])
-
-    @concept.save
-      
-    redirect_to unit_path(params[:current_unit])
+    flash[:success] = "Unit destroyed."
+    redirect_to @course
   end
 
   private
-  
+
   def unit_params
-    params.require(:unit).permit(:number, :name)
+    params.require(:unit).permit(:name, :number)
   end
-
-  def create_needed_concept_progresses_for(student)
-    enrollment = Enrollment.where(student_id: student.id,
-                                  course_id: @unit.course_id).first
-
-    @unit.concepts.each do |c|
-      progress = ConceptProgress.where(enrollment_id: enrollment.id,
-                                       concept_id: c.id).first
-
-      if progress.nil?
-        ConceptProgress.create(enrollment_id: enrollment.id,
-                               concept_id: c.id)
-      end
-    end
-  end
-
-  def authenticate_user  
-    redirect_to sign_in_path,
-      :flash => {
-        :alert => "You need to sign in or sign up before continuing."
-      } unless student_signed_in? or teacher_signed_in?
-  end
-
-  def concept_progress_for(concept, student)
-    course = concept.unit.course
-    enrollment = Enrollment.where(student_id: student.id,
-                                  course_id: course.id).last
-
-    ConceptProgress.where(enrollment_id: enrollment.id,
-                          concept_id: concept.id).last
-  end
-
-  helper_method :concept_progress_for
 end

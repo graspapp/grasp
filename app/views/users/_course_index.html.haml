@@ -1,0 +1,19 @@
+%table
+  %thead
+    %tr
+      %th Course
+      %th Code
+      - if show_course_actions? user
+        %th Actions
+  %tbody
+    - policy_scope(user.courses).each do |c|
+      %tr
+        %td= link_to c.name, c
+        %td= c.course_code
+        - if show_course_actions? user
+          %td
+            - if policy(c).edit?
+              = link_to "Edit", edit_course_path(c)
+            - if policy(c).destroy?
+              = link_to "Delete", c, method: :delete,
+                data: { confirm: "Are you sure you want to permanently delete #{ c.name }?" }

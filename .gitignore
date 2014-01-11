@@ -15,5 +15,5 @@
 /log/*.log
 /tmp
 
-# Coveralls
-coverage/*
+# Ignore application configuration
+/config/application.yml

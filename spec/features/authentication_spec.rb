@@ -1,168 +1,122 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe 'Authentication' do
+describe "Authentication" do subject { page }
 
-  let(:teacher) { FactoryGirl.create(:teacher) }
-  let(:student) { FactoryGirl.create(:student) }
+  describe "user registration" do
 
-  subject { page }
+    describe "students" do 
+      before { visit new_student_registration_path }
 
-  describe 'teacher registration page' do
-
-    before { visit teacher_sign_up_path }
-
-    it { should have_selector('h1', text: 'Sign Up') }
-  end
-
-  describe 'teacher registration' do
-
-    before { visit teacher_sign_up_path }
-
-    describe 'with invalid information' do
-
-      it 'should not create a new teacher' do
-        expect { click_button 'Create Account' }.not_to change(Teacher, :count)
+      context "with invalid information" do
+        before { click_button "Sign up" }
+        it { should have_title("Sign up") }
+        it { should have_content("can't be blank") }
       end
 
-      describe 'submission results' do
-
-        before { click_button 'Create Account' }
-        it { should have_selector('h1', text: 'Sign Up') }
-        it { should have_content('error') }
-        it { should have_field('School') } # test for teacher specific field
-      end
-    end
-
-    describe 'with valid information' do
-
-      let(:teacher2) do
-        FactoryGirl.build(:teacher, email: 'teacher2@email.com')
-      end
-
-      it 'should allow new teacher to sign up' do
-
-        fill_in 'Full name',             with: teacher2.full_name
-        fill_in 'Email',                 with: teacher2.email
-        fill_in 'Password',              with: teacher2.password
-        fill_in 'Password confirmation', with: teacher2.password_confirmation
-        fill_in 'School',                with: teacher2.school
-        fill_in 'City',                  with: teacher2.city
-        fill_in 'State',                 with: teacher2.state
-        fill_in 'Country',               with: teacher2.country
-
-        expect do
-          click_button 'Create Account'
-        end.to change(Teacher, :count).by(1)
-      end
-    end
-  end
-
-  describe 'student registration page' do
-
-    before { visit student_sign_up_path }
-
-    it { should have_selector('h1', text: 'Sign Up') }
-  end
-
-  describe 'student registration' do
-
-    before { visit student_sign_up_path }
-
-    describe 'with invalid information' do
-
-      it 'should not create a new student' do
-        expect { click_button 'Create Account' }.not_to change(Student, :count)
-      end
-
-      describe 'submission results' do
-
-        before { click_button 'Create Account' }
-        it { should have_selector('h1', text: 'Sign Up') }
-        it { should have_content('error') }
-      end
-    end
-
-    describe 'with valid information' do
-
-      let(:student2) do
-        FactoryGirl.build(:student, email: 'student2@email.com')
-      end
-
-      it "should allow a new student to sign up" do
-        fill_in "Full name",             with: student2.full_name
-        fill_in "Email",                 with: student2.email
-        fill_in "Password",              with: student2.password
-        fill_in "Password confirmation", with: student2.password
-      
-        expect do
-          click_button 'Create Account'
-        end.to change(Student, :count).by(1)
-      end
-
-      describe "with two-word last name" do
-
-        it "should properly store the student's first and last name" do
-
-          fill_in "Full name",             with: "Luke St. Regis"
-          fill_in "Email",                 with: "foobarfoobarfoo@foo.com"
-          fill_in "Password",              with: "foobarfoobar"
-          fill_in "Password confirmation", with: "foobarfoobar"
-          click_button "Create Account"
-
-          Student.last.first_name.should eq "Luke"
-          Student.last.last_name.should eq "St. Regis"
+      context "with valid information" do
+        let(:user) { FactoryGirl.attributes_for(:user) }
+        before do
+          fill_in "First name", with: user[:first_name]
+          fill_in "Last name", with: user[:last_name]
+          fill_in "Email", with: user[:email]
+          fill_in "Password", with: user[:password], match: :prefer_exact
+          fill_in "Password confirmation", with: user[:password_confirmation],
+            match: :prefer_exact
+          click_button "Sign up"
         end
 
+        it { should have_link("Sign out", href: destroy_user_session_path) }
+        it { should_not have_link("Sign in") }
+        it { should have_title("#{user[:first_name]} #{user[:last_name]}") }
+
+        describe "followed by sign out" do
+          before { first(:link, "Sign out").click }
+          it { should have_link("Sign up") }
+        end
+      end
+    end
+
+    describe "teachers" do
+      before { visit new_teacher_registration_path }
+
+      context "with invalid information" do
+        before { click_button "Sign up" }
+        it { should have_title("Sign up") }
+        it { should have_content("can't be blank") }
+      end
+
+      context "with valid information" do
+        let(:user) { FactoryGirl.attributes_for(:user) }
+        before do
+          fill_in "First name", with: user[:first_name]
+          fill_in "Last name", with: user[:last_name]
+          fill_in "Email", with: user[:email]
+          fill_in "Password", with: user[:password], match: :prefer_exact
+          fill_in "Password confirmation", with: user[:password_confirmation],
+            match: :prefer_exact
+          click_button "Sign up"
+        end
+
+        it { should have_link("Sign out", href: destroy_user_session_path) }
+        it { should_not have_link("Sign in") }
+        it { should have_title("#{user[:first_name]} #{user[:last_name]}") }
+
+        describe "followed by sign out" do
+          before { first(:link, "Sign out").click }
+          it { should have_link("Sign up") }
+        end
       end
     end
   end
 
-  describe 'sign in page' do
+  describe "user login" do
+    before { visit new_user_session_path }
 
-    before { visit sign_in_path }
+    describe "students" do
+      
+      context "with invalid information" do
+        before { click_button "Sign in" }
 
-    it { should have_selector('h1', text: 'Sign in') }
-  end
+        it { should have_title("Sign in") }
+        it { should have_content("Invalid") }
+      end
 
-  describe 'signing in' do
+      context "with valid information" do
+        let(:student) { FactoryGirl.create(:student) }
 
-    before { visit sign_in_path }
+        before do
+          fill_in "Email", with: student.email
+          fill_in "Password", with: student.password
+          click_button "Sign in"
+        end
 
-    describe 'with invalid credentials' do
-
-      before { click_button 'Sign in' }
-
-      it do
-        should have_selector('div.alert.alert-danger',
-                             text: 'Invalid email or password.')
+        it { should have_title(full_name(student)) }
+        it { should have_link("Sign out") }
+        it { should_not have_link("Sign in") }
       end
     end
 
-    describe 'with teacher credentials' do
+    describe "teachers" do
+      
+      context "with invalid information" do
+        before { click_button "Sign in" }
 
-      before { sign_in(teacher) }
-
-      it do
-        should have_selector('h1', text: teacher.full_name)
+        it { should have_title("Sign in") }
+        it { should have_content("Invalid") }
       end
 
-      it do
-        should have_selector('div.alert.alert-success.alert-dismissable',
-                             text: 'Signed in successfully.')
-      end
-    end
+      context "with valid information" do
+        let(:teacher) { FactoryGirl.create(:teacher) }
 
-    describe 'with student credentials' do
+        before do
+          fill_in "Email", with: teacher.email
+          fill_in "Password", with: teacher.password
+          click_button "Sign in"
+        end
 
-      before { sign_in(student) }
-
-      it do
-        should have_selector('h1', text: student.full_name)
-      end
-
-      it do
-        should have_selector('div.alert.alert-success',
-                             text: 'Signed in successfully.')
+        it { should have_title(full_name(teacher)) }
+        it { should have_link("Sign out") }
+        it { should_not have_link("Sign in") }
       end
     end
   end

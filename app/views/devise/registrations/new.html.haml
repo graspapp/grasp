@@ -1,0 +1,17 @@
+- provide(:title, "Sign up")
+
+.row
+  %h2 Sign up
+
+  = simple_form_for(resource, as: resource_name,
+    url: registration_path(resource_name)) do |f|
+    .row
+      .small-6.columns
+        = f.input :first_name, autofocus: true
+      .small-6.columns
+        = f.input :last_name
+    = f.input :email
+    = f.input :password
+    = f.input :password_confirmation
+    = f.button :submit, "Sign up"
+  = render "devise/shared/links"

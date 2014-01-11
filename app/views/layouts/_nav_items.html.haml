@@ -1,0 +1,10 @@
+%li= link_to "Home", root_path
+- unless user_signed_in?
+  %li= link_to "Sign up", sign_up_selection_path
+  %li= link_to "Sign in", new_user_session_path
+- else
+  - if current_user.is_a? Student
+    %li= link_to "Modify profile", edit_student_registration_path
+  - elsif current_user.is_a? Teacher
+    %li= link_to "Modify profile", edit_teacher_registration_path
+  %li= link_to "Sign out", destroy_user_session_path, method: :delete

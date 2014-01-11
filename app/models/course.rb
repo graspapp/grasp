@@ -1,24 +1,23 @@
 class Course < ActiveRecord::Base
-
-  after_initialize :init
+  before_validation :generate_course_code
 
   belongs_to :teacher
-
   has_many :units, dependent: :destroy
+
   has_many :enrollments, dependent: :destroy
   has_many :students, through: :enrollments
 
-  validates_presence_of :name, :code
+  validates_presence_of :name, :course_code
+  validates_uniqueness_of :course_code
 
-  def init
-    self.code ||= generate_course_code
-  end
+  private
 
   def generate_course_code
-    SecureRandom.base64(6).gsub(/=+$/,'')
-  end
-
-  def to_s
-    name.downcase.gsub ' ', '_'
+    code = SecureRandom.hex(3)
+    if Course.find_by_course_code(code) != nil
+      generate_course_code
+    else
+      self.course_code ||= code
+    end
   end
 end

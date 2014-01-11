@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Grasp::Application.config.secret_key_base = '09769cda2ad9bbaa8b56df8d970d4ab8e46e18a812ab9162fcbd1b1e79d16d681a3e3e7850638e78a93f57becbd52d06109114c74ef7e6e63cfc27574c91eb86'
+Grasp::Application.config.secret_key_base = Figaro.env.application_secret
