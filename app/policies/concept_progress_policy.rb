@@ -16,17 +16,6 @@ class ConceptProgressPolicy < ApplicationPolicy
   end
 
   def update?
-    teacher_and_concept_progress_in_course?
-  end
-
-  def destroy?
-    teacher_and_concept_progress_in_course?
-  end
-
-  private
-
-  def teacher_and_concept_progress_in_course?
-    user and user.is_a? Teacher and
-      user.courses.include? record.concept.unit.course
+    user and user.courses.include? record.concept.unit.course
   end
 end

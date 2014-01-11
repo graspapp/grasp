@@ -22,7 +22,7 @@ describe ConceptProgressPolicy do
       before { user.courses << concept_progress.concept.unit.course }
 
       it { should permit :edit }
-      it { should_not permit :update }
+      it { should permit :update }
     end
   end
 
