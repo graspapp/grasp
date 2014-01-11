@@ -8,7 +8,7 @@ class ConceptProgress < ActiveRecord::Base
 
   validates_presence_of :type_of_error, :next_steps, :mastery_level, :p_level
   validates_length_of :next_steps, maximum: 140
-  validates_inclusion_of :type_of_error, in: %w(Procedural Conceptual
+  validates_inclusion_of :type_of_error, in: %w(N/A Procedural Conceptual
     Misconception Reasoning No\ Error)
   validates_inclusion_of :mastery_level, :p_level, in: 1..4
 

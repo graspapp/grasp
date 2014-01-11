@@ -135,30 +135,30 @@ describe ConceptsController do
 
     describe "GET #show" do
       it "assigns the requested concept to @concept" do
-        get :show, id: unit
+        get :show, id: concept
         expect(assigns(:concept)).to eq concept
       end
 
       it "creates a new concept progress" do
         expect {
-          get :show, id: unit
+          get :show, id: concept
         }.to change(ConceptProgress, :count).by 1
       end
 
       it "adds a new concept progress to the student's enrollment" do
         expect {
-          get :show, id: unit
+          get :show, id: concept
         }.to change(enrollment.concept_progresses, :count).by 1
       end
 
       it "adds a new concept progress to the concept" do
         expect {
-          get :show, id: unit
+          get :show, id: concept
         }.to change(concept.concept_progresses, :count).by 1
       end
 
       it "renders the :show template" do
-        get :show, id: unit
+        get :show, id: concept
         expect(response).to render_template :show
       end
 
@@ -169,7 +169,7 @@ describe ConceptsController do
 
         it "doesn't create a new concept progress" do
           expect {
-            get :show, id: unit
+            get :show, id: concept
           }.to change(ConceptProgress, :count).by 0
         end
       end

@@ -17,7 +17,7 @@ describe ConceptProgress do
   it { should validate_presence_of :p_level }
 
   it { should ensure_length_of(:next_steps).is_at_most(140) }
-  it { should ensure_inclusion_of(:type_of_error).in_array(%w(Procedural
+  it { should ensure_inclusion_of(:type_of_error).in_array(%w(N/A Procedural
     Conceptual Misconception No\ Error)) }
   it { should ensure_inclusion_of(:mastery_level).in_range(1..4) }
   it { should ensure_inclusion_of(:p_level).in_range(1..4) }
