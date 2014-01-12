@@ -1,4 +1,4 @@
-![Grasp](app/assets/images/grasp.png)
+![Grasp](app/assets/images/grasp.png) [![Build Status](https://travis-ci.org/graspapp/grasp.png?branch=master)](https://travis-ci.org/graspapp/grasp) [![Coverage Status](https://coveralls.io/repos/graspapp/grasp/badge.png?branch=master)](https://coveralls.io/r/graspapp/grasp?branch=master) [![Code Climate](https://codeclimate.com/github/graspapp/grasp.png)](https://codeclimate.com/github/graspapp/grasp)
 
 Grasp is an open-source learning management system for Common Core classrooms.
 Grasp's primary goal is to leverage technology to seamlessly integrate into
