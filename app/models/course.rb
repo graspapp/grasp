@@ -14,7 +14,7 @@ class Course < ActiveRecord::Base
 
   def generate_course_code
     code = SecureRandom.hex(3)
-    if Course.find_by_course_code(code) != nil
+    if Course.find_by(course_code: code) != nil
       generate_course_code
     else
       self.course_code ||= code
