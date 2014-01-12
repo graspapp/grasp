@@ -88,7 +88,7 @@ Grasp::Application.configure do
     authentication: :plain,
     user_name: Figaro.env.sendgrid_username,
     password: Figaro.env.sendgrid_password,
-    domain: "heorku.com",
+    domain: "heroku.com",
     enable_starttls_auto: true
   }
 end
