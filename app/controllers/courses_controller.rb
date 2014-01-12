@@ -1,11 +1,4 @@
 class CoursesController < ApplicationController
-  def show
-    @course = Course.find(params[:id])
-    authorize @course
-    @units = @course.units
-    @unit = @units.build
-  end
-
   def create
     @course = current_user.courses.build(course_params)
     authorize @course
@@ -15,6 +8,13 @@ class CoursesController < ApplicationController
       flash[:alert] = @course.errors.full_messages.to_sentence
       redirect_to (request.referer.present? ? :back : root_path)
     end
+  end
+
+  def show
+    @course = Course.find(params[:id])
+    authorize @course
+    @units = @course.units
+    @unit = @units.build
   end
 
   def edit
