@@ -1,4 +1,6 @@
 class UnitsController < ApplicationController
+  before_action :find_and_authorize_unit, except: :create
+
   def create
     @course = Course.find(params[:unit][:course_id])
     @unit = @course.units.build(unit_params)
@@ -12,20 +14,14 @@ class UnitsController < ApplicationController
   end
 
   def show
-    @unit = Unit.find(params[:id])
     @concepts = @unit.concepts
     @concept = @concepts.build
-    authorize @unit
   end
 
   def edit
-    @unit = Unit.find(params[:id])
-    authorize @unit
   end
 
   def update
-    @unit = Unit.find(params[:id])
-    authorize @unit
     if @unit.update_attributes(unit_params)
       flash[:success] = "Unit updated"
       redirect_to @unit.course
@@ -35,9 +31,7 @@ class UnitsController < ApplicationController
   end
 
   def destroy
-    @unit = Unit.find(params[:id])
     @course = @unit.course
-    authorize @unit
     @unit.destroy
     flash[:success] = "Unit destroyed."
     redirect_to @course
@@ -47,5 +41,10 @@ class UnitsController < ApplicationController
 
   def unit_params
     params.require(:unit).permit(:name, :number)
+  end
+
+  def find_and_authorize_unit
+    @unit = Unit.find(params[:id])
+    authorize @unit
   end
 end
