@@ -26,7 +26,8 @@ RSpec.configure do |config|
   
   config.before(:suite) do
     Warden.test_mode!
-    DatabaseCleaner.strategy = :truncation
+    # Change this to :truncation if Javascript tests are needed.
+    DatabaseCleaner.strategy = :transaction
   end
   
   config.before(:each) do

@@ -35,7 +35,13 @@ describe ConceptProgressesController do
       end
 
       context "valid attributes" do
-        let(:attributes) { FactoryGirl.attributes_for(:concept_progress) }
+        let(:concept_progress) do
+          FactoryGirl.create(:concept_progress, type_of_error: "Procedural")
+        end
+        let(:attributes) do
+          FactoryGirl.attributes_for(:concept_progress,
+                                     type_of_error: "Conceptual")
+        end
 
         it "changes the concept progress's attributes" do
           expect {

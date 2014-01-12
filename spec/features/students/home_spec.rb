@@ -13,7 +13,7 @@ describe "Student home" do
     let(:user) { student }
   end
 
-  describe "adding a course", js: true do
+  describe "adding a course" do
     let(:course) { FactoryGirl.create(:course) }
     before do
       click_link "Add Course"
