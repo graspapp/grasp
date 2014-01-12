@@ -1,12 +1,10 @@
 class ConceptProgressesController < ApplicationController
+  before_action :find_and_authorize_concept_progress
+
   def edit
-    @concept_progress = ConceptProgress.find(params[:id])
-    authorize @concept_progress
   end
 
   def update
-    @concept_progress = ConceptProgress.find(params[:id])
-    authorize @concept_progress
     if @concept_progress.update_attributes(concept_progress_params)
       redirect_to @concept_progress.concept
     else
@@ -19,5 +17,10 @@ class ConceptProgressesController < ApplicationController
   def concept_progress_params
     params.require(:concept_progress).permit(:type_of_error, :next_steps,
                                              :master_level, :p_level)
+  end
+
+  def find_and_authorize_concept_progress
+    @concept_progress = ConceptProgress.find(params[:id])
+    authorize @concept_progress
   end
 end
