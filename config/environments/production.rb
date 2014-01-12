@@ -80,4 +80,15 @@ Grasp::Application.configure do
 
   # Set the default_url used by ActionMailer
   config.action_mailer.default_url_options = { host: "graspapp.io" }
+
+  # ActionMailer config for Sendgrid
+  config.action_mailer.smtp_settings = {
+    address: "smtp.sendgrid.net",
+    port: "587",
+    authentication: :plain,
+    user_name: Figaro.env.sendgrid_username,
+    password: Figaro.env.sendgrid_password,
+    domain: "heorku.com",
+    enable_starttls_auto: true
+  }
 end
