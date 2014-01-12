@@ -1,4 +1,6 @@
 class ConceptsController < ApplicationController
+  before_action :find_and_authorize_concept, except: :create
+
   def create
     @unit = Unit.find(params[:concept][:unit_id])
     @concept = @unit.concepts.build(concept_params)
@@ -12,9 +14,7 @@ class ConceptsController < ApplicationController
   end
 
   def show
-    @concept = Concept.find(params[:id])
     @concept_progresses = @concept.concept_progresses
-    authorize @concept
 
     if current_user.is_a? Student
       enrollment = Enrollment.find_by(course: @concept.unit.course,
@@ -30,13 +30,9 @@ class ConceptsController < ApplicationController
   end
 
   def edit
-    @concept = Concept.find(params[:id])
-    authorize @concept
   end
 
   def update
-    @concept = Concept.find(params[:id])
-    authorize @concept
     if @concept.update_attributes(concept_params)
       flash[:success] = "Concept updated"
       redirect_to @concept.unit
@@ -46,9 +42,7 @@ class ConceptsController < ApplicationController
   end
 
   def destroy
-    @concept = Concept.find(params[:id])
     @unit = @concept.unit
-    authorize @concept
     @concept.destroy
     flash[:success] = "Concept successfully deleted."
     redirect_to @unit
@@ -58,5 +52,10 @@ class ConceptsController < ApplicationController
 
   def concept_params
     params.require(:concept).permit(:number, :description)
+  end
+
+  def find_and_authorize_concept
+    @concept = Concept.find(params[:id])
+    authorize @concept
   end
 end
