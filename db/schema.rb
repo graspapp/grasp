@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109101850) do
+ActiveRecord::Schema.define(version: 20140115051804) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140109101850) do
   create_table "concept_progresses", force: true do |t|
     t.integer  "enrollment_id"
     t.integer  "concept_id"
-    t.integer  "p_level"
+    t.integer  "goal_level"
     t.integer  "mastery_level"
     t.string   "type_of_error"
     t.text     "next_steps"
@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(version: 20140109101850) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "role_id"
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at"
