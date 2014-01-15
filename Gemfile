@@ -49,6 +49,7 @@ group :development, :test do
   gem "guard-rspec"
   gem "guard-livereload"
   gem "zeus"
+  gem "coveralls", require: false
 end
 
 group :production do
