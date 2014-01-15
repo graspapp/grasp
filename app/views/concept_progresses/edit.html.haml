@@ -1,10 +1,24 @@
 - provide(:title, "Edit Concept Progress")
+:ruby
+  goals = { 
+    1 => "1: Misconception errors (A), major reasoning and procedural
+          errors (C, E, M)",
+    2 => "2: No conceptual errors (A), reasoning errors (C,M), procedural 
+          errors (E)",     
+    3 =>  "3: No conceptual errors (A), logical reasoning with minor errors 
+          (C, M), minor procedural errors (E)",
+    4 =>   "4: No conceptual errors (A) logical and accurate reasoning (C, M),  
+            minimal and minor procedural errors (E) ",   
+          }
+    mastery = goals.merge(0 => "NY (not yet): Major misconception (A),incorrect 
+    reasoning, incorrect procedures (C, E, M)" )
+
 
 .row
   %h1 Edit Concept Progress
   = simple_form_for @concept_progress do |f|
-    = f.input :p_level, collection: 1..4
-    = f.input :mastery_level, collection: 1..4
+    = f.input :goal_level, collection: goals.sort.map {|k,v| [v,k]}
+    = f.input :mastery_level, collection: mastery.sort.map {|k,v| [v,k]}
     = f.input :type_of_error, collection: %w(Procedural Conceptual Misconception Reasoning No\ Error)
     = f.input :next_steps, input_html: { rows: 10 }
     = f.button :submit, "Edit Concept Progress"
