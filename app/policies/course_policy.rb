@@ -14,7 +14,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def edit?
-    teacher_and_has_course?
+    update?
   end
 
   def update?

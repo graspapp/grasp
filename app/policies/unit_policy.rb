@@ -14,7 +14,7 @@ class UnitPolicy < ApplicationPolicy
   end
 
   def edit?
-    teacher_and_unit_in_course?
+    update?
   end
 
   def update?
