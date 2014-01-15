@@ -16,7 +16,7 @@ class ConceptProgressesController < ApplicationController
 
   def concept_progress_params
     params.require(:concept_progress).permit(:type_of_error, :next_steps,
-                                             :master_level, :p_level)
+                                             :mastery_level, :p_level)
   end
 
   def find_and_authorize_concept_progress
