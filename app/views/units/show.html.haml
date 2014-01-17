@@ -1,7 +1,7 @@
 - provide(:title, unit_name(@unit))
 
 - if policy(@concept).create?
-  = modal "createConcept" do
+  = modal :create_concept do
     %h2 Create Concept
     = simple_form_for @concept do |f|
       = f.input :number
@@ -15,7 +15,7 @@
   %h1= unit_name(@unit)
 
   - if policy(@concept).create?
-    = modal_link "Create Concept", "createConcept", class: "button right"
+    = modal_link "Create Concept", :create_concept, class: "button right"
 
   %table
     %thead

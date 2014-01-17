@@ -1,6 +1,6 @@
 - provide(:title, full_name(@student))
 
-= modal "addCourse" do
+= modal :add_course do
   %h2 Add Course
   = simple_form_for :course, url: add_course_student_path(@student) do |f|
     = f.input :course_code
@@ -9,6 +9,6 @@
 .row
   %h1= full_name(@student)
 
-  = modal_link("Add Course", "addCourse", class: "button right")
+  = modal_link("Add Course", :add_course, class: "button right")
 
   = render "users/course_index", user: @student

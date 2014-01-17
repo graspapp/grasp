@@ -1,7 +1,7 @@
 - provide(:title, @course.name)
 
 - if policy(@unit).create?
-  = modal "createUnit" do
+  = modal :create_unit do
     %h2 Create Unit
     = simple_form_for @unit do |f|
       = f.input :number
@@ -25,7 +25,7 @@
   %h3 Units
 
   - if policy(@unit).create?
-    = modal_link "Create Unit", "createUnit", class: "button right"
+    = modal_link "Create Unit", :create_unit, class: "button right"
 
   %table
     %thead
