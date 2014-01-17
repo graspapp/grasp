@@ -8,17 +8,28 @@
     3 =>  "3: No conceptual errors (A), logical reasoning with minor errors 
           (C, M), minor procedural errors (E)",
     4 =>   "4: No conceptual errors (A) logical and accurate reasoning (C, M),  
-            minimal and minor procedural errors (E) ",   
+            minimal and minor procedural errors (E)"   
           }
     mastery = goals.merge(0 => "NY (not yet): Major misconception (A),incorrect 
     reasoning, incorrect procedures (C, E, M)" )
 
+  errors = { 
+    "Procedural" => "Procedural:  Found when attending to precision (E), using 
+                tools strategically (A, C, E), and in repeated reasoning (M)",
+    "Conceptual" => "Conceptual:  Found in my Approach/Analysis (A) when making
+            sense of the problem and reasoning abstractly/quantitatively (M)",  
+    "Misconception" => "Misconception:  Found when making sense of the problem
+                         (A) and reasoning abstractly/quantitatively (M)",
+    "Reasoning" =>  "Reasoning:  Found when looking for structure (C ), finding
+                     a model or constructing a viable argument (C)",
+    "No Error" => "No Error"  
+          }
 
 .row
   %h1 Edit Concept Progress
   = simple_form_for @concept_progress do |f|
     = f.input :goal_level, collection: goals.sort.map {|k,v| [v,k]}
     = f.input :mastery_level, collection: mastery.sort.map {|k,v| [v,k]}
-    = f.input :type_of_error, collection: %w(Procedural Conceptual Misconception Reasoning No\ Error)
+    = f.input :type_of_error, collection: errors.map {|k,v| [v,k]}
     = f.input :next_steps, input_html: { rows: 10 }
     = f.button :submit, "Edit Concept Progress"
