@@ -31,10 +31,4 @@ class StudentsController < ApplicationController
     end
     redirect_to root_path
   end
-
-  private
-
-  def course_params
-    params.require(:course).permit(:course_code)
-  end
 end
