@@ -31,7 +31,7 @@
     = f.input :goal_level, collection: goals.sort.map {|k,v| [v,k]}
     = f.input :mastery_level, collection: mastery.sort.map {|k,v| [v,k]}
     = f.input :type_of_error, collection: errors.map {|k,v| [v,k]}
-    = f.input :next_steps, collection: %w[1 2 3 4]
+    = f.input :next_steps
     = f.input :action_steps, label: 'Plan to accomplish next steps', 
       input_html: { rows: 10 }
     = f.input :completed, as: :radio_buttons, 
