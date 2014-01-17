@@ -107,6 +107,7 @@ GEM
     foundation-rails (5.0.2.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    google-analytics-rails (0.0.4)
     gretel (3.0.5)
       rails (>= 3.2.0)
     guard (2.2.5)
@@ -312,6 +313,7 @@ DEPENDENCIES
   faker
   figaro
   foundation-rails
+  google-analytics-rails
   gretel
   guard-livereload
   guard-rspec

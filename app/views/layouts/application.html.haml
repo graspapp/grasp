@@ -8,6 +8,7 @@
     = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    = analytics_init local: Rails.env.development?
   %body
     .off-canvas-wrap
       .inner-wrap

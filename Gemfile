@@ -35,6 +35,7 @@ gem "retina_rails"
 gem "mail_form"
 gem "gretel"
 gem "paper_trail"
+gem "google-analytics-rails"
 
 group :development, :test do
   gem "sqlite3"

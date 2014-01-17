@@ -29,6 +29,14 @@ containing the following keys and corresponding values.
 * `DEVISE_SECRET` - Secret key used by Devise
 * `CONTACT_EMAIL` - Email to mail contact form to.
 
+#### Production Secrets
+
+The following secrets are also required for production.
+
+* `GOOGLE_ANALYTICS_KEY` - Google Analytics tracking key
+* `SENDGRID_USERNAME` - Sendgrid username for sending email.
+* `SENDGRID_PASSWORD` - Sendgrid password for sending email.
+
 ### Test Suite
 
 When in the root of the project, run the test suite with:

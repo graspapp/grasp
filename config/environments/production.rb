@@ -91,4 +91,7 @@ Grasp::Application.configure do
     domain: "heroku.com",
     enable_starttls_auto: true
   }
+
+  # Google Analytics Tracking
+  GA.tracker = Figaro.env.google_analytics_key
 end
