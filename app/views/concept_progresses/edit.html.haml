@@ -20,7 +20,7 @@
             sense of the problem and reasoning abstractly/quantitatively (M)",  
     "Misconception" => "Misconception:  Found when making sense of the problem
                          (A) and reasoning abstractly/quantitatively (M)",
-    "Reasoning" =>  "Reasoning:  Found when looking for structure (C ), finding
+    "Reasoning" =>  "Reasoning:  Found when looking for structure (C), finding
                      a model or constructing a viable argument (C)",
     "No Error" => "No Error"  
           }
@@ -31,5 +31,9 @@
     = f.input :goal_level, collection: goals.sort.map {|k,v| [v,k]}
     = f.input :mastery_level, collection: mastery.sort.map {|k,v| [v,k]}
     = f.input :type_of_error, collection: errors.map {|k,v| [v,k]}
-    = f.input :next_steps, input_html: { rows: 10 }
+    = f.input :next_steps, collection: %w[1 2 3 4]
+    = f.input :action_steps, label: 'Plan to accomplish next steps', 
+      input_html: { rows: 10 }
+    = f.input :completed, as: :radio_buttons, 
+      label: 'Have you complete the next steps?'
     = f.button :submit, "Edit Concept Progress"

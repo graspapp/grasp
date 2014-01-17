@@ -21,6 +21,7 @@
         %th Mastery Level
         %th Type of Error
         %th Next Steps
+        %th Completed?
         - if show_concept_progress_actions? @concept
           %th Actions
     %tbody
@@ -33,5 +34,6 @@
           %td= cp.mastery_level
           %td= cp.type_of_error
           %td= cp.next_steps
+          %td= yes_or_no(cp.completed)
           - if policy(cp).edit?
             %td= link_to "Edit", edit_concept_progress_path(cp)

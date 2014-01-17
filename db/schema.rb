@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115051804) do
+ActiveRecord::Schema.define(version: 20140117193935) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -52,9 +52,11 @@ ActiveRecord::Schema.define(version: 20140115051804) do
     t.integer  "goal_level"
     t.integer  "mastery_level"
     t.string   "type_of_error"
-    t.text     "next_steps"
+    t.string   "next_steps"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "action_steps"
+    t.boolean  "completed"
   end
 
   add_index "concept_progresses", ["concept_id"], name: "index_concept_progresses_on_concept_id"
