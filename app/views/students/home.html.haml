@@ -2,7 +2,9 @@
 
 = modal "addCourse" do
   %h2 Add Course
-  = render "add_course", student: @student
+  = simple_form_for :course, url: add_course_student_path(@student) do |f|
+    = f.input :course_code
+    = f.button :submit, "Add Course"
 
 .row
   %h1= full_name(@student)
