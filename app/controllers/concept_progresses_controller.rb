@@ -11,7 +11,7 @@ class ConceptProgressesController < ApplicationController
       render :edit
     end
   end
-
+  
   private
 
   def concept_progress_params

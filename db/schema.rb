@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117193935) do
+ActiveRecord::Schema.define(version: 20140123224437) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140117193935) do
     t.string   "next_steps"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "action_steps"
+    t.text     "action_steps"
     t.boolean  "completed"
   end
 
@@ -91,6 +91,20 @@ ActiveRecord::Schema.define(version: 20140117193935) do
 
   add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id"
   add_index "enrollments", ["student_id"], name: "index_enrollments_on_student_id"
+
+  create_table "error_types", force: true do |t|
+    t.string   "error_type"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "steps", force: true do |t|
+    t.integer  "error_type_id"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "units", force: true do |t|
     t.integer  "course_id"
