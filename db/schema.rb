@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140123224437) do
     t.string   "next_steps"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "action_steps"
+    t.string   "action_steps"
     t.boolean  "completed"
   end
 
