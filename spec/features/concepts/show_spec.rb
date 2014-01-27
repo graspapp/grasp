@@ -55,10 +55,10 @@ describe "Concept show" do
           fill_in("Plan to accomplish next steps", 
           :with => concept_progress[:action_steps])
           choose("No")
+          click_button "Edit Concept Progress" 
         end
         
         context "with valid attributes" do
-          before { click_button "Edit Concept Progress" }
           it { should have_selector("td", concept_progress[:goal_level]) }
           it { should have_selector("td", concept_progress[:mastery_level]) }
           it { should have_selector("td", concept_progress[:type_of_error]) }
@@ -68,6 +68,7 @@ describe "Concept show" do
         context "with invalid attributes" do
              
           before do
+            click_link "Edit"
             fill_in("Plan to accomplish next steps", with: "")
             click_button "Edit Concept Progress"
           end       
