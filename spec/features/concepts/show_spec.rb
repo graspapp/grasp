@@ -47,17 +47,20 @@ describe "Concept show" do
                     find("option[value='#{concept_progress.mastery_level}']").
                     select_option
           
-          select concept_progress[:type_of_error], :from =>
-             "concept_progress[type_of_error]"
-          page.find_by_id("concept_progress_next_steps").
-                    find("option[value='Play in Brilliant.org']").select_option                      
+          # Commented out until db is updated
+          
+          # page.find_by_id("concept_progress_type_of_error").
+                    # find("option[value='#{concept_progress.type_of_error}']").
+                    # select_option
+          # page.find_by_id("concept_progress_next_steps").
+                    # find("option[value='Play in Brilliant.org']").select_option                      
           fill_in("Plan to accomplish next steps", 
           :with => concept_progress[:action_steps])
           choose("No")
-          click_button "Edit Concept Progress"
         end
         
         context "with valid attributes" do
+          before { click_button "Edit Concept Progress" }
           it { should have_selector("td", concept_progress[:goal_level]) }
           it { should have_selector("td", concept_progress[:mastery_level]) }
           it { should have_selector("td", concept_progress[:type_of_error]) }
@@ -67,7 +70,6 @@ describe "Concept show" do
         context "with invalid attributes" do
              
           before do
-            click_link "Edit"
             fill_in("Plan to accomplish next steps", with: "")
             click_button "Edit Concept Progress"
           end       
