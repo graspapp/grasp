@@ -28,7 +28,7 @@ describe ConceptProgress do
 
     example { expect(cp.type_of_error).to eq "N/A" }
     example { expect(cp.next_steps).to eq "N/A" }
-    example { expect(cp.mastery_level).to eq 1 }
+    example { expect(cp.mastery_level).to eq 0 }
     example { expect(cp.goal_level).to eq 1 }
     example { expect(cp.completed).to eq false }    
   end
