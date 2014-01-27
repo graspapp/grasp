@@ -47,9 +47,7 @@ describe "Concept show" do
                     find("option[value='#{concept_progress.mastery_level}']").
                     select_option
           
-          page.find_by_id("concept_progress_type_of_error").
-                    find("option[value='#{concept_progress[:type_of_error]}']").
-                    select_option
+          find("option[value='#{concept_progress[:type_of_error]}']").click
           page.find_by_id("concept_progress_next_steps").
                     find("option[value='Play in Brilliant.org']").select_option                      
           fill_in("Plan to accomplish next steps", 
