@@ -48,7 +48,7 @@ describe "Concept show" do
                     select_option
           
           page.find_by_id("concept_progress_type_of_error").
-                    find("option[value='#{concept_progress.type_of_error}']").
+                    find("option[value='#{concept_progress[:type_of_error]}']").
                     select_option
           page.find_by_id("concept_progress_next_steps").
                     find("option[value='Play in Brilliant.org']").select_option                      
