@@ -10,6 +10,7 @@ describe ConceptProgress do
   it { should respond_to :next_steps }
   it { should respond_to :mastery_level }
   it { should respond_to :goal_level }
+  it { should respond_to :completed }
 
   it { should validate_presence_of :type_of_error }
   it { should validate_presence_of :next_steps }
@@ -29,5 +30,6 @@ describe ConceptProgress do
     example { expect(cp.next_steps).to eq "N/A" }
     example { expect(cp.mastery_level).to eq 1 }
     example { expect(cp.goal_level).to eq 1 }
+    example { expect(cp.completed).to eq false }    
   end
 end

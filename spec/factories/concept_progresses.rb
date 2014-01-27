@@ -8,6 +8,7 @@ FactoryGirl.define do
     action_steps { Faker::Lorem.sentence }
 
     factory :invalid_concept_progress do
+      goal_level { rand(1..4) }
       action_steps ""
     end
   end

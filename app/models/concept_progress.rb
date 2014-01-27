@@ -23,7 +23,7 @@ class ConceptProgress < ActiveRecord::Base
 
     self.type_of_error ||= not_available
     self.next_steps ||= not_available
-    self.mastery_level ||= default_level
+    self.mastery_level ||= 0
     self.goal_level ||= default_level
     self.action_steps ||= not_available
     self.completed ||= false
