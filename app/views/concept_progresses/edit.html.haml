@@ -1,10 +1,19 @@
 - provide(:title, "Edit Concept Progress")
 
+
 .row
   %h1 Edit Concept Progress
   = simple_form_for @concept_progress do |f|
-    = f.input :p_level, collection: 1..4
-    = f.input :mastery_level, collection: 1..4
-    = f.input :type_of_error, collection: %w(Procedural Conceptual Misconception Reasoning No\ Error)
-    = f.input :next_steps, input_html: { rows: 10 }
+    = f.input :goal_level, collection: goals
+    = f.input :mastery_level, collection: mastery
+    = f.label "Type of error", required: true
+    = f.collection_select :type_of_error, ErrorType.all, :error_type,
+     :description
+    = f.label "Next steps", required: true
+    = f.grouped_collection_select :next_steps, ErrorType.all, :steps,
+     :error_type, :description, :description
+    = f.input :action_steps, label: "Plan to accomplish next steps", 
+      input_html: { rows: 10 }
+    = f.input :completed, as: :radio_buttons, 
+      label: 'Have you completed the next steps?'
     = f.button :submit, "Edit Concept Progress"

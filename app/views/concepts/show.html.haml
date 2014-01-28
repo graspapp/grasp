@@ -17,10 +17,11 @@
         - if current_user.is_a? Teacher
           %th Student
         %th Last Edited
-        %th P Level
+        %th Goal Level
         %th Mastery Level
         %th Type of Error
         %th Next Steps
+        %th Completed?
         - if show_concept_progress_actions? @concept
           %th Actions
     %tbody
@@ -29,9 +30,10 @@
           - if current_user.is_a? Teacher
             %td= full_name(cp.enrollment.student)
           %td= cp.created_at.to_formatted_s(:mdy)
-          %td= cp.p_level
+          %td= cp.goal_level
           %td= cp.mastery_level
           %td= cp.type_of_error
           %td= cp.next_steps
+          %td= yes_or_no(cp.completed)
           - if policy(cp).edit?
             %td= link_to "Edit", edit_concept_progress_path(cp)
