@@ -31,5 +31,6 @@ describe ConceptProgress do
     example { expect(cp.mastery_level).to eq 0 }
     example { expect(cp.goal_level).to eq 1 }
     example { expect(cp.completed).to eq false }    
+    example { expect(cp.leveling_up).to eq false }        
   end
 end
