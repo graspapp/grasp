@@ -26,8 +26,12 @@ class ConceptProgressesController < ApplicationController
   end
   
   def mastery
-    @mastery = @goals.merge(0 => "0: NY (not yet): Major misconception
-     (A),incorrect reasoning, incorrect procedures (C, E, M)" )
+    @mastery = @goals.merge(-1 => "NY (not yet): Major misconception
+     (A),incorrect reasoning, incorrect procedures (C, E, M)", 
+     
+     0 => "0: No work. Not thinking. Blank..."
+     
+     )
     @mastery.sort.map {|k,v| [v,k]}
   end
   

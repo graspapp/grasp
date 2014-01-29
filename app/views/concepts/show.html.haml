@@ -31,7 +31,7 @@
             %td= full_name(cp.enrollment.student)
           %td= cp.created_at.to_formatted_s(:mdy)
           %td= cp.goal_level
-          %td= cp.mastery_level
+          %td= negative_mastery?(cp.mastery_level)
           %td= cp.type_of_error
           %td= cp.next_steps
           %td= yes_or_no(cp.completed)

@@ -12,7 +12,7 @@ class ConceptProgress < ActiveRecord::Base
   validates_inclusion_of :type_of_error, in: %w(N/A Procedural Conceptual
     Misconception Reasoning No\ Error)
   validates_inclusion_of :goal_level, in: 1..4
-  validates_inclusion_of :mastery_level, in: 0..4
+  validates_inclusion_of :mastery_level, in: -1..4
   validates_inclusion_of :completed, :in => [true, false]
   
   private

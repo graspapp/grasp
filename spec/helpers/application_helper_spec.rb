@@ -11,4 +11,10 @@ describe ApplicationHelper do
       yes_or_no(false).should eq("No")
     end
   end
+  
+  describe "negative_mastery" do
+    it "should render NY for -1" do
+      negative_mastery?(-1).should eq("NY")
+    end
+  end
 end
