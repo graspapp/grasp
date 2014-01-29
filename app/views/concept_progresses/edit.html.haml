@@ -14,6 +14,8 @@
      :error_type, :description, :description
     = f.input :action_steps, label: "Plan to accomplish next steps", 
       input_html: { rows: 10 }
-    = f.input :completed, as: :radio_buttons, 
-      label: 'Have you completed the next steps?'
+    = f.input :completed, as: :boolean, 
+      label: "Completed?"
+    = f.input :leveling_up, as: :boolean,
+      label: "Leveling Up?"
     = f.button :submit, "Edit Concept Progress"
