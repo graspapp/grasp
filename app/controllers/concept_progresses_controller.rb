@@ -14,20 +14,20 @@ class ConceptProgressesController < ApplicationController
   
   def goals
     @goals = { 
-      1 => "1: Misconception errors (A), major reasoning and procedural
+      1 => "1: Misconception errors (A, C, M), major reasoning and procedural
             errors (C, E, M)",
-      2 => "2: No conceptual errors (A), reasoning errors (C,M), procedural 
-            errors (E)",     
-      3 =>  "3: No conceptual errors (A), logical reasoning with minor errors 
-            (C, M), minor procedural errors (E)",
-      4 =>   "4: No conceptual errors (A) logical and accurate reasoning (C,
-              M), minimal and minor procedural errors (E)"}
+      2 =>  "2: Minimal/Minor conceptual errors (E, M), reasoning errors (C, M),
+             procedural errors (E, M)",     
+      3 =>  "3: No conceptual errors (A, C, M), logical reasoning with minor
+             errors (C, M), minor procedural errors (E, M)",
+      4 =>  "4: No conceptual errors (A, C, M) logical and accurate reasoning
+             (C, M), minimal and minor procedural errors (E, M)"}
       @goals.sort.map {|k,v| [v,k]}
   end
   
   def mastery
     @mastery = @goals.merge(-1 => "NY (not yet): Major misconception
-     (A),incorrect reasoning, incorrect procedures (C, E, M)", 
+     (A), incorrect reasoning, incorrect procedures (C, E, M)", 
      
      0 => "0: No work. Not thinking. Blank..."
      
