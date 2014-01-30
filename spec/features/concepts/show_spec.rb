@@ -56,7 +56,8 @@ describe "Concept show" do
                     # find("option[value='Play in Brilliant.org']").select_option                      
           fill_in("Plan to accomplish next steps", 
           :with => concept_progress[:action_steps])
-          choose("No")
+          check("Completed?")
+          check("Leveling Up?")
         end
         
         context "with valid attributes" do
@@ -65,6 +66,7 @@ describe "Concept show" do
           it { should have_selector("td", concept_progress[:mastery_level]) }
           it { should have_selector("td", concept_progress[:type_of_error]) }
           it { should have_selector("td", concept_progress[:completed]) }
+          it { should have_selector("td", concept_progress[:leveling_up]) }
         end
         
         context "with invalid attributes" do
