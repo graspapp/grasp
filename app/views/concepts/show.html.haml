@@ -22,6 +22,7 @@
         %th Type of Error
         %th Next Steps
         %th Completed?
+        %th Leveling Up?
         - if show_concept_progress_actions? @concept
           %th Actions
     %tbody
@@ -31,9 +32,10 @@
             %td= full_name(cp.enrollment.student)
           %td= cp.created_at.to_formatted_s(:mdy)
           %td= cp.goal_level
-          %td= cp.mastery_level
+          %td= negative_mastery?(cp.mastery_level)
           %td= cp.type_of_error
           %td= cp.next_steps
           %td= yes_or_no(cp.completed)
+          %td= yes_or_no(cp.leveling_up)
           - if policy(cp).edit?
             %td= link_to "Edit", edit_concept_progress_path(cp)
