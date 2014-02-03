@@ -14,14 +14,6 @@
 
   %h1= @course.name
 
-  - if current_user.is_a? Student and policy(current_user).leave_course?
-    = simple_form_for :course, url: leave_course_student_path(current_user),
-      method: :delete do |f|
-      = f.hidden_field :id, value: @course.id
-      = f.button :submit, "Leave Course",
-        data: { confirm: "Are you sure you want to leave #{ @course.name }? This action cannot be reversed." }
-
-
   %h3 Units
 
   - if policy(@unit).create?
