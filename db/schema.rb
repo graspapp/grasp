@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140129223454) do
     t.string   "next_steps"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "action_steps"
+    t.text     "action_steps"
     t.boolean  "completed"
     t.boolean  "leveling_up"
   end
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20140129223454) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "role_id"
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at"
