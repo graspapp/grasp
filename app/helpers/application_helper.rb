@@ -8,9 +8,11 @@ module ApplicationHelper
     completed ? "Yes" : "No"
   end
   
-  def negative_mastery?(mastery)
+  def convert_mastery?(mastery)
     if mastery == -1
       "NY"
+    elsif mastery == 0
+      "N"
     else
       mastery
     end
