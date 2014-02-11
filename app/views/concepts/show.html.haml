@@ -30,7 +30,7 @@
         %tr
           - if current_user.is_a? Teacher
             %td= full_name(cp.enrollment.student)
-          %td= cp.created_at.to_formatted_s(:mdy)
+          %td= cp.updated_at.to_formatted_s(:mdy)
           %td= cp.goal_level
           %td= negative_mastery?(cp.mastery_level)
           %td= cp.type_of_error
