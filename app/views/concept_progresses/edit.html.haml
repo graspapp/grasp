@@ -3,19 +3,31 @@
 .row
   %h1 Edit Concept Progress
   = simple_form_for @concept_progress do |f|
-    = f.input :goal_level, collection: goals
-    = f.input :mastery_level, collection: mastery
+    = f.input :goal_level, collection: goals, label: "Weekly goal level"
+    = f.input :mastery_level, collection: mastery, label:"Current Mastery Level"
     = f.label "Type of error", required: true
     = f.collection_select :type_of_error, ErrorType.all, :error_type,
      :description
     = f.label "Next steps", required: true
     = f.grouped_collection_select :next_steps, ErrorType.all, :steps,
      :error_type, :description, :description
-    = f.input :action_steps, label: "Plan to accomplish next steps", 
+    = f.input :action_steps, label: "Timeline to accomplish next steps", 
       input_html: { rows: 10 }
     %span.counter 140 characters remaining
-    = f.input :completed, as: :boolean, 
-      label: "Completed?"
-    = f.input :leveling_up, as: :boolean,
-      label: "Leveling Up?"
+    %div.small-5.columns
+      %h5 Progress:
+      = f.input :completed, as: :boolean, 
+        label: "Completed?"
+      = f.input :leveling_up, as: :boolean,
+        label: "Leveling Up?"
+    %div.small-5.columns
+      %h5 Feedback for next steps:
+      - if current_user.is_a? Student
+        = f.input :feedback, collection: ["On Track", "See Teacher", 
+        "Integrated Active Practice"], label: false, as: :radio_buttons,
+        item_wrapper_tag: :div, disabled: true
+      - else    
+        = f.input :feedback, collection: ["On Track", "See Teacher", 
+        "Integrated Active Practice"], label: false, as: :radio_buttons,
+        item_wrapper_tag: :div
     = f.button :submit, "Edit Concept Progress"

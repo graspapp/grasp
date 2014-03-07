@@ -41,7 +41,9 @@ describe "Concept show" do
         before do
           click_link "Edit"
 
-          select(concept_progress[:goal_level], :from => "Goal level")
+          page.find_by_id("concept_progress_goal_level").
+                    find("option[value='#{concept_progress.goal_level}']").
+                    select_option
           
           page.find_by_id("concept_progress_mastery_level").
                     find("option[value='#{concept_progress.mastery_level}']").
@@ -54,7 +56,7 @@ describe "Concept show" do
                     # select_option
           # page.find_by_id("concept_progress_next_steps").
                     # find("option[value='Play in Brilliant.org']").select_option                      
-          fill_in("Plan to accomplish next steps", 
+          fill_in("Timeline to accomplish next steps", 
           :with => concept_progress[:action_steps])
           check("Completed?")
           check("Leveling Up?")
@@ -72,7 +74,7 @@ describe "Concept show" do
         context "with invalid attributes" do
              
           before do
-            fill_in("Plan to accomplish next steps", with: "")
+            fill_in("Timeline to accomplish next steps", with: "")
             click_button "Edit Concept Progress"
           end       
           

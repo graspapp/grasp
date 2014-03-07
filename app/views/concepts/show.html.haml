@@ -17,12 +17,13 @@
         - if current_user.is_a? Teacher
           %th Student
         %th Last Edited
-        %th Goal Level
-        %th Mastery Level
+        %th Weekly Goal Level
+        %th Current Mastery Level
         %th Type of Error
         %th Next Steps
         %th Completed?
         %th Leveling Up?
+        %th Feedback
         - if show_concept_progress_actions? @concept
           %th Actions
     %tbody
@@ -37,5 +38,6 @@
           %td= cp.next_steps
           %td= yes_or_no(cp.completed)
           %td= yes_or_no(cp.leveling_up)
+          %td= cp.feedback
           - if policy(cp).edit?
             %td= link_to "Edit", edit_concept_progress_path(cp)
