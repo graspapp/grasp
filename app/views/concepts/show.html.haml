@@ -3,11 +3,11 @@
 .row
   - breadcrumb :concept, @concept
 
-  %h1= "Concept #{ @concept.name }"
+  %h1= "#{ @concept.name }"
 
   %h3 Description
 
-  %span.subheader= simple_format @concept.description
+  %p= @concept.description
 
   %h3 Progress
 

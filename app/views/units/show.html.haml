@@ -29,7 +29,7 @@
       - policy_scope(@concepts).each do |c|
         %tr
           %td= link_to c.name, c
-          %td= simple_format c.description
+          %td= c.description
           - if show_concept_actions? @unit
             %td
               = link_to "Edit", edit_concept_path(c) if policy(c).edit?
