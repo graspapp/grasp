@@ -13,8 +13,8 @@ describe "Concept show" do
   subject { page }
 
   shared_examples_for "a concept show page" do
-    it { should have_content concept.number }
-    it { should have_title "Concept #{ concept.number }" }
+    it { should have_content concept.name }
+    it { should have_title "Concept #{ concept.name }" }
 
     describe "concept progress attributes" do
       let(:concept_progress) { concept.concept_progresses.first }

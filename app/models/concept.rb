@@ -3,5 +3,5 @@ class Concept < ActiveRecord::Base
 
   has_many :concept_progresses, dependent: :destroy
 
-  validates_presence_of :number, :description
+  validates_presence_of :name, :description
 end
