@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312053027) do
+ActiveRecord::Schema.define(version: 20140314012935) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20140312053027) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "resources"
   end
 
   add_index "concepts", ["unit_id"], name: "index_concepts_on_unit_id"

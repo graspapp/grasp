@@ -5,9 +5,10 @@
 
   %h1= "#{ @concept.name }"
 
-  %h3 Description
+  %h3 Description:
 
-  %p= simple_format @concept.description
+  %p= @concept.description.gsub(/\n/, '<br/>').html_safe
+
 
   %h3 Progress
 

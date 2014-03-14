@@ -3,6 +3,7 @@ FactoryGirl.define do
     unit
     sequence(:name) { |n| "#{n}" }
     description { Faker::Lorem.sentence(5) }
+    resources { Faker::Lorem.sentence(5) }
 
     factory :invalid_concept do
       description ""
