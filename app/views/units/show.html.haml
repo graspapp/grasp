@@ -29,7 +29,7 @@
       - policy_scope(@concepts).each do |c|
         %tr
           %td= link_to c.name, c
-          %td= c.description
+          %td= (c.description).gsub(/\n/,"<br/>").html_safe
           - if show_concept_actions? @unit
             %td
               = link_to "Edit", edit_concept_path(c) if policy(c).edit?
