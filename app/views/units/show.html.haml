@@ -22,14 +22,16 @@
       %tr
         %td Concept
         %td Description
+        %td Resources
         - if show_concept_actions? @unit
           %td Actions
 
     %tbody
       - policy_scope(@concepts).each do |c|
         %tr
-          %td= link_to c.name, c
-          %td= c.description
+          %td= link_to c.name, c  
+          %td=  c.description.gsub(/\n/, '<br/>').html_safe
+          %td=  auto_link(c.resources).gsub(/\n/, '<br/>').html_safe
           - if show_concept_actions? @unit
             %td
               = link_to "Edit", edit_concept_path(c) if policy(c).edit?
