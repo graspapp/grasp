@@ -3,32 +3,34 @@
 .row
   %h1 Are you GRASPing the material?
   = simple_form_for @concept_progress do |f|
-    = f.input :goal_level, collection: goals, label: "Short-term goal level"
-    = f.input :mastery_level, collection: mastery, label:"Current Mastery Level"
+    = f.input :goal_level, collection: goals, label: "Short-term goal level",
+      disabled: (current_user.is_a? Teacher)
+    = f.input :mastery_level, collection: mastery, 
+      label:"Current Mastery Level", disabled: (current_user.is_a? Teacher)
     = f.label "Type of error", required: true
     = f.collection_select :type_of_error, ErrorType.all, :error_type,
-     :description
-    = f.input :effort, collection: effort
-    = f.input :note_taking, collection: note_taking
-    = f.input :studying, collection: study
+     :description, disabled: (current_user.is_a? Teacher)
     = f.label "Next steps", required: true
     = f.grouped_collection_select :next_steps, ErrorType.all, :steps,
-     :error_type, :description, :description
+      :error_type, :description, :description, 
+      disabled: (current_user.is_a? Teacher)
+    = f.input :effort, collection: effort, 
+      disabled: (current_user.is_a? Teacher)
+    = f.input :note_taking, collection: note_taking,
+      disabled: (current_user.is_a? Teacher)
+    = f.input :studying, collection: study,
+      disabled: (current_user.is_a? Teacher)
     = f.input :action_steps, label: "Note to self", 
       input_html: { rows: 10 }
     %span.counter 140 characters remaining
     %div.small-5.columns
       %h5 Progress for next steps:
       = f.input :completed, collection: ["Completed", "Partially Complete",
-        "Incomplete"], label: false, as: :radio_buttons, item_wrapper_tag: :div
+        "Incomplete"], label: false, as: :radio_buttons, item_wrapper_tag: :div,
+        disabled: (current_user.is_a? Teacher)
     %div.small-5.columns
       %h5 Feedback for next steps:
-      - if current_user.is_a? Student
-        = f.input :feedback, collection: ["On Track", "See Teacher", 
+      = f.input :feedback, collection: ["On Track", "See Teacher", 
         "See Practice Choices"], label: false, as: :radio_buttons,
-        item_wrapper_tag: :div, disabled: true
-      - else    
-        = f.input :feedback, collection: ["On Track", "See Teacher", 
-        "See Practice Choices"], label: false, as: :radio_buttons,
-        item_wrapper_tag: :div
+        item_wrapper_tag: :div, disabled: (current_user.is_a? Student)
     = f.button :submit, "Edit Concept Progress"
