@@ -51,13 +51,54 @@ class ConceptProgressesController < ApplicationController
       @errors.map {|k,v| [v,k]}
   end
   
-  helper_method :goals, :mastery, :errors
+  def effort
+    @effort = { 
+      1 => "1: I do not ask questions and I rarely complete the minimum work
+            required within the recommended time frame.",
+      2 =>  "2: I ask procedural questions and I sometimes complete the minimum
+             work required within the recommended time frame.",     
+      3 =>  "3: I ask questions when I get stuck and I push myself to exceed
+             the minimum work required. ",
+      4 =>  "4: I am always asking questions and I push myself to understand
+             the material deeply."}
+    @effort.sort.map {|k,v| [v,k]}
+  end
+  
+  def note_taking
+    @note_taking = { 
+      1 => "1: I cannot understand my notes, so I do not use them as a
+            reference.",
+      2 =>  "2: I sometimes take notes and rarely refer to them.",     
+      3 =>  "3: I take notes and refer to them when prompted.",
+      4 =>  "4: I take comprehensive notes and refer to them, as needed, when
+             doing classwork/homework."}
+    @note_taking.sort.map {|k,v| [v,k]}
+  end
+  
+  def study
+    @study = { 
+      1 => "1: I study for the test the night before only. I study class notes
+            sometimes and do not attempt practice problems.",
+      2 =>  "2: I begin studying for a test 2 days before the test. I study
+            class notes for 5-10 minutes each day, and do not attempt practice
+            problems.",     
+      3 =>  "3: I begin studying for a test 3-5 days before the test. I study
+             class notes for 5-10 minutes per day every day until the test, and
+             attempt 1-2 practice problems.",
+      4 =>  "4: I begin studying for a test as soon as it is announced. I study
+             class notes for 10 minutes per day every day until the test, and
+             attempt 2-3 practice problems."}
+    @study.sort.map {|k,v| [v,k]}
+  end
+  
+  helper_method :goals, :mastery, :errors, :effort, :note_taking, :study
   
   private
 
   def concept_progress_params
     params.require(:concept_progress).permit(:type_of_error, :next_steps,
                                              :mastery_level, :goal_level,
+                                             :effort, :note_taking, :studying,
                                              :action_steps, :completed,
                                              :leveling_up, :feedback)
   end
