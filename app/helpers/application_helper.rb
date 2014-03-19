@@ -4,13 +4,11 @@ module ApplicationHelper
     page_title.empty? ? base_title : "#{ page_title } | #{ base_title }"
   end
   
-  def yes_or_no(completed)
-    completed ? "Yes" : "No"
-  end
-  
-  def negative_mastery?(mastery)
+  def convert_mastery?(mastery)
     if mastery == -1
       "NY"
+    elsif mastery == 0
+      "N"
     else
       mastery
     end

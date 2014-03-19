@@ -31,7 +31,7 @@ Grasp::Application.routes.draw do
 
   root to: "pages#home"
 
-  %w[home about acknowledgements sign_up_selection].each do |page|
+  %w[home about acknowledgements sign_up_selection acem].each do |page|
     get page, controller: "pages", action: page
   end
 

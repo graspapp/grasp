@@ -3,6 +3,7 @@
 .row
   %h1 Edit Concept
   = simple_form_for @concept do |f|
-    = f.input :number
+    = f.input :name
     = f.input :description
+    = f.input :resources
     = f.button :submit

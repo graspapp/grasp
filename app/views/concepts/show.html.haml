@@ -3,39 +3,82 @@
 .row
   - breadcrumb :concept, @concept
 
-  %h1= "Concept #{ @concept.number }"
+  %h1= "#{ @concept.name }"
 
-  %h3 Description
+  %h3 Description:
 
-  %p= @concept.description
+  %p= @concept.description.gsub(/\n/, '<br/>').html_safe
 
-  %h3 Progress
-
-  %table
-    %thead
-      %tr
-        - if current_user.is_a? Teacher
-          %th Student
-        %th Last Edited
-        %th Goal Level
-        %th Mastery Level
-        %th Type of Error
-        %th Next Steps
-        %th Completed?
-        %th Leveling Up?
-        - if show_concept_progress_actions? @concept
-          %th Actions
-    %tbody
-      - policy_scope(@concept_progresses).each do |cp|
+  - if current_user.is_a? Teacher
+    %h3 Progress
+    
+    %table
+      %thead
         %tr
-          - if current_user.is_a? Teacher
-            %td= full_name(cp.enrollment.student)
-          %td= cp.created_at.to_formatted_s(:mdy)
-          %td= cp.goal_level
-          %td= negative_mastery?(cp.mastery_level)
-          %td= cp.type_of_error
-          %td= cp.next_steps
-          %td= yes_or_no(cp.completed)
-          %td= yes_or_no(cp.leveling_up)
+          %th Student
+          %th Last Edited
+          %th Current Mastery Level
+          %th Effort Rubric
+          %th Note Taking Rubric
+          %th Study Rubric
+          %th Next Steps
+          - if show_concept_progress_actions? @concept
+            %th Actions
+      %tbody
+        - policy_scope(@concept_progresses).each do |cp|
+          %tr
+            - if current_user.is_a? Teacher
+              %td= full_name(cp.enrollment.student)
+            %td= cp.updated_at.to_formatted_s(:mdy)
+            %td= convert_mastery?(cp.mastery_level)
+            %td= cp.effort
+            %td= cp.note_taking
+            %td= cp.studying
+            %td= cp.next_steps
+            - if policy(cp).edit?
+              %td= link_to "Edit", edit_concept_progress_path(cp)
+
+  - else
+    %h3 Effort
+    
+    %table
+      %thead
+        %tr
+          %th Last Edited
+          %th Weekly Goal
+          %th Effort Rubric
+          %th Note Taking Rubric
+          %th Study Rubric
+          %th Teacher Feedback
+
+      %tbody
+        - policy_scope(@concept_progresses).each do |cp|
+          %tr
+            %td= cp.updated_at.to_formatted_s(:mdy)
+            %td= cp.goal_level
+            %td= cp.effort
+            %td= cp.note_taking
+            %td= cp.studying
+            %td= cp.feedback
+
           - if policy(cp).edit?
-            %td= link_to "Edit", edit_concept_progress_path(cp)
+            = link_to "Edit Your Progress", 
+            edit_concept_progress_path(cp), class: "button right"
+
+    %h3 Understanding
+    
+    %table
+      %thead
+        %tr
+          %th Current Mastery Level
+          %th Type of error
+          %th Next Steps
+          %th Complete?
+
+      %tbody
+        - policy_scope(@concept_progresses).each do |cp|
+          %tr
+            %td= cp.mastery_level
+            %td= cp.type_of_error
+            %td= cp.next_steps
+            %td= cp.completed

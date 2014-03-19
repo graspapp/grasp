@@ -36,6 +36,7 @@ gem "mail_form"
 gem "gretel"
 gem "paper_trail"
 gem "google-analytics-rails"
+gem "rails_autolink"
 
 group :development, :test do
   gem "sqlite3"

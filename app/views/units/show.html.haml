@@ -4,7 +4,7 @@
   = modal :create_concept do
     %h2 Create Concept
     = simple_form_for @concept do |f|
-      = f.input :number
+      = f.input :name
       = f.input :description
       = f.hidden_field :unit_id
       = f.button :submit
@@ -20,18 +20,20 @@
   %table
     %thead
       %tr
-        %td Number
+        %td Concept
         %td Description
+        %td Resources
         - if show_concept_actions? @unit
           %td Actions
 
     %tbody
       - policy_scope(@concepts).each do |c|
         %tr
-          %td= link_to c.number, c
-          %td= c.description
+          %td= link_to c.name, c  
+          %td=  c.description.gsub(/\n/, '<br/>').html_safe
+          %td=  auto_link(c.resources).gsub(/\n/, '<br/>').html_safe
           - if show_concept_actions? @unit
             %td
               = link_to "Edit", edit_concept_path(c) if policy(c).edit?
               = link_to "Delete", c, method: :delete,
-                data: { confirm: "Are you sure you want to permanently delete Concept #{ c.number }?" }
+                data: { confirm: "Are you sure you want to permanently delete Concept: #{ c.name }?" }
