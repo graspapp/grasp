@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 9ca081f47ab447793afbd0cb2ba1eded68c26f10
+  revision: 3fb7f03335b1ec5743c305f2c37103e2bfface97
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -15,6 +15,13 @@ GIT
       rails (>= 3.2, < 4.1)
       ransack (~> 1.0)
       sass-rails
+
+GIT
+  remote: git://github.com/jetthoughts/yaml_db.git
+  revision: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
+  ref: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
+  specs:
+    yaml_db (0.2.3)
 
 GEM
   remote: https://rubygems.org/
@@ -47,10 +54,8 @@ GEM
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (4.0.2)
-    atomic (1.1.15)
+    atomic (1.1.16)
     bcrypt (3.1.7)
-    bcrypt-ruby (3.1.5)
-      bcrypt (>= 3.1.3)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -82,13 +87,14 @@ GEM
       term-ansicolor
       thor
     database_cleaner (1.2.0)
-    devise (3.2.3)
-      bcrypt-ruby (~> 3.0)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.3)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
@@ -109,10 +115,10 @@ GEM
     formatador (0.2.4)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
-    foundation-rails (5.2.0.0)
+    foundation-rails (5.2.1.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
-    google-analytics-rails (0.0.4)
+    google-analytics-rails (0.0.5)
     gretel (3.0.5)
       rails (>= 3.2.0)
     guard (2.5.1)
@@ -158,7 +164,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.2)
       addressable (~> 2.3)
-    listen (2.7.0)
+    listen (2.7.1)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
@@ -179,7 +185,7 @@ GEM
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
-    paper_trail (3.0.0)
+    paper_trail (3.0.1)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
     pg (0.17.1)
@@ -252,10 +258,11 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    sass (3.3.1)
-    sass-rails (4.0.1)
+    sass (3.2.16)
+    sass-rails (4.0.2)
       railties (>= 4.0.0, < 5.0)
-      sass (>= 3.1.10)
+      sass (~> 3.2.0)
+      sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0.0)
     sdoc (0.4.0)
       json (~> 1.8)
@@ -269,11 +276,12 @@ GEM
     simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
-    simplecov (0.7.1)
-      multi_json (~> 1.0)
-      simplecov-html (~> 0.7.1)
-    simplecov-html (0.7.1)
-    slop (3.4.7)
+    simplecov (0.8.2)
+      docile (~> 1.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
+    slop (3.5.0)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -284,21 +292,21 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.9)
-    term-ansicolor (1.2.2)
-      tins (~> 0.8)
+    term-ansicolor (1.3.0)
+      tins (~> 1.0)
     thor (0.18.1)
     thread_safe (0.2.0)
       atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
     timers (1.1.0)
-    tins (0.11.0)
+    tins (1.0.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
     turbolinks (2.2.1)
       coffee-rails
     tzinfo (0.3.39)
-    uglifier (2.4.0)
+    uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
@@ -306,7 +314,6 @@ GEM
     websocket-driver (0.3.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
-    yaml_db (0.2.3)
     zeus (0.13.3)
       method_source (>= 0.6.7)
 
@@ -349,5 +356,5 @@ DEPENDENCIES
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)
-  yaml_db
+  yaml_db!
   zeus
