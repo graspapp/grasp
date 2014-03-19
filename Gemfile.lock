@@ -74,7 +74,6 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.3)
     coffee-script-source (1.7.0)
     coveralls (0.7.0)
       multi_json (~> 1.3)
@@ -284,7 +283,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sqlite3 (1.3.8)
     sqlite3 (1.3.9)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
@@ -308,6 +306,7 @@ GEM
     websocket-driver (0.3.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    yaml_db (0.2.3)
     zeus (0.13.3)
       method_source (>= 0.6.7)
 
@@ -350,4 +349,5 @@ DEPENDENCIES
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)
+  yaml_db
   zeus
