@@ -12,6 +12,6 @@ crumb :unit do |unit|
 end
 
 crumb :concept do |concept|
-  link "Concept #{ concept.number }", concept_path(concept)
+  link "#{ concept.name }", concept_path(concept)
   parent :unit, concept.unit
 end

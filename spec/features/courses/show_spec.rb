@@ -76,10 +76,10 @@ describe "Course show" do
 
     it { should_not have_link "Create Unit" }
 
-    example "leaving course" do
-      expect {
-        click_button "Leave Course"
-      }.to change(user.courses, :count).by -1
-    end
+    # example "leaving course" do
+#       expect {
+#         click_button "Leave Course"
+#       }.to change(user.courses, :count).by -1
+#     end
   end
 end

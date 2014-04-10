@@ -19,7 +19,7 @@ describe "Unit show" do
     describe "concept attributes" do
       let(:concept) { unit.concepts.first }
 
-      it { should have_content concept.number }
+      it { should have_content concept.name }
       it { should have_content concept.description }
 
       describe "when concept isn't in current unit" do
@@ -29,7 +29,7 @@ describe "Unit show" do
           visit current_path
         end
 
-        it { should_not have_content concept.number }
+        it { should_not have_content concept.name }
         it { should_not have_content concept.description }
       end
     end
@@ -44,14 +44,14 @@ describe "Unit show" do
         before do
           first(:link, "Edit").click
 
-          fill_in "Number", with: concept[:number]
+          fill_in "Name", with: concept[:name]
           fill_in "Description", with: concept[:description]
           click_button "Update Concept"
         end
 
         context "with valid attributes" do
           let(:concept) { FactoryGirl.attributes_for(:concept) }
-          it { should have_content concept[:number] }
+          it { should have_content concept[:name] }
           it { should have_content concept[:description] }
         end
 

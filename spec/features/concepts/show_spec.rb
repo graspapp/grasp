@@ -13,8 +13,8 @@ describe "Concept show" do
   subject { page }
 
   shared_examples_for "a concept show page" do
-    it { should have_content concept.number }
-    it { should have_title "Concept #{ concept.number }" }
+    it { should have_content concept.name }
+    it { should have_title "Concept #{ concept.name }" }
 
     describe "concept progress attributes" do
       let(:concept_progress) { concept.concept_progresses.first }
@@ -41,7 +41,9 @@ describe "Concept show" do
         before do
           click_link "Edit"
 
-          select(concept_progress[:goal_level], :from => "Goal level")
+          page.find_by_id("concept_progress_goal_level").
+                    find("option[value='#{concept_progress.goal_level}']").
+                    select_option
           
           page.find_by_id("concept_progress_mastery_level").
                     find("option[value='#{concept_progress.mastery_level}']").
@@ -54,10 +56,9 @@ describe "Concept show" do
                     # select_option
           # page.find_by_id("concept_progress_next_steps").
                     # find("option[value='Play in Brilliant.org']").select_option                      
-          fill_in("Plan to accomplish next steps", 
+          fill_in("Note to self", 
           :with => concept_progress[:action_steps])
-          check("Completed?")
-          check("Leveling Up?")
+          choose("Completed")
         end
         
         context "with valid attributes" do
@@ -66,13 +67,12 @@ describe "Concept show" do
           it { should have_selector("td", concept_progress[:mastery_level]) }
           it { should have_selector("td", concept_progress[:type_of_error]) }
           it { should have_selector("td", concept_progress[:completed]) }
-          it { should have_selector("td", concept_progress[:leveling_up]) }
         end
         
         context "with invalid attributes" do
              
           before do
-            fill_in("Plan to accomplish next steps", with: "")
+            fill_in("Note to self", with: "")
             click_button "Edit Concept Progress"
           end       
           
