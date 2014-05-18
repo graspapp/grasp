@@ -25,7 +25,7 @@ class ConceptProgress < ActiveRecord::Base
      #use default values is reify is nil
      data = updates.map do |u|
        {
-         date: u.reify.updated_at.localtime.strftime("%m/%d/%Y %H:%M %p"),
+         date: u.reify.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p"),
          goal: u.reify.goal_level || 1,
          mastery: u.reify.mastery_level || 0,
          effort: u.reify.effort || 1               
@@ -35,7 +35,7 @@ class ConceptProgress < ActiveRecord::Base
      # append live version of the record
      # paper trail does not track it
      data << {
-       date: self.updated_at.localtime.strftime("%m/%d/%Y %H:%M %p"),
+       date: self.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p"),
        goal: self.goal_level,
        mastery: self.mastery_level,
        effort: self.effort
