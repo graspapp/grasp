@@ -25,7 +25,7 @@ class ConceptProgress < ActiveRecord::Base
      #use default values is reify is nil
      data = updates.map do |u|
        {
-         date: u.created_at.localtime.strftime("%m/%d/%Y %H:%M %p"),
+         date: u.reify.updated_at.localtime.strftime("%m/%d/%Y %H:%M %p"),
          goal: u.reify.goal_level || 1,
          mastery: u.reify.mastery_level || 0,
          effort: u.reify.effort || 1               
