@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require highcharts
+//= require highcharts/highcharts-more
 //= require retina
 //= require_tree

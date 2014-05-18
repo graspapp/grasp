@@ -82,3 +82,6 @@
             %td= cp.type_of_error
             %td= cp.next_steps
             %td= cp.completed
+    
+    - policy_scope(@concept_progresses).each do |cp|
+      #concept_progress_chart{data:{ concept_progress: cp.chart_data.to_json}}

@@ -6,7 +6,7 @@ ready = ->
   error = $("#concept_progress_type_of_error :selected").val()
   options = $(next_steps).filter("optgroup[label='#{error}']").html()
   textarea = $("#concept_progress_action_steps")
-  charsRemaining = 140 - textarea.val().length
+  charsRemaining = 140 - textarea.text().length
   
   $(".counter").css "color", (if (charsRemaining < 10) then "red" else "gray")
   

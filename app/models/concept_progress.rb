@@ -21,6 +21,27 @@ class ConceptProgress < ActiveRecord::Base
   validates_inclusion_of :feedback, :in => ["On Track", "See Teacher",
       "See Practice Choices"]
   
+  def chart_data(updates = versions[-4..-1] )
+     #use default values is reify is nil
+     data = updates.map do |u|
+       {
+         date: u.created_at.localtime.strftime("%m/%d/%Y"),
+         goal: u.reify.goal_level || 1,
+         mastery: u.reify.mastery_level || 0,
+         effort: u.reify.effort || 1               
+       }  
+     end
+  
+     # append live version of the record
+     # paper trail does not track it
+     data << {
+       date: self.updated_at.localtime.strftime("%m/%d/%Y"),
+       goal: self.goal_level,
+       mastery: self.mastery_level,
+       effort: self.effort
+     }
+   end 
+  
   private
 
   def set_defaults

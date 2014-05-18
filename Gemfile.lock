@@ -144,6 +144,8 @@ GEM
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    highcharts-rails (4.0.1)
+      railties (>= 3.1)
     hike (1.2.3)
     http_parser.rb (0.5.3)
     i18n (0.6.9)
@@ -336,6 +338,7 @@ DEPENDENCIES
   guard-livereload
   guard-rspec
   haml-rails
+  highcharts-rails
   jbuilder (~> 1.2)
   jquery-rails
   launchy
