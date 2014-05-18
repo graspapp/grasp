@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
-  
+  data = $("#concept_progress_chart").data()
+
   $("#concept_progress_chart").highcharts
     title:
       text: "Your Progress"
@@ -11,7 +12,7 @@ ready = ->
     xAxis:
       title:
         text: "Date"
-      categories: [ "Jan", "Feb", "Mar", "Apr" ]
+      categories: data.conceptProgress.map (cp) -> cp.date
 
     yAxis:
       title:
@@ -33,13 +34,13 @@ ready = ->
     
     series: [{
       name: "Goal Level"
-      data: [ 1, 3, 2, 4]},
+      data: data.conceptProgress.map (cp) -> cp.goal },
       
       {name: "Mastery Level"
-      data: [1, 4, 4, 2]}
+      data: data.conceptProgress.map (cp) -> cp.mastery }
       
       {name: "Effort"
-      data: [2, 2, 3, 4]}
+      data: data.conceptProgress.map (cp) -> cp.effort }
       
       ]
 
