@@ -15,7 +15,7 @@ class ConceptsController < ApplicationController
 
   def show
     
-    @concept_progresses = @concept.concept_progresses.sort_by { |cp| cp.enrollment.student.last_name} 
+    @concept_progresses = @concept.concept_progresses.sorted 
 
     if current_user.is_a? Student
       enrollment = Enrollment.find_by(course: @concept.unit.course,

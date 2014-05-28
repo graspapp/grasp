@@ -5,6 +5,11 @@ class ConceptProgress < ActiveRecord::Base
 
   belongs_to :enrollment
   belongs_to :concept
+  
+  scope :sorted, lambda{
+    joins(:enrollment).joins(:enrollment => :student)
+    .order('last_name ASC, first_name ASC')
+  }
 
   validates_presence_of :type_of_error, :next_steps, :mastery_level, 
     :goal_level, :action_steps, :effort, :note_taking, :studying
