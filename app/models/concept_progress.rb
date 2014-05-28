@@ -21,7 +21,7 @@ class ConceptProgress < ActiveRecord::Base
   validates_inclusion_of :feedback, :in => ["On Track", "See Teacher",
       "See Practice Choices"]
   
-  def chart_data(updates = versions[-4..-1] )
+  def chart_data(updates = versions[-5..-1] )
      #use default values is reify is nil
      data = updates.map do |u|
        {
