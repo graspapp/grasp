@@ -33,12 +33,17 @@ describe "Unit show" do
         it { should_not have_content concept.description }
       end
     end
+    
+    describe "multiple concepts" do
+      let(:concept) { unit.concepts.first }
+      let(:concept2) { unit.concepts.last }
+    end
   end
 
   context "as a teacher" do
     let(:user) { FactoryGirl.create(:teacher) }
     it_should_behave_like "a unit show page"
-
+    
     describe "actions" do
       describe "editing concept" do
         before do
@@ -60,7 +65,7 @@ describe "Unit show" do
           it { should have_content "can't be blank" }
         end
       end
-
+      
       example "deleting concept" do
         expect {
           first(:link, "Delete").click
