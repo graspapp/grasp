@@ -33,16 +33,24 @@ describe "Unit show" do
         it { should_not have_content concept.description }
       end
     end
-    
-    describe "multiple concepts" do
-      let(:concept) { unit.concepts.first }
-      let(:concept2) { unit.concepts.last }
-    end
   end
 
   context "as a teacher" do
     let(:user) { FactoryGirl.create(:teacher) }
     it_should_behave_like "a unit show page"
+    
+    describe "multiple concepts" do
+      let(:concept) { unit.concepts.first }
+      let(:concept2) { FactoryGirl.create(:concept) }
+      before do
+        unit.concepts << concept2
+      end
+      
+      it "should be displayed in the correct order" do
+        expect(unit.concepts.to_a).to eq [concept, concept2]
+      end
+      
+    end
     
     describe "actions" do
       describe "editing concept" do
