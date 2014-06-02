@@ -139,9 +139,10 @@ describe ConceptsController do
         expect(assigns(:concept)).to eq concept
       end
 
-      it "assigns the concept's concept progresses to @concept_progresses" do
-        get :show, id: concept
-        expect(assigns(:concept_progresses)).to eq concept.concept_progresses
+      it "creates a new concept progress" do
+        expect {
+          get :show, id: concept
+        }.to change(ConceptProgress, :count).by 1
       end
 
       it "creates a new concept progress" do
