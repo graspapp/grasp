@@ -23,7 +23,7 @@ describe "Pages" do
   
   context "acem" do
     before { visit acem_path }
-    it { should have_content("ACE'M") }
-    it { should have_title("ACE'M") }
+    it { should have_content("ACE-M Tool") }
+    it { should have_title("ACE-M Tool") }
   end
 end

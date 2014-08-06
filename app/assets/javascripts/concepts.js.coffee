@@ -33,13 +33,10 @@ ready = ->
     
     
     series: [{
-      name: "Goal Level"
-      data: data.conceptProgress.map (cp) -> cp.goal },
+      name: "Mastery Level"
+      data: data.conceptProgress.map (cp) -> cp.mastery },
       
-      {name: "Mastery Level"
-      data: data.conceptProgress.map (cp) -> cp.mastery }
-      
-      {name: "Effort"
+      {name: "Effort Level"
       data: data.conceptProgress.map (cp) -> cp.effort }
       
       ]

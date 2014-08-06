@@ -29,7 +29,7 @@
           %tr
             - if current_user.is_a? Teacher
               %td= full_name(cp.enrollment.student)
-            %td= cp.updated_at.to_formatted_s(:mdy)
+            %td= cp.updated_at.localtime.to_formatted_s(:mdy)
             %td= convert_mastery?(cp.mastery_level)
             %td= cp.effort
             %td= cp.note_taking
@@ -54,7 +54,7 @@
       %tbody
         - policy_scope(@concept_progresses).each do |cp|
           %tr
-            %td= cp.updated_at.to_formatted_s(:mdy)
+            %td= cp.updated_at.localtime.to_formatted_s(:mdy)
             %td= cp.goal_level
             %td= cp.effort
             %td= cp.note_taking
