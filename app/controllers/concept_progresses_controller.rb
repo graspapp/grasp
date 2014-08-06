@@ -14,22 +14,31 @@ class ConceptProgressesController < ApplicationController
   
   def goals
     @goals = { 
-      1 => "1: Misconception errors (A), major reasoning and procedural errors
-            (C, E, M)",
-      2 =>  "2: Minimal/minor conceptual errors (E), reasoning errors (C,M),
-             procedural errors (E)",     
-      3 =>  "3: No conceptual errors (A), logical reasoning with minor errors
-           (C, M), minor procedural errors and possible calculation errors (E)",
-      4 =>  "4: No conceptual errors (A) logical and accurate reasoning (C, M),
-             minimal and minor calculation errors and no procedural errors (E)"}
+      1 => "1: I am struggling with what facts apply to the problem and doubt
+            myself when trying to follow procedures.  I cannot explain what I
+            am doing and thinking and have no clue how to apply problem solving
+            strategies",
+      2 =>  "2: I can recall necessary facts, follow procedures, and sometimes
+             explain the concepts.  My procedures need work for routine
+             problems and I am not comfortable applying problem solving
+             strategies to non-routine problems",     
+      3 =>  "3: I can recall necessary facts, follow procedures, explain
+             concepts, demonstrate how to apply procedures to routine problems,
+             and can justify my decision-making when approaching and creating a
+             plan to solve a non-routine problem, but often find that my plans
+             do not lead to the right solution",
+      4 =>  "4: I can recall necessary facts, follow procedures, explain
+             concepts, demonstrate how to apply procedures to routine and
+             non-routine problems, and can accurately justify my
+             decision-making when finding a solution pathway"}
       @goals.sort.map {|k,v| [v,k]}
   end
   
   def mastery
-    @mastery = @goals.merge(-1 => "NY (not yet): Major misconception (A),
-                     incorrect reasoning, incorrect procedures (C, E, M)", 
+    @mastery = @goals.merge(-1 => "NY (not yet): I really do not get anything
+     at all, but I am trying different things I know", 
      
-     0 => "N (No response): Conference with student/parent"
+     0 => "N (No attempt): I did not attempt anything at all"
      
      )
     @mastery.sort.map {|k,v| [v,k]}

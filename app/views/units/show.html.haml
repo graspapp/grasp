@@ -22,7 +22,9 @@
       %tr
         %td Concept
         %td Description
-        %td Resources
+        %td Recall & Reproduction Resources (DOK 1)
+        %td Skills & Concepts Resources (DOK 2)
+        %td Strategic Thinking & Reasoning (DOK 3)
         - if show_concept_actions? @unit
           %td Actions
 
@@ -31,7 +33,9 @@
         %tr
           %td= link_to c.name, c  
           %td=  c.description.gsub(/\n/, '<br/>').html_safe
-          %td=  auto_link(c.resources).gsub(/\n/, '<br/>').html_safe
+          %td=  auto_link(c.dok1_resources).gsub(/\n/, '<br/>').html_safe
+          %td=  auto_link(c.dok2_resources).gsub(/\n/, '<br/>').html_safe
+          %td=  auto_link(c.dok3_resources).gsub(/\n/, '<br/>').html_safe
           - if show_concept_actions? @unit
             %td
               = link_to "Edit", edit_concept_path(c) if policy(c).edit?

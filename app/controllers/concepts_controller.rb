@@ -52,7 +52,8 @@ class ConceptsController < ApplicationController
   private
 
   def concept_params
-    params.require(:concept).permit(:name, :description, :resources)
+    params.require(:concept).permit(:name, :description, :dok1_resources,
+                                    :dok2_resources, :dok3_resources)
   end
 
   def find_and_authorize_concept

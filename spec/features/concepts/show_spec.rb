@@ -56,12 +56,12 @@ describe "Concept show" do
                     # select_option
           # page.find_by_id("concept_progress_next_steps").
                     # find("option[value='Play in Brilliant.org']").select_option                      
-          fill_in("Note to self", 
+          fill_in("Note to self about your next steps", 
           :with => concept_progress[:action_steps])
         end
         
         context "with valid attributes" do
-          before { click_button "Edit Concept Progress" }
+          before { click_button "Update Your Progress" }
           it { should have_selector("td", concept_progress[:goal_level]) }
           it { should have_selector("td", concept_progress[:mastery_level]) }
           it { should have_selector("td", concept_progress[:type_of_error]) }
@@ -71,8 +71,8 @@ describe "Concept show" do
         context "with invalid attributes" do
              
           before do
-            fill_in("Note to self", with: "")
-            click_button "Edit Concept Progress"
+            fill_in("Note to self about your next steps", with: "")
+            click_button "Update Your Progress"
           end       
           
           it { should have_content "can't be blank" }

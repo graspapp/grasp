@@ -4,10 +4,11 @@
   - breadcrumb :concept, @concept
 
   %h1= "#{ @concept.name }"
+  
+  - if current_user.is_a? Student
+    %h3 Description:
 
-  %h3 Description:
-
-  %p= @concept.description.gsub(/\n/, '<br/>').html_safe
+    %p= @concept.description.gsub(/\n/, '<br/>').html_safe
 
   - if current_user.is_a? Teacher
     %h3 Progress
@@ -19,8 +20,8 @@
           %th Last Edited
           %th Current Mastery Level
           %th Effort Rubric
-          %th Note Taking Rubric
-          %th Study Rubric
+          %th Note Taking Skill
+          %th Study Skill
           %th Next Steps
           - if show_concept_progress_actions? @concept
             %th Actions
@@ -47,8 +48,8 @@
           %th Last Edited
           %th Weekly Goal
           %th Effort Rubric
-          %th Note Taking Rubric
-          %th Study Rubric
+          %th Note Taking Skill
+          %th Study Skill
 
       %tbody
         - policy_scope(@concept_progresses).each do |cp|

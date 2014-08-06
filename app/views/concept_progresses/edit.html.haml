@@ -3,7 +3,7 @@
 .row
   %h1 Are you GRASPing the material?
   = simple_form_for @concept_progress do |f|
-    = f.input :goal_level, collection: goals, label: "Short-term goal level",
+    = f.input :goal_level, collection: goals, label: "Weekly Goal Level",
       disabled: (current_user.is_a? Teacher),
       label_html: { class:"has-tip tip-top", id:"goal",
       title: "#{ short_term_goal_explanation }",
@@ -14,6 +14,9 @@
       label_html: { class:"stan has-tip tip-top", id:"mastery",
       title: "#{ mastery_goal_explanation }",
       data: { tooltip: true } }
+    = f.input :effort, collection: effort, 
+      disabled: (current_user.is_a? Teacher),
+      label: "Effort Level"
     = f.label :type_of_error, required: true
     = f.collection_select :type_of_error, ErrorType.all, :error_type,
       :description, disabled: (current_user.is_a? Teacher)
@@ -21,16 +24,10 @@
     = f.grouped_collection_select :next_steps, ErrorType.all, :steps,
       :error_type, :description, :description, 
       disabled: (current_user.is_a? Teacher)
-    = f.input :effort, collection: effort, 
-      disabled: (current_user.is_a? Teacher)
-    = f.input :note_taking, collection: note_taking,
-      disabled: (current_user.is_a? Teacher)
-    = f.input :studying, collection: study,
-      disabled: (current_user.is_a? Teacher)
-    = f.input :action_steps, label: "Note to self", 
+    = f.input :action_steps, label: "Note to self about your next steps", 
       input_html: { rows: 10 },
       label_html: { class:"stan has-tip tip-top", id:"note",
       title: "#{ note_explanation }",
       data: { tooltip: true } }
     %span.counter 140 characters remaining
-    = f.button :submit, "Edit Concept Progress"
+    = f.button :submit, "Update Your Progress"

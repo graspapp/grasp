@@ -10,7 +10,6 @@ module ConceptProgressesHelper
    end
    
    def note_explanation
-     "Write yourself a note/reminder that will guide your efforts in and out of
-      class around deepening your understanding."
+     "What actions will improve your GRASP?"
     end
 end
