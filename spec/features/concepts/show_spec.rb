@@ -58,7 +58,6 @@ describe "Concept show" do
                     # find("option[value='Play in Brilliant.org']").select_option                      
           fill_in("Note to self", 
           :with => concept_progress[:action_steps])
-          choose("Completed")
         end
         
         context "with valid attributes" do

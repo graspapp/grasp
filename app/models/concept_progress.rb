@@ -21,10 +21,6 @@ class ConceptProgress < ActiveRecord::Base
   validates_inclusion_of :effort, in: 1..4
   validates_inclusion_of :note_taking, in: 1..4
   validates_inclusion_of :studying, in: 1..4
-  validates_inclusion_of :completed, :in => ["Completed", "Partially Complete",
-    "Incomplete"]
-  validates_inclusion_of :feedback, :in => ["On Track", "See Teacher",
-      "See Practice Choices"]
   
   def chart_data(updates = versions[-4..-1] )
     #use default values is reify is nil
@@ -73,7 +69,5 @@ class ConceptProgress < ActiveRecord::Base
     self.note_taking ||= default_level
     self.studying ||= default_level
     self.action_steps ||= not_available
-    self.completed ||= incomplete
-    self.feedback ||= see_teacher
   end
 end

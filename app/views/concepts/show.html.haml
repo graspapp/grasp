@@ -49,7 +49,6 @@
           %th Effort Rubric
           %th Note Taking Rubric
           %th Study Rubric
-          %th Teacher Feedback
 
       %tbody
         - policy_scope(@concept_progresses).each do |cp|
@@ -59,7 +58,6 @@
             %td= cp.effort
             %td= cp.note_taking
             %td= cp.studying
-            %td= cp.feedback
 
           - if policy(cp).edit?
             = link_to "Edit Your Progress", 
@@ -73,7 +71,6 @@
           %th Current Mastery Level
           %th Type of error
           %th Next Steps
-          %th Complete?
 
       %tbody
         - policy_scope(@concept_progresses).each do |cp|
@@ -81,7 +78,6 @@
             %td= cp.mastery_level
             %td= cp.type_of_error
             %td= cp.next_steps
-            %td= cp.completed
     
     - policy_scope(@concept_progresses).each do |cp|
       #concept_progress_chart{data:{ concept_progress: cp.chart_data.to_json}}

@@ -33,14 +33,4 @@
       title: "#{ note_explanation }",
       data: { tooltip: true } }
     %span.counter 140 characters remaining
-    %div.small-5.columns
-      %h5 Progress for next steps:
-      = f.input :completed, collection: ["Completed", "Partially Complete",
-        "Incomplete"], label: false, as: :radio_buttons, item_wrapper_tag: :div,
-        disabled: (current_user.is_a? Teacher)
-    %div.small-5.columns
-      %h5 Feedback for next steps:
-      = f.input :feedback, collection: ["On Track", "See Teacher", 
-        "See Practice Choices"], label: false, as: :radio_buttons,
-        item_wrapper_tag: :div, disabled: (current_user.is_a? Student)
     = f.button :submit, "Edit Concept Progress"

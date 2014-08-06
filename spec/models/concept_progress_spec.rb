@@ -13,7 +13,6 @@ describe ConceptProgress do
   it { should respond_to :effort }
   it { should respond_to :note_taking }
   it { should respond_to :studying }
-  it { should respond_to :completed }
 
   it { should validate_presence_of :type_of_error }
   it { should validate_presence_of :next_steps }
@@ -41,8 +40,6 @@ describe ConceptProgress do
     example { expect(cp.goal_level).to eq 1 }
     example { expect(cp.effort).to eq 1 }
     example { expect(cp.note_taking).to eq 1 }
-    example { expect(cp.studying).to eq 1 }
-    example { expect(cp.completed).to eq "Incomplete" }
-    example { expect(cp.feedback).to eq "See Teacher" }          
+    example { expect(cp.studying).to eq 1 } 
   end
 end
