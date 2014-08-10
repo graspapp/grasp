@@ -9,13 +9,15 @@
       = f.hidden_field :unit_id
       = f.button :submit
 
+
+
 .row
   - breadcrumb :unit, @unit
 
-  %h1= unit_name(@unit)
-
   - if policy(@concept).create?
     = modal_link "Create Concept", :create_concept, class: "button right"
+
+  %h1= unit_name(@unit)
 
   %table
     %thead
