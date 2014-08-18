@@ -14,23 +14,10 @@ class ConceptProgressesController < ApplicationController
   
   def goals
     @goals = { 
-      1 => "1: I am struggling with what facts apply to the problem and doubt
-            myself when trying to follow procedures.  I cannot explain what I
-            am doing and thinking and have no clue how to apply problem solving
-            strategies",
-      2 =>  "2: I can recall necessary facts, follow procedures, and sometimes
-             explain the concepts.  My procedures need work for routine
-             problems and I am not comfortable applying problem solving
-             strategies to non-routine problems",     
-      3 =>  "3: I can recall necessary facts, follow procedures, explain
-             concepts, demonstrate how to apply procedures to routine problems,
-             and can justify my decision-making when approaching and creating a
-             plan to solve a non-routine problem, but often find that my plans
-             do not lead to the right solution",
-      4 =>  "4: I can recall necessary facts, follow procedures, explain
-             concepts, demonstrate how to apply procedures to routine and
-             non-routine problems, and can accurately justify my
-             decision-making when finding a solution pathway"}
+      1 => "1: Struggle with what facts apply to the problem and doubt myself when trying to follow R procedures.",
+      2 =>  "2: Recall necessary facts, follow procedures, and sometimes explain the concepts. Struggle with R and NR procedures",     
+      3 =>  "3: Recall necessary facts, follow procedures, explain concepts, apply procedures to R problems, and not NR problems",
+      4 =>  "4: Recall necessary facts, follow procedures, explain concepts, apply procedures to routine and non-routine problems, accurately justify my decision-making"}
       @goals.sort.map {|k,v| [v,k]}
   end
   
@@ -75,8 +62,8 @@ class ConceptProgressesController < ApplicationController
   
   def note_taking
     @note_taking = { 
-      1 => "1: I cannot understand my notes, so I do not use them as a
-            reference.",
+      1 => "1: I do not have or I cannot understand my notes, so I do not use
+            them as a reference. ",
       2 =>  "2: I sometimes take notes and rarely refer to them.",     
       3 =>  "3: I take notes and refer to them when prompted.",
       4 =>  "4: I take comprehensive notes and refer to them, as needed, when

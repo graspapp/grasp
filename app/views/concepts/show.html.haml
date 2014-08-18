@@ -18,10 +18,9 @@
         %tr
           %th Student
           %th Last Edited
+          %th Goal Level
           %th Current Mastery Level
-          %th Effort Rubric
-          %th Note Taking Skill
-          %th Study Skill
+          %th Effort Level
           %th Next Steps
           - if show_concept_progress_actions? @concept
             %th Actions
@@ -31,25 +30,23 @@
             - if current_user.is_a? Teacher
               %td= full_name(cp.enrollment.student)
             %td= cp.updated_at.localtime.to_formatted_s(:mdy)
+            %td= cp.goal_level
             %td= convert_mastery?(cp.mastery_level)
             %td= cp.effort
-            %td= cp.note_taking
-            %td= cp.studying
             %td= cp.next_steps
             - if policy(cp).edit?
               %td= link_to "Edit", edit_concept_progress_path(cp)
 
   - else
-    %h3 Effort
+    %h3 Current Levels
     
     %table
       %thead
         %tr
           %th Last Edited
           %th Weekly Goal
-          %th Effort Rubric
-          %th Note Taking Skill
-          %th Study Skill
+          %th Effort Level
+          %th Next Steps
 
       %tbody
         - policy_scope(@concept_progresses).each do |cp|
@@ -57,28 +54,11 @@
             %td= cp.updated_at.localtime.to_formatted_s(:mdy)
             %td= cp.goal_level
             %td= cp.effort
-            %td= cp.note_taking
-            %td= cp.studying
+            %td= cp.next_steps
 
           - if policy(cp).edit?
-            = link_to "Edit Your Progress", 
+            = link_to "Update Levels", 
             edit_concept_progress_path(cp), class: "button right"
-
-    %h3 Understanding
-    
-    %table
-      %thead
-        %tr
-          %th Current Mastery Level
-          %th Type of error
-          %th Next Steps
-
-      %tbody
-        - policy_scope(@concept_progresses).each do |cp|
-          %tr
-            %td= cp.mastery_level
-            %td= cp.type_of_error
-            %td= cp.next_steps
     
     - policy_scope(@concept_progresses).each do |cp|
       #concept_progress_chart{data:{ concept_progress: cp.chart_data.to_json}}
