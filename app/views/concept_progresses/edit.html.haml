@@ -8,21 +8,17 @@
       label_html: { class:"has-tip tip-top", id:"goal",
       title: "#{ short_term_goal_explanation }",
       data: { tooltip: true } }
-    = f.input :mastery_level, collection: mastery, 
-      label:"Current Mastery Level", 
-      disabled: (current_user.is_a? Teacher),
-      label_html: { class:"stan has-tip tip-top", id:"mastery",
-      title: "#{ mastery_goal_explanation }",
-      data: { tooltip: true } }
+    = f.label :current_mastery_level, required: true, 
+      class: "has-tip tip-top", id: "mastery", data: { tooltip: true },
+      title:"#{mastery_goal_explanation}"
+    = f.collection_select :mastery_level, Mastery.all, :value,
+      :description, disabled: (current_user.is_a? Teacher)
     = f.input :effort, collection: effort, 
       disabled: (current_user.is_a? Teacher),
       label: "Effort Level"
-    = f.label :type_of_error, required: true
-    = f.collection_select :type_of_error, ErrorType.all, :error_type,
-      :description, disabled: (current_user.is_a? Teacher)
     = f.label "Next steps", required: true
-    = f.grouped_collection_select :next_steps, ErrorType.all, :steps,
-      :error_type, :description, :description, 
+    = f.grouped_collection_select :next_steps, Mastery.all, :steps,
+      :id, :description, :description, 
       disabled: (current_user.is_a? Teacher)
     = f.input :action_steps, label: "Note to self about your next steps", 
       input_html: { rows: 10 },

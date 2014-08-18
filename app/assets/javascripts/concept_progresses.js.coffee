@@ -15,11 +15,13 @@ ready = ->
   else
     $(".counter").html charsRemaining+" characters remaining"
   
-  $("#concept_progress_next_steps").html(options)        
+  $("#concept_progress_next_steps").html(options) 
   
-  $("#concept_progress_type_of_error").change ->
-    error = $("#concept_progress_type_of_error :selected").val()
-    options = $(next_steps).filter("optgroup[label='#{error}']").html()
+  $("#concept_progress_mastery_level").change ->
+    mastery = $("#concept_progress_mastery_level :selected").val()
+    mastery = 1 if mastery < 1
+    
+    options = $(next_steps).filter("optgroup[label='#{mastery}']").html()
     if options
       $("#concept_progress_next_steps").html(options)      
     else
