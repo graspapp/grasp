@@ -5,6 +5,10 @@ ready = ->
   data = $("#concept_progress_chart").data()
 
   $("#concept_progress_chart").highcharts
+    
+    credits:
+      false
+      
     title:
       text: "Your Progress"
       x: -20 #center
@@ -36,10 +40,11 @@ ready = ->
       name: "Mastery Level"
       data: data.conceptProgress.map (cp) -> cp.mastery },
       
-      {name: "Effort Level"
+      {
+      name: "Effort Level"
       data: data.conceptProgress.map (cp) -> cp.effort }
-      
       ]
 
+      
 $(document).ready(ready)
 $(document).on('page:load', ready)
