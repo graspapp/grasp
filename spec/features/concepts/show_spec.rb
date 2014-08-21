@@ -18,7 +18,7 @@ describe "Concept show" do
 
     describe "concept progress attributes" do
       let(:concept_progress) { concept.concept_progresses.first }
-      it { should have_link("Edit") }
+      it { should have_link("Update Levels") }
     end
   end
 
@@ -39,8 +39,7 @@ describe "Concept show" do
     describe "actions" do
       describe "editing concept progress" do
         before do
-          click_link "Edit"
-
+          click_link "Update Levels"
           page.find_by_id("concept_progress_goal_level").
                     find("option[value='#{concept_progress.goal_level}']").
                     select_option
@@ -48,35 +47,14 @@ describe "Concept show" do
           page.find_by_id("concept_progress_mastery_level").
                     find("option[value='#{concept_progress.mastery_level}']").
                     select_option
-          
-          # Commented out until db is updated
-          
-          # page.find_by_id("concept_progress_type_of_error").
-                    # find("option[value='#{concept_progress.type_of_error}']").
-                    # select_option
-          # page.find_by_id("concept_progress_next_steps").
-                    # find("option[value='Play in Brilliant.org']").select_option                      
-          fill_in("Note to self about your next steps", 
-          :with => concept_progress[:action_steps])
+                              
         end
         
         context "with valid attributes" do
           before { click_button "Update Your Progress" }
           it { should have_selector("td", concept_progress[:goal_level]) }
           it { should have_selector("td", concept_progress[:mastery_level]) }
-          it { should have_selector("td", concept_progress[:type_of_error]) }
-          it { should have_selector("td", concept_progress[:completed]) }
-        end
-        
-        context "with invalid attributes" do
-             
-          before do
-            fill_in("Note to self about your next steps", with: "")
-            click_button "Update Your Progress"
-          end       
-          
-          it { should have_content "can't be blank" }
-        end
+        end      
       end
     end
   end

@@ -1,3 +1,3 @@
 class Step < ActiveRecord::Base
-  belongs_to :error_type
+  belongs_to :mastery
 end
