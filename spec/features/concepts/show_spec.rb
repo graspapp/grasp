@@ -40,13 +40,13 @@ describe "Concept show" do
       describe "editing concept progress" do
         before do
           click_link "Update Levels"
-          page.find_by_id("concept_progress_goal_level").
-                    find("option[value='#{concept_progress.goal_level}']").
-                    select_option
+          # page.find_by_id("concept_progress_goal_level").
+                    # find("option[value='#{concept_progress.goal_level}']").
+                    # select_option
           
-          page.find_by_id("concept_progress_mastery_level").
-                    find("option[value='#{concept_progress.mastery_level}']").
-                    select_option
+          # page.find_by_id("concept_progress_mastery_level").
+                    # find("option[value='#{concept_progress.mastery_level}']").
+                    # select_option
                               
         end
         
