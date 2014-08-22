@@ -2,15 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
-  data = $("#concept_progress_chart").data()
+  data = $("#cp_chart").data()
 
-  $("#concept_progress_chart").highcharts
+  $("#cp_chart").highcharts
+    
+    chart:
+      marginTop: 100
         
     credits:
       false
       
     title:
-      text: "Your Progress"
+      text: ""
       x: -20 #center
 
     xAxis:

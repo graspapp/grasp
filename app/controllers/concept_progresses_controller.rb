@@ -3,6 +3,9 @@ class ConceptProgressesController < ApplicationController
 
   def edit
   end
+  
+  def show
+  end
 
   def update
     if @concept_progress.update_attributes(concept_progress_params)
@@ -14,10 +17,15 @@ class ConceptProgressesController < ApplicationController
   
   def goals
     @goals = { 
-      1 => "1: Struggle with what facts apply to the problem and doubt myself when trying to follow R procedures.",
-      2 =>  "2: Recall necessary facts, follow procedures, and sometimes explain the concepts. Struggle with R and NR procedures",     
-      3 =>  "3: Recall necessary facts, follow procedures, explain concepts, apply procedures to R problems, and not NR problems",
-      4 =>  "4: Recall necessary facts, follow procedures, explain concepts, apply procedures to routine and non-routine problems, accurately justify my decision-making"}
+      1 => "1: Struggle with what facts apply to the problem and doubt myself
+             when trying to follow R procedures.",
+      2 =>  "2: Recall necessary facts, follow procedures, and sometimes
+             explain the concepts. Struggle with R and NR procedures",     
+      3 =>  "3: Recall necessary facts, follow procedures, explain concepts,
+             apply procedures to R problems, and not NR problems",
+      4 =>  "4: Recall necessary facts, follow procedures, explain concepts,
+             apply procedures to routine and non-routine problems, accurately 
+             justify my decision-making"}
       @goals.sort.map {|k,v| [v,k]}
   end
   

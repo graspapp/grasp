@@ -7,9 +7,13 @@ module ConceptProgressesHelper
   def mastery_goal_explanation
     "After a recent scored assessment, track your mastery level approved by the
      teacher."
-   end
+  end
    
-   def note_explanation
-     "What actions will improve your GRASP?"
-    end
+  def note_explanation
+    "What actions will improve your GRASP?"
+  end
+  
+  def get_student(progress)
+    full_name(progress.enrollment.student)
+  end
 end

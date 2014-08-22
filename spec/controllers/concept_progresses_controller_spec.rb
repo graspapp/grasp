@@ -26,6 +26,14 @@ describe ConceptProgressesController do
         expect(response).to render_template :edit
       end
     end
+    
+    describe "GET #show" do
+      before { get :show, id: concept_progress }
+      
+      it "renders the :show template" do
+        expect(response).to render_template :show
+      end
+    end
 
     describe "PUT #update" do
       it "locates the requested concept progress" do

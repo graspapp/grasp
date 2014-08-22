@@ -1,0 +1,10 @@
+- provide(:title, get_student(@concept_progress))
+
+.row
+  - breadcrumb :concept_progress, @concept_progress
+  
+  %h1.text-center
+    = "#{get_student(@concept_progress)}'s Progress in |
+    #{@concept_progress.concept.name}" |
+  
+  #cp_chart{data:{ concept_progress: @concept_progress.chart_data.to_json}}

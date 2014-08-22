@@ -44,9 +44,9 @@ class ConceptProgress < ActiveRecord::Base
           next_step: u.reify.next_steps
         }
       end
-    #
-    #   # append live version of the record
-    #   # paper trail does not track it
+
+      # append live version of the record
+      # paper trail does not track it
       data.push(
         date: self.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p"),
         goal: self.goal_level,

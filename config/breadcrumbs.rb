@@ -15,3 +15,9 @@ crumb :concept do |concept|
   link "#{ concept.name }", concept_path(concept)
   parent :unit, concept.unit
 end
+
+crumb :concept_progress do |concept_progress|
+  link "#{ full_name(concept_progress.enrollment.student)}",
+    concept_progress_path(concept_progress)
+    parent :concept, concept_progress.concept
+end

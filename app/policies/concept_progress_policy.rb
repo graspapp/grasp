@@ -18,4 +18,8 @@ class ConceptProgressPolicy < ApplicationPolicy
   def update?
     user and user.courses.include? record.concept.unit.course
   end
+  
+  def show?
+    user and user.courses.include? record.concept.unit.course
+  end
 end
