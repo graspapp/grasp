@@ -97,13 +97,6 @@ ActiveRecord::Schema.define(version: 20140818211040) do
   add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id"
   add_index "enrollments", ["student_id"], name: "index_enrollments_on_student_id"
 
-  create_table "error_types", force: true do |t|
-    t.string   "error_type"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "masteries", force: true do |t|
     t.integer  "value"
     t.string   "description"

@@ -7,7 +7,7 @@
     = f.button :submit, "Add Course"
 
 .row
-  %h1= full_name(@student)
+  %h1= full_name(@student).html_safe
 
   = modal_link("Add Course", :add_course, class: "button right")
 

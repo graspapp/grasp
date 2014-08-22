@@ -5,7 +5,7 @@ ready = ->
   data = $("#concept_progress_chart").data()
 
   $("#concept_progress_chart").highcharts
-    
+        
     credits:
       false
       

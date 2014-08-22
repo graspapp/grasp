@@ -22,10 +22,9 @@ class ConceptsController < ApplicationController
                                       student: current_user)
       
       if enrollment.concept_progresses.find_by(concept: @concept).nil?
-        @concept_progress = ConceptProgress.create
-
-        enrollment.concept_progresses << @concept_progress
-        @concept.concept_progresses << @concept_progress
+        @concept_progress = ConceptProgress.new(enrollment: enrollment,
+                                                concept: @concept)
+        @concept_progress.save
       end
     end
   end

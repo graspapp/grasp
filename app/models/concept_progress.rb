@@ -22,34 +22,38 @@ class ConceptProgress < ActiveRecord::Base
   validates_inclusion_of :note_taking, in: 1..4
   validates_inclusion_of :studying, in: 1..4
   
-  def chart_data(updates = versions[-4..-1] )
-    #use default values is reify is nil
-
-    unless updates.nil?
+  def chart_data()
+    updates = self.versions.last(5)  
+    if updates.length < 2
+      data = [
+        date: self.created_at.localtime.strftime("%m/%d/%Y %I:%M %p"),
+        goal: self.goal_level,
+        mastery: self.mastery_level,
+        effort: self.effort,
+        next_step: self.next_steps
+      ]
+    else
+      updates.shift
+      
       data = updates.map do |u|
         {
           date: u.reify.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p"),
-          goal: u.reify.goal_level || 1,
-          mastery: u.reify.mastery_level || 0,
-          effort: u.reify.effort || 1
+          goal: u.reify.goal_level,
+          mastery: u.reify.mastery_level,
+          effort: u.reify.effort,
+          next_step: u.reify.next_steps
         }
       end
-     
-      # append live version of the record
-      # paper trail does not track it
+    #
+    #   # append live version of the record
+    #   # paper trail does not track it
       data.push(
         date: self.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p"),
         goal: self.goal_level,
         mastery: self.mastery_level,
-        effort: self.effort
+        effort: self.effort,
+        next_step: self.next_steps
         )
-    else
-      data = [
-        date: self.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p"),
-        goal: self.goal_level,
-        mastery: self.mastery_level,
-        effort: self.effort
-      ]
     end
   end
 

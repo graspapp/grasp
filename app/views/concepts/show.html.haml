@@ -40,7 +40,7 @@
   - else
     %h3 Current Levels
     
-    %table
+    %table#progress-table
       %thead
         %tr
           %th Last Edited
@@ -58,7 +58,8 @@
 
           - if policy(cp).edit?
             = link_to "Update Levels", 
-            edit_concept_progress_path(cp), class: "button right"
+            edit_concept_progress_path(cp), class: "button right",
+            id:"update-levels-button"
     
     - policy_scope(@concept_progresses).each do |cp|
       #concept_progress_chart{data:{ concept_progress: cp.chart_data.to_json}}
