@@ -6,6 +6,12 @@
     = simple_form_for @concept do |f|
       = f.input :name
       = f.input :description
+      = f.input :dok1_resources,
+        label: "Recall & Reproduction"
+      = f.input :dok2_resources,
+        label: "Routine Problems"
+      = f.input :dok3_resources,
+        label: "Non-Routine Problems"
       = f.hidden_field :unit_id
       = f.button :submit
 

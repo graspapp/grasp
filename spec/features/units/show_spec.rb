@@ -21,6 +21,9 @@ describe "Unit show" do
 
       it { should have_content concept.name }
       it { should have_content concept.description }
+      it { should have_content concept.dok1_resources }
+      it { should have_content concept.dok2_resources }
+      it { should have_content concept.dok3_resources }
 
       describe "when concept isn't in current unit" do
         let(:concept) { FactoryGirl.create(:concept) }
@@ -59,6 +62,9 @@ describe "Unit show" do
 
           fill_in "Name", with: concept[:name]
           fill_in "Description", with: concept[:description]
+          fill_in "Recall & Reproduction", with: concept[:dok1_resources]
+          fill_in "Routine Problems", with: concept[:dok2_resources]
+          fill_in "Non-Routine Problems", with: concept[:dok3_resources]
           click_button "Update Concept"
         end
 
@@ -66,6 +72,9 @@ describe "Unit show" do
           let(:concept) { FactoryGirl.attributes_for(:concept) }
           it { should have_content concept[:name] }
           it { should have_content concept[:description] }
+          it { should have_content concept[:dok1_resources]}
+          it { should have_content concept[:dok2_resources]}
+          it { should have_content concept[:dok3_resources]}
         end
 
         context "with invalid attributes" do
