@@ -41,13 +41,25 @@ ready = ->
     
     series: [{
       name: "Mastery Level"
-      data: data.conceptProgress.map (cp) -> cp.mastery },
-      
+      data: data.conceptProgress.map (cp) -> cp.mastery 
+      nextStep: data.conceptProgress.map (cp) -> cp.next_step},
       {
       name: "Effort Level"
-      data: data.conceptProgress.map (cp) -> cp.effort }
-      ]
-
+      data: data.conceptProgress.map (cp) -> cp.effort }]
       
+    tooltip:
+      shared: true
+      formatter: ->
+        index = this.points[0].point.x
+        step = this.points[0].series.options.nextStep
+        
+        s = this.x + "<br>"
+        $.each this.points, ->
+          s +=  this.series.name + ": " + this.y + "<br>"
+          return
+          
+        s += "Next Steps: <b>\"" + step[index] + "\"</b>"
+        return s
+        
 $(document).ready(ready)
 $(document).on('page:load', ready)

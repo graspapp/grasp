@@ -33,10 +33,10 @@
             %td= cp.goal_level
             %td= convert_mastery?(cp.mastery_level)
             %td= cp.effort
-            %td= cp.next_steps
+            %td= auto_link(cp.next_steps, html:{target: "_blank"})
             - if policy(cp).edit?
               %td
-                = link_to "Show", concept_progress_path(cp)
+                = link_to "View Progress", concept_progress_path(cp)
                 = link_to "Edit", edit_concept_progress_path(cp)
 
   - else
@@ -56,7 +56,7 @@
             %td= cp.updated_at.localtime.to_formatted_s(:mdy)
             %td= cp.goal_level
             %td= cp.effort
-            %td= cp.next_steps
+            %td= auto_link(cp.next_steps, html:{target: "_blank"})
 
           - if policy(cp).edit?
             = link_to "Update Levels", 
