@@ -49,6 +49,9 @@ ready = ->
       
     tooltip:
       shared: true
+      style:{
+        width: 400;
+      }
       formatter: ->
         index = this.points[0].point.x
         step = this.points[0].series.options.nextStep
