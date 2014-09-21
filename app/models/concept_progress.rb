@@ -30,7 +30,8 @@ class ConceptProgress < ActiveRecord::Base
         goal: self.goal_level,
         mastery: self.mastery_level,
         effort: self.effort,
-        next_step: self.next_steps
+        next_step: self.next_steps,
+        action: self.action_steps
       ]
     else
       updates.shift
@@ -41,7 +42,8 @@ class ConceptProgress < ActiveRecord::Base
           goal: u.reify.goal_level,
           mastery: u.reify.mastery_level,
           effort: u.reify.effort,
-          next_step: u.reify.next_steps
+          next_step: u.reify.next_steps,
+          action: u.reify.action_steps
         }
       end
 
@@ -52,7 +54,8 @@ class ConceptProgress < ActiveRecord::Base
         goal: self.goal_level,
         mastery: self.mastery_level,
         effort: self.effort,
-        next_step: self.next_steps
+        next_step: self.next_steps,
+        action: self.action_steps
         )
     end
   end

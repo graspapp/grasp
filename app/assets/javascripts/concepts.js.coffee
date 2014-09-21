@@ -37,8 +37,7 @@ ready = ->
       layout: "vertical"
       align: "right"
       verticalAlign: "middle"
-    
-    
+            
     series: [{
       name: "Mastery Level"
       data: data.conceptProgress.map (cp) -> cp.mastery 
@@ -46,7 +45,7 @@ ready = ->
       {
       name: "Effort Level"
       data: data.conceptProgress.map (cp) -> cp.effort }]
-      
+            
     tooltip:
       shared: true
       style:{
@@ -58,11 +57,13 @@ ready = ->
         
         s = this.x + "<br>"
         $.each this.points, ->
-          s +=  this.series.name + ": " + this.y + "<br>"
+          s +=  "<b>" + this.series.name + ":</b> " + this.y + "<br>"
           return
           
-        s += "Next Steps: <b>\"" + step[index] + "\"</b>"
+        s += "<b>Next Steps: </b>\"" + step[index] + "\"<br><br>"
+        s += "<b>Action Steps: </b>" + data.conceptProgress[index].action
         return s
-        
+                            
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
