@@ -55,13 +55,13 @@ ready = ->
         index = this.points[0].point.x
         step = this.points[0].series.options.nextStep
         
-        s = this.x + "<br>"
+        s = "<b>" +this.x + "</b><br>"
         $.each this.points, ->
           s +=  "<b>" + this.series.name + ":</b> " + this.y + "<br>"
           return
           
-        s += "<b>Next Steps: </b>\"" + step[index] + "\"<br><br>"
-        s += "<b>Action Steps: </b>" + data.conceptProgress[index].action
+        s += "<b>Next Steps: </b>" + step[index] + "<br><br>"
+        s += "<b>Note to Self: </b>" + data.conceptProgress[index].action
         return s
                             
 

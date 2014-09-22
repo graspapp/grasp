@@ -17,26 +17,16 @@ class ConceptProgressesController < ApplicationController
   
   def goals
     @goals = { 
-      1 => "1: Struggle with what facts apply to the problem and doubt myself
-             when trying to follow R procedures.",
-      2 =>  "2: Recall necessary facts, follow procedures, and sometimes
-             explain the concepts. Struggle with R and NR procedures",     
-      3 =>  "3: Recall necessary facts, follow procedures, explain concepts,
-             apply procedures to R problems, and not NR problems",
-      4 =>  "4: Recall necessary facts, follow procedures, explain concepts,
-             apply procedures to routine and non-routine problems, accurately 
-             justify my decision-making"}
+      1 => "1: Demonstrate recall (level 1). I do not know how to use the
+             concepts that I know to create a plan that works",
+      2 =>  "2: Demonstrate recall and solve routine problems (levels 1 & 2).
+             Explain how to approach and solve a problem",     
+      3 =>  "3: Demonstrate recall, solve routine, approach and create plans
+             that might work for non-routine problems (levels 1, 2, and part of
+             3). Explain how I reasoned through a routine problem",
+      4 =>  "4: Struggle with what facts apply to the problem and doubt myself
+             when trying to follow R procedures."}
       @goals.sort.map {|k,v| [v,k]}
-  end
-  
-  def mastery
-    @mastery = @goals.merge(-1 => "NY (not yet): I really do not get anything
-     at all, but I am trying different things I know", 
-     
-     0 => "N (No attempt): I did not attempt anything at all"
-     
-     )
-    @mastery.sort.map {|k,v| [v,k]}
   end
   
   def errors
