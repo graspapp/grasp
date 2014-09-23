@@ -17,15 +17,14 @@ class ConceptProgressesController < ApplicationController
   
   def goals
     @goals = { 
-      1 => "1: Demonstrate recall (level 1). I do not know how to use the
-             concepts that I know to create a plan that works",
-      2 =>  "2: Demonstrate recall and solve routine problems (levels 1 & 2).
-             Explain how to approach and solve a problem",     
-      3 =>  "3: Demonstrate recall, solve routine, approach and create plans
-             that might work for non-routine problems (levels 1, 2, and part of
-             3). Explain how I reasoned through a routine problem",
-      4 =>  "4: Struggle with what facts apply to the problem and doubt myself
-             when trying to follow R procedures."}
+      1 => "1: Demonstrate recall. I do not know how to connect approach to a
+            plan that works for routine",
+      2 =>  "2: Demonstrate recall, solve routine problems, and explain
+             approach, plan, execution for routine",     
+      3 =>  "3: Demonstrate recall, solve routine, approach and plan for
+             non-routine problems",
+      4 =>  "4: Demonstrate recall, solve routine problems, and solve
+             non-routine problems (levels 1, 2, 3). Teach concept to a peer"}
       @goals.sort.map {|k,v| [v,k]}
   end
   
