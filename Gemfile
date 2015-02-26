@@ -43,7 +43,7 @@ gem "highcharts-rails"
 group :development, :test do
   gem "sqlite3"
   gem 'rspec-rails', '~> 3.0.0'
-  gem "capybara"
+  gem 'capybara', '~> 2.4.4'
   gem "poltergeist"
   gem "database_cleaner"
   gem "shoulda"
