@@ -4,7 +4,7 @@ source "https://rubygems.org"
 gem "rails", "4.0.0"
 
 # Use SCSS for stylesheets
-gem "sass-rails", "~> 4.0.0"
+gem 'sass-rails', '~> 5.0.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem "uglifier", ">= 1.3.0"
@@ -27,7 +27,7 @@ gem "jbuilder", "~> 1.2"
 gem "devise"
 gem "simple_form"
 gem "haml-rails"
-gem "foundation-rails"
+gem 'foundation-rails', '~> 5.5.1.0'
 gem "figaro"
 gem "activeadmin", github: "gregbell/active_admin"
 gem "pundit"
@@ -46,7 +46,8 @@ group :development, :test do
   gem 'capybara', '~> 2.4.4'
   gem "poltergeist"
   gem "database_cleaner"
-  gem "shoulda"
+  gem "shoulda", "3.5.0"
+  gem "shoulda-matchers", "2.5.0"
   gem "launchy"
   gem "faker"
   gem "factory_girl_rails"
