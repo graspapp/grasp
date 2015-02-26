@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "4.0.0"
+gem 'rails', '~> 4.2.0'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.1'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem "uglifier", ">= 1.3.0"
@@ -26,8 +26,8 @@ gem "jbuilder", "~> 1.2"
 
 gem "devise"
 gem "simple_form"
-gem "haml-rails"
-gem 'foundation-rails', '~> 5.5.1.0'
+gem 'haml-rails'
+gem 'foundation-rails'
 gem "figaro"
 gem "activeadmin", github: "gregbell/active_admin"
 gem "pundit"
