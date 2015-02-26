@@ -12,7 +12,7 @@ FactoryGirl.define do
     end
 
     factory :concept_with_concept_progresses do
-      ignore do
+      transient do
         concept_progresses_count 5
       end
 

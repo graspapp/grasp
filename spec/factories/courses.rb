@@ -8,7 +8,7 @@ FactoryGirl.define do
     end
 
     factory :course_with_units do
-      ignore do
+      transient do
         units_count 5
       end
 

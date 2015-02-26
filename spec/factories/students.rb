@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :student, traits: [:user] do
     factory :student_with_courses do
-      ignore do
+      transient do
         courses_count 5
       end
 

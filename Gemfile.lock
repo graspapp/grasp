@@ -394,6 +394,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   mail_form
+  minitest
   paper_trail
   pg
   poltergeist
