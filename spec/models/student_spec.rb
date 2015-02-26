@@ -5,6 +5,6 @@ describe Student do
     let(:user) { student }
   end
 
-  it { should have_many(:enrollments).dependent(:destroy) }
-  it { should have_many(:courses).through(:enrollments) }
+  it { is_expected.to have_many(:enrollments).dependent(:destroy) }
+  it { is_expected.to have_many(:courses).through(:enrollments) }
 end

@@ -6,8 +6,8 @@ feature "Contact form" do
   subject { page }
 
   describe "attributes" do
-    it { should have_content "Contact" }
-    it { should have_title "Contact" }
+    it { is_expected.to have_content "Contact" }
+    it { is_expected.to have_title "Contact" }
   end
 
   describe "sending an email" do
@@ -21,13 +21,13 @@ feature "Contact form" do
         click_button "Send"
       end
 
-      it { should have_content "sent successfully" }
+      it { is_expected.to have_content "sent successfully" }
     end
 
     context "with invalid attributes" do
       before { click_button "Send" }
 
-      it { should have_content "can't be blank" }
+      it { is_expected.to have_content "can't be blank" }
     end
   end
 end

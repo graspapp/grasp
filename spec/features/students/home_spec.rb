@@ -22,7 +22,7 @@ describe "Student home" do
       click_button "Add Course"
     end
 
-    it { should have_content course.name }
-    it { should have_content course.course_code }
+    it { is_expected.to have_content course.name }
+    it { is_expected.to have_content course.course_code }
   end
 end

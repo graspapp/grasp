@@ -9,8 +9,8 @@ describe "Authentication" do subject { page }
 
       context "with invalid information" do
         before { click_button "Sign up" }
-        it { should have_title("Sign up") }
-        it { should have_content("can't be blank") }
+        it { is_expected.to have_title("Sign up") }
+        it { is_expected.to have_content("can't be blank") }
       end
 
       context "with valid information" do
@@ -25,13 +25,13 @@ describe "Authentication" do subject { page }
           click_button "Sign up"
         end
 
-        it { should have_link("Sign out", href: destroy_user_session_path) }
-        it { should_not have_link("Sign in") }
-        it { should have_title("#{user[:first_name]} #{user[:last_name]}") }
+        it { is_expected.to have_link("Sign out", href: destroy_user_session_path) }
+        it { is_expected.not_to have_link("Sign in") }
+        it { is_expected.to have_title("#{user[:first_name]} #{user[:last_name]}") }
 
         describe "followed by sign out" do
           before { first(:link, "Sign out").click }
-          it { should have_link("Sign up") }
+          it { is_expected.to have_link("Sign up") }
         end
       end
     end
@@ -41,8 +41,8 @@ describe "Authentication" do subject { page }
 
       context "with invalid information" do
         before { click_button "Sign up" }
-        it { should have_title("Sign up") }
-        it { should have_content("can't be blank") }
+        it { is_expected.to have_title("Sign up") }
+        it { is_expected.to have_content("can't be blank") }
       end
 
       context "with valid information" do
@@ -57,13 +57,13 @@ describe "Authentication" do subject { page }
           click_button "Sign up"
         end
 
-        it { should have_link("Sign out", href: destroy_user_session_path) }
-        it { should_not have_link("Sign in") }
-        it { should have_title("#{user[:first_name]} #{user[:last_name]}") }
+        it { is_expected.to have_link("Sign out", href: destroy_user_session_path) }
+        it { is_expected.not_to have_link("Sign in") }
+        it { is_expected.to have_title("#{user[:first_name]} #{user[:last_name]}") }
 
         describe "followed by sign out" do
           before { first(:link, "Sign out").click }
-          it { should have_link("Sign up") }
+          it { is_expected.to have_link("Sign up") }
         end
       end
     end
@@ -77,8 +77,8 @@ describe "Authentication" do subject { page }
       context "with invalid information" do
         before { click_button "Sign in" }
 
-        it { should have_title("Sign in") }
-        it { should have_content("Invalid") }
+        it { is_expected.to have_title("Sign in") }
+        it { is_expected.to have_content("Invalid") }
       end
 
       context "with valid information" do
@@ -90,9 +90,9 @@ describe "Authentication" do subject { page }
           click_button "Sign in"
         end
 
-        it { should have_title(full_name(student)) }
-        it { should have_link("Sign out") }
-        it { should_not have_link("Sign in") }
+        it { is_expected.to have_title(full_name(student)) }
+        it { is_expected.to have_link("Sign out") }
+        it { is_expected.not_to have_link("Sign in") }
       end
     end
 
@@ -101,8 +101,8 @@ describe "Authentication" do subject { page }
       context "with invalid information" do
         before { click_button "Sign in" }
 
-        it { should have_title("Sign in") }
-        it { should have_content("Invalid") }
+        it { is_expected.to have_title("Sign in") }
+        it { is_expected.to have_content("Invalid") }
       end
 
       context "with valid information" do
@@ -114,9 +114,9 @@ describe "Authentication" do subject { page }
           click_button "Sign in"
         end
 
-        it { should have_title(full_name(teacher)) }
-        it { should have_link("Sign out") }
-        it { should_not have_link("Sign in") }
+        it { is_expected.to have_title(full_name(teacher)) }
+        it { is_expected.to have_link("Sign out") }
+        it { is_expected.not_to have_link("Sign in") }
       end
     end
   end
