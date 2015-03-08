@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.0.0
+env:
+  - APPLICATION_SECRET=d76555436f4c02a751bd4355cb732340cd5f1f9a1348d284cfb9b88f9dabed61cba5b1a3a0df5d654ceab12ca2d81a809c8d15c33e61507d16b8fea2c6139929
+  - DEVISE_SECRET=772b5eac1a06887426c2bf91469facd4d222a6b0d907d78f45f6f317e68a23a70ece39dc2f86be3fefb8b92b8db8e700a1e7580f92b02f7bfb27442280da8410
+  - CONTACT_EMAIL=test@example.com
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate
+  - RAILS_ENV=test bundle exec rake db:seed
+  - bundle exec rake
