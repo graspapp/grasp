@@ -32,7 +32,7 @@ gem 'foundation-rails'
 gem "figaro"
 gem "activeadmin", github: "gregbell/active_admin"
 gem "pundit"
-gem "retina_rails"
+gem "retina_tag"
 gem "mail_form"
 gem "gretel"
 gem "paper_trail"
