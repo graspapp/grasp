@@ -24,13 +24,13 @@ RSpec.configure do |config|
 
   # Use Warden test helpers
   config.include Warden::Test::Helpers
-  
+
   config.before(:suite) do
     Warden.test_mode!
     # Change this to :truncation if Javascript tests are needed.
     DatabaseCleaner.strategy = :transaction
   end
-  
+
   config.before(:each) do
     DatabaseCleaner.start
   end
@@ -72,4 +72,6 @@ RSpec.configure do |config|
   #       # Equivalent to being in spec/controllers
   #     end
   config.infer_spec_type_from_file_location!
+
+  config.include Rails.application.routes.url_helpers
 end
