@@ -56,6 +56,8 @@ group :development, :test do
   gem "guard-livereload"
   gem "zeus"
   gem "coveralls", require: false
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :production do
