@@ -36,4 +36,6 @@ Grasp::Application.routes.draw do
   end
 
   get "contact", controller: "contacts", action: :new
+
+  get "learning_tool/:id", controller: "pages", action: :show_pdf, as: "learning_tool"
 end

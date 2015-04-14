@@ -2,3 +2,24 @@
 
 .row
   %h1.text-center Learning Tools
+
+  %table
+    %thead
+      %tr
+        %th Tool
+        %th Level
+        %th Description
+        %th Action
+    %tbody
+      - @learning_tools.each do |tool|
+        %tr
+          %td= tool.title
+          %td= tool.category_number
+          %td= tool.description
+
+          -#  TODO change this when you receive the acem PDF file
+          - if tool.filename == 'acem.pdf'
+            %td Temporarily Unavailable
+          -else
+            %td= link_to "View/Download", learning_tool_path(tool),
+            target: '_blank'
