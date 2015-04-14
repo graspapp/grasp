@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818211040) do
+ActiveRecord::Schema.define(version: 20150414030416) do
 
   create_table "active_admin_comments", force: true do |t|
-    t.string   "namespace"
+    t.string   "namespace",     limit: nil
     t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
+    t.string   "resource_id",   limit: nil, null: false
+    t.string   "resource_type", limit: nil, null: false
     t.integer  "author_id"
-    t.string   "author_type"
+    t.string   "author_type",   limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,16 +29,16 @@ ActiveRecord::Schema.define(version: 20140818211040) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "admin_users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: nil, default: "", null: false
+    t.string   "encrypted_password",     limit: nil, default: "", null: false
+    t.string   "reset_password_token",   limit: nil
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: nil
+    t.string   "last_sign_in_ip",        limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 20140818211040) do
     t.integer  "concept_id"
     t.integer  "goal_level"
     t.integer  "mastery_level"
-    t.string   "type_of_error"
-    t.string   "next_steps"
+    t.string   "type_of_error", limit: nil
+    t.string   "next_steps",    limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "action_steps"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20140818211040) do
 
   create_table "concepts", force: true do |t|
     t.integer  "unit_id"
-    t.string   "name"
+    t.string   "name",           limit: nil
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 20140818211040) do
 
   create_table "courses", force: true do |t|
     t.integer  "teacher_id"
-    t.string   "name"
-    t.string   "course_code"
+    t.string   "name",        limit: nil
+    t.string   "course_code", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -97,54 +97,63 @@ ActiveRecord::Schema.define(version: 20140818211040) do
   add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id"
   add_index "enrollments", ["student_id"], name: "index_enrollments_on_student_id"
 
+  create_table "learning_tools", force: true do |t|
+    t.string   "title",           default: ""
+    t.string   "description",     default: ""
+    t.string   "filename",        default: "", null: false
+    t.integer  "category_number", default: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "masteries", force: true do |t|
     t.integer  "value"
-    t.string   "description"
+    t.string   "description", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "steps", force: true do |t|
     t.integer  "mastery_id"
-    t.string   "description"
+    t.string   "description", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "units", force: true do |t|
     t.integer  "course_id"
-    t.string   "number"
-    t.string   "name"
+    t.string   "number",     limit: nil
+    t.string   "name",       limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: nil, default: "", null: false
+    t.string   "encrypted_password",     limit: nil, default: "", null: false
+    t.string   "reset_password_token",   limit: nil
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "current_sign_in_ip",     limit: nil
+    t.string   "last_sign_in_ip",        limit: nil
+    t.string   "first_name",             limit: nil
+    t.string   "last_name",              limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
+    t.string   "type",                   limit: nil
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "versions", force: true do |t|
-    t.string   "item_type",  null: false
-    t.integer  "item_id",    null: false
-    t.string   "event",      null: false
-    t.string   "whodunnit"
+    t.string   "item_type",  limit: nil, null: false
+    t.integer  "item_id",                null: false
+    t.string   "event",      limit: nil, null: false
+    t.string   "whodunnit",  limit: nil
     t.text     "object"
     t.datetime "created_at"
   end

@@ -21,3 +21,14 @@ CSV.foreach(Rails.root.join("next_steps.csv"), headers: true) do |row|
     step.mastery_id = row[1]
   end
 end
+
+
+
+CSV.foreach(Rails.root.join("learning_tools.csv"), headers: true) do |row|
+  LearningTool.create! do |tool|
+    tool.title = row[0]
+    tool.description = row[1]
+    tool.filename = row[2]
+    tool.category_number = row[3]
+  end
+end
