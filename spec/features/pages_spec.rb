@@ -20,10 +20,10 @@ describe "Pages" do
     it { should have_content("Acknowledgements") }
     it { should have_title("Acknowledgements") }
   end
-  
-  context "acem" do
-    before { visit acem_path }
-    it { should have_content("ACE-M Tool") }
-    it { should have_title("ACE-M Tool") }
+
+  context "learning" do
+    before { visit tools_path }
+    it { should have_content("Learning Tools") }
+    it { should have_title("Learning Tools") }
   end
 end
