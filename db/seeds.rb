@@ -7,6 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'csv'
 
+Mastery.destroy_all
+Step.destroy_all
+LearningTool.destroy_all
+
 CSV.foreach(Rails.root.join("mastery.csv"), headers: true) do |row|
   Mastery.create! do |mastery|
     mastery.id = row[0]

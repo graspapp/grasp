@@ -16,10 +16,5 @@
           %td= tool.title
           %td= tool.category_number
           %td= tool.description
-
-          -#  TODO change this when you receive the acem PDF file
-          - if tool.filename == 'acem.pdf'
-            %td Temporarily Unavailable
-          -else
-            %td= link_to "View/Download", learning_tool_path(tool),
-            target: '_blank'
+          %td= link_to "View/Download", learning_tool_path(tool),
+          target: '_blank'
