@@ -8,7 +8,7 @@ class CreateConceptProgresses < ActiveRecord::Migration
       t.string :type_of_error
       t.text :next_steps
 
-      t.timestamps
+      t.timestamps, :null => true
     end
   end
 end

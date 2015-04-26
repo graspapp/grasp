@@ -5,7 +5,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :name
       t.string :course_code
 
-      t.timestamps
+      t.timestamps, :null => true
     end
   end
 end

@@ -5,7 +5,7 @@ class CreateUnits < ActiveRecord::Migration
       t.string :number
       t.string :name
 
-      t.timestamps
+      t.timestamps, :null => true
     end
   end
 end
