@@ -3,7 +3,7 @@ class CreateSteps < ActiveRecord::Migration
     create_table :steps do |t|
       t.integer :mastery_id
       t.string :description
-      t.timestamps, :null => true
+      t.timestamps null: false
     end
   end
 end

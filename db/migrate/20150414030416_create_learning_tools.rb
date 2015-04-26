@@ -6,7 +6,7 @@ class CreateLearningTools < ActiveRecord::Migration
       t.string :description, null: :false, default: ''
       t.string :filename, null: false, default: ''
       t.integer :category_number, null: :false, default: 1
-      t.timestamps, :null => true
+      t.timestamps null: false
     end
   end
 end

@@ -3,7 +3,7 @@ class CreateMasteries < ActiveRecord::Migration
     create_table :masteries do |t|
       t.integer :value
       t.string :description
-      t.timestamps, :null => true
+      t.timestamps null: false
     end
   end
 end

@@ -5,7 +5,7 @@ class CreateConcepts < ActiveRecord::Migration
       t.string :number
       t.text :description
 
-      t.timestamps, :null => true
+      t.timestamps null: false
     end
   end
 end

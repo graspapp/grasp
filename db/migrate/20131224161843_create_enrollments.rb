@@ -4,7 +4,7 @@ class CreateEnrollments < ActiveRecord::Migration
       t.belongs_to :student, index: true
       t.belongs_to :course, index: true
 
-      t.timestamps, :null => true
+      t.timestamps null: false
     end
   end
 end
