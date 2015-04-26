@@ -47,7 +47,7 @@ describe CoursesController do
             post :create, course: FactoryGirl.attributes_for(:course)
           }.to change(Course, :count).by 1
         end
-        
+
         it "adds the course to the teacher" do
           expect {
             post :create, course: FactoryGirl.attributes_for(:course)
@@ -142,7 +142,7 @@ describe CoursesController do
 
     describe "DELETE #destroy" do
       let(:course) { FactoryGirl.create(:course) }
-      
+
       context "when teacher owns course" do
         before { teacher.courses << course }
 
@@ -154,7 +154,7 @@ describe CoursesController do
 
         it "redirects to homepage" do
           delete :destroy, id: course
-          expect(response).to redirect_to root_url
+          expect(response).to redirect_to root_path
         end
       end
 
@@ -176,10 +176,10 @@ describe CoursesController do
 
     let(:student) { FactoryGirl.create(:student) }
     before(:each) { login_user student }
-    
+
     describe "GET #show" do
       let(:course) { FactoryGirl.create(:course) }
-      
+
       context "when student is in course" do
         before do
           student.courses << course

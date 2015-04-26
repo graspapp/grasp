@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150414030416) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
-  create_table "concept_progresses", force: true do |t|
+  create_table "concept_progresses", force: :cascade do |t|
     t.integer  "enrollment_id"
     t.integer  "concept_id"
     t.integer  "goal_level"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150414030416) do
   add_index "concept_progresses", ["concept_id"], name: "index_concept_progresses_on_concept_id"
   add_index "concept_progresses", ["enrollment_id"], name: "index_concept_progresses_on_enrollment_id"
 
-  create_table "concepts", force: true do |t|
+  create_table "concepts", force: :cascade do |t|
     t.integer  "unit_id"
     t.string   "name",           limit: nil
     t.text     "description"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20150414030416) do
 
   add_index "concepts", ["unit_id"], name: "index_concepts_on_unit_id"
 
-  create_table "courses", force: true do |t|
+  create_table "courses", force: :cascade do |t|
     t.integer  "teacher_id"
     t.string   "name",        limit: nil
     t.string   "course_code", limit: nil
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20150414030416) do
 
   add_index "courses", ["teacher_id"], name: "index_courses_on_teacher_id"
 
-  create_table "enrollments", force: true do |t|
+  create_table "enrollments", force: :cascade do |t|
     t.integer  "student_id"
     t.integer  "course_id"
     t.datetime "created_at"
@@ -107,20 +107,21 @@ ActiveRecord::Schema.define(version: 20150414030416) do
   end
 
   create_table "masteries", force: true do |t|
+  create_table "masteries", force: :cascade do |t|
     t.integer  "value"
     t.string   "description", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "steps", force: true do |t|
+  create_table "steps", force: :cascade do |t|
     t.integer  "mastery_id"
     t.string   "description", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "units", force: true do |t|
+  create_table "units", force: :cascade do |t|
     t.integer  "course_id"
     t.string   "number",     limit: nil
     t.string   "name",       limit: nil

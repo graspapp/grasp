@@ -11,45 +11,45 @@ describe CoursePolicy do
     context "and owns course" do
       before { user.courses << course }
 
-      it { should permit(:show) }
-      it { should permit(:create) }
-      it { should permit(:edit) }
-      it { should permit(:update) }
-      it { should permit(:destroy) }
+      it { is_expected.to permit(:show) }
+      it { is_expected.to permit(:create) }
+      it { is_expected.to permit(:edit) }
+      it { is_expected.to permit(:update) }
+      it { is_expected.to permit(:destroy) }
     end
 
     context "and doesn't own course" do
-      it { should_not permit(:show) }
-      it { should_not permit(:create) }
-      it { should_not permit(:edit) }
-      it { should_not permit(:update) }
-      it { should_not permit(:destroy) }
+      it { is_expected.not_to permit(:show) }
+      it { is_expected.not_to permit(:create) }
+      it { is_expected.not_to permit(:edit) }
+      it { is_expected.not_to permit(:update) }
+      it { is_expected.not_to permit(:destroy) }
     end
   end
 
   context "logged in as student" do
     let(:user) { FactoryGirl.create(:student) }
 
-    it { should_not permit(:show) }
-    it { should_not permit(:create) }
-    it { should_not permit(:edit) }
-    it { should_not permit(:update) }
-    it { should_not permit(:destroy) }
+    it { is_expected.not_to permit(:show) }
+    it { is_expected.not_to permit(:create) }
+    it { is_expected.not_to permit(:edit) }
+    it { is_expected.not_to permit(:update) }
+    it { is_expected.not_to permit(:destroy) }
 
     context "and is in course" do
       before { user.courses << course }
 
-      it { should permit(:show) }
+      it { is_expected.to permit(:show) }
     end
   end
 
   context "not logged in" do
     let(:user) { nil }
 
-    it { should_not permit(:show) }
-    it { should_not permit(:create) }
-    it { should_not permit(:edit) }
-    it { should_not permit(:update) }
-    it { should_not permit(:destroy) }
+    it { is_expected.not_to permit(:show) }
+    it { is_expected.not_to permit(:create) }
+    it { is_expected.not_to permit(:edit) }
+    it { is_expected.not_to permit(:update) }
+    it { is_expected.not_to permit(:destroy) }
   end
 end

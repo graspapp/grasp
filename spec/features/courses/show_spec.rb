@@ -12,14 +12,14 @@ describe "Course show" do
   subject { page }
 
   shared_examples_for "a course show page" do
-    it { should have_content course.name }
-    it { should have_title course.name }
+    it { is_expected.to have_content course.name }
+    it { is_expected.to have_title course.name }
 
     describe "unit attributes" do
       let(:unit) { course.units.first }
 
-      it { should have_content unit.number }
-      it { should have_content unit.name }
+      it { is_expected.to have_content unit.number }
+      it { is_expected.to have_content unit.name }
 
       describe "when unit isn't in current course" do
         let(:unit) { FactoryGirl.create(:unit) }
@@ -28,8 +28,8 @@ describe "Course show" do
           visit current_path
         end
 
-        it { should_not have_content unit.number }
-        it { should_not have_content unit.name }
+        it { is_expected.not_to have_content unit.number }
+        it { is_expected.not_to have_content unit.name }
       end
     end
   end
@@ -39,7 +39,7 @@ describe "Course show" do
 
     it_should_behave_like "a course show page"
 
-    it { should_not have_button "Leave Course" }
+    it { is_expected.not_to have_button "Leave Course" }
 
     describe "creating unit" do
       let(:attrs) { FactoryGirl.attributes_for(:unit) }
@@ -51,8 +51,8 @@ describe "Course show" do
         click_button "Create Unit"
       end
 
-      it { should have_content attrs[:number] }
-      it { should have_content attrs[:name] }
+      it { is_expected.to have_content attrs[:number] }
+      it { is_expected.to have_content attrs[:name] }
     end
 
     describe "editing unit" do
@@ -64,8 +64,8 @@ describe "Course show" do
         click_button "Update Unit"
       end
 
-      it { should have_content attrs[:number] }
-      it { should have_content attrs[:name] }
+      it { is_expected.to have_content attrs[:number] }
+      it { is_expected.to have_content attrs[:name] }
     end
   end
 
@@ -74,7 +74,7 @@ describe "Course show" do
 
     it_should_behave_like "a course show page"
 
-    it { should_not have_link "Create Unit" }
+    it { is_expected.not_to have_link "Create Unit" }
 
     # example "leaving course" do
 #       expect {

@@ -12,18 +12,18 @@ describe "Unit show" do
   subject { page }
 
   shared_examples_for "a unit show page" do
-    it { should have_content unit.number }
-    it { should have_content unit.name }
-    it { should have_title unit.name }
+    it { is_expected.to have_content unit.number }
+    it { is_expected.to have_content unit.name }
+    it { is_expected.to have_title unit.name }
 
     describe "concept attributes" do
       let(:concept) { unit.concepts.first }
 
-      it { should have_content concept.name }
-      it { should have_content concept.description }
-      it { should have_content concept.dok1_resources }
-      it { should have_content concept.dok2_resources }
-      it { should have_content concept.dok3_resources }
+      it { is_expected.to have_content concept.name }
+      it { is_expected.to have_content concept.description }
+      it { is_expected.to have_content concept.dok1_resources }
+      it { is_expected.to have_content concept.dok2_resources }
+      it { is_expected.to have_content concept.dok3_resources }
 
       describe "when concept isn't in current unit" do
         let(:concept) { FactoryGirl.create(:concept) }
@@ -32,8 +32,8 @@ describe "Unit show" do
           visit current_path
         end
 
-        it { should_not have_content concept.name }
-        it { should_not have_content concept.description }
+        it { is_expected.not_to have_content concept.name }
+        it { is_expected.not_to have_content concept.description }
       end
     end
   end
@@ -70,16 +70,16 @@ describe "Unit show" do
 
         context "with valid attributes" do
           let(:concept) { FactoryGirl.attributes_for(:concept) }
-          it { should have_content concept[:name] }
-          it { should have_content concept[:description] }
-          it { should have_content concept[:dok1_resources]}
-          it { should have_content concept[:dok2_resources]}
-          it { should have_content concept[:dok3_resources]}
+          it { is_expected.to have_content concept[:name] }
+          it { is_expected.to have_content concept[:description] }
+          it { is_expected.to have_content concept[:dok1_resources]}
+          it { is_expected.to have_content concept[:dok2_resources]}
+          it { is_expected.to have_content concept[:dok3_resources]}
         end
 
         context "with invalid attributes" do
           let(:concept) { FactoryGirl.attributes_for(:invalid_concept) }
-          it { should have_content "can't be blank" }
+          it { is_expected.to have_content "can't be blank" }
         end
       end
       

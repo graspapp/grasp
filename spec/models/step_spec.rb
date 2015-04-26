@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe Step do
-  it { should belong_to :mastery }
+  it { is_expected.to belong_to :mastery }
 end

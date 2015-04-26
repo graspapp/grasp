@@ -5,5 +5,5 @@ describe Teacher do
     let(:user) { teacher }
   end
 
-  it { should have_many(:courses).dependent(:destroy) }
+  it { is_expected.to have_many(:courses).dependent(:destroy) }
 end

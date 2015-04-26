@@ -35,7 +35,7 @@ describe "Teacher home" do
             click_button "Create Course"
           end
 
-          it { should have_content course[:name] }
+          it { is_expected.to have_content course[:name] }
         end
 
         context "invalid attributes" do
@@ -44,8 +44,8 @@ describe "Teacher home" do
             click_button "Create Course"
           end
 
-          it { should_not have_content course[:name] }
-          it { should have_content "can't" }
+          it { is_expected.not_to have_content course[:name] }
+          it { is_expected.to have_content "can't" }
         end
       end
 

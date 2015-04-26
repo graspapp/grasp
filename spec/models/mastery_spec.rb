@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe Mastery do
-  it { should have_many :steps }
+  it { is_expected.to have_many :steps }
 end

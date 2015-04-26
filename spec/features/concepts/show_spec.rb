@@ -13,12 +13,12 @@ describe "Concept show" do
   subject { page }
 
   shared_examples_for "a concept show page" do
-    it { should have_content concept.name }
-    it { should have_title "Concept #{ concept.name }" }
+    it { is_expected.to have_content concept.name }
+    it { is_expected.to have_title "Concept #{ concept.name }" }
 
     describe "concept progress attributes" do
       let(:concept_progress) { concept.concept_progresses.first }
-      it { should have_link("Update Levels") }
+      it { is_expected.to have_link("Update Levels") }
     end
   end
 
@@ -52,8 +52,8 @@ describe "Concept show" do
         
         context "with valid attributes" do
           before { click_button "Update Your Progress" }
-          it { should have_selector("td", concept_progress[:goal_level]) }
-          it { should have_selector("td", concept_progress[:mastery_level]) }
+          it { is_expected.to have_selector("td", concept_progress[:goal_level]) }
+          it { is_expected.to have_selector("td", concept_progress[:mastery_level]) }
         end      
       end
     end

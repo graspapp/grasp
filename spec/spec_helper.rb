@@ -2,7 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'capybara/poltergeist'
 require 'coveralls'
 Coveralls.wear!('rails')
@@ -25,13 +24,13 @@ RSpec.configure do |config|
 
   # Use Warden test helpers
   config.include Warden::Test::Helpers
-  
+
   config.before(:suite) do
     Warden.test_mode!
     # Change this to :truncation if Javascript tests are needed.
     DatabaseCleaner.strategy = :transaction
   end
-  
+
   config.before(:each) do
     DatabaseCleaner.start
   end
@@ -62,4 +61,17 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  # rspec-rails 3 will no longer automatically infer an example group's spec type
+  # from the file location. You can explicitly opt-in to the feature using this
+  # config option.
+  # To explicitly tag specs without using automatic inference, set the `:type`
+  # metadata manually:
+  #
+  #     describe ThingsController, :type => :controller do
+  #       # Equivalent to being in spec/controllers
+  #     end
+  config.infer_spec_type_from_file_location!
+
+  config.include Rails.application.routes.url_helpers
 end

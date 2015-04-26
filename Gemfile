@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "4.0.0"
+gem 'rails', '~> 4.2.0'
 
 # Use SCSS for stylesheets
-gem "sass-rails", "~> 4.0.0"
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem "uglifier", ">= 1.3.0"
@@ -24,14 +24,15 @@ gem "turbolinks"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 1.2"
 
+gem "minitest"
 gem "devise"
 gem "simple_form"
-gem "haml-rails"
-gem "foundation-rails"
+gem 'haml-rails'
+gem 'foundation-rails'
 gem "figaro"
 gem "activeadmin", github: "gregbell/active_admin"
 gem "pundit"
-gem "retina_rails"
+gem "retina_tag"
 gem "mail_form"
 gem "gretel"
 gem "paper_trail"
@@ -42,11 +43,12 @@ gem "highcharts-rails"
 
 group :development, :test do
   gem "sqlite3"
-  gem "rspec-rails"
-  gem "capybara"
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'capybara', '~> 2.4.4'
   gem "poltergeist"
   gem "database_cleaner"
-  gem "shoulda"
+  gem "shoulda", "3.5.0"
+  gem "shoulda-matchers", "2.5.0"
   gem "launchy"
   gem "faker"
   gem "factory_girl_rails"
@@ -54,6 +56,8 @@ group :development, :test do
   gem "guard-livereload"
   gem "zeus"
   gem "coveralls", require: false
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :production do

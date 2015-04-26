@@ -7,13 +7,13 @@ describe StudentPolicy do
 
   context "when modifying self" do
     let(:user) { student }
-    it { should permit(:add_course) }
-    it { should permit(:leave_course) }
+    it { is_expected.to permit(:add_course) }
+    it { is_expected.to permit(:leave_course) }
   end
 
   context "when modifying someone else" do
     let(:user) { FactoryGirl.create(:student) }
-    it { should_not permit(:add_course) }
-    it { should_not permit(:leave_course) }
+    it { is_expected.not_to permit(:add_course) }
+    it { is_expected.not_to permit(:leave_course) }
   end
 end

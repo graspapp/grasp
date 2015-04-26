@@ -16,6 +16,6 @@ describe "Concept Progress show" do
     let(:user) { FactoryGirl.create(:teacher) }
 
     # Ensure the graph's div is rendered
-    it { should have_css("div#cp_chart")}
+    it { is_expected.to have_css("div#cp_chart")}
   end
 end

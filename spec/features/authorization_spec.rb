@@ -7,7 +7,7 @@ describe "Authorization" do
     let(:course) { FactoryGirl.create(:course) }
     before { visit course_path(course) }
 
-    it { should have_content "not authorized" }
+    it { is_expected.to have_content "not authorized" }
   end
 
   describe "accessing an authorized resource" do
@@ -18,7 +18,7 @@ describe "Authorization" do
       visit course_path(course)
     end
 
-    it { should have_content course.name }
-    it { should_not have_content "not authorized" }
+    it { is_expected.to have_content course.name }
+    it { is_expected.not_to have_content "not authorized" }
   end
 end
